@@ -1,0 +1,1372 @@
+[
+  {
+    "event": "2022-05-18 18:00",
+    "layer": "flood:as_2022_18_05_18",
+    "rain_avail": "YES (216 rows)",
+    "valid_rain_st": "Kampur (71km)",
+    "river_avail": "YES (9h)",
+    "valid_river_gauge": "NH15 Crossing Fakirpara Tangni",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Fakirpara Tangni)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2022-05-19 06:00",
+    "layer": "flood:as_2022_19_05_06",
+    "rain_avail": "YES (224 rows)",
+    "valid_rain_st": "Kampur (71km)",
+    "river_avail": "NO",
+    "valid_river_gauge": "None",
+    "spatial_match": "NO (Outside Footprint)",
+    "final_status": "NO_RIVER_GAUGE_OVERLAP"
+  },
+  {
+    "event": "2022-05-19 06:00",
+    "layer": "flood:as_2022_19_05",
+    "rain_avail": "YES (224 rows)",
+    "valid_rain_st": "Kampur (71km)",
+    "river_avail": "NO",
+    "valid_river_gauge": "None",
+    "spatial_match": "NO (Outside Footprint)",
+    "final_status": "NO_RIVER_GAUGE_OVERLAP"
+  },
+  {
+    "event": "2022-05-19 09:00",
+    "layer": "flood:as_2022_19_05_09",
+    "rain_avail": "YES (230 rows)",
+    "valid_rain_st": "Kampur (71km)",
+    "river_avail": "NO",
+    "valid_river_gauge": "None",
+    "spatial_match": "NO (Outside Footprint)",
+    "final_status": "NO_RIVER_GAUGE_OVERLAP"
+  },
+  {
+    "event": "2022-05-19 18:00",
+    "layer": "flood:as_2022_19_05_18",
+    "rain_avail": "YES (211 rows)",
+    "valid_rain_st": "Kampur (71km)",
+    "river_avail": "YES (8h)",
+    "valid_river_gauge": "NH15 Crossing Fakirpara Tangni",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Fakirpara Tangni)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2022-05-20 10:00",
+    "layer": "flood:as_2022_20_05_10",
+    "rain_avail": "YES (127 rows)",
+    "valid_rain_st": "Kampur (71km)",
+    "river_avail": "YES (10h)",
+    "valid_river_gauge": "NH15 Crossing Fakirpara Tangni",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Fakirpara Tangni)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2022-05-21 06:00",
+    "layer": "flood:as_2022_21_05_06",
+    "rain_avail": "YES (111 rows)",
+    "valid_rain_st": "Kampur (71km)",
+    "river_avail": "YES (5h)",
+    "valid_river_gauge": "NH15 Crossing Fakirpara Tangni",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Fakirpara Tangni)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2022-05-22 06:00",
+    "layer": "flood:as_2022_22_05_06",
+    "rain_avail": "YES (104 rows)",
+    "valid_rain_st": "Kampur (71km)",
+    "river_avail": "YES (3h)",
+    "valid_river_gauge": "NH15 Crossing Fakirpara Tangni",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Fakirpara Tangni)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2022-05-22 18:00",
+    "layer": "flood:as_2022_22_05_18",
+    "rain_avail": "YES (94 rows)",
+    "valid_rain_st": "Kampur (71km)",
+    "river_avail": "YES (7h)",
+    "valid_river_gauge": "NH15 Crossing Fakirpara Tangni",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Fakirpara Tangni)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2022-05-23 18:00",
+    "layer": "flood:as_2022_23_05_18",
+    "rain_avail": "YES (38 rows)",
+    "valid_rain_st": "Kampur (71km)",
+    "river_avail": "YES (9h)",
+    "valid_river_gauge": "NH15 Crossing Fakirpara Tangni",
+    "spatial_match": "YES (NH15 Crossing Fakirpara Tangni)",
+    "final_status": "VERIFIED_DUAL_OVERLAP"
+  },
+  {
+    "event": "2022-05-24 16:00",
+    "layer": "flood:as_2022_24_05_16",
+    "rain_avail": "YES (32 rows)",
+    "valid_rain_st": "Kampur (71km)",
+    "river_avail": "YES (5h)",
+    "valid_river_gauge": "NH15 Crossing Fakirpara Tangni",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Fakirpara Tangni)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2022-05-25 11:00",
+    "layer": "flood:as_2022_25_05_11",
+    "rain_avail": "YES (58 rows)",
+    "valid_rain_st": "Kampur (71km)",
+    "river_avail": "YES (8h)",
+    "valid_river_gauge": "NH15 Crossing Fakirpara Tangni",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Fakirpara Tangni)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2022-05-26 06:00",
+    "layer": "flood:as_2022_25-26_05_06",
+    "rain_avail": "YES (77 rows)",
+    "valid_rain_st": "Kampur (71km)",
+    "river_avail": "YES (8h)",
+    "valid_river_gauge": "NH15 Crossing Fakirpara Tangni",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Fakirpara Tangni)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2022-05-26 11:00",
+    "layer": "flood:as_2022_26_05_11",
+    "rain_avail": "YES (79 rows)",
+    "valid_rain_st": "Kampur (71km)",
+    "river_avail": "YES (7h)",
+    "valid_river_gauge": "NH15 Crossing Fakirpara Tangni",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Fakirpara Tangni)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2022-06-16 06:00",
+    "layer": "flood:as_2022_16_06_06",
+    "rain_avail": "YES (106 rows)",
+    "valid_rain_st": "Kampur (71km)",
+    "river_avail": "YES (1h)",
+    "valid_river_gauge": "NH15 Crossing Fakirpara Tangni",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Fakirpara Tangni)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2022-06-16 18:00",
+    "layer": "flood:as_2022_16_06_18",
+    "rain_avail": "YES (131 rows)",
+    "valid_rain_st": "Kampur (75km)",
+    "river_avail": "SENSOR_OUTAGE (0h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "RIVER_TELEMETRY_OUTAGE"
+  },
+  {
+    "event": "2022-06-17 18:00",
+    "layer": "flood:as_2022_17_06_18",
+    "rain_avail": "YES (179 rows)",
+    "valid_rain_st": "Kampur (75km)",
+    "river_avail": "SENSOR_OUTAGE (0h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "RIVER_TELEMETRY_OUTAGE"
+  },
+  {
+    "event": "2022-06-19 06:00",
+    "layer": "flood:as_2022_18-19_06_06",
+    "rain_avail": "YES (108 rows)",
+    "valid_rain_st": "NT Road Crossing(Jiabharali) (70km)",
+    "river_avail": "SENSOR_OUTAGE (0h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "RIVER_TELEMETRY_OUTAGE"
+  },
+  {
+    "event": "2022-06-19 18:00",
+    "layer": "flood:as_2022_19_06_18",
+    "rain_avail": "YES (95 rows)",
+    "valid_rain_st": "NT Road Crossing(Jiabharali) (70km)",
+    "river_avail": "SENSOR_OUTAGE (0h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "RIVER_TELEMETRY_OUTAGE"
+  },
+  {
+    "event": "2022-06-20 18:00",
+    "layer": "flood:as_2022_20_06_18",
+    "rain_avail": "YES (75 rows)",
+    "valid_rain_st": "NT Road Crossing(Jiabharali) (70km)",
+    "river_avail": "SENSOR_OUTAGE (0h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "RIVER_TELEMETRY_OUTAGE"
+  },
+  {
+    "event": "2022-06-21 09:00",
+    "layer": "flood:as_2022_21_06_09",
+    "rain_avail": "YES (66 rows)",
+    "valid_rain_st": "NT Road Crossing(Jiabharali) (70km)",
+    "river_avail": "SENSOR_OUTAGE (0h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "RIVER_TELEMETRY_OUTAGE"
+  },
+  {
+    "event": "2022-06-21 17:00",
+    "layer": "flood:as_2022_21_06_17",
+    "rain_avail": "YES (81 rows)",
+    "valid_rain_st": "NT Road Crossing(Jiabharali) (91km)",
+    "river_avail": "NO",
+    "valid_river_gauge": "None",
+    "spatial_match": "NO (Outside Footprint)",
+    "final_status": "NO_RIVER_GAUGE_OVERLAP"
+  },
+  {
+    "event": "2022-06-21 18:00",
+    "layer": "flood:as_2022_21_06_18",
+    "rain_avail": "YES (77 rows)",
+    "valid_rain_st": "NT Road Crossing(Jiabharali) (70km)",
+    "river_avail": "SENSOR_OUTAGE (0h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "RIVER_TELEMETRY_OUTAGE"
+  },
+  {
+    "event": "2022-06-22 11:00",
+    "layer": "flood:as_2022_22_06_11",
+    "rain_avail": "YES (65 rows)",
+    "valid_rain_st": "Beki Road bridge (67km)",
+    "river_avail": "YES (1h)",
+    "valid_river_gauge": "NH17 Crossing Boko",
+    "spatial_match": "CAUTION (Statewide BBox: NH17 Crossing Boko)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2022-06-24 06:00",
+    "layer": "flood:as_2022_23-24_06_06",
+    "rain_avail": "YES (54 rows)",
+    "valid_rain_st": "Numaligarh (164km)",
+    "river_avail": "SENSOR_OUTAGE (0h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "RIVER_TELEMETRY_OUTAGE"
+  },
+  {
+    "event": "2022-06-24 18:00",
+    "layer": "flood:as_2022_24_06_18",
+    "rain_avail": "YES (64 rows)",
+    "valid_rain_st": "Numaligarh (164km)",
+    "river_avail": "SENSOR_OUTAGE (0h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "YES (NH15 Crossing Dhansirighat)",
+    "final_status": "RIVER_TELEMETRY_OUTAGE"
+  },
+  {
+    "event": "2022-06-25 18:00",
+    "layer": "flood:as_2022_25_06_18",
+    "rain_avail": "YES (84 rows)",
+    "valid_rain_st": "NT Road Crossing(Jiabharali) (70km)",
+    "river_avail": "SENSOR_OUTAGE (0h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "RIVER_TELEMETRY_OUTAGE"
+  },
+  {
+    "event": "2022-06-26 18:00",
+    "layer": "flood:as_2022_26_06_18",
+    "rain_avail": "YES (88 rows)",
+    "valid_rain_st": "NT Road Crossing(Jiabharali) (70km)",
+    "river_avail": "SENSOR_OUTAGE (0h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "RIVER_TELEMETRY_OUTAGE"
+  },
+  {
+    "event": "2022-06-27 18:00",
+    "layer": "flood:as_2022_27_06_18",
+    "rain_avail": "YES (112 rows)",
+    "valid_rain_st": "Kampur (71km)",
+    "river_avail": "NO",
+    "valid_river_gauge": "None",
+    "spatial_match": "NO (Outside Footprint)",
+    "final_status": "NO_RIVER_GAUGE_OVERLAP"
+  },
+  {
+    "event": "2022-06-28 18:00",
+    "layer": "flood:as_2022_28_06_18",
+    "rain_avail": "YES (119 rows)",
+    "valid_rain_st": "NT Road Crossing(Jiabharali) (70km)",
+    "river_avail": "SENSOR_OUTAGE (0h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "YES (NH15 Crossing Dhansirighat)",
+    "final_status": "RIVER_TELEMETRY_OUTAGE"
+  },
+  {
+    "event": "2022-06-29 18:00",
+    "layer": "flood:as_2022_29_06_18",
+    "rain_avail": "YES (91 rows)",
+    "valid_rain_st": "NT Road Crossing(Jiabharali) (91km)",
+    "river_avail": "NO",
+    "valid_river_gauge": "None",
+    "spatial_match": "NO (Outside Footprint)",
+    "final_status": "NO_RIVER_GAUGE_OVERLAP"
+  },
+  {
+    "event": "2022-07-01 06:00",
+    "layer": "flood:as_2022_01_07_06",
+    "rain_avail": "YES (95 rows)",
+    "valid_rain_st": "Kampur (75km)",
+    "river_avail": "SENSOR_OUTAGE (0h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "YES (NH15 Crossing Dhansirighat)",
+    "final_status": "RIVER_TELEMETRY_OUTAGE"
+  },
+  {
+    "event": "2022-07-03 18:00",
+    "layer": "flood:as_2022_03_07_18",
+    "rain_avail": "YES (47 rows)",
+    "valid_rain_st": "Gelabil (197km)",
+    "river_avail": "SENSOR_OUTAGE (0h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "RIVER_TELEMETRY_OUTAGE"
+  },
+  {
+    "event": "2022-07-05 18:00",
+    "layer": "flood:as_2022_05_07_18",
+    "rain_avail": "YES (103 rows)",
+    "valid_rain_st": "NT Road Crossing(Jiabharali) (70km)",
+    "river_avail": "YES (1h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2022-07-06 18:00",
+    "layer": "flood:as_2022_06_07_18",
+    "rain_avail": "YES (141 rows)",
+    "valid_rain_st": "Beki Road bridge (67km)",
+    "river_avail": "YES (25h)",
+    "valid_river_gauge": "NH17 Crossing Boko",
+    "spatial_match": "YES (NH17 Crossing Boko)",
+    "final_status": "VERIFIED_DUAL_OVERLAP"
+  },
+  {
+    "event": "2022-07-08 06:00",
+    "layer": "flood:as_2022_07-08_07_06",
+    "rain_avail": "YES (66 rows)",
+    "valid_rain_st": "NT Road Crossing Jia-Bharali (70km)",
+    "river_avail": "YES (28h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2022-07-08 18:00",
+    "layer": "flood:as_2022_08_07_18",
+    "rain_avail": "YES (83 rows)",
+    "valid_rain_st": "NT Road Crossing(Jiabharali) (91km)",
+    "river_avail": "NO",
+    "valid_river_gauge": "None",
+    "spatial_match": "NO (Outside Footprint)",
+    "final_status": "NO_RIVER_GAUGE_OVERLAP"
+  },
+  {
+    "event": "2022-07-13 06:00",
+    "layer": "flood:as_2022_12-13_07",
+    "rain_avail": "YES (95 rows)",
+    "valid_rain_st": "NT Road Crossing Jia-Bharali (70km)",
+    "river_avail": "YES (28h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2022-07-14 06:00",
+    "layer": "flood:as_2022_14_07",
+    "rain_avail": "YES (44 rows)",
+    "valid_rain_st": "Karimganj (202km)",
+    "river_avail": "YES (26h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2022-07-17 18:00",
+    "layer": "flood:as_2022_17_07_18",
+    "rain_avail": "YES (97 rows)",
+    "valid_rain_st": "Gelabil (197km)",
+    "river_avail": "YES (30h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "16-28/18/2022",
+    "layer": "flood:as_2022_16-28_18",
+    "rain_avail": "UNPARSEABLE_DATE",
+    "valid_rain_st": "None",
+    "river_avail": "UNPARSEABLE_DATE",
+    "valid_river_gauge": "None",
+    "spatial_match": "COMPOSITE_RANGE",
+    "final_status": "UNPARSEABLE_DATE_COMPOSITE"
+  },
+  {
+    "event": "2023-06-16 06:00",
+    "layer": "flood:as_2023_16_06_18",
+    "rain_avail": "YES (122 rows)",
+    "valid_rain_st": "DRF (63km)",
+    "river_avail": "YES (15h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2023-06-17 06:00",
+    "layer": "flood:as_2023_17_06_18",
+    "rain_avail": "YES (99 rows)",
+    "valid_rain_st": "DRF (63km)",
+    "river_avail": "YES (6h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2023-06-18 06:00",
+    "layer": "flood:as_2023_18_06_18",
+    "rain_avail": "YES (130 rows)",
+    "valid_rain_st": "DRF (63km)",
+    "river_avail": "YES (27h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2023-06-19 18:00",
+    "layer": "flood:as_2023_19_06_18",
+    "rain_avail": "YES (71 rows)",
+    "valid_rain_st": "DRF (56km)",
+    "river_avail": "NO",
+    "valid_river_gauge": "None",
+    "spatial_match": "NO (Outside Footprint)",
+    "final_status": "NO_RIVER_GAUGE_OVERLAP"
+  },
+  {
+    "event": "2023-06-20 18:00",
+    "layer": "flood:as_2023_20_06_18",
+    "rain_avail": "YES (69 rows)",
+    "valid_rain_st": "Beki Road bridge (150km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2023-06-21 18:00",
+    "layer": "flood:as_2023_21_06_18",
+    "rain_avail": "YES (23 rows)",
+    "valid_rain_st": "Beki Road bridge (150km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2023-06-22 18:00",
+    "layer": "flood:as_2023_22_06_18",
+    "rain_avail": "YES (54 rows)",
+    "valid_rain_st": "Beki Road bridge (133km)",
+    "river_avail": "NO",
+    "valid_river_gauge": "None",
+    "spatial_match": "NO (Outside Footprint)",
+    "final_status": "NO_RIVER_GAUGE_OVERLAP"
+  },
+  {
+    "event": "2023-06-23 18:00",
+    "layer": "flood:as_2023_23_06_18",
+    "rain_avail": "YES (19 rows)",
+    "valid_rain_st": "NT Road Crossing(Jiabharali) (70km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "YES (NH15 Crossing Dhansirighat)",
+    "final_status": "VERIFIED_DUAL_OVERLAP"
+  },
+  {
+    "event": "2023-06-25 18:00",
+    "layer": "flood:as_2023_25_06_18",
+    "rain_avail": "YES (5 rows)",
+    "valid_rain_st": "NT Road Crossing(Jiabharali) (91km)",
+    "river_avail": "NO",
+    "valid_river_gauge": "None",
+    "spatial_match": "NO (Outside Footprint)",
+    "final_status": "NO_RIVER_GAUGE_OVERLAP"
+  },
+  {
+    "event": "2023-06-26 06:00",
+    "layer": "flood:as_2023_26_06_06",
+    "rain_avail": "YES (2 rows)",
+    "valid_rain_st": "Numaligarh (164km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2023-06-26 18:00",
+    "layer": "flood:as_2023_26_06_18",
+    "rain_avail": "YES (10 rows)",
+    "valid_rain_st": "NT Road Crossing(Jiabharali) (91km)",
+    "river_avail": "NO",
+    "valid_river_gauge": "None",
+    "spatial_match": "NO (Outside Footprint)",
+    "final_status": "NO_RIVER_GAUGE_OVERLAP"
+  },
+  {
+    "event": "2023-06-27 18:00",
+    "layer": "flood:as_2023_27_06_18",
+    "rain_avail": "YES (22 rows)",
+    "valid_rain_st": "NT Road Crossing(Jiabharali) (91km)",
+    "river_avail": "NO",
+    "valid_river_gauge": "None",
+    "spatial_match": "NO (Outside Footprint)",
+    "final_status": "NO_RIVER_GAUGE_OVERLAP"
+  },
+  {
+    "event": "2023-06-29 18:00",
+    "layer": "flood:as_2023_29_06_18",
+    "rain_avail": "YES (29 rows)",
+    "valid_rain_st": "Karimganj (202km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2023-07-07 18:00",
+    "layer": "flood:as_2023_07_07_18",
+    "rain_avail": "YES (14 rows)",
+    "valid_rain_st": "Basudevthan (266km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2023-07-09 18:00",
+    "layer": "flood:as_2023_09_07_18",
+    "rain_avail": "YES (1 rows)",
+    "valid_rain_st": "Basudevthan (287km)",
+    "river_avail": "NO",
+    "valid_river_gauge": "None",
+    "spatial_match": "NO (Outside Footprint)",
+    "final_status": "NO_RIVER_GAUGE_OVERLAP"
+  },
+  {
+    "event": "2023-07-12 06:00",
+    "layer": "flood:as_2023_12_07_06",
+    "rain_avail": "YES (14 rows)",
+    "valid_rain_st": "ghilamora (271km)",
+    "river_avail": "NO",
+    "valid_river_gauge": "None",
+    "spatial_match": "NO (Outside Footprint)",
+    "final_status": "NO_RIVER_GAUGE_OVERLAP"
+  },
+  {
+    "event": "2023-07-15 18:00",
+    "layer": "flood:as_2023_15_07_18",
+    "rain_avail": "YES (62 rows)",
+    "valid_rain_st": "Kampur (71km)",
+    "river_avail": "YES (46h)",
+    "valid_river_gauge": "NH15 Crossing Fakirpara Tangni",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Fakirpara Tangni)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2023-07-20 06:00",
+    "layer": "flood:as_2023_20_07_06",
+    "rain_avail": "YES (13 rows)",
+    "valid_rain_st": "Gelabil (197km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "YES (NH15 Crossing Dhansirighat)",
+    "final_status": "VERIFIED_DUAL_OVERLAP"
+  },
+  {
+    "event": "2023-08-29 18:00",
+    "layer": "flood:as_2023_29_08_18",
+    "rain_avail": "YES (12 rows)",
+    "valid_rain_st": "Beki Road bridge (133km)",
+    "river_avail": "NO",
+    "valid_river_gauge": "None",
+    "spatial_match": "NO (Outside Footprint)",
+    "final_status": "NO_RIVER_GAUGE_OVERLAP"
+  },
+  {
+    "event": "2023-08-31 18:00",
+    "layer": "flood:as_2023_31_08_18",
+    "rain_avail": "YES (17 rows)",
+    "valid_rain_st": "Karimganj (174km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH17 Crossing Boko",
+    "spatial_match": "YES (NH17 Crossing Boko)",
+    "final_status": "VERIFIED_DUAL_OVERLAP"
+  },
+  {
+    "event": "16/17/2023-08Hr",
+    "layer": "flood:as_2023_16_17_08",
+    "rain_avail": "UNPARSEABLE_DATE",
+    "valid_rain_st": "None",
+    "river_avail": "UNPARSEABLE_DATE",
+    "valid_river_gauge": "None",
+    "spatial_match": "COMPOSITE_RANGE",
+    "final_status": "UNPARSEABLE_DATE_COMPOSITE"
+  },
+  {
+    "event": "16-18/2023-06Hr",
+    "layer": "flood:as_2023_16-18_06",
+    "rain_avail": "UNPARSEABLE_DATE",
+    "valid_rain_st": "None",
+    "river_avail": "UNPARSEABLE_DATE",
+    "valid_river_gauge": "None",
+    "spatial_match": "COMPOSITE_RANGE",
+    "final_status": "UNPARSEABLE_DATE_COMPOSITE"
+  },
+  {
+    "event": "2024-05-31 18:00",
+    "layer": "flood:as_2024_31_05_18",
+    "rain_avail": "YES (80 rows)",
+    "valid_rain_st": "DRF (63km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "YES (NH15 Crossing Dhansirighat)",
+    "final_status": "VERIFIED_DUAL_OVERLAP"
+  },
+  {
+    "event": "2024-06-02 11:00",
+    "layer": "flood:as_2024_02_06_11",
+    "rain_avail": "YES (57 rows)",
+    "valid_rain_st": "DRF (56km)",
+    "river_avail": "NO",
+    "valid_river_gauge": "None",
+    "spatial_match": "NO (Outside Footprint)",
+    "final_status": "NO_RIVER_GAUGE_OVERLAP"
+  },
+  {
+    "event": "2024-06-02 18:00",
+    "layer": "flood:as_2024_02_06_18",
+    "rain_avail": "YES (52 rows)",
+    "valid_rain_st": "DRF (56km)",
+    "river_avail": "NO",
+    "valid_river_gauge": "None",
+    "spatial_match": "NO (Outside Footprint)",
+    "final_status": "NO_RIVER_GAUGE_OVERLAP"
+  },
+  {
+    "event": "2024-06-03 06:00",
+    "layer": "flood:as_2024_03_06_06",
+    "rain_avail": "YES (56 rows)",
+    "valid_rain_st": "DRF (56km)",
+    "river_avail": "NO",
+    "valid_river_gauge": "None",
+    "spatial_match": "NO (Outside Footprint)",
+    "final_status": "NO_RIVER_GAUGE_OVERLAP"
+  },
+  {
+    "event": "2024-06-03 18:00",
+    "layer": "flood:as_2024_03_06_18",
+    "rain_avail": "YES (74 rows)",
+    "valid_rain_st": "DRF (63km)",
+    "river_avail": "YES (30h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2024-06-06 11:00",
+    "layer": "flood:as_2024_06_06_11",
+    "rain_avail": "YES (39 rows)",
+    "valid_rain_st": "NT Road Crossing(Jiabharali) (91km)",
+    "river_avail": "NO",
+    "valid_river_gauge": "None",
+    "spatial_match": "NO (Outside Footprint)",
+    "final_status": "NO_RIVER_GAUGE_OVERLAP"
+  },
+  {
+    "event": "2024-06-07 11:00",
+    "layer": "flood:as_2024_07_06_11",
+    "rain_avail": "YES (34 rows)",
+    "valid_rain_st": "NT Road Crossing(Jiabharali) (70km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "YES (NH15 Crossing Dhansirighat)",
+    "final_status": "VERIFIED_DUAL_OVERLAP"
+  },
+  {
+    "event": "2024-06-08 06:00",
+    "layer": "flood:as_2024_08_06_06",
+    "rain_avail": "YES (34 rows)",
+    "valid_rain_st": "NT Road Crossing(Jiabharali) (70km)",
+    "river_avail": "YES (28h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2024-06-11 18:00",
+    "layer": "flood:as_2024_11_06_18",
+    "rain_avail": "YES (2 rows)",
+    "valid_rain_st": "Basudevthan (287km)",
+    "river_avail": "NO",
+    "valid_river_gauge": "None",
+    "spatial_match": "NO (Outside Footprint)",
+    "final_status": "NO_RIVER_GAUGE_OVERLAP"
+  },
+  {
+    "event": "2024-06-12 18:00",
+    "layer": "flood:as_2024_12_06_18",
+    "rain_avail": "YES (11 rows)",
+    "valid_rain_st": "NT Road Crossing(Jiabharali) (70km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2024-06-17 18:00",
+    "layer": "flood:as_2024_17_06_18",
+    "rain_avail": "YES (30 rows)",
+    "valid_rain_st": "NT Road Crossing Jia-Bharali (70km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2024-06-20 06:00",
+    "layer": "flood:as_2024_20_06_06",
+    "rain_avail": "YES (6 rows)",
+    "valid_rain_st": "Beki Road bridge (150km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2024-06-23 11:00",
+    "layer": "flood:as_2024_23_06_11",
+    "rain_avail": "NO",
+    "valid_rain_st": "None",
+    "river_avail": "YES (30h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "YES (NH15 Crossing Dhansirighat)",
+    "final_status": "RAIN_DATA_GAP"
+  },
+  {
+    "event": "2024-06-26 11:00",
+    "layer": "flood:as_2024_26_06_11",
+    "rain_avail": "NO",
+    "valid_rain_st": "None",
+    "river_avail": "NO",
+    "valid_river_gauge": "None",
+    "spatial_match": "NO (Outside Footprint)",
+    "final_status": "NO_RIVER_GAUGE_OVERLAP"
+  },
+  {
+    "event": "2024-07-01 18:00",
+    "layer": "flood:as_2024_01_07_18",
+    "rain_avail": "NO",
+    "valid_rain_st": "None",
+    "river_avail": "NO",
+    "valid_river_gauge": "None",
+    "spatial_match": "NO (Outside Footprint)",
+    "final_status": "NO_RIVER_GAUGE_OVERLAP"
+  },
+  {
+    "event": "2024-07-03 06:00",
+    "layer": "flood:as_2024_03_07_06",
+    "rain_avail": "NO",
+    "valid_rain_st": "None",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH17 Crossing Boko",
+    "spatial_match": "YES (NH17 Crossing Boko)",
+    "final_status": "RAIN_DATA_GAP"
+  },
+  {
+    "event": "2024-07-04 06:00",
+    "layer": "flood:as_2024_03-04_07_06",
+    "rain_avail": "YES (2 rows)",
+    "valid_rain_st": "Beki Road bridge (150km)",
+    "river_avail": "YES (27h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2024-07-04 18:00",
+    "layer": "flood:as_2024_04_07_18",
+    "rain_avail": "YES (29 rows)",
+    "valid_rain_st": "DRF (63km)",
+    "river_avail": "YES (27h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2024-07-07 18:00",
+    "layer": "flood:as_2024_07_07_18",
+    "rain_avail": "YES (28 rows)",
+    "valid_rain_st": "Kampur (71km)",
+    "river_avail": "NO",
+    "valid_river_gauge": "None",
+    "spatial_match": "NO (Outside Footprint)",
+    "final_status": "NO_RIVER_GAUGE_OVERLAP"
+  },
+  {
+    "event": "2024-07-08 10:00",
+    "layer": "flood:as_2024_08_07_10",
+    "rain_avail": "YES (28 rows)",
+    "valid_rain_st": "DRF (63km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "YES (NH15 Crossing Dhansirighat)",
+    "final_status": "VERIFIED_DUAL_OVERLAP"
+  },
+  {
+    "event": "2024-07-08 18:00",
+    "layer": "flood:as_2024_08_07_18",
+    "rain_avail": "YES (31 rows)",
+    "valid_rain_st": "DRF (63km)",
+    "river_avail": "YES (30h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2024-07-11 06:00",
+    "layer": "flood:as_2024_11_07_06",
+    "rain_avail": "YES (44 rows)",
+    "valid_rain_st": "DRF (63km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2024-07-11 18:00",
+    "layer": "flood:as_2024_11_07_18",
+    "rain_avail": "YES (40 rows)",
+    "valid_rain_st": "DRF (63km)",
+    "river_avail": "YES (20h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2024-07-13 10:00",
+    "layer": "flood:as_2024_13_07_10",
+    "rain_avail": "YES (28 rows)",
+    "valid_rain_st": "Beki Road bridge (133km)",
+    "river_avail": "NO",
+    "valid_river_gauge": "None",
+    "spatial_match": "NO (Outside Footprint)",
+    "final_status": "NO_RIVER_GAUGE_OVERLAP"
+  },
+  {
+    "event": "2024-07-16 06:00",
+    "layer": "flood:as_2024_16_07",
+    "rain_avail": "YES (54 rows)",
+    "valid_rain_st": "DRF (56km)",
+    "river_avail": "NO",
+    "valid_river_gauge": "None",
+    "spatial_match": "NO (Outside Footprint)",
+    "final_status": "NO_RIVER_GAUGE_OVERLAP"
+  },
+  {
+    "event": "2024-07-16 18:00",
+    "layer": "flood:as_2024_16_07_18",
+    "rain_avail": "YES (49 rows)",
+    "valid_rain_st": "DRF (63km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "YES (NH15 Crossing Dhansirighat)",
+    "final_status": "VERIFIED_DUAL_OVERLAP"
+  },
+  {
+    "event": "2024-07-18 18:00",
+    "layer": "flood:as_2024_18_07_18",
+    "rain_avail": "YES (22 rows)",
+    "valid_rain_st": "DRF (56km)",
+    "river_avail": "NO",
+    "valid_river_gauge": "None",
+    "spatial_match": "NO (Outside Footprint)",
+    "final_status": "NO_RIVER_GAUGE_OVERLAP"
+  },
+  {
+    "event": "2024-07-20 06:00",
+    "layer": "flood:as_2024_20_07_06",
+    "rain_avail": "YES (12 rows)",
+    "valid_rain_st": "Beki Road bridge (67km)",
+    "river_avail": "YES (30h)",
+    "valid_river_gauge": "NH17 Crossing Boko",
+    "spatial_match": "YES (NH17 Crossing Boko)",
+    "final_status": "VERIFIED_DUAL_OVERLAP"
+  },
+  {
+    "event": "2024-07-25 10:00",
+    "layer": "flood:as_2024_25_07_10",
+    "rain_avail": "YES (22 rows)",
+    "valid_rain_st": "DRF (56km)",
+    "river_avail": "NO",
+    "valid_river_gauge": "None",
+    "spatial_match": "NO (Outside Footprint)",
+    "final_status": "NO_RIVER_GAUGE_OVERLAP"
+  },
+  {
+    "event": "2024-07-25 18:00",
+    "layer": "flood:as_2024_25_07_18",
+    "rain_avail": "YES (19 rows)",
+    "valid_rain_st": "DRF (56km)",
+    "river_avail": "NO",
+    "valid_river_gauge": "None",
+    "spatial_match": "NO (Outside Footprint)",
+    "final_status": "NO_RIVER_GAUGE_OVERLAP"
+  },
+  {
+    "event": "2024-07-30 18:00",
+    "layer": "flood:as_2024_30_07_18",
+    "rain_avail": "YES (31 rows)",
+    "valid_rain_st": "DRF (56km)",
+    "river_avail": "NO",
+    "valid_river_gauge": "None",
+    "spatial_match": "NO (Outside Footprint)",
+    "final_status": "NO_RIVER_GAUGE_OVERLAP"
+  },
+  {
+    "event": "2024-08-09 06:00",
+    "layer": "flood:as_2024_09_08",
+    "rain_avail": "YES (49 rows)",
+    "valid_rain_st": "Beki Road bridge (150km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2024-08-09 18:00",
+    "layer": "flood:as_2024_09_08_18",
+    "rain_avail": "YES (23 rows)",
+    "valid_rain_st": "Beki Road bridge (150km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2024-08-10 18:00",
+    "layer": "flood:as_2024_10_08_18",
+    "rain_avail": "YES (1 rows)",
+    "valid_rain_st": "Basudevthan (266km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2024-08-11 18:00",
+    "layer": "flood:as_2024_11_08_18",
+    "rain_avail": "YES (2 rows)",
+    "valid_rain_st": "Basudevthan (287km)",
+    "river_avail": "NO",
+    "valid_river_gauge": "None",
+    "spatial_match": "NO (Outside Footprint)",
+    "final_status": "NO_RIVER_GAUGE_OVERLAP"
+  },
+  {
+    "event": "2025-04-07 10:00",
+    "layer": "flood:as_2025_07_04_10",
+    "rain_avail": "NO",
+    "valid_rain_st": "None",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Fakirpara Tangni",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Fakirpara Tangni)",
+    "final_status": "RAIN_DATA_GAP"
+  },
+  {
+    "event": "2025-06-01 06:00",
+    "layer": "flood:as_2025_01_06_06",
+    "rain_avail": "YES (19 rows)",
+    "valid_rain_st": "DRF (56km)",
+    "river_avail": "NO",
+    "valid_river_gauge": "None",
+    "spatial_match": "NO (Outside Footprint)",
+    "final_status": "NO_RIVER_GAUGE_OVERLAP"
+  },
+  {
+    "event": "2025-06-03 06:00",
+    "layer": "flood:as_2025_03_06_06",
+    "rain_avail": "YES (13 rows)",
+    "valid_rain_st": "DRF (63km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2025-06-03 10:00",
+    "layer": "flood:as_2025_03_06_10",
+    "rain_avail": "YES (13 rows)",
+    "valid_rain_st": "DRF (63km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2025-06-04 18:00",
+    "layer": "flood:as_2025_04_06_18",
+    "rain_avail": "YES (9 rows)",
+    "valid_rain_st": "DRF (56km)",
+    "river_avail": "NO",
+    "valid_river_gauge": "None",
+    "spatial_match": "NO (Outside Footprint)",
+    "final_status": "NO_RIVER_GAUGE_OVERLAP"
+  },
+  {
+    "event": "2025-06-06 06:00",
+    "layer": "flood:as_2025_06_06_06",
+    "rain_avail": "YES (10 rows)",
+    "valid_rain_st": "DRF (63km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2025-06-07 18:00",
+    "layer": "flood:as_2025_07_06_18",
+    "rain_avail": "YES (7 rows)",
+    "valid_rain_st": "Karimganj (202km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2025-06-08 06:00",
+    "layer": "flood:as_2025_08_06_06",
+    "rain_avail": "YES (2 rows)",
+    "valid_rain_st": "Kampur (159km)",
+    "river_avail": "SENSOR_OUTAGE (0h)",
+    "valid_river_gauge": "NH17 Crossing Boko",
+    "spatial_match": "YES (NH17 Crossing Boko)",
+    "final_status": "RIVER_TELEMETRY_OUTAGE"
+  },
+  {
+    "event": "2025-06-09 06:00",
+    "layer": "flood:as_2025_09_06_06",
+    "rain_avail": "YES (3 rows)",
+    "valid_rain_st": "Kampur (75km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2025-06-09 10:00",
+    "layer": "flood:as_2025_09_06_10",
+    "rain_avail": "YES (4 rows)",
+    "valid_rain_st": "Kampur (75km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2025-06-09 18:00",
+    "layer": "flood:as_2025_09_06_18",
+    "rain_avail": "YES (4 rows)",
+    "valid_rain_st": "AP Ghat (215km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2025-06-10 11:00",
+    "layer": "flood:as_2025_10_06_11",
+    "rain_avail": "YES (3 rows)",
+    "valid_rain_st": "DRF (56km)",
+    "river_avail": "NO",
+    "valid_river_gauge": "None",
+    "spatial_match": "NO (Outside Footprint)",
+    "final_status": "NO_RIVER_GAUGE_OVERLAP"
+  },
+  {
+    "event": "2025-06-11 10:00",
+    "layer": "flood:as_2025_11_06_10",
+    "rain_avail": "YES (2 rows)",
+    "valid_rain_st": "DRF (63km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "YES (NH15 Crossing Dhansirighat)",
+    "final_status": "VERIFIED_DUAL_OVERLAP"
+  },
+  {
+    "event": "2025-06-12 06:00",
+    "layer": "flood:as_2025_31_05-12_06",
+    "rain_avail": "YES (1 rows)",
+    "valid_rain_st": "AP Ghat (215km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2025-06-12 10:00",
+    "layer": "flood:as_2025_12_06_10",
+    "rain_avail": "NO",
+    "valid_rain_st": "None",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "RAIN_DATA_GAP"
+  },
+  {
+    "event": "2025-06-12 18:00",
+    "layer": "flood:as_2025_12_06_18",
+    "rain_avail": "NO",
+    "valid_rain_st": "None",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "RAIN_DATA_GAP"
+  },
+  {
+    "event": "2025-06-17 10:00",
+    "layer": "flood:as_2025_17_06_10",
+    "rain_avail": "YES (10 rows)",
+    "valid_rain_st": "DRF (56km)",
+    "river_avail": "NO",
+    "valid_river_gauge": "None",
+    "spatial_match": "NO (Outside Footprint)",
+    "final_status": "NO_RIVER_GAUGE_OVERLAP"
+  },
+  {
+    "event": "2025-06-17 18:00",
+    "layer": "flood:as_2025_17_06_18",
+    "rain_avail": "YES (11 rows)",
+    "valid_rain_st": "Karimganj (202km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2025-06-19 18:00",
+    "layer": "flood:as_2025_19_06_18",
+    "rain_avail": "YES (20 rows)",
+    "valid_rain_st": "DRF (63km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2025-06-24 18:00",
+    "layer": "flood:as_2025_24_06_18",
+    "rain_avail": "YES (13 rows)",
+    "valid_rain_st": "DRF (56km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Fakirpara Tangni",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Fakirpara Tangni)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2025-06-26 06:00",
+    "layer": "flood:as_2025_26_06_06",
+    "rain_avail": "YES (5 rows)",
+    "valid_rain_st": "Kampur (75km)",
+    "river_avail": "YES (27h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2025-06-27 18:00",
+    "layer": "flood:as_2025_27_06_18",
+    "rain_avail": "YES (4 rows)",
+    "valid_rain_st": "Karimganj (202km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2025-06-28 11:00",
+    "layer": "flood:as_2025_28_06_11",
+    "rain_avail": "YES (3 rows)",
+    "valid_rain_st": "Karimganj (202km)",
+    "river_avail": "YES (17h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "YES (NH15 Crossing Dhansirighat)",
+    "final_status": "VERIFIED_DUAL_OVERLAP"
+  },
+  {
+    "event": "2025-07-03 10:00",
+    "layer": "flood:as_2025_03_07_10",
+    "rain_avail": "YES (5 rows)",
+    "valid_rain_st": "DRF (56km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Fakirpara Tangni",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Fakirpara Tangni)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2025-07-05 18:00",
+    "layer": "flood:as_2025_05_07_18",
+    "rain_avail": "YES (5 rows)",
+    "valid_rain_st": "DRF (56km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Fakirpara Tangni",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Fakirpara Tangni)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2025-07-06 18:00",
+    "layer": "flood:as_2025_06_07_18",
+    "rain_avail": "YES (3 rows)",
+    "valid_rain_st": "AP Ghat (201km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Fakirpara Tangni",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Fakirpara Tangni)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2025-07-08 06:00",
+    "layer": "flood:as_2025_08_07_06",
+    "rain_avail": "YES (13 rows)",
+    "valid_rain_st": "DRF (56km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Fakirpara Tangni",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Fakirpara Tangni)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2025-07-11 10:00",
+    "layer": "flood:as_2025_11_07_10",
+    "rain_avail": "YES (4 rows)",
+    "valid_rain_st": "BAHALPUR (184km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Fakirpara Tangni",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Fakirpara Tangni)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2025-07-13 18:00",
+    "layer": "flood:as_2025_13_07_18",
+    "rain_avail": "YES (3 rows)",
+    "valid_rain_st": "DRF (56km)",
+    "river_avail": "NO",
+    "valid_river_gauge": "None",
+    "spatial_match": "NO (Outside Footprint)",
+    "final_status": "NO_RIVER_GAUGE_OVERLAP"
+  },
+  {
+    "event": "2025-08-09 06:00",
+    "layer": "flood:as_2025_09_08_06",
+    "rain_avail": "YES (6 rows)",
+    "valid_rain_st": "Karimganj (183km)",
+    "river_avail": "NO",
+    "valid_river_gauge": "None",
+    "spatial_match": "NO (Outside Footprint)",
+    "final_status": "NO_RIVER_GAUGE_OVERLAP"
+  },
+  {
+    "event": "2025-08-13 18:00",
+    "layer": "flood:as_2025_13_08_18",
+    "rain_avail": "YES (8 rows)",
+    "valid_rain_st": "Karimganj (183km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Fakirpara Tangni",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Fakirpara Tangni)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2025-09-16 18:00",
+    "layer": "flood:as_2025_16_09_18",
+    "rain_avail": "YES (5 rows)",
+    "valid_rain_st": "Karimganj (183km)",
+    "river_avail": "YES (31h)",
+    "valid_river_gauge": "NH15 Crossing Fakirpara Tangni",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Fakirpara Tangni)",
+    "final_status": "STATE_LEVEL_ENVELOPE_RIVER_AVAILABLE"
+  },
+  {
+    "event": "2025-09-19 06:00",
+    "layer": "flood:as_2025_19_09_06",
+    "rain_avail": "YES (6 rows)",
+    "valid_rain_st": "Karimganj (202km)",
+    "river_avail": "SENSOR_OUTAGE (0h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "RIVER_TELEMETRY_OUTAGE"
+  },
+  {
+    "event": "2025-09-19 10:00",
+    "layer": "flood:as_2025_19_09_10",
+    "rain_avail": "YES (6 rows)",
+    "valid_rain_st": "Karimganj (183km)",
+    "river_avail": "NO",
+    "valid_river_gauge": "None",
+    "spatial_match": "NO (Outside Footprint)",
+    "final_status": "NO_RIVER_GAUGE_OVERLAP"
+  },
+  {
+    "event": "2025-09-20 10:00",
+    "layer": "flood:as_2025_20_09_10",
+    "rain_avail": "YES (1 rows)",
+    "valid_rain_st": "Neharkatia (366km)",
+    "river_avail": "SENSOR_OUTAGE (0h)",
+    "valid_river_gauge": "NH15 Crossing Fakirpara Tangni",
+    "spatial_match": "YES (NH15 Crossing Fakirpara Tangni)",
+    "final_status": "RIVER_TELEMETRY_OUTAGE"
+  },
+  {
+    "event": "2025-09-21 18:00",
+    "layer": "flood:as_2025_21_09_18",
+    "rain_avail": "NO",
+    "valid_rain_st": "None",
+    "river_avail": "SENSOR_OUTAGE (0h)",
+    "valid_river_gauge": "NH17 Crossing Boko",
+    "spatial_match": "YES (NH17 Crossing Boko)",
+    "final_status": "RIVER_TELEMETRY_OUTAGE"
+  },
+  {
+    "event": "2025-09-22 10:00",
+    "layer": "flood:as_2025_22_09_10",
+    "rain_avail": "YES (2 rows)",
+    "valid_rain_st": "Karimganj (202km)",
+    "river_avail": "SENSOR_OUTAGE (0h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "YES (NH15 Crossing Dhansirighat)",
+    "final_status": "RIVER_TELEMETRY_OUTAGE"
+  },
+  {
+    "event": "2025-09-22 18:00",
+    "layer": "flood:as_2025_22_09_18",
+    "rain_avail": "YES (2 rows)",
+    "valid_rain_st": "Karimganj (202km)",
+    "river_avail": "SENSOR_OUTAGE (0h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "YES (NH15 Crossing Dhansirighat)",
+    "final_status": "RIVER_TELEMETRY_OUTAGE"
+  },
+  {
+    "event": "2025-09-25 10:00",
+    "layer": "flood:as_2025_25_09_10",
+    "rain_avail": "NO",
+    "valid_rain_st": "None",
+    "river_avail": "SENSOR_OUTAGE (0h)",
+    "valid_river_gauge": "NH15 Crossing Dhansirighat",
+    "spatial_match": "CAUTION (Statewide BBox: NH15 Crossing Dhansirighat)",
+    "final_status": "RIVER_TELEMETRY_OUTAGE"
+  }
+]

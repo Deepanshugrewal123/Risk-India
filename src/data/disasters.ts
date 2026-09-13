@@ -1,0 +1,211 @@
+import { DisasterEvent } from '../types/disaster';
+
+export const ACTIVE_DISASTERS: DisasterEvent[] = [
+  {
+    id: 'disaster-01',
+    title: 'Brahmaputra Basin Flood Wave III',
+    type: 'Flood',
+    disasterType: 'Flood',
+    location: 'Guwahati & Lower Assam Valley',
+    state: 'Assam',
+    district: 'Kamrup Metro & Barpeta',
+    coordinates: [26.1445, 91.7362],
+    severity: 'HIGH',
+    status: 'Active',
+    riskScore: 84,
+    timestamp: '18 minutes ago',
+    lastUpdated: '18 minutes ago',
+    affectedPopulationEstimate: '480,000 people',
+    reportedEvacuations: '42,500 relocated to relief camps',
+    description: 'Heavy continuous catchment rainfall in Arunachal foothills has swelled the Brahmaputra and 8 major tributaries past the danger mark. 18 revenue circles report waterlogged lowlands.',
+    keyFactors: [
+      'Discharge at Nematighat & Guwahati gauge +1.38m above danger line',
+      'Breach in temporary earthen bund along Puthimari riverbank',
+      'Forecast of 95mm additional orographic rainfall in upper basin'
+    ],
+    safetyAdvisories: [
+      'Do not walk, swim, or drive through floodwaters. 15 cm of moving water can knock you down.',
+      'Boil all drinking water or use approved chlorine purification tablets.',
+      'Disconnect domestic power supply if water enters residential premises.',
+      'Report stranded elderly individuals to ASDMA block helpline: 1079.'
+    ],
+    activeSheltersCount: 142,
+    reliefTeamsDeployed: 28,
+    source: 'Assam State Disaster Management Authority (ASDMA) Bulletin #14',
+    officialSource: 'Assam State Disaster Management Authority (ASDMA) Bulletin #14',
+    isDemoData: true,
+    isMockData: true
+  },
+  {
+    id: 'disaster-02',
+    title: 'Shimla-Mandi Corridor Landslide Outbreak',
+    type: 'Landslide',
+    disasterType: 'Landslide',
+    location: 'Pandoh Gorge & Solan Highway',
+    state: 'Himachal Pradesh',
+    district: 'Mandi & Shimla',
+    coordinates: [31.7087, 76.9320],
+    severity: 'CRITICAL',
+    status: 'Active',
+    riskScore: 92,
+    timestamp: '32 minutes ago',
+    lastUpdated: '32 minutes ago',
+    affectedPopulationEstimate: '35,000 residents & stranded transit',
+    reportedEvacuations: '6,200 relocated from slope-side hamlets',
+    description: 'Cloudburst-induced debris flow triggered multiple massive rockfalls along NH-21. Soil shear strength collapsed under extreme pore pressure. Search and clearance operations in progress.',
+    keyFactors: [
+      'Continuous 72-hour precipitation exceeding 230mm',
+      'Geotechnical slope shear failure at 4 major cut-slopes',
+      'Secondary debris damming small tributary streams'
+    ],
+    safetyAdvisories: [
+      'Halt all non-essential vehicular movement on NH-5 and NH-21.',
+      'Vacate homes showing cracked masonry, tilted retaining walls, or muddy seepage.',
+      'Keep battery-operated emergency transceivers tuned to All India Radio Shimla.',
+      'Avoid sheltering beneath steep unsupported overhangs.'
+    ],
+    activeSheltersCount: 46,
+    reliefTeamsDeployed: 18,
+    source: 'HP State Disaster Management Authority (HPSDMA) Alert-C4',
+    officialSource: 'HP State Disaster Management Authority (HPSDMA) Alert-C4',
+    isDemoData: true,
+    isMockData: true
+  },
+  {
+    id: 'disaster-03',
+    title: 'Bay of Bengal Cyclonic Storm "Arka"',
+    type: 'Cyclone',
+    disasterType: 'Cyclone',
+    location: 'Coastal Belt (Puri - Jagatsinghpur)',
+    state: 'Odisha',
+    district: 'Puri, Balasore & Jagatsinghpur',
+    coordinates: [19.8135, 85.8312],
+    severity: 'MODERATE',
+    status: 'Monitoring',
+    riskScore: 68,
+    timestamp: '45 minutes ago',
+    lastUpdated: '45 minutes ago',
+    affectedPopulationEstimate: '1,200,000 in coastal alert zone',
+    reportedEvacuations: 'Preventive mobilization of 85,000 to cyclone shelters',
+    description: 'Vortex consolidating 340 km south-southeast of Paradip with sustained surface winds of 85-95 km/h gusting to 105 km/h. Coastal storm surge of 1.0 to 1.5m expected at high tide.',
+    keyFactors: [
+      'Sea surface temperatures at 30.2°C supporting steady intensification',
+      'West-northwest track trajectory approaching Dhamra port sector',
+      'Astronomical spring tide compounding vulnerability of saline embankments'
+    ],
+    safetyAdvisories: [
+      'Fishermen must strictly not venture into deep or shallow sea waters.',
+      'Fasten loose zinc roofing sheets, secure windows with adhesive tape cross-bracing.',
+      'Ensure backup battery banks, kerosene lamps, and dry food for at least 72 hours.',
+      'Cooperate with Anganwadi and civil defense wardens for shelter transit.'
+    ],
+    activeSheltersCount: 310,
+    reliefTeamsDeployed: 34,
+    source: 'India Meteorological Department (IMD) / OSDMA Special Advisory',
+    officialSource: 'India Meteorological Department (IMD) / OSDMA Special Advisory',
+    isDemoData: true,
+    isMockData: true
+  },
+  {
+    id: 'disaster-04',
+    title: 'Wayanad Hill Tracts Debris Alert',
+    type: 'Landslide',
+    disasterType: 'Landslide',
+    location: 'Meppadi & Vythiri Tea Estates',
+    state: 'Kerala',
+    district: 'Wayanad',
+    coordinates: [11.5534, 76.1264],
+    severity: 'HIGH',
+    status: 'Relief Ongoing',
+    riskScore: 78,
+    timestamp: '1 hour ago',
+    lastUpdated: '1 hour ago',
+    affectedPopulationEstimate: '22,000 residents',
+    reportedEvacuations: '8,400 sheltered in taluk schools',
+    description: 'High moisture saturation in upper forest catchment has caused slope fissures across Meppadi. Bailey bridge access maintained by Army engineering division.',
+    keyFactors: [
+      'Rainfall intensity peaked at 38mm/hour during pre-dawn hours',
+      'Subsurface groundwater pressure triggering soil creep',
+      'Runoff streams carrying dislodged vegetation and silt'
+    ],
+    safetyAdvisories: [
+      'Comply with district collectorate evacuation orders without delay.',
+      'Stay away from culverts, bridges, and mountain drainage depressions.',
+      'Keep essential identity documents, medicines, and infant food in waterproof pouches.'
+    ],
+    activeSheltersCount: 38,
+    reliefTeamsDeployed: 15,
+    source: 'Kerala State Disaster Management Authority (KSDMA) Red Zone Bulletin',
+    officialSource: 'Kerala State Disaster Management Authority (KSDMA) Red Zone Bulletin',
+    isDemoData: true,
+    isMockData: true
+  },
+  {
+    id: 'disaster-05',
+    title: 'North Bihar Kosi Flood Inundation',
+    type: 'Flood',
+    disasterType: 'Flood',
+    location: 'Supaul, Saharsa & Khagaria',
+    state: 'Bihar',
+    district: 'Supaul',
+    coordinates: [26.1260, 86.6056],
+    severity: 'HIGH',
+    status: 'Active',
+    riskScore: 76,
+    timestamp: '2 hours ago',
+    lastUpdated: '2 hours ago',
+    affectedPopulationEstimate: '320,000 rural residents',
+    reportedEvacuations: '26,000 moved to high embankments',
+    description: 'Heavy catchment precipitation in the Nepal Himalayas has led to maximum discharge through the Birpur Barrage. Kosi water entering low-lying rural tolas.',
+    keyFactors: [
+      'Discharge at Birpur Barrage crossing 2.25 lakh cusecs',
+      'Water spread across seasonal chaurs and crop fields',
+      'Drinking water handpumps submerged by river silt'
+    ],
+    safetyAdvisories: [
+      'Do not consume untested water; drink only boiled or chlorinated water.',
+      'Watch for venomous snakes taking shelter on dry elevated ground.',
+      'Use state SDRF motorized boats for safe transit; avoid overloaded wooden dinghies.'
+    ],
+    activeSheltersCount: 68,
+    reliefTeamsDeployed: 22,
+    source: 'Bihar Disaster Management Department (BSDMA) SitRep #08',
+    officialSource: 'Bihar Disaster Management Department (BSDMA) SitRep #08',
+    isDemoData: true,
+    isMockData: true
+  },
+  {
+    id: 'disaster-06',
+    title: 'Alaknanda Gorge Flash Flood Alert',
+    type: 'Flood',
+    disasterType: 'Flood',
+    location: 'Joshimath & Chamoli Valley',
+    state: 'Uttarakhand',
+    district: 'Chamoli',
+    coordinates: [30.5562, 79.5663],
+    severity: 'HIGH',
+    status: 'Monitoring',
+    riskScore: 82,
+    timestamp: '3 hours ago',
+    lastUpdated: '3 hours ago',
+    affectedPopulationEstimate: '18,000 residents & pilgrims',
+    reportedEvacuations: '3,100 accommodated in safe transit shelters',
+    description: 'Upstream cloudburst in Rishi Ganga watershed has caused rapid surge in Alaknanda river velocity. Hydroelectric project barrages opened to release peak flood wave.',
+    keyFactors: [
+      'Sharp river level spike of 2.8m recorded at Joshimath sensor station',
+      'Heavy silt and boulder slurry reducing channel capacity',
+      'Char Dham yatra vehicular movement paused at safe transit bases'
+    ],
+    safetyAdvisories: [
+      'Clear river ghats immediately; do not linger near riverbanks for photography.',
+      'Pilgrims should remain at designated GMVN tourist bungalows until route clearance.',
+      'Dial 112 or 1070 for real-time mountain transit passability.'
+    ],
+    activeSheltersCount: 24,
+    reliefTeamsDeployed: 12,
+    source: 'Uttarakhand State Disaster Management Authority (USDMA)',
+    officialSource: 'Uttarakhand State Disaster Management Authority (USDMA)',
+    isDemoData: true,
+    isMockData: true
+  }
+];

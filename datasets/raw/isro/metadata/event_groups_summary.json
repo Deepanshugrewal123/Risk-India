@@ -1,0 +1,182 @@
+[
+  {
+    "group_index": 1,
+    "event_group_id": "ASSAM_FLOOD_2022_07_DHANSIRIGHAT_EP01",
+    "gauge_name": "NH15 Crossing Dhansirighat",
+    "start_date": "2022-07-08 06:00",
+    "end_date": "2022-07-17 18:00",
+    "observation_count": 3,
+    "positive_count": 1,
+    "negative_count": 2
+  },
+  {
+    "group_index": 2,
+    "event_group_id": "ASSAM_FLOOD_2023_06_DHANSIRIGHAT_EP02",
+    "gauge_name": "NH15 Crossing Dhansirighat",
+    "start_date": "2023-06-18 06:00",
+    "end_date": "2023-06-23 18:00",
+    "observation_count": 4,
+    "positive_count": 4,
+    "negative_count": 0
+  },
+  {
+    "group_index": 3,
+    "event_group_id": "ASSAM_FLOOD_2023_07_DHANSIRIGHAT_EP03",
+    "gauge_name": "NH15 Crossing Dhansirighat",
+    "start_date": "2023-07-20 06:00",
+    "end_date": "2023-07-20 06:00",
+    "observation_count": 1,
+    "positive_count": 1,
+    "negative_count": 0
+  },
+  {
+    "group_index": 4,
+    "event_group_id": "ASSAM_FLOOD_2024_05_DHANSIRIGHAT_EP04",
+    "gauge_name": "NH15 Crossing Dhansirighat",
+    "start_date": "2024-05-31 18:00",
+    "end_date": "2024-06-08 06:00",
+    "observation_count": 3,
+    "positive_count": 0,
+    "negative_count": 3
+  },
+  {
+    "group_index": 5,
+    "event_group_id": "ASSAM_FLOOD_2024_06_DHANSIRIGHAT_EP05",
+    "gauge_name": "NH15 Crossing Dhansirighat",
+    "start_date": "2024-06-17 18:00",
+    "end_date": "2024-06-17 18:00",
+    "observation_count": 1,
+    "positive_count": 1,
+    "negative_count": 0
+  },
+  {
+    "group_index": 6,
+    "event_group_id": "ASSAM_FLOOD_2024_07_DHANSIRIGHAT_EP06",
+    "gauge_name": "NH15 Crossing Dhansirighat",
+    "start_date": "2024-07-04 18:00",
+    "end_date": "2024-07-16 18:00",
+    "observation_count": 6,
+    "positive_count": 3,
+    "negative_count": 3
+  },
+  {
+    "group_index": 7,
+    "event_group_id": "ASSAM_FLOOD_2024_08_DHANSIRIGHAT_EP07",
+    "gauge_name": "NH15 Crossing Dhansirighat",
+    "start_date": "2024-08-09 06:00",
+    "end_date": "2024-08-09 18:00",
+    "observation_count": 2,
+    "positive_count": 1,
+    "negative_count": 1
+  },
+  {
+    "group_index": 8,
+    "event_group_id": "ASSAM_FLOOD_2025_06_DHANSIRIGHAT_EP08",
+    "gauge_name": "NH15 Crossing Dhansirighat",
+    "start_date": "2025-06-03 06:00",
+    "end_date": "2025-06-03 10:00",
+    "observation_count": 2,
+    "positive_count": 1,
+    "negative_count": 1
+  },
+  {
+    "group_index": 9,
+    "event_group_id": "ASSAM_FLOOD_2025_06_DHANSIRIGHAT_EP09",
+    "gauge_name": "NH15 Crossing Dhansirighat",
+    "start_date": "2025-06-11 10:00",
+    "end_date": "2025-06-11 10:00",
+    "observation_count": 1,
+    "positive_count": 0,
+    "negative_count": 1
+  },
+  {
+    "group_index": 10,
+    "event_group_id": "ASSAM_FLOOD_2025_06_DHANSIRIGHAT_EP10",
+    "gauge_name": "NH15 Crossing Dhansirighat",
+    "start_date": "2025-06-19 18:00",
+    "end_date": "2025-06-19 18:00",
+    "observation_count": 1,
+    "positive_count": 0,
+    "negative_count": 1
+  },
+  {
+    "group_index": 11,
+    "event_group_id": "ASSAM_FLOOD_2025_06_DHANSIRIGHAT_EP11",
+    "gauge_name": "NH15 Crossing Dhansirighat",
+    "start_date": "2025-06-28 11:00",
+    "end_date": "2025-06-28 11:00",
+    "observation_count": 1,
+    "positive_count": 0,
+    "negative_count": 1
+  },
+  {
+    "group_index": 12,
+    "event_group_id": "ASSAM_FLOOD_2022_05_FAKIRPARA_EP12",
+    "gauge_name": "NH15 Crossing Fakirpara Tangni",
+    "start_date": "2022-05-23 18:00",
+    "end_date": "2022-05-23 18:00",
+    "observation_count": 1,
+    "positive_count": 1,
+    "negative_count": 0
+  },
+  {
+    "group_index": 13,
+    "event_group_id": "ASSAM_FLOOD_2023_07_FAKIRPARA_EP13",
+    "gauge_name": "NH15 Crossing Fakirpara Tangni",
+    "start_date": "2023-07-15 18:00",
+    "end_date": "2023-07-15 18:00",
+    "observation_count": 1,
+    "positive_count": 0,
+    "negative_count": 1
+  },
+  {
+    "group_index": 14,
+    "event_group_id": "ASSAM_FLOOD_2025_06_FAKIRPARA_EP14",
+    "gauge_name": "NH15 Crossing Fakirpara Tangni",
+    "start_date": "2025-06-24 18:00",
+    "end_date": "2025-06-24 18:00",
+    "observation_count": 1,
+    "positive_count": 1,
+    "negative_count": 0
+  },
+  {
+    "group_index": 15,
+    "event_group_id": "ASSAM_FLOOD_2025_07_FAKIRPARA_EP15",
+    "gauge_name": "NH15 Crossing Fakirpara Tangni",
+    "start_date": "2025-07-08 06:00",
+    "end_date": "2025-07-08 06:00",
+    "observation_count": 1,
+    "positive_count": 1,
+    "negative_count": 0
+  },
+  {
+    "group_index": 16,
+    "event_group_id": "ASSAM_FLOOD_2022_07_BOKO_EP16",
+    "gauge_name": "NH17 Crossing Boko",
+    "start_date": "2022-07-06 18:00",
+    "end_date": "2022-07-06 18:00",
+    "observation_count": 1,
+    "positive_count": 1,
+    "negative_count": 0
+  },
+  {
+    "group_index": 17,
+    "event_group_id": "ASSAM_FLOOD_2023_08_BOKO_EP17",
+    "gauge_name": "NH17 Crossing Boko",
+    "start_date": "2023-08-31 18:00",
+    "end_date": "2023-08-31 18:00",
+    "observation_count": 1,
+    "positive_count": 1,
+    "negative_count": 0
+  },
+  {
+    "group_index": 18,
+    "event_group_id": "ASSAM_FLOOD_2024_07_BOKO_EP18",
+    "gauge_name": "NH17 Crossing Boko",
+    "start_date": "2024-07-20 06:00",
+    "end_date": "2024-07-20 06:00",
+    "observation_count": 1,
+    "positive_count": 1,
+    "negative_count": 0
+  }
+]

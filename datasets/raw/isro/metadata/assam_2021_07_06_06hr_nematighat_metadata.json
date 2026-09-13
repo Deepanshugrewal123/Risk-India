@@ -1,0 +1,122 @@
+{
+  "event_group_id": "ASSAM_2021_EVENT_02",
+  "observation_id": "OBS_2021_07_06_06HR",
+  "event_date": "2021-07-06",
+  "observation_time": "06:00",
+  "year": 2021,
+  "state": "Assam",
+  "source": "NRSC/ISRO Bhuvan",
+  "product": "Historical Flood Inundation",
+  "coverage_name": "flood:as_2021_07_06_06",
+  "raw_layer_name": "as_2021_07_06_06",
+  "file_path": "datasets/raw/isro/flood_inundation/assam_2021_07_06_06hr_nematighat.tif",
+  "file_size_bytes": 33164,
+  "gauge_name": "Nematighat",
+  "gauge_latitude": 26.8603,
+  "gauge_longitude": 94.2522,
+  "district": "JORHAT",
+  "river": "Brahmaputra",
+  "bbox": [
+    94.15,
+    26.76,
+    94.35,
+    26.96
+  ],
+  "crs": "EPSG:4326",
+  "dimensions": "512x512",
+  "flood_pixel_count": 2349,
+  "flood_pixel_percentage": 0.8961,
+  "nearest_flood_distance_meters": 806.5,
+  "validation_status": "VALID_REAL_FLOOD_RASTER",
+  "acquisition_priority": "Priority 2",
+  "spatial_matching": {
+    "primary_rainfall_station": "Nematighat",
+    "station_distance_km": 0.0,
+    "nearby_stations": [
+      {
+        "station": "Nematighat",
+        "district": "JORHAT",
+        "distance_km": 0.0
+      },
+      {
+        "station": "Sivasagar",
+        "district": "SIVSAGAR",
+        "distance_km": 35.1
+      },
+      {
+        "station": "Golaghat",
+        "district": "GOLAGHAT",
+        "distance_km": 49.6
+      }
+    ],
+    "matching_method": "Exact Gauge Coordinates for River Level; Catchment Centroid & Nearest Reporting Telemetry (<=30km) for Rainfall",
+    "match_quality": "HIGH"
+  },
+  "temporal_matching": {
+    "event_timestamp": "2021-07-06 06:00",
+    "rainfall_windows": {
+      "6h": {
+        "expected_hours": 6,
+        "available_records": 0,
+        "coverage_percentage": 0.0,
+        "cumulative_rainfall_mm": 0.0,
+        "sufficient_coverage": false
+      },
+      "24h": {
+        "expected_hours": 24,
+        "available_records": 0,
+        "coverage_percentage": 0.0,
+        "cumulative_rainfall_mm": 0.0,
+        "sufficient_coverage": false
+      },
+      "72h": {
+        "expected_hours": 72,
+        "available_records": 0,
+        "coverage_percentage": 0.0,
+        "cumulative_rainfall_mm": 0.0,
+        "sufficient_coverage": false
+      },
+      "168h": {
+        "expected_hours": 168,
+        "available_records": 0,
+        "coverage_percentage": 0.0,
+        "cumulative_rainfall_mm": 0.0,
+        "sufficient_coverage": false
+      }
+    },
+    "river_level_windows": {
+      "6h": {
+        "expected_hours": 6,
+        "available_records": 0,
+        "coverage_percentage": 0.0,
+        "mean_stage_meters": null,
+        "sufficient_coverage": false
+      },
+      "24h": {
+        "expected_hours": 24,
+        "available_records": 0,
+        "coverage_percentage": 0.0,
+        "mean_stage_meters": null,
+        "sufficient_coverage": false
+      },
+      "72h": {
+        "expected_hours": 72,
+        "available_records": 0,
+        "coverage_percentage": 0.0,
+        "mean_stage_meters": null,
+        "sufficient_coverage": false
+      },
+      "168h": {
+        "expected_hours": 168,
+        "available_records": 0,
+        "coverage_percentage": 0.0,
+        "mean_stage_meters": null,
+        "sufficient_coverage": false
+      }
+    }
+  },
+  "rainfall_overlap": "ZERO_VALID_READINGS_100_PERCENT_NULL",
+  "river_level_overlap": "ABSENT_FROM_RIVER_DATASET",
+  "audit_classification": "NEMATIGHAT_IS_RAINFALL_ONLY_NULL_STATION",
+  "audit_notes": "Forensically audited in Phase 7C-A: Nematighat contains 24,274 rows in rainfall CSV with 100% null values (0 valid readings) and is completely absent from river level dataset. Reclassified as orphaned satellite raster coverage."
+}

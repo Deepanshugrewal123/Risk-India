@@ -1,0 +1,1167 @@
+{
+  "audit_version": "1.0",
+  "audit_date": "2026-09-12",
+  "total_rasters_audited": 32,
+  "original_tier1_count": 12,
+  "expansion_count": 20,
+  "class_balance": {
+    "positive_count": 18,
+    "negative_count": 14,
+    "positive_percentage": 56.25,
+    "negative_percentage": 43.75,
+    "pixel_statistics": {
+      "all_min": 0,
+      "all_max": 21610,
+      "all_median": 4.5,
+      "pos_min": 1,
+      "pos_25th": 749.0,
+      "pos_median": 3508.5,
+      "pos_75th": 5115.75,
+      "pos_max": 21610,
+      "area_km2_min": 0.002,
+      "area_km2_median": 5.9190000000000005,
+      "area_km2_max": 36.429
+    }
+  },
+  "event_groups": {
+    "total_independent_groups": 18,
+    "group_size_distribution": {
+      "groups_with_1_obs": 12,
+      "groups_with_2_obs": 2,
+      "groups_with_3_obs": 2,
+      "groups_with_4_obs": 1,
+      "groups_with_6_obs": 1
+    },
+    "groups": [
+      {
+        "group_index": 1,
+        "event_group_id": "ASSAM_FLOOD_2022_07_DHANSIRIGHAT_EP01",
+        "gauge_name": "NH15 Crossing Dhansirighat",
+        "start_date": "2022-07-08 06:00",
+        "end_date": "2022-07-17 18:00",
+        "observation_count": 3,
+        "positive_count": 1,
+        "negative_count": 2
+      },
+      {
+        "group_index": 2,
+        "event_group_id": "ASSAM_FLOOD_2023_06_DHANSIRIGHAT_EP02",
+        "gauge_name": "NH15 Crossing Dhansirighat",
+        "start_date": "2023-06-18 06:00",
+        "end_date": "2023-06-23 18:00",
+        "observation_count": 4,
+        "positive_count": 4,
+        "negative_count": 0
+      },
+      {
+        "group_index": 3,
+        "event_group_id": "ASSAM_FLOOD_2023_07_DHANSIRIGHAT_EP03",
+        "gauge_name": "NH15 Crossing Dhansirighat",
+        "start_date": "2023-07-20 06:00",
+        "end_date": "2023-07-20 06:00",
+        "observation_count": 1,
+        "positive_count": 1,
+        "negative_count": 0
+      },
+      {
+        "group_index": 4,
+        "event_group_id": "ASSAM_FLOOD_2024_05_DHANSIRIGHAT_EP04",
+        "gauge_name": "NH15 Crossing Dhansirighat",
+        "start_date": "2024-05-31 18:00",
+        "end_date": "2024-06-08 06:00",
+        "observation_count": 3,
+        "positive_count": 0,
+        "negative_count": 3
+      },
+      {
+        "group_index": 5,
+        "event_group_id": "ASSAM_FLOOD_2024_06_DHANSIRIGHAT_EP05",
+        "gauge_name": "NH15 Crossing Dhansirighat",
+        "start_date": "2024-06-17 18:00",
+        "end_date": "2024-06-17 18:00",
+        "observation_count": 1,
+        "positive_count": 1,
+        "negative_count": 0
+      },
+      {
+        "group_index": 6,
+        "event_group_id": "ASSAM_FLOOD_2024_07_DHANSIRIGHAT_EP06",
+        "gauge_name": "NH15 Crossing Dhansirighat",
+        "start_date": "2024-07-04 18:00",
+        "end_date": "2024-07-16 18:00",
+        "observation_count": 6,
+        "positive_count": 3,
+        "negative_count": 3
+      },
+      {
+        "group_index": 7,
+        "event_group_id": "ASSAM_FLOOD_2024_08_DHANSIRIGHAT_EP07",
+        "gauge_name": "NH15 Crossing Dhansirighat",
+        "start_date": "2024-08-09 06:00",
+        "end_date": "2024-08-09 18:00",
+        "observation_count": 2,
+        "positive_count": 1,
+        "negative_count": 1
+      },
+      {
+        "group_index": 8,
+        "event_group_id": "ASSAM_FLOOD_2025_06_DHANSIRIGHAT_EP08",
+        "gauge_name": "NH15 Crossing Dhansirighat",
+        "start_date": "2025-06-03 06:00",
+        "end_date": "2025-06-03 10:00",
+        "observation_count": 2,
+        "positive_count": 1,
+        "negative_count": 1
+      },
+      {
+        "group_index": 9,
+        "event_group_id": "ASSAM_FLOOD_2025_06_DHANSIRIGHAT_EP09",
+        "gauge_name": "NH15 Crossing Dhansirighat",
+        "start_date": "2025-06-11 10:00",
+        "end_date": "2025-06-11 10:00",
+        "observation_count": 1,
+        "positive_count": 0,
+        "negative_count": 1
+      },
+      {
+        "group_index": 10,
+        "event_group_id": "ASSAM_FLOOD_2025_06_DHANSIRIGHAT_EP10",
+        "gauge_name": "NH15 Crossing Dhansirighat",
+        "start_date": "2025-06-19 18:00",
+        "end_date": "2025-06-19 18:00",
+        "observation_count": 1,
+        "positive_count": 0,
+        "negative_count": 1
+      },
+      {
+        "group_index": 11,
+        "event_group_id": "ASSAM_FLOOD_2025_06_DHANSIRIGHAT_EP11",
+        "gauge_name": "NH15 Crossing Dhansirighat",
+        "start_date": "2025-06-28 11:00",
+        "end_date": "2025-06-28 11:00",
+        "observation_count": 1,
+        "positive_count": 0,
+        "negative_count": 1
+      },
+      {
+        "group_index": 12,
+        "event_group_id": "ASSAM_FLOOD_2022_05_FAKIRPARA_EP12",
+        "gauge_name": "NH15 Crossing Fakirpara Tangni",
+        "start_date": "2022-05-23 18:00",
+        "end_date": "2022-05-23 18:00",
+        "observation_count": 1,
+        "positive_count": 1,
+        "negative_count": 0
+      },
+      {
+        "group_index": 13,
+        "event_group_id": "ASSAM_FLOOD_2023_07_FAKIRPARA_EP13",
+        "gauge_name": "NH15 Crossing Fakirpara Tangni",
+        "start_date": "2023-07-15 18:00",
+        "end_date": "2023-07-15 18:00",
+        "observation_count": 1,
+        "positive_count": 0,
+        "negative_count": 1
+      },
+      {
+        "group_index": 14,
+        "event_group_id": "ASSAM_FLOOD_2025_06_FAKIRPARA_EP14",
+        "gauge_name": "NH15 Crossing Fakirpara Tangni",
+        "start_date": "2025-06-24 18:00",
+        "end_date": "2025-06-24 18:00",
+        "observation_count": 1,
+        "positive_count": 1,
+        "negative_count": 0
+      },
+      {
+        "group_index": 15,
+        "event_group_id": "ASSAM_FLOOD_2025_07_FAKIRPARA_EP15",
+        "gauge_name": "NH15 Crossing Fakirpara Tangni",
+        "start_date": "2025-07-08 06:00",
+        "end_date": "2025-07-08 06:00",
+        "observation_count": 1,
+        "positive_count": 1,
+        "negative_count": 0
+      },
+      {
+        "group_index": 16,
+        "event_group_id": "ASSAM_FLOOD_2022_07_BOKO_EP16",
+        "gauge_name": "NH17 Crossing Boko",
+        "start_date": "2022-07-06 18:00",
+        "end_date": "2022-07-06 18:00",
+        "observation_count": 1,
+        "positive_count": 1,
+        "negative_count": 0
+      },
+      {
+        "group_index": 17,
+        "event_group_id": "ASSAM_FLOOD_2023_08_BOKO_EP17",
+        "gauge_name": "NH17 Crossing Boko",
+        "start_date": "2023-08-31 18:00",
+        "end_date": "2023-08-31 18:00",
+        "observation_count": 1,
+        "positive_count": 1,
+        "negative_count": 0
+      },
+      {
+        "group_index": 18,
+        "event_group_id": "ASSAM_FLOOD_2024_07_BOKO_EP18",
+        "gauge_name": "NH17 Crossing Boko",
+        "start_date": "2024-07-20 06:00",
+        "end_date": "2024-07-20 06:00",
+        "observation_count": 1,
+        "positive_count": 1,
+        "negative_count": 0
+      }
+    ]
+  },
+  "duplicate_audit": {
+    "exact_duplicates": 0,
+    "same_day_passes": 8,
+    "short_interval_pairs_le_24h": 6,
+    "deduplication_rule": "Group-by-event mandatory (GroupKFold by event_group_id); preserve all multi-pass snapshots as hydrograph limb points."
+  },
+  "spatial_audit": {
+    "all_gauges_inside_tiles": true,
+    "unique_gauges": 3,
+    "unique_rivers": 3,
+    "unique_districts": 3,
+    "gauges": [
+      {
+        "gauge_name": "NH15 Crossing Dhansirighat",
+        "river": "Dhansiri (North)",
+        "district": "Udalguri",
+        "latitude": 26.695833,
+        "longitude": 92.257778,
+        "observation_count": 25,
+        "positive_count": 12,
+        "negative_count": 13
+      },
+      {
+        "gauge_name": "NH15 Crossing Fakirpara Tangni",
+        "river": "Tangni",
+        "district": "Darrang",
+        "latitude": 26.508333,
+        "longitude": 92.116389,
+        "observation_count": 4,
+        "positive_count": 3,
+        "negative_count": 1
+      },
+      {
+        "gauge_name": "NH17 Crossing Boko",
+        "river": "Boko",
+        "district": "Kamrup",
+        "latitude": 25.9775,
+        "longitude": 91.234167,
+        "observation_count": 3,
+        "positive_count": 3,
+        "negative_count": 0
+      }
+    ]
+  },
+  "temporal_audit": {
+    "earliest_date": "2022-05-23 18:00",
+    "latest_date": "2025-07-08 06:00",
+    "temporal_span_days": 1141.5,
+    "years_covered": [
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "monsoon_coverage": "Full coverage across four consecutive Assam monsoon flood cycles (May to August)",
+    "temporal_leakage_detected": false
+  },
+  "predictor_readiness": {
+    "rainfall_telemetry_complete": true,
+    "river_telemetry_complete": true,
+    "datum_shift_documented": true,
+    "observations_with_gaps": [
+      {
+        "observation_id": "BHUVAN_ASSAM_20220523_1800_FAKIRPARA",
+        "gap_type": "INTERPOLATION_GAP_5H",
+        "details": "Nearest prior stage reading is at 13:00 (5h prior to 18:00 event)"
+      },
+      {
+        "observation_id": "BHUVAN_ASSAM_20250628_1100_DHANSIRIGHAT",
+        "gap_type": "TELEMETRY_OUTAGE_AT_EVENT_HOUR",
+        "details": "Sensor telemetry outage at 11:00; nearest prior stage reading is > 6h prior"
+      }
+    ]
+  },
+  "ml_readiness": {
+    "tabular_classification": "FEASIBLE_PROTOTYPE",
+    "tabular_regression": "CONDITIONALLY_FEASIBLE",
+    "spatial_segmentation": "NOT_FEASIBLE",
+    "time_series_forecasting": "NOT_FEASIBLE",
+    "recommended_cv_strategy": "GroupKFold",
+    "recommended_group_key": "event_group_id",
+    "minimum_samples_for_production": 500
+  },
+  "observations": [
+    {
+      "observation_id": "BHUVAN_ASSAM_20220523_1800_FAKIRPARA",
+      "coverage_name": "flood:as_2022_23_05_18",
+      "event_timestamp": "2022-05-23 18:00",
+      "event_group_id": "ASSAM_FLOOD_2022_05_FAKIRPARA_EP12",
+      "split_candidate": "Fold 3",
+      "gauge_name": "NH15 Crossing Fakirpara Tangni",
+      "gauge_coordinates": [
+        92.116389,
+        26.508333
+      ],
+      "flood_pixel_count": 744,
+      "flooded_area_km2": 1.256,
+      "flood_label": 1,
+      "tile_bbox": [
+        92.016,
+        26.408,
+        92.216,
+        26.608
+      ],
+      "pool_source": "TIER_1_CORE",
+      "rain_station": "Kampur",
+      "rain_24h_mm": 1.0,
+      "river_stage_m": NaN,
+      "river_delta_24h_m": null,
+      "datum_status": "RELATIVE_GAUGE_ZERO"
+    },
+    {
+      "observation_id": "BHUVAN_ASSAM_20220706_1800_BOKO",
+      "coverage_name": "flood:as_2022_06_07_18",
+      "event_timestamp": "2022-07-06 18:00",
+      "event_group_id": "ASSAM_FLOOD_2022_07_BOKO_EP16",
+      "split_candidate": "Fold 3",
+      "gauge_name": "NH17 Crossing Boko",
+      "gauge_coordinates": [
+        91.234167,
+        25.9775
+      ],
+      "flood_pixel_count": 4261,
+      "flooded_area_km2": 7.226,
+      "flood_label": 1,
+      "tile_bbox": [
+        91.134,
+        25.878,
+        91.334,
+        26.078
+      ],
+      "pool_source": "TIER_1_CORE",
+      "rain_station": "Beki Road bridge",
+      "rain_24h_mm": 8.0,
+      "river_stage_m": 2.065,
+      "river_delta_24h_m": null,
+      "datum_status": "RELATIVE_GAUGE_ZERO"
+    },
+    {
+      "observation_id": "BHUVAN_ASSAM_20220708_0600_DHANSIRIGHAT",
+      "coverage_name": "flood:as_2022_07-08_07_06",
+      "event_timestamp": "2022-07-08 06:00",
+      "event_group_id": "ASSAM_FLOOD_2022_07_DHANSIRIGHAT_EP01",
+      "split_candidate": "Fold 3",
+      "gauge_name": "NH15 Crossing Dhansirighat",
+      "gauge_coordinates": [
+        92.257778,
+        26.695833
+      ],
+      "flood_pixel_count": 13539,
+      "flooded_area_km2": 22.823,
+      "flood_label": 1,
+      "tile_bbox": [
+        92.158,
+        26.596,
+        92.358,
+        26.796
+      ],
+      "pool_source": "PHASE_7H_EXPANSION",
+      "rain_station": "NT Road Crossing Jia-Bharali",
+      "rain_24h_mm": 48.0,
+      "river_stage_m": 2.378,
+      "river_delta_24h_m": 0.069,
+      "datum_status": "RELATIVE_GAUGE_ZERO"
+    },
+    {
+      "observation_id": "BHUVAN_ASSAM_20220713_0600_DHANSIRIGHAT",
+      "coverage_name": "flood:as_2022_12-13_07",
+      "event_timestamp": "2022-07-13 06:00",
+      "event_group_id": "ASSAM_FLOOD_2022_07_DHANSIRIGHAT_EP01",
+      "split_candidate": "Fold 3",
+      "gauge_name": "NH15 Crossing Dhansirighat",
+      "gauge_coordinates": [
+        92.257778,
+        26.695833
+      ],
+      "flood_pixel_count": 0,
+      "flooded_area_km2": 0.0,
+      "flood_label": 0,
+      "tile_bbox": [
+        92.158,
+        26.596,
+        92.358,
+        26.796
+      ],
+      "pool_source": "PHASE_7H_EXPANSION",
+      "rain_station": "NT Road Crossing Jia-Bharali",
+      "rain_24h_mm": 192.0,
+      "river_stage_m": 2.345,
+      "river_delta_24h_m": 0.038,
+      "datum_status": "RELATIVE_GAUGE_ZERO"
+    },
+    {
+      "observation_id": "BHUVAN_ASSAM_20220717_1800_DHANSIRIGHAT",
+      "coverage_name": "flood:as_2022_17_07_18",
+      "event_timestamp": "2022-07-17 18:00",
+      "event_group_id": "ASSAM_FLOOD_2022_07_DHANSIRIGHAT_EP01",
+      "split_candidate": "Fold 3",
+      "gauge_name": "NH15 Crossing Dhansirighat",
+      "gauge_coordinates": [
+        92.257778,
+        26.695833
+      ],
+      "flood_pixel_count": 0,
+      "flooded_area_km2": 0.0,
+      "flood_label": 0,
+      "tile_bbox": [
+        92.158,
+        26.596,
+        92.358,
+        26.796
+      ],
+      "pool_source": "PHASE_7H_EXPANSION",
+      "rain_station": "Gelabil",
+      "rain_24h_mm": 1.0,
+      "river_stage_m": 2.516,
+      "river_delta_24h_m": -0.058,
+      "datum_status": "RELATIVE_GAUGE_ZERO"
+    },
+    {
+      "observation_id": "BHUVAN_ASSAM_20230618_0600_DHANSIRIGHAT",
+      "coverage_name": "flood:as_2023_18_06_18",
+      "event_timestamp": "2023-06-18 06:00",
+      "event_group_id": "ASSAM_FLOOD_2023_06_DHANSIRIGHAT_EP02",
+      "split_candidate": "Fold 1",
+      "gauge_name": "NH15 Crossing Dhansirighat",
+      "gauge_coordinates": [
+        92.257778,
+        26.695833
+      ],
+      "flood_pixel_count": 1371,
+      "flooded_area_km2": 2.311,
+      "flood_label": 1,
+      "tile_bbox": [
+        92.158,
+        26.596,
+        92.358,
+        26.796
+      ],
+      "pool_source": "PHASE_7H_EXPANSION",
+      "rain_station": "DRF",
+      "rain_24h_mm": 56.0,
+      "river_stage_m": 1.908,
+      "river_delta_24h_m": 0.172,
+      "datum_status": "RELATIVE_GAUGE_ZERO"
+    },
+    {
+      "observation_id": "BHUVAN_ASSAM_20230620_1800_DHANSIRIGHAT",
+      "coverage_name": "flood:as_2023_20_06_18",
+      "event_timestamp": "2023-06-20 18:00",
+      "event_group_id": "ASSAM_FLOOD_2023_06_DHANSIRIGHAT_EP02",
+      "split_candidate": "Fold 1",
+      "gauge_name": "NH15 Crossing Dhansirighat",
+      "gauge_coordinates": [
+        92.257778,
+        26.695833
+      ],
+      "flood_pixel_count": 764,
+      "flooded_area_km2": 1.288,
+      "flood_label": 1,
+      "tile_bbox": [
+        92.158,
+        26.596,
+        92.358,
+        26.796
+      ],
+      "pool_source": "PHASE_7H_EXPANSION",
+      "rain_station": "Beki Road bridge",
+      "rain_24h_mm": 83.5,
+      "river_stage_m": 0.802,
+      "river_delta_24h_m": -1.249,
+      "datum_status": "RELATIVE_GAUGE_ZERO"
+    },
+    {
+      "observation_id": "BHUVAN_ASSAM_20230621_1800_DHANSIRIGHAT",
+      "coverage_name": "flood:as_2023_21_06_18",
+      "event_timestamp": "2023-06-21 18:00",
+      "event_group_id": "ASSAM_FLOOD_2023_06_DHANSIRIGHAT_EP02",
+      "split_candidate": "Fold 1",
+      "gauge_name": "NH15 Crossing Dhansirighat",
+      "gauge_coordinates": [
+        92.257778,
+        26.695833
+      ],
+      "flood_pixel_count": 15157,
+      "flooded_area_km2": 25.551,
+      "flood_label": 1,
+      "tile_bbox": [
+        92.158,
+        26.596,
+        92.358,
+        26.796
+      ],
+      "pool_source": "PHASE_7H_EXPANSION",
+      "rain_station": "Beki Road bridge",
+      "rain_24h_mm": 16.5,
+      "river_stage_m": 1.464,
+      "river_delta_24h_m": 0.224,
+      "datum_status": "RELATIVE_GAUGE_ZERO"
+    },
+    {
+      "observation_id": "BHUVAN_ASSAM_20230623_1800_DHANSIRIGHAT",
+      "coverage_name": "flood:as_2023_23_06_18",
+      "event_timestamp": "2023-06-23 18:00",
+      "event_group_id": "ASSAM_FLOOD_2023_06_DHANSIRIGHAT_EP02",
+      "split_candidate": "Fold 1",
+      "gauge_name": "NH15 Crossing Dhansirighat",
+      "gauge_coordinates": [
+        92.257778,
+        26.695833
+      ],
+      "flood_pixel_count": 21610,
+      "flooded_area_km2": 36.429,
+      "flood_label": 1,
+      "tile_bbox": [
+        92.158,
+        26.596,
+        92.358,
+        26.796
+      ],
+      "pool_source": "TIER_1_CORE",
+      "rain_station": "NT Road Crossing(Jiabharali)",
+      "rain_24h_mm": 0.5,
+      "river_stage_m": 1.994,
+      "river_delta_24h_m": 0.578,
+      "datum_status": "RELATIVE_GAUGE_ZERO"
+    },
+    {
+      "observation_id": "BHUVAN_ASSAM_20230715_1800_FAKIRPARA",
+      "coverage_name": "flood:as_2023_15_07_18",
+      "event_timestamp": "2023-07-15 18:00",
+      "event_group_id": "ASSAM_FLOOD_2023_07_FAKIRPARA_EP13",
+      "split_candidate": "Fold 3",
+      "gauge_name": "NH15 Crossing Fakirpara Tangni",
+      "gauge_coordinates": [
+        92.116389,
+        26.508333
+      ],
+      "flood_pixel_count": 0,
+      "flooded_area_km2": 0.0,
+      "flood_label": 0,
+      "tile_bbox": [
+        92.016,
+        26.408,
+        92.216,
+        26.608
+      ],
+      "pool_source": "PHASE_7H_EXPANSION",
+      "rain_station": "Kampur",
+      "rain_24h_mm": 201.0,
+      "river_stage_m": 5.763,
+      "river_delta_24h_m": 0.0,
+      "datum_status": "RELATIVE_GAUGE_ZERO"
+    },
+    {
+      "observation_id": "BHUVAN_ASSAM_20230720_0600_DHANSIRIGHAT",
+      "coverage_name": "flood:as_2023_20_07_06",
+      "event_timestamp": "2023-07-20 06:00",
+      "event_group_id": "ASSAM_FLOOD_2023_07_DHANSIRIGHAT_EP03",
+      "split_candidate": "Fold 4",
+      "gauge_name": "NH15 Crossing Dhansirighat",
+      "gauge_coordinates": [
+        92.257778,
+        26.695833
+      ],
+      "flood_pixel_count": 6,
+      "flooded_area_km2": 0.01,
+      "flood_label": 1,
+      "tile_bbox": [
+        92.158,
+        26.596,
+        92.358,
+        26.796
+      ],
+      "pool_source": "TIER_1_CORE",
+      "rain_station": "Gelabil",
+      "rain_24h_mm": 0.5,
+      "river_stage_m": 2.555,
+      "river_delta_24h_m": 0.147,
+      "datum_status": "RELATIVE_GAUGE_ZERO"
+    },
+    {
+      "observation_id": "BHUVAN_ASSAM_20230831_1800_BOKO",
+      "coverage_name": "flood:as_2023_31_08_18",
+      "event_timestamp": "2023-08-31 18:00",
+      "event_group_id": "ASSAM_FLOOD_2023_08_BOKO_EP17",
+      "split_candidate": "Fold 4",
+      "gauge_name": "NH17 Crossing Boko",
+      "gauge_coordinates": [
+        91.234167,
+        25.9775
+      ],
+      "flood_pixel_count": 4449,
+      "flooded_area_km2": 7.545,
+      "flood_label": 1,
+      "tile_bbox": [
+        91.134,
+        25.878,
+        91.334,
+        26.078
+      ],
+      "pool_source": "TIER_1_CORE",
+      "rain_station": "Karimganj",
+      "rain_24h_mm": 5.0,
+      "river_stage_m": 6.528,
+      "river_delta_24h_m": 0.073,
+      "datum_status": "RELATIVE_GAUGE_ZERO"
+    },
+    {
+      "observation_id": "BHUVAN_ASSAM_20240531_1800_DHANSIRIGHAT",
+      "coverage_name": "flood:as_2024_31_05_18",
+      "event_timestamp": "2024-05-31 18:00",
+      "event_group_id": "ASSAM_FLOOD_2024_05_DHANSIRIGHAT_EP04",
+      "split_candidate": "Fold 3",
+      "gauge_name": "NH15 Crossing Dhansirighat",
+      "gauge_coordinates": [
+        92.257778,
+        26.695833
+      ],
+      "flood_pixel_count": 0,
+      "flooded_area_km2": 0.0,
+      "flood_label": 0,
+      "tile_bbox": [
+        92.158,
+        26.596,
+        92.358,
+        26.796
+      ],
+      "pool_source": "TIER_1_CORE",
+      "rain_station": "DRF",
+      "rain_24h_mm": 2.0,
+      "river_stage_m": 3.258,
+      "river_delta_24h_m": 0.108,
+      "datum_status": "DATUM_RECLASSIFIED_LOCAL"
+    },
+    {
+      "observation_id": "BHUVAN_ASSAM_20240607_1100_DHANSIRIGHAT",
+      "coverage_name": "flood:as_2024_07_06_11",
+      "event_timestamp": "2024-06-07 11:00",
+      "event_group_id": "ASSAM_FLOOD_2024_05_DHANSIRIGHAT_EP04",
+      "split_candidate": "Fold 3",
+      "gauge_name": "NH15 Crossing Dhansirighat",
+      "gauge_coordinates": [
+        92.257778,
+        26.695833
+      ],
+      "flood_pixel_count": 0,
+      "flooded_area_km2": 0.0,
+      "flood_label": 0,
+      "tile_bbox": [
+        92.158,
+        26.596,
+        92.358,
+        26.796
+      ],
+      "pool_source": "TIER_1_CORE",
+      "rain_station": "NT Road Crossing(Jiabharali)",
+      "rain_24h_mm": 10.5,
+      "river_stage_m": 31.032,
+      "river_delta_24h_m": -0.026,
+      "datum_status": "DATUM_RECLASSIFIED_LOCAL"
+    },
+    {
+      "observation_id": "BHUVAN_ASSAM_20240608_0600_DHANSIRIGHAT",
+      "coverage_name": "flood:as_2024_08_06_06",
+      "event_timestamp": "2024-06-08 06:00",
+      "event_group_id": "ASSAM_FLOOD_2024_05_DHANSIRIGHAT_EP04",
+      "split_candidate": "Fold 3",
+      "gauge_name": "NH15 Crossing Dhansirighat",
+      "gauge_coordinates": [
+        92.257778,
+        26.695833
+      ],
+      "flood_pixel_count": 0,
+      "flooded_area_km2": 0.0,
+      "flood_label": 0,
+      "tile_bbox": [
+        92.158,
+        26.596,
+        92.358,
+        26.796
+      ],
+      "pool_source": "PHASE_7H_EXPANSION",
+      "rain_station": "NT Road Crossing(Jiabharali)",
+      "rain_24h_mm": 4.0,
+      "river_stage_m": 30.954,
+      "river_delta_24h_m": -0.078,
+      "datum_status": "DATUM_RECLASSIFIED_LOCAL"
+    },
+    {
+      "observation_id": "BHUVAN_ASSAM_20240617_1800_DHANSIRIGHAT",
+      "coverage_name": "flood:as_2024_17_06_18",
+      "event_timestamp": "2024-06-17 18:00",
+      "event_group_id": "ASSAM_FLOOD_2024_06_DHANSIRIGHAT_EP05",
+      "split_candidate": "Fold 5",
+      "gauge_name": "NH15 Crossing Dhansirighat",
+      "gauge_coordinates": [
+        92.257778,
+        26.695833
+      ],
+      "flood_pixel_count": 3,
+      "flooded_area_km2": 0.005,
+      "flood_label": 1,
+      "tile_bbox": [
+        92.158,
+        26.596,
+        92.358,
+        26.796
+      ],
+      "pool_source": "PHASE_7H_EXPANSION",
+      "rain_station": "NT Road Crossing Jia-Bharali",
+      "rain_24h_mm": 252.5,
+      "river_stage_m": 30.548,
+      "river_delta_24h_m": 0.265,
+      "datum_status": "DATUM_RECLASSIFIED_LOCAL"
+    },
+    {
+      "observation_id": "BHUVAN_ASSAM_20240704_1800_DHANSIRIGHAT",
+      "coverage_name": "flood:as_2024_04_07_18",
+      "event_timestamp": "2024-07-04 18:00",
+      "event_group_id": "ASSAM_FLOOD_2024_07_DHANSIRIGHAT_EP06",
+      "split_candidate": "Fold 2",
+      "gauge_name": "NH15 Crossing Dhansirighat",
+      "gauge_coordinates": [
+        92.257778,
+        26.695833
+      ],
+      "flood_pixel_count": 0,
+      "flooded_area_km2": 0.0,
+      "flood_label": 0,
+      "tile_bbox": [
+        92.158,
+        26.596,
+        92.358,
+        26.796
+      ],
+      "pool_source": "PHASE_7H_EXPANSION",
+      "rain_station": "DRF",
+      "rain_24h_mm": 3.5,
+      "river_stage_m": 30.342,
+      "river_delta_24h_m": 0.309,
+      "datum_status": "DATUM_RECLASSIFIED_LOCAL"
+    },
+    {
+      "observation_id": "BHUVAN_ASSAM_20240708_1000_DHANSIRIGHAT",
+      "coverage_name": "flood:as_2024_08_07_10",
+      "event_timestamp": "2024-07-08 10:00",
+      "event_group_id": "ASSAM_FLOOD_2024_07_DHANSIRIGHAT_EP06",
+      "split_candidate": "Fold 2",
+      "gauge_name": "NH15 Crossing Dhansirighat",
+      "gauge_coordinates": [
+        92.257778,
+        26.695833
+      ],
+      "flood_pixel_count": 613,
+      "flooded_area_km2": 0.585,
+      "flood_label": 1,
+      "tile_bbox": [
+        92.158,
+        26.596,
+        92.358,
+        26.709253
+      ],
+      "pool_source": "TIER_1_CORE",
+      "rain_station": "DRF",
+      "rain_24h_mm": 3.5,
+      "river_stage_m": 30.058,
+      "river_delta_24h_m": 0.068,
+      "datum_status": "DATUM_RECLASSIFIED_LOCAL"
+    },
+    {
+      "observation_id": "BHUVAN_ASSAM_20240708_1800_DHANSIRIGHAT",
+      "coverage_name": "flood:as_2024_08_07_18",
+      "event_timestamp": "2024-07-08 18:00",
+      "event_group_id": "ASSAM_FLOOD_2024_07_DHANSIRIGHAT_EP06",
+      "split_candidate": "Fold 2",
+      "gauge_name": "NH15 Crossing Dhansirighat",
+      "gauge_coordinates": [
+        92.257778,
+        26.695833
+      ],
+      "flood_pixel_count": 0,
+      "flooded_area_km2": 0.0,
+      "flood_label": 0,
+      "tile_bbox": [
+        92.158,
+        26.596,
+        92.358,
+        26.796
+      ],
+      "pool_source": "PHASE_7H_EXPANSION",
+      "rain_station": "DRF",
+      "rain_24h_mm": 3.5,
+      "river_stage_m": 30.135,
+      "river_delta_24h_m": 0.076,
+      "datum_status": "DATUM_RECLASSIFIED_LOCAL"
+    },
+    {
+      "observation_id": "BHUVAN_ASSAM_20240711_0600_DHANSIRIGHAT",
+      "coverage_name": "flood:as_2024_11_07_06",
+      "event_timestamp": "2024-07-11 06:00",
+      "event_group_id": "ASSAM_FLOOD_2024_07_DHANSIRIGHAT_EP06",
+      "split_candidate": "Fold 2",
+      "gauge_name": "NH15 Crossing Dhansirighat",
+      "gauge_coordinates": [
+        92.257778,
+        26.695833
+      ],
+      "flood_pixel_count": 0,
+      "flooded_area_km2": 0.0,
+      "flood_label": 0,
+      "tile_bbox": [
+        92.158,
+        26.596,
+        92.358,
+        26.796
+      ],
+      "pool_source": "PHASE_7H_EXPANSION",
+      "rain_station": "DRF",
+      "rain_24h_mm": 1.5,
+      "river_stage_m": 30.272,
+      "river_delta_24h_m": 0.047,
+      "datum_status": "DATUM_RECLASSIFIED_LOCAL"
+    },
+    {
+      "observation_id": "BHUVAN_ASSAM_20240711_1800_DHANSIRIGHAT",
+      "coverage_name": "flood:as_2024_11_07_18",
+      "event_timestamp": "2024-07-11 18:00",
+      "event_group_id": "ASSAM_FLOOD_2024_07_DHANSIRIGHAT_EP06",
+      "split_candidate": "Fold 2",
+      "gauge_name": "NH15 Crossing Dhansirighat",
+      "gauge_coordinates": [
+        92.257778,
+        26.695833
+      ],
+      "flood_pixel_count": 13235,
+      "flooded_area_km2": 22.311,
+      "flood_label": 1,
+      "tile_bbox": [
+        92.158,
+        26.596,
+        92.358,
+        26.796
+      ],
+      "pool_source": "PHASE_7H_EXPANSION",
+      "rain_station": "DRF",
+      "rain_24h_mm": 1.5,
+      "river_stage_m": 30.25,
+      "river_delta_24h_m": null,
+      "datum_status": "DATUM_RECLASSIFIED_LOCAL"
+    },
+    {
+      "observation_id": "BHUVAN_ASSAM_20240716_1800_DHANSIRIGHAT",
+      "coverage_name": "flood:as_2024_16_07_18",
+      "event_timestamp": "2024-07-16 18:00",
+      "event_group_id": "ASSAM_FLOOD_2024_07_DHANSIRIGHAT_EP06",
+      "split_candidate": "Fold 2",
+      "gauge_name": "NH15 Crossing Dhansirighat",
+      "gauge_coordinates": [
+        92.257778,
+        26.695833
+      ],
+      "flood_pixel_count": 3756,
+      "flooded_area_km2": 6.332,
+      "flood_label": 1,
+      "tile_bbox": [
+        92.158,
+        26.596,
+        92.358,
+        26.796
+      ],
+      "pool_source": "TIER_1_CORE",
+      "rain_station": "DRF",
+      "rain_24h_mm": 0.0,
+      "river_stage_m": 30.427,
+      "river_delta_24h_m": -0.055,
+      "datum_status": "DATUM_RECLASSIFIED_LOCAL"
+    },
+    {
+      "observation_id": "BHUVAN_ASSAM_20240720_0600_BOKO",
+      "coverage_name": "flood:as_2024_20_07_06",
+      "event_timestamp": "2024-07-20 06:00",
+      "event_group_id": "ASSAM_FLOOD_2024_07_BOKO_EP18",
+      "split_candidate": "Fold 5",
+      "gauge_name": "NH17 Crossing Boko",
+      "gauge_coordinates": [
+        91.234167,
+        25.9775
+      ],
+      "flood_pixel_count": 4275,
+      "flooded_area_km2": 7.25,
+      "flood_label": 1,
+      "tile_bbox": [
+        91.134,
+        25.878,
+        91.334,
+        26.078
+      ],
+      "pool_source": "TIER_1_CORE",
+      "rain_station": "Beki Road bridge",
+      "rain_24h_mm": 10.0,
+      "river_stage_m": 30.0,
+      "river_delta_24h_m": 0.0,
+      "datum_status": "DATUM_RECLASSIFIED_LOCAL"
+    },
+    {
+      "observation_id": "BHUVAN_ASSAM_20240809_0600_DHANSIRIGHAT",
+      "coverage_name": "flood:as_2024_09_08",
+      "event_timestamp": "2024-08-09 06:00",
+      "event_group_id": "ASSAM_FLOOD_2024_08_DHANSIRIGHAT_EP07",
+      "split_candidate": "Fold 4",
+      "gauge_name": "NH15 Crossing Dhansirighat",
+      "gauge_coordinates": [
+        92.257778,
+        26.695833
+      ],
+      "flood_pixel_count": 0,
+      "flooded_area_km2": 0.0,
+      "flood_label": 0,
+      "tile_bbox": [
+        92.158,
+        26.596,
+        92.358,
+        26.796
+      ],
+      "pool_source": "PHASE_7H_EXPANSION",
+      "rain_station": "Beki Road bridge",
+      "rain_24h_mm": 3.5,
+      "river_stage_m": 30.141,
+      "river_delta_24h_m": -0.111,
+      "datum_status": "DATUM_RECLASSIFIED_LOCAL"
+    },
+    {
+      "observation_id": "BHUVAN_ASSAM_20240809_1800_DHANSIRIGHAT",
+      "coverage_name": "flood:as_2024_09_08_18",
+      "event_timestamp": "2024-08-09 18:00",
+      "event_group_id": "ASSAM_FLOOD_2024_08_DHANSIRIGHAT_EP07",
+      "split_candidate": "Fold 4",
+      "gauge_name": "NH15 Crossing Dhansirighat",
+      "gauge_coordinates": [
+        92.257778,
+        26.695833
+      ],
+      "flood_pixel_count": 1,
+      "flooded_area_km2": 0.002,
+      "flood_label": 1,
+      "tile_bbox": [
+        92.158,
+        26.596,
+        92.358,
+        26.796
+      ],
+      "pool_source": "PHASE_7H_EXPANSION",
+      "rain_station": "Beki Road bridge",
+      "rain_24h_mm": 2.5,
+      "river_stage_m": 30.296,
+      "river_delta_24h_m": 0.246,
+      "datum_status": "DATUM_RECLASSIFIED_LOCAL"
+    },
+    {
+      "observation_id": "BHUVAN_ASSAM_20250603_0600_DHANSIRIGHAT",
+      "coverage_name": "flood:as_2025_03_06_06",
+      "event_timestamp": "2025-06-03 06:00",
+      "event_group_id": "ASSAM_FLOOD_2025_06_DHANSIRIGHAT_EP08",
+      "split_candidate": "Fold 5",
+      "gauge_name": "NH15 Crossing Dhansirighat",
+      "gauge_coordinates": [
+        92.257778,
+        26.695833
+      ],
+      "flood_pixel_count": 983,
+      "flooded_area_km2": 1.657,
+      "flood_label": 1,
+      "tile_bbox": [
+        92.158,
+        26.596,
+        92.358,
+        26.796
+      ],
+      "pool_source": "PHASE_7H_EXPANSION",
+      "rain_station": "DRF",
+      "rain_24h_mm": 21.0,
+      "river_stage_m": 79.903,
+      "river_delta_24h_m": 0.083,
+      "datum_status": "MSL_NORMALIZED"
+    },
+    {
+      "observation_id": "BHUVAN_ASSAM_20250603_1000_DHANSIRIGHAT",
+      "coverage_name": "flood:as_2025_03_06_10",
+      "event_timestamp": "2025-06-03 10:00",
+      "event_group_id": "ASSAM_FLOOD_2025_06_DHANSIRIGHAT_EP08",
+      "split_candidate": "Fold 5",
+      "gauge_name": "NH15 Crossing Dhansirighat",
+      "gauge_coordinates": [
+        92.257778,
+        26.695833
+      ],
+      "flood_pixel_count": 0,
+      "flooded_area_km2": 0.0,
+      "flood_label": 0,
+      "tile_bbox": [
+        92.158,
+        26.596,
+        92.358,
+        26.796
+      ],
+      "pool_source": "PHASE_7H_EXPANSION",
+      "rain_station": "DRF",
+      "rain_24h_mm": 21.0,
+      "river_stage_m": 79.965,
+      "river_delta_24h_m": 0.104,
+      "datum_status": "MSL_NORMALIZED"
+    },
+    {
+      "observation_id": "BHUVAN_ASSAM_20250611_1000_DHANSIRIGHAT",
+      "coverage_name": "flood:as_2025_11_06_10",
+      "event_timestamp": "2025-06-11 10:00",
+      "event_group_id": "ASSAM_FLOOD_2025_06_DHANSIRIGHAT_EP09",
+      "split_candidate": "Fold 2",
+      "gauge_name": "NH15 Crossing Dhansirighat",
+      "gauge_coordinates": [
+        92.257778,
+        26.695833
+      ],
+      "flood_pixel_count": 0,
+      "flooded_area_km2": 0.0,
+      "flood_label": 0,
+      "tile_bbox": [
+        92.158,
+        26.596,
+        92.358,
+        26.796
+      ],
+      "pool_source": "TIER_1_CORE",
+      "rain_station": "DRF",
+      "rain_24h_mm": 0.0,
+      "river_stage_m": 80.301,
+      "river_delta_24h_m": 0.053,
+      "datum_status": "MSL_NORMALIZED"
+    },
+    {
+      "observation_id": "BHUVAN_ASSAM_20250619_1800_DHANSIRIGHAT",
+      "coverage_name": "flood:as_2025_19_06_18",
+      "event_timestamp": "2025-06-19 18:00",
+      "event_group_id": "ASSAM_FLOOD_2025_06_DHANSIRIGHAT_EP10",
+      "split_candidate": "Fold 2",
+      "gauge_name": "NH15 Crossing Dhansirighat",
+      "gauge_coordinates": [
+        92.257778,
+        26.695833
+      ],
+      "flood_pixel_count": 0,
+      "flooded_area_km2": 0.0,
+      "flood_label": 0,
+      "tile_bbox": [
+        92.158,
+        26.596,
+        92.358,
+        26.796
+      ],
+      "pool_source": "PHASE_7H_EXPANSION",
+      "rain_station": "DRF",
+      "rain_24h_mm": 3.0,
+      "river_stage_m": 80.153,
+      "river_delta_24h_m": -0.137,
+      "datum_status": "MSL_NORMALIZED"
+    },
+    {
+      "observation_id": "BHUVAN_ASSAM_20250624_1800_FAKIRPARA",
+      "coverage_name": "flood:as_2025_24_06_18",
+      "event_timestamp": "2025-06-24 18:00",
+      "event_group_id": "ASSAM_FLOOD_2025_06_FAKIRPARA_EP14",
+      "split_candidate": "Fold 4",
+      "gauge_name": "NH15 Crossing Fakirpara Tangni",
+      "gauge_coordinates": [
+        92.116389,
+        26.508333
+      ],
+      "flood_pixel_count": 5338,
+      "flooded_area_km2": 9.012,
+      "flood_label": 1,
+      "tile_bbox": [
+        92.016,
+        26.408,
+        92.216,
+        26.608
+      ],
+      "pool_source": "PHASE_7H_EXPANSION",
+      "rain_station": "DRF",
+      "rain_24h_mm": 36.5,
+      "river_stage_m": 61.384,
+      "river_delta_24h_m": -0.695,
+      "datum_status": "MSL_NORMALIZED"
+    },
+    {
+      "observation_id": "BHUVAN_ASSAM_20250628_1100_DHANSIRIGHAT",
+      "coverage_name": "flood:as_2025_28_06_11",
+      "event_timestamp": "2025-06-28 11:00",
+      "event_group_id": "ASSAM_FLOOD_2025_06_DHANSIRIGHAT_EP11",
+      "split_candidate": "Fold 2",
+      "gauge_name": "NH15 Crossing Dhansirighat",
+      "gauge_coordinates": [
+        92.257778,
+        26.695833
+      ],
+      "flood_pixel_count": 0,
+      "flooded_area_km2": 0.0,
+      "flood_label": 0,
+      "tile_bbox": [
+        92.158,
+        26.596,
+        92.358,
+        26.796
+      ],
+      "pool_source": "TIER_1_CORE",
+      "rain_station": "Karimganj",
+      "rain_24h_mm": 266.0,
+      "river_stage_m": null,
+      "river_delta_24h_m": null,
+      "datum_status": "MSL_NORMALIZED"
+    },
+    {
+      "observation_id": "BHUVAN_ASSAM_20250708_0600_FAKIRPARA",
+      "coverage_name": "flood:as_2025_08_07_06",
+      "event_timestamp": "2025-07-08 06:00",
+      "event_group_id": "ASSAM_FLOOD_2025_07_FAKIRPARA_EP15",
+      "split_candidate": "Fold 5",
+      "gauge_name": "NH15 Crossing Fakirpara Tangni",
+      "gauge_coordinates": [
+        92.116389,
+        26.508333
+      ],
+      "flood_pixel_count": 3261,
+      "flooded_area_km2": 5.506,
+      "flood_label": 1,
+      "tile_bbox": [
+        92.016,
+        26.408,
+        92.216,
+        26.608
+      ],
+      "pool_source": "PHASE_7H_EXPANSION",
+      "rain_station": "DRF",
+      "rain_24h_mm": 40.0,
+      "river_stage_m": 60.845,
+      "river_delta_24h_m": 0.048,
+      "datum_status": "MSL_NORMALIZED"
+    }
+  ]
+}

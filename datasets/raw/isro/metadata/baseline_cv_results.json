@@ -1,0 +1,428 @@
+{
+  "logistic_regression": {
+    "model_name": "logistic_regression",
+    "fold_scores": [
+      {
+        "fold": 1,
+        "train_samples": 25,
+        "val_samples": 7,
+        "val_pos": 4,
+        "val_neg": 3,
+        "accuracy": 0.5714,
+        "precision": 0.5714,
+        "recall": 1.0,
+        "f1": 0.7273,
+        "roc_auc": 0.5,
+        "pr_auc": 0.6917,
+        "confusion_matrix": {
+          "tn": 0,
+          "fp": 3,
+          "fn": 0,
+          "tp": 4
+        },
+        "fpr": 1.0,
+        "fnr": 0.0
+      },
+      {
+        "fold": 2,
+        "train_samples": 25,
+        "val_samples": 7,
+        "val_pos": 6,
+        "val_neg": 1,
+        "accuracy": 0.2857,
+        "precision": 1.0,
+        "recall": 0.1667,
+        "f1": 0.2857,
+        "roc_auc": 1.0,
+        "pr_auc": 1.0,
+        "confusion_matrix": {
+          "tn": 1,
+          "fp": 0,
+          "fn": 5,
+          "tp": 1
+        },
+        "fpr": 0.0,
+        "fnr": 0.8333
+      },
+      {
+        "fold": 3,
+        "train_samples": 26,
+        "val_samples": 6,
+        "val_pos": 2,
+        "val_neg": 4,
+        "accuracy": 0.6667,
+        "precision": 0.5,
+        "recall": 0.5,
+        "f1": 0.5,
+        "roc_auc": 0.5,
+        "pr_auc": 0.45,
+        "confusion_matrix": {
+          "tn": 3,
+          "fp": 1,
+          "fn": 1,
+          "tp": 1
+        },
+        "fpr": 0.25,
+        "fnr": 0.5
+      },
+      {
+        "fold": 4,
+        "train_samples": 26,
+        "val_samples": 6,
+        "val_pos": 2,
+        "val_neg": 4,
+        "accuracy": 0.3333,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "roc_auc": 0.0,
+        "pr_auc": 0.2667,
+        "confusion_matrix": {
+          "tn": 2,
+          "fp": 2,
+          "fn": 2,
+          "tp": 0
+        },
+        "fpr": 0.5,
+        "fnr": 1.0
+      },
+      {
+        "fold": 5,
+        "train_samples": 26,
+        "val_samples": 6,
+        "val_pos": 4,
+        "val_neg": 2,
+        "accuracy": 0.6667,
+        "precision": 0.6667,
+        "recall": 1.0,
+        "f1": 0.8,
+        "roc_auc": 0.375,
+        "pr_auc": 0.7333,
+        "confusion_matrix": {
+          "tn": 0,
+          "fp": 2,
+          "fn": 0,
+          "tp": 4
+        },
+        "fpr": 1.0,
+        "fnr": 0.0
+      }
+    ],
+    "mean_metrics": {
+      "accuracy": 0.5048,
+      "precision": 0.5476,
+      "recall": 0.5333,
+      "f1": 0.4626,
+      "roc_auc": 0.475,
+      "pr_auc": 0.6283
+    },
+    "std_metrics": {
+      "accuracy": 0.1639,
+      "precision": 0.323,
+      "recall": 0.4136,
+      "f1": 0.2935,
+      "roc_auc": 0.3202,
+      "pr_auc": 0.2513
+    },
+    "overall_oof_metrics": {
+      "accuracy": 0.5,
+      "precision": 0.5556,
+      "recall": 0.5556,
+      "f1": 0.5556,
+      "roc_auc": 0.4286,
+      "pr_auc": 0.5476,
+      "confusion_matrix": {
+        "tn": 6,
+        "fp": 8,
+        "fn": 8,
+        "tp": 10
+      },
+      "fpr": 0.5714,
+      "fnr": 0.4444
+    }
+  },
+  "random_forest": {
+    "model_name": "random_forest",
+    "fold_scores": [
+      {
+        "fold": 1,
+        "train_samples": 25,
+        "val_samples": 7,
+        "val_pos": 4,
+        "val_neg": 3,
+        "accuracy": 0.4286,
+        "precision": 0.5,
+        "recall": 0.75,
+        "f1": 0.6,
+        "roc_auc": 0.3333,
+        "pr_auc": 0.5595,
+        "confusion_matrix": {
+          "tn": 0,
+          "fp": 3,
+          "fn": 1,
+          "tp": 3
+        },
+        "fpr": 1.0,
+        "fnr": 0.25
+      },
+      {
+        "fold": 2,
+        "train_samples": 25,
+        "val_samples": 7,
+        "val_pos": 6,
+        "val_neg": 1,
+        "accuracy": 0.4286,
+        "precision": 1.0,
+        "recall": 0.3333,
+        "f1": 0.5,
+        "roc_auc": 0.5,
+        "pr_auc": 0.9151,
+        "confusion_matrix": {
+          "tn": 1,
+          "fp": 0,
+          "fn": 4,
+          "tp": 2
+        },
+        "fpr": 0.0,
+        "fnr": 0.6667
+      },
+      {
+        "fold": 3,
+        "train_samples": 26,
+        "val_samples": 6,
+        "val_pos": 2,
+        "val_neg": 4,
+        "accuracy": 0.3333,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "roc_auc": 0.125,
+        "pr_auc": 0.2917,
+        "confusion_matrix": {
+          "tn": 2,
+          "fp": 2,
+          "fn": 2,
+          "tp": 0
+        },
+        "fpr": 0.5,
+        "fnr": 1.0
+      },
+      {
+        "fold": 4,
+        "train_samples": 26,
+        "val_samples": 6,
+        "val_pos": 2,
+        "val_neg": 4,
+        "accuracy": 0.1667,
+        "precision": 0.2,
+        "recall": 0.5,
+        "f1": 0.2857,
+        "roc_auc": 0.125,
+        "pr_auc": 0.2917,
+        "confusion_matrix": {
+          "tn": 0,
+          "fp": 4,
+          "fn": 1,
+          "tp": 1
+        },
+        "fpr": 1.0,
+        "fnr": 0.5
+      },
+      {
+        "fold": 5,
+        "train_samples": 26,
+        "val_samples": 6,
+        "val_pos": 4,
+        "val_neg": 2,
+        "accuracy": 0.5,
+        "precision": 0.6667,
+        "recall": 0.5,
+        "f1": 0.5714,
+        "roc_auc": 0.5,
+        "pr_auc": 0.7708,
+        "confusion_matrix": {
+          "tn": 1,
+          "fp": 1,
+          "fn": 2,
+          "tp": 2
+        },
+        "fpr": 0.5,
+        "fnr": 0.5
+      }
+    ],
+    "mean_metrics": {
+      "accuracy": 0.3714,
+      "precision": 0.4733,
+      "recall": 0.4167,
+      "f1": 0.3914,
+      "roc_auc": 0.3167,
+      "pr_auc": 0.5658
+    },
+    "std_metrics": {
+      "accuracy": 0.1153,
+      "precision": 0.3505,
+      "recall": 0.2472,
+      "f1": 0.2245,
+      "roc_auc": 0.1679,
+      "pr_auc": 0.2507
+    },
+    "overall_oof_metrics": {
+      "accuracy": 0.375,
+      "precision": 0.4444,
+      "recall": 0.4444,
+      "f1": 0.4444,
+      "roc_auc": 0.2937,
+      "pr_auc": 0.4757,
+      "confusion_matrix": {
+        "tn": 4,
+        "fp": 10,
+        "fn": 10,
+        "tp": 8
+      },
+      "fpr": 0.7143,
+      "fnr": 0.5556
+    }
+  },
+  "gradient_boosting": {
+    "model_name": "gradient_boosting",
+    "fold_scores": [
+      {
+        "fold": 1,
+        "train_samples": 25,
+        "val_samples": 7,
+        "val_pos": 4,
+        "val_neg": 3,
+        "accuracy": 0.4286,
+        "precision": 0.5,
+        "recall": 0.5,
+        "f1": 0.5,
+        "roc_auc": 0.4167,
+        "pr_auc": 0.5774,
+        "confusion_matrix": {
+          "tn": 1,
+          "fp": 2,
+          "fn": 2,
+          "tp": 2
+        },
+        "fpr": 0.6667,
+        "fnr": 0.5
+      },
+      {
+        "fold": 2,
+        "train_samples": 25,
+        "val_samples": 7,
+        "val_pos": 6,
+        "val_neg": 1,
+        "accuracy": 0.8571,
+        "precision": 1.0,
+        "recall": 0.8333,
+        "f1": 0.9091,
+        "roc_auc": 0.8333,
+        "pr_auc": 0.9762,
+        "confusion_matrix": {
+          "tn": 1,
+          "fp": 0,
+          "fn": 1,
+          "tp": 5
+        },
+        "fpr": 0.0,
+        "fnr": 0.1667
+      },
+      {
+        "fold": 3,
+        "train_samples": 26,
+        "val_samples": 6,
+        "val_pos": 2,
+        "val_neg": 4,
+        "accuracy": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "roc_auc": 0.0,
+        "pr_auc": 0.2667,
+        "confusion_matrix": {
+          "tn": 0,
+          "fp": 4,
+          "fn": 2,
+          "tp": 0
+        },
+        "fpr": 1.0,
+        "fnr": 1.0
+      },
+      {
+        "fold": 4,
+        "train_samples": 26,
+        "val_samples": 6,
+        "val_pos": 2,
+        "val_neg": 4,
+        "accuracy": 0.1667,
+        "precision": 0.2,
+        "recall": 0.5,
+        "f1": 0.2857,
+        "roc_auc": 0.125,
+        "pr_auc": 0.2917,
+        "confusion_matrix": {
+          "tn": 0,
+          "fp": 4,
+          "fn": 1,
+          "tp": 1
+        },
+        "fpr": 1.0,
+        "fnr": 0.5
+      },
+      {
+        "fold": 5,
+        "train_samples": 26,
+        "val_samples": 6,
+        "val_pos": 4,
+        "val_neg": 2,
+        "accuracy": 0.3333,
+        "precision": 0.5,
+        "recall": 0.5,
+        "f1": 0.5,
+        "roc_auc": 0.25,
+        "pr_auc": 0.6083,
+        "confusion_matrix": {
+          "tn": 0,
+          "fp": 2,
+          "fn": 2,
+          "tp": 2
+        },
+        "fpr": 1.0,
+        "fnr": 0.5
+      }
+    ],
+    "mean_metrics": {
+      "accuracy": 0.3571,
+      "precision": 0.44,
+      "recall": 0.4667,
+      "f1": 0.439,
+      "roc_auc": 0.325,
+      "pr_auc": 0.5441
+    },
+    "std_metrics": {
+      "accuracy": 0.2896,
+      "precision": 0.3382,
+      "recall": 0.2667,
+      "f1": 0.2982,
+      "roc_auc": 0.2891,
+      "pr_auc": 0.2579
+    },
+    "overall_oof_metrics": {
+      "accuracy": 0.375,
+      "precision": 0.4545,
+      "recall": 0.5556,
+      "f1": 0.5,
+      "roc_auc": 0.2619,
+      "pr_auc": 0.4544,
+      "confusion_matrix": {
+        "tn": 2,
+        "fp": 12,
+        "fn": 8,
+        "tp": 10
+      },
+      "fpr": 0.8571,
+      "fnr": 0.4444
+    }
+  }
+}

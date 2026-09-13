@@ -1,0 +1,80 @@
+[
+  {
+    "obs_id": "BHUVAN_ASSAM_20240531_1800_DHANSIRIGHAT",
+    "event_ts": "2024-05-31 18:00",
+    "coverage": "flood:as_2024_31_05_18",
+    "diagnostic_file": "datasets/raw/isro/flood_inundation/diagnostic/diagnostic_as_2024_31_05_18_50km.tif",
+    "file_size": 33164,
+    "bbox_50km": [
+      92.008,
+      26.446,
+      92.508,
+      26.946
+    ],
+    "flood_px_20km": 0,
+    "flood_px_50km": 42,
+    "pixel_distribution_50km": {
+      "0": 262102,
+      "1": 42
+    },
+    "status": "SUCCESS"
+  },
+  {
+    "obs_id": "BHUVAN_ASSAM_20240607_1100_DHANSIRIGHAT",
+    "event_ts": "2024-06-07 11:00",
+    "coverage": "flood:as_2024_07_06_11",
+    "diagnostic_file": "datasets/raw/isro/flood_inundation/diagnostic/diagnostic_as_2024_07_06_11_50km.tif",
+    "file_size": 33164,
+    "bbox_50km": [
+      92.008,
+      26.446,
+      92.508,
+      26.946
+    ],
+    "flood_px_20km": 0,
+    "flood_px_50km": 0,
+    "pixel_distribution_50km": {
+      "0": 262144
+    },
+    "status": "SUCCESS"
+  },
+  {
+    "obs_id": "BHUVAN_ASSAM_20250611_1000_DHANSIRIGHAT",
+    "event_ts": "2025-06-11 10:00",
+    "coverage": "flood:as_2025_11_06_10",
+    "diagnostic_file": "datasets/raw/isro/flood_inundation/diagnostic/diagnostic_as_2025_11_06_10_50km.tif",
+    "file_size": 33164,
+    "bbox_50km": [
+      92.008,
+      26.446,
+      92.508,
+      26.946
+    ],
+    "flood_px_20km": 0,
+    "flood_px_50km": 0,
+    "pixel_distribution_50km": {
+      "0": 262144
+    },
+    "status": "SUCCESS"
+  },
+  {
+    "obs_id": "BHUVAN_ASSAM_20250628_1100_DHANSIRIGHAT",
+    "event_ts": "2025-06-28 11:00",
+    "coverage": "flood:as_2025_28_06_11",
+    "diagnostic_file": "datasets/raw/isro/flood_inundation/diagnostic/diagnostic_as_2025_28_06_11_50km.tif",
+    "file_size": 33140,
+    "bbox_50km": [
+      92.008,
+      26.446,
+      92.508,
+      26.82
+    ],
+    "flood_px_20km": 0,
+    "flood_px_50km": 1014,
+    "pixel_distribution_50km": {
+      "0": 261130,
+      "1": 1014
+    },
+    "status": "SUCCESS"
+  }
+]

@@ -1,0 +1,266 @@
+[
+  {
+    "index": 1,
+    "event_timestamp": "2022-05-23 18:00",
+    "coverage_name": "flood:as_2022_23_05_18",
+    "gauge_name": "NH15 Crossing Fakirpara Tangni",
+    "gauge_slug": "fakirpara",
+    "gauge_coords": [
+      26.508333,
+      92.116389
+    ],
+    "catchment_bbox": [
+      92.016,
+      26.408,
+      92.216,
+      26.608
+    ],
+    "desc_ok": true,
+    "get_ok": true,
+    "status": "VERIFIED_READY",
+    "flood_pixel_count": 744,
+    "byte_size": 33164
+  },
+  {
+    "index": 2,
+    "event_timestamp": "2022-07-06 18:00",
+    "coverage_name": "flood:as_2022_06_07_18",
+    "gauge_name": "NH17 Crossing Boko",
+    "gauge_slug": "boko",
+    "gauge_coords": [
+      25.9775,
+      91.234167
+    ],
+    "catchment_bbox": [
+      91.134,
+      25.878,
+      91.334,
+      26.078
+    ],
+    "desc_ok": true,
+    "get_ok": true,
+    "status": "VERIFIED_READY",
+    "flood_pixel_count": 4261,
+    "byte_size": 33164
+  },
+  {
+    "index": 3,
+    "event_timestamp": "2023-06-23 18:00",
+    "coverage_name": "flood:as_2023_23_06_18",
+    "gauge_name": "NH15 Crossing Dhansirighat",
+    "gauge_slug": "dhansirighat",
+    "gauge_coords": [
+      26.695833,
+      92.257778
+    ],
+    "catchment_bbox": [
+      92.158,
+      26.596,
+      92.358,
+      26.796
+    ],
+    "desc_ok": true,
+    "get_ok": true,
+    "status": "VERIFIED_READY",
+    "flood_pixel_count": 21610,
+    "byte_size": 33164
+  },
+  {
+    "index": 4,
+    "event_timestamp": "2023-07-20 06:00",
+    "coverage_name": "flood:as_2023_20_07_06",
+    "gauge_name": "NH15 Crossing Dhansirighat",
+    "gauge_slug": "dhansirighat",
+    "gauge_coords": [
+      26.695833,
+      92.257778
+    ],
+    "catchment_bbox": [
+      92.158,
+      26.596,
+      92.358,
+      26.796
+    ],
+    "desc_ok": true,
+    "get_ok": true,
+    "status": "VERIFIED_READY",
+    "flood_pixel_count": 6,
+    "byte_size": 33164
+  },
+  {
+    "index": 5,
+    "event_timestamp": "2023-08-31 18:00",
+    "coverage_name": "flood:as_2023_31_08_18",
+    "gauge_name": "NH17 Crossing Boko",
+    "gauge_slug": "boko",
+    "gauge_coords": [
+      25.9775,
+      91.234167
+    ],
+    "catchment_bbox": [
+      91.134,
+      25.878,
+      91.334,
+      26.078
+    ],
+    "desc_ok": true,
+    "get_ok": false,
+    "status": "FAILED_REVERIFICATION",
+    "flood_pixel_count": null,
+    "byte_size": 0
+  },
+  {
+    "index": 6,
+    "event_timestamp": "2024-05-31 18:00",
+    "coverage_name": "flood:as_2024_31_05_18",
+    "gauge_name": "NH15 Crossing Dhansirighat",
+    "gauge_slug": "dhansirighat",
+    "gauge_coords": [
+      26.695833,
+      92.257778
+    ],
+    "catchment_bbox": [
+      92.158,
+      26.596,
+      92.358,
+      26.796
+    ],
+    "desc_ok": true,
+    "get_ok": true,
+    "status": "VERIFIED_READY",
+    "flood_pixel_count": 0,
+    "byte_size": 33164
+  },
+  {
+    "index": 7,
+    "event_timestamp": "2024-06-07 11:00",
+    "coverage_name": "flood:as_2024_07_06_11",
+    "gauge_name": "NH15 Crossing Dhansirighat",
+    "gauge_slug": "dhansirighat",
+    "gauge_coords": [
+      26.695833,
+      92.257778
+    ],
+    "catchment_bbox": [
+      92.158,
+      26.596,
+      92.358,
+      26.796
+    ],
+    "desc_ok": true,
+    "get_ok": true,
+    "status": "VERIFIED_READY",
+    "flood_pixel_count": 0,
+    "byte_size": 33164
+  },
+  {
+    "index": 8,
+    "event_timestamp": "2024-07-08 10:00",
+    "coverage_name": "flood:as_2024_08_07_10",
+    "gauge_name": "NH15 Crossing Dhansirighat",
+    "gauge_slug": "dhansirighat",
+    "gauge_coords": [
+      26.695833,
+      92.257778
+    ],
+    "catchment_bbox": [
+      92.158,
+      26.596,
+      92.358,
+      26.796
+    ],
+    "desc_ok": true,
+    "get_ok": true,
+    "status": "VERIFIED_READY",
+    "flood_pixel_count": 613,
+    "byte_size": 33164
+  },
+  {
+    "index": 9,
+    "event_timestamp": "2024-07-16 18:00",
+    "coverage_name": "flood:as_2024_16_07_18",
+    "gauge_name": "NH15 Crossing Dhansirighat",
+    "gauge_slug": "dhansirighat",
+    "gauge_coords": [
+      26.695833,
+      92.257778
+    ],
+    "catchment_bbox": [
+      92.158,
+      26.596,
+      92.358,
+      26.796
+    ],
+    "desc_ok": true,
+    "get_ok": true,
+    "status": "VERIFIED_READY",
+    "flood_pixel_count": 3756,
+    "byte_size": 264081
+  },
+  {
+    "index": 10,
+    "event_timestamp": "2024-07-20 06:00",
+    "coverage_name": "flood:as_2024_20_07_06",
+    "gauge_name": "NH17 Crossing Boko",
+    "gauge_slug": "boko",
+    "gauge_coords": [
+      25.9775,
+      91.234167
+    ],
+    "catchment_bbox": [
+      91.134,
+      25.878,
+      91.334,
+      26.078
+    ],
+    "desc_ok": true,
+    "get_ok": true,
+    "status": "VERIFIED_READY",
+    "flood_pixel_count": 4275,
+    "byte_size": 33164
+  },
+  {
+    "index": 11,
+    "event_timestamp": "2025-06-11 10:00",
+    "coverage_name": "flood:as_2025_11_06_10",
+    "gauge_name": "NH15 Crossing Dhansirighat",
+    "gauge_slug": "dhansirighat",
+    "gauge_coords": [
+      26.695833,
+      92.257778
+    ],
+    "catchment_bbox": [
+      92.158,
+      26.596,
+      92.358,
+      26.796
+    ],
+    "desc_ok": true,
+    "get_ok": true,
+    "status": "VERIFIED_READY",
+    "flood_pixel_count": 0,
+    "byte_size": 33164
+  },
+  {
+    "index": 12,
+    "event_timestamp": "2025-06-28 11:00",
+    "coverage_name": "flood:as_2025_28_06_11",
+    "gauge_name": "NH15 Crossing Dhansirighat",
+    "gauge_slug": "dhansirighat",
+    "gauge_coords": [
+      26.695833,
+      92.257778
+    ],
+    "catchment_bbox": [
+      92.158,
+      26.596,
+      92.358,
+      26.796
+    ],
+    "desc_ok": true,
+    "get_ok": true,
+    "status": "VERIFIED_READY",
+    "flood_pixel_count": 0,
+    "byte_size": 33140
+  }
+]

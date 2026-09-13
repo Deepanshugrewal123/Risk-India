@@ -1,0 +1,120 @@
+{
+  "event_group_id": "ASSAM_2022_EVENT_01",
+  "observation_id": "OBS_2022_05_19_18HR",
+  "event_date": "2022-05-19",
+  "observation_time": "18:00",
+  "year": 2022,
+  "state": "Assam",
+  "source": "NRSC/ISRO Bhuvan",
+  "product": "Historical Flood Inundation",
+  "coverage_name": "flood:as_2022_19_05_18",
+  "raw_layer_name": "as_2022_19_05_18",
+  "file_path": "datasets/raw/isro/flood_inundation/assam_2022_05_19_18hr_boko.tif",
+  "file_size_bytes": 33164,
+  "gauge_name": "NH17 Crossing Boko",
+  "gauge_latitude": 25.9775,
+  "gauge_longitude": 91.234167,
+  "district": "Kamrup Metropolitan",
+  "river": "Boko River",
+  "bbox": [
+    91.134,
+    25.878,
+    91.334,
+    26.078
+  ],
+  "crs": "EPSG:4326",
+  "dimensions": "512x512",
+  "flood_pixel_count": 10739,
+  "flood_pixel_percentage": 4.0966,
+  "nearest_flood_distance_meters": 1217.2,
+  "validation_status": "VALID_REAL_FLOOD_RASTER",
+  "acquisition_priority": "Priority 1",
+  "spatial_matching": {
+    "primary_rainfall_station": "Guwahati(D.C.Court)",
+    "station_distance_km": 56.3,
+    "nearby_stations": [
+      {
+        "station": "Guwahati(D.C.Court)",
+        "district": "KAMRUP",
+        "distance_km": 56.3
+      },
+      {
+        "station": "NH RD Xing(Puthimari)",
+        "district": "KAMRUP",
+        "distance_km": 58.3
+      },
+      {
+        "station": "Goalpara",
+        "district": "GOALPARA",
+        "distance_km": 64.2
+      }
+    ],
+    "matching_method": "Exact Gauge Coordinates for River Level; Catchment Centroid & Nearest Reporting Telemetry (<=30km) for Rainfall",
+    "match_quality": "MODERATE"
+  },
+  "temporal_matching": {
+    "event_timestamp": "2022-05-19 18:00",
+    "rainfall_windows": {
+      "6h": {
+        "expected_hours": 6,
+        "available_records": 0,
+        "coverage_percentage": 0.0,
+        "cumulative_rainfall_mm": 0.0,
+        "sufficient_coverage": false
+      },
+      "24h": {
+        "expected_hours": 24,
+        "available_records": 0,
+        "coverage_percentage": 0.0,
+        "cumulative_rainfall_mm": 0.0,
+        "sufficient_coverage": false
+      },
+      "72h": {
+        "expected_hours": 72,
+        "available_records": 0,
+        "coverage_percentage": 0.0,
+        "cumulative_rainfall_mm": 0.0,
+        "sufficient_coverage": false
+      },
+      "168h": {
+        "expected_hours": 168,
+        "available_records": 0,
+        "coverage_percentage": 0.0,
+        "cumulative_rainfall_mm": 0.0,
+        "sufficient_coverage": false
+      }
+    },
+    "river_level_windows": {
+      "6h": {
+        "expected_hours": 6,
+        "available_records": 0,
+        "coverage_percentage": 0.0,
+        "mean_stage_meters": null,
+        "sufficient_coverage": false
+      },
+      "24h": {
+        "expected_hours": 24,
+        "available_records": 0,
+        "coverage_percentage": 0.0,
+        "mean_stage_meters": null,
+        "sufficient_coverage": false
+      },
+      "72h": {
+        "expected_hours": 72,
+        "available_records": 0,
+        "coverage_percentage": 0.0,
+        "mean_stage_meters": null,
+        "sufficient_coverage": false
+      },
+      "168h": {
+        "expected_hours": 168,
+        "available_records": 0,
+        "coverage_percentage": 0.0,
+        "mean_stage_meters": null,
+        "sufficient_coverage": false
+      }
+    }
+  },
+  "rainfall_overlap": "PARTIAL",
+  "river_level_overlap": "PARTIAL"
+}

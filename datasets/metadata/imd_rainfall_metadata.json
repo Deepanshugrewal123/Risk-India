@@ -1,0 +1,30 @@
+{
+  "dataset_name": "IMD High-Resolution Daily Gridded & Station Rainfall",
+  "source_agency": "India Meteorological Department (IMD), Ministry of Earth Sciences, Govt of India",
+  "source_url": "https://www.imdpune.gov.in/cmpg/Griddata/Rainfall_25_Bin.html",
+  "download_date": "UNKNOWN",
+  "coverage_start": "1901-01-01",
+  "coverage_end": "2023-12-31",
+  "spatial_resolution": "0.25 degree x 0.25 degree (~27 km) or AWS point station coordinates",
+  "temporal_resolution": "Daily (08:30 IST to 08:30 IST accumulation)",
+  "variables": [
+    "rainfall",
+    "station_id",
+    "district",
+    "state",
+    "latitude",
+    "longitude",
+    "date"
+  ],
+  "units": [
+    "mm",
+    "categorical",
+    "categorical",
+    "categorical",
+    "decimal_degrees",
+    "decimal_degrees",
+    "YYYY-MM-DD"
+  ],
+  "license_or_access_notes": "Open Government Data (OGD) Platform India / IMD National Data Centre terms of access. Research use permitted with citation.",
+  "notes": "Standard Indian daily meteorological observation window runs 08:30 IST to 08:30 IST (+05:30 UTC). Heavy or extreme precipitation is flagged above 64.5 mm (Heavy), 115.5 mm (Very Heavy), and 204.4 mm (Extremely Heavy)."
+}

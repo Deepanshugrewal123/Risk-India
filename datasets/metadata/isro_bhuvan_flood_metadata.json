@@ -1,0 +1,32 @@
+{
+  "dataset_name": "ISRO / NRSC Bhuvan Flood Inundation & Hazard Maps",
+  "source_agency": "National Remote Sensing Centre (NRSC), Indian Space Research Organisation (ISRO)",
+  "source_url": "https://bhuvan-app1.nrsc.gov.in/disaster/disaster.php",
+  "download_date": "UNKNOWN",
+  "coverage_start": "1998-01-01",
+  "coverage_end": "2024-09-01",
+  "spatial_resolution": "10m to 50m (Sentinel-1 SAR, RISAT-1A, Resourcesat-2 AWiFS)",
+  "temporal_resolution": "Event-based (satellite pass frequency, typically 2-6 days during flood activations)",
+  "variables": [
+    "state_name",
+    "district_name",
+    "flood_event_id",
+    "observation_date",
+    "sensor_name",
+    "inundated_area_sqkm",
+    "flood_hazard_zone",
+    "geometry"
+  ],
+  "units": [
+    "string",
+    "string",
+    "string",
+    "YYYY-MM-DD",
+    "string",
+    "sq_km",
+    "categorical (Very High, High, Moderate, Low)",
+    "GeoJSON/WKT polygon"
+  ],
+  "license_or_access_notes": "Bhuvan Open Data / Disaster Management Support Programme (DMSP). OGC WMS/WFS map services and event PDF/GIS vector bulletins.",
+  "notes": "ISRO/NRSC provides optical and microwave SAR inundation delineation during major flood events. Critical limitation: satellite observations are discrete snapshot passes, not continuous daily coverage. Cloud cover obstructs optical sensors, making SAR essential."
+}

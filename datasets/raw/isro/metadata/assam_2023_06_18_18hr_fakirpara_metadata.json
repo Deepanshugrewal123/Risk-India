@@ -1,0 +1,120 @@
+{
+  "event_group_id": "ASSAM_2023_EVENT_01",
+  "observation_id": "OBS_2023_06_18_18HR",
+  "event_date": "2023-06-18",
+  "observation_time": "18:00",
+  "year": 2023,
+  "state": "Assam",
+  "source": "NRSC/ISRO Bhuvan",
+  "product": "Historical Flood Inundation",
+  "coverage_name": "flood:as_2023_18_06_18",
+  "raw_layer_name": "as_2023_18_06_18",
+  "file_path": "datasets/raw/isro/flood_inundation/assam_2023_06_18_18hr_fakirpara.tif",
+  "file_size_bytes": 33164,
+  "gauge_name": "NH15 Crossing Fakirpara Tangni",
+  "gauge_latitude": 26.508333,
+  "gauge_longitude": 92.116389,
+  "district": "DARRANG",
+  "river": "Tangni River",
+  "bbox": [
+    92.016,
+    26.408,
+    92.216,
+    26.608
+  ],
+  "crs": "EPSG:4326",
+  "dimensions": "512x512",
+  "flood_pixel_count": 2643,
+  "flood_pixel_percentage": 1.0082,
+  "nearest_flood_distance_meters": 260.2,
+  "validation_status": "VALID_REAL_FLOOD_RASTER",
+  "acquisition_priority": "Priority 1",
+  "spatial_matching": {
+    "primary_rainfall_station": "Dharamtul",
+    "station_distance_km": 44.9,
+    "nearby_stations": [
+      {
+        "station": "Dharamtul",
+        "district": "MARIGAON",
+        "distance_km": 44.9
+      },
+      {
+        "station": "NH RD Xing(Puthimari)",
+        "district": "KAMRUP",
+        "distance_km": 49.9
+      },
+      {
+        "station": "Guwahati(D.C.Court)",
+        "district": "KAMRUP",
+        "distance_km": 51.0
+      }
+    ],
+    "matching_method": "Exact Gauge Coordinates for River Level; Catchment Centroid & Nearest Reporting Telemetry (<=30km) for Rainfall",
+    "match_quality": "MODERATE"
+  },
+  "temporal_matching": {
+    "event_timestamp": "2023-06-18 18:00",
+    "rainfall_windows": {
+      "6h": {
+        "expected_hours": 6,
+        "available_records": 0,
+        "coverage_percentage": 0.0,
+        "cumulative_rainfall_mm": 0.0,
+        "sufficient_coverage": false
+      },
+      "24h": {
+        "expected_hours": 24,
+        "available_records": 0,
+        "coverage_percentage": 0.0,
+        "cumulative_rainfall_mm": 0.0,
+        "sufficient_coverage": false
+      },
+      "72h": {
+        "expected_hours": 72,
+        "available_records": 0,
+        "coverage_percentage": 0.0,
+        "cumulative_rainfall_mm": 0.0,
+        "sufficient_coverage": false
+      },
+      "168h": {
+        "expected_hours": 168,
+        "available_records": 0,
+        "coverage_percentage": 0.0,
+        "cumulative_rainfall_mm": 0.0,
+        "sufficient_coverage": false
+      }
+    },
+    "river_level_windows": {
+      "6h": {
+        "expected_hours": 6,
+        "available_records": 7,
+        "coverage_percentage": 116.7,
+        "mean_stage_meters": 5.76,
+        "sufficient_coverage": true
+      },
+      "24h": {
+        "expected_hours": 24,
+        "available_records": 26,
+        "coverage_percentage": 108.3,
+        "mean_stage_meters": 5.76,
+        "sufficient_coverage": true
+      },
+      "72h": {
+        "expected_hours": 72,
+        "available_records": 54,
+        "coverage_percentage": 75.0,
+        "mean_stage_meters": 5.76,
+        "sufficient_coverage": true
+      },
+      "168h": {
+        "expected_hours": 168,
+        "available_records": 178,
+        "coverage_percentage": 106.0,
+        "mean_stage_meters": 5.76,
+        "sufficient_coverage": true
+      }
+    }
+  },
+  "rainfall_overlap": "PARTIAL",
+  "river_level_overlap": "ACTIVE_SUFFICIENT"
+}

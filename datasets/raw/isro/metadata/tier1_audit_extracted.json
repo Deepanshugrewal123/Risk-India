@@ -1,0 +1,230 @@
+[
+  {
+    "index": 1,
+    "event_timestamp": "2022-05-23 18:00",
+    "coverage_name": "flood:as_2022_23_05_18",
+    "raw_layer_name": "as_2022_23_05_18",
+    "year": "2022",
+    "label": "23/05/2022-18Hr",
+    "bbox": [
+      90.57108,
+      24.133684,
+      93.65913,
+      26.987822
+    ],
+    "gauge_name": "NH15 Crossing Fakirpara Tangni",
+    "river_data": "YES (9h)",
+    "rain_data": "YES (38 rows)",
+    "nearest_rain_station": "Kampur (71km)",
+    "spatial_match": "YES (NH15 Crossing Fakirpara Tangni)"
+  },
+  {
+    "index": 2,
+    "event_timestamp": "2022-07-06 18:00",
+    "coverage_name": "flood:as_2022_06_07_18",
+    "raw_layer_name": "as_2022_06_07_18",
+    "year": "2022",
+    "label": "06/07/2022-18Hr",
+    "bbox": [
+      89.69111,
+      25.016178,
+      91.790115,
+      26.944141
+    ],
+    "gauge_name": "NH17 Crossing Boko",
+    "river_data": "YES (25h)",
+    "rain_data": "YES (141 rows)",
+    "nearest_rain_station": "Beki Road bridge (67km)",
+    "spatial_match": "YES (NH17 Crossing Boko)"
+  },
+  {
+    "index": 3,
+    "event_timestamp": "2023-06-23 18:00",
+    "coverage_name": "flood:as_2023_23_06_18",
+    "raw_layer_name": "as_2023_23_06_18",
+    "year": "2023",
+    "label": "23/06/2023-18Hr",
+    "bbox": [
+      90.5612,
+      24.13261,
+      93.71447,
+      26.999853
+    ],
+    "gauge_name": "NH15 Crossing Dhansirighat",
+    "river_data": "YES (31h)",
+    "rain_data": "YES (19 rows)",
+    "nearest_rain_station": "NT Road Crossing(Jiabharali) (70km)",
+    "spatial_match": "YES (NH15 Crossing Dhansirighat)"
+  },
+  {
+    "index": 4,
+    "event_timestamp": "2023-07-20 06:00",
+    "coverage_name": "flood:as_2023_20_07_06",
+    "raw_layer_name": "as_2023_20_07_06",
+    "year": "2023",
+    "label": "20/07/2023-06Hr",
+    "bbox": [
+      91.587494,
+      25.414562,
+      93.49467,
+      27.127886
+    ],
+    "gauge_name": "NH15 Crossing Dhansirighat",
+    "river_data": "YES (31h)",
+    "rain_data": "YES (13 rows)",
+    "nearest_rain_station": "Gelabil (197km)",
+    "spatial_match": "YES (NH15 Crossing Dhansirighat)"
+  },
+  {
+    "index": 5,
+    "event_timestamp": "2023-08-31 18:00",
+    "coverage_name": "flood:as_2023_31_08_18",
+    "raw_layer_name": "as_2023_31_08_18",
+    "year": "2023",
+    "label": "31/08/2023-18Hr",
+    "bbox": [
+      90.171616,
+      25.410957,
+      92.09107,
+      27.141136
+    ],
+    "gauge_name": "NH17 Crossing Boko",
+    "river_data": "YES (31h)",
+    "rain_data": "YES (17 rows)",
+    "nearest_rain_station": "Karimganj (174km)",
+    "spatial_match": "YES (NH17 Crossing Boko)"
+  },
+  {
+    "index": 6,
+    "event_timestamp": "2024-05-31 18:00",
+    "coverage_name": "flood:as_2024_31_05_18",
+    "raw_layer_name": "as_2024_31_05_18",
+    "year": "2024",
+    "label": "31/05/2024-18Hr",
+    "bbox": [
+      91.89522,
+      25.56331,
+      93.65872,
+      27.225393
+    ],
+    "gauge_name": "NH15 Crossing Dhansirighat",
+    "river_data": "YES (31h)",
+    "rain_data": "YES (80 rows)",
+    "nearest_rain_station": "DRF (63km)",
+    "spatial_match": "YES (NH15 Crossing Dhansirighat)"
+  },
+  {
+    "index": 7,
+    "event_timestamp": "2024-06-07 11:00",
+    "coverage_name": "flood:as_2024_07_06_11",
+    "raw_layer_name": "as_2024_07_06_11",
+    "year": "2024",
+    "label": "07/06/2024-11Hr",
+    "bbox": [
+      90.76459,
+      25.711935,
+      93.50204,
+      27.02106
+    ],
+    "gauge_name": "NH15 Crossing Dhansirighat",
+    "river_data": "YES (31h)",
+    "rain_data": "YES (34 rows)",
+    "nearest_rain_station": "NT Road Crossing(Jiabharali) (70km)",
+    "spatial_match": "YES (NH15 Crossing Dhansirighat)"
+  },
+  {
+    "index": 8,
+    "event_timestamp": "2024-07-08 10:00",
+    "coverage_name": "flood:as_2024_08_07_10",
+    "raw_layer_name": "as_2024_08_07_10",
+    "year": "2024",
+    "label": "08/07/2024-10Hr",
+    "bbox": [
+      91.84655,
+      25.784426,
+      93.433174,
+      26.709253
+    ],
+    "gauge_name": "NH15 Crossing Dhansirighat",
+    "river_data": "YES (31h)",
+    "rain_data": "YES (28 rows)",
+    "nearest_rain_station": "DRF (63km)",
+    "spatial_match": "YES (NH15 Crossing Dhansirighat)"
+  },
+  {
+    "index": 9,
+    "event_timestamp": "2024-07-16 18:00",
+    "coverage_name": "flood:as_2024_16_07_18",
+    "raw_layer_name": "as_2024_16_07_18",
+    "year": "2024",
+    "label": "16/07/2024-18Hr",
+    "bbox": [
+      91.243576,
+      24.160593,
+      93.52485,
+      27.062881
+    ],
+    "gauge_name": "NH15 Crossing Dhansirighat",
+    "river_data": "YES (31h)",
+    "rain_data": "YES (49 rows)",
+    "nearest_rain_station": "DRF (63km)",
+    "spatial_match": "YES (NH15 Crossing Dhansirighat)"
+  },
+  {
+    "index": 10,
+    "event_timestamp": "2024-07-20 06:00",
+    "coverage_name": "flood:as_2024_20_07_06",
+    "raw_layer_name": "as_2024_20_07_06",
+    "year": "2024",
+    "label": "20/07/2024-06Hr",
+    "bbox": [
+      90.19014,
+      25.411367,
+      92.091255,
+      27.12486
+    ],
+    "gauge_name": "NH17 Crossing Boko",
+    "river_data": "YES (30h)",
+    "rain_data": "YES (12 rows)",
+    "nearest_rain_station": "Beki Road bridge (67km)",
+    "spatial_match": "YES (NH17 Crossing Boko)"
+  },
+  {
+    "index": 11,
+    "event_timestamp": "2025-06-11 10:00",
+    "coverage_name": "flood:as_2025_11_06_10",
+    "raw_layer_name": "as_2025_11_06_10",
+    "year": "2025",
+    "label": "11/06/2025-10Hr",
+    "bbox": [
+      90.68056,
+      25.440561,
+      92.57448,
+      26.991684
+    ],
+    "gauge_name": "NH15 Crossing Dhansirighat",
+    "river_data": "YES (31h)",
+    "rain_data": "YES (2 rows)",
+    "nearest_rain_station": "DRF (63km)",
+    "spatial_match": "YES (NH15 Crossing Dhansirighat)"
+  },
+  {
+    "index": 12,
+    "event_timestamp": "2025-06-28 11:00",
+    "coverage_name": "flood:as_2025_28_06_11",
+    "raw_layer_name": "as_2025_28_06_11",
+    "year": "2025",
+    "label": "28/06/2025-11Hr",
+    "bbox": [
+      91.97312,
+      24.523338,
+      93.10746,
+      26.823961
+    ],
+    "gauge_name": "NH15 Crossing Dhansirighat",
+    "river_data": "YES (17h)",
+    "rain_data": "YES (3 rows)",
+    "nearest_rain_station": "Karimganj (202km)",
+    "spatial_match": "YES (NH15 Crossing Dhansirighat)"
+  }
+]

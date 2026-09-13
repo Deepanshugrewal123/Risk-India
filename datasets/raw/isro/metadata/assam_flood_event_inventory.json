@@ -1,0 +1,1204 @@
+[
+  {
+    "event_group_id": "ASSAM_2021_EVENT_01",
+    "observation_id": "OBS_2021_06_09_06HR",
+    "event_date": "2021-06-09",
+    "observation_time": "06:00",
+    "year": 2021,
+    "state": "Assam",
+    "source": "NRSC/ISRO Bhuvan",
+    "product": "Historical Flood Inundation",
+    "coverage_name": "flood:as_2021_09_06_06",
+    "raw_layer_name": "as_2021_09_06_06",
+    "file_path": "datasets/raw/isro/flood_inundation/assam_2021_06_09_06hr_fakirpara.tif",
+    "file_size_bytes": 33164,
+    "gauge_name": "NH15 Crossing Fakirpara Tangni",
+    "gauge_latitude": 26.508333,
+    "gauge_longitude": 92.116389,
+    "district": "DARRANG",
+    "river": "Tangni River",
+    "bbox": [
+      92.016,
+      26.408,
+      92.216,
+      26.608
+    ],
+    "crs": "EPSG:4326",
+    "dimensions": "512x512",
+    "flood_pixel_count": 1245,
+    "flood_pixel_percentage": 0.4749,
+    "nearest_flood_distance_meters": 893.9,
+    "validation_status": "VALID_REAL_FLOOD_RASTER",
+    "acquisition_priority": "Priority 2",
+    "spatial_matching": {
+      "primary_rainfall_station": "Dharamtul",
+      "station_distance_km": 44.9,
+      "nearby_stations": [
+        {
+          "station": "Dharamtul",
+          "district": "MARIGAON",
+          "distance_km": 44.9
+        },
+        {
+          "station": "NH RD Xing(Puthimari)",
+          "district": "KAMRUP",
+          "distance_km": 49.9
+        },
+        {
+          "station": "Guwahati(D.C.Court)",
+          "district": "KAMRUP",
+          "distance_km": 51.0
+        }
+      ],
+      "matching_method": "Exact Gauge Coordinates for River Level; Catchment Centroid & Nearest Reporting Telemetry (<=30km) for Rainfall",
+      "match_quality": "MODERATE"
+    },
+    "temporal_matching": {
+      "event_timestamp": "2021-06-09 06:00",
+      "rainfall_windows": {
+        "6h": {
+          "expected_hours": 6,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "cumulative_rainfall_mm": 0.0,
+          "sufficient_coverage": false
+        },
+        "24h": {
+          "expected_hours": 24,
+          "available_records": 1,
+          "coverage_percentage": 4.2,
+          "cumulative_rainfall_mm": 3.0,
+          "sufficient_coverage": false
+        },
+        "72h": {
+          "expected_hours": 72,
+          "available_records": 8,
+          "coverage_percentage": 11.1,
+          "cumulative_rainfall_mm": 10.0,
+          "sufficient_coverage": false
+        },
+        "168h": {
+          "expected_hours": 168,
+          "available_records": 15,
+          "coverage_percentage": 8.9,
+          "cumulative_rainfall_mm": 35.0,
+          "sufficient_coverage": false
+        }
+      },
+      "river_level_windows": {
+        "6h": {
+          "expected_hours": 6,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "mean_stage_meters": null,
+          "sufficient_coverage": false
+        },
+        "24h": {
+          "expected_hours": 24,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "mean_stage_meters": null,
+          "sufficient_coverage": false
+        },
+        "72h": {
+          "expected_hours": 72,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "mean_stage_meters": null,
+          "sufficient_coverage": false
+        },
+        "168h": {
+          "expected_hours": 168,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "mean_stage_meters": null,
+          "sufficient_coverage": false
+        }
+      }
+    },
+    "rainfall_overlap": "PARTIAL",
+    "river_level_overlap": "NOT_APPLICABLE_2021"
+  },
+  {
+    "event_group_id": "ASSAM_2021_EVENT_02",
+    "observation_id": "OBS_2021_07_06_06HR",
+    "event_date": "2021-07-06",
+    "observation_time": "06:00",
+    "year": 2021,
+    "state": "Assam",
+    "source": "NRSC/ISRO Bhuvan",
+    "product": "Historical Flood Inundation",
+    "coverage_name": "flood:as_2021_07_06_06",
+    "raw_layer_name": "as_2021_07_06_06",
+    "file_path": "datasets/raw/isro/flood_inundation/assam_2021_07_06_06hr_nematighat.tif",
+    "file_size_bytes": 33164,
+    "gauge_name": "Nematighat",
+    "gauge_latitude": 26.8603,
+    "gauge_longitude": 94.2522,
+    "district": "JORHAT",
+    "river": "Brahmaputra",
+    "bbox": [
+      94.15,
+      26.76,
+      94.35,
+      26.96
+    ],
+    "crs": "EPSG:4326",
+    "dimensions": "512x512",
+    "flood_pixel_count": 2349,
+    "flood_pixel_percentage": 0.8961,
+    "nearest_flood_distance_meters": 806.5,
+    "validation_status": "VALID_REAL_FLOOD_RASTER",
+    "acquisition_priority": "Priority 2",
+    "spatial_matching": {
+      "primary_rainfall_station": "Nematighat",
+      "station_distance_km": 0.0,
+      "nearby_stations": [
+        {
+          "station": "Nematighat",
+          "district": "JORHAT",
+          "distance_km": 0.0
+        },
+        {
+          "station": "Sivasagar",
+          "district": "SIVSAGAR",
+          "distance_km": 35.1
+        },
+        {
+          "station": "Golaghat",
+          "district": "GOLAGHAT",
+          "distance_km": 49.6
+        }
+      ],
+      "matching_method": "Exact Gauge Coordinates for River Level; Catchment Centroid & Nearest Reporting Telemetry (<=30km) for Rainfall",
+      "match_quality": "HIGH"
+    },
+    "temporal_matching": {
+      "event_timestamp": "2021-07-06 06:00",
+      "rainfall_windows": {
+        "6h": {
+          "expected_hours": 6,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "cumulative_rainfall_mm": 0.0,
+          "sufficient_coverage": false
+        },
+        "24h": {
+          "expected_hours": 24,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "cumulative_rainfall_mm": 0.0,
+          "sufficient_coverage": false
+        },
+        "72h": {
+          "expected_hours": 72,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "cumulative_rainfall_mm": 0.0,
+          "sufficient_coverage": false
+        },
+        "168h": {
+          "expected_hours": 168,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "cumulative_rainfall_mm": 0.0,
+          "sufficient_coverage": false
+        }
+      },
+      "river_level_windows": {
+        "6h": {
+          "expected_hours": 6,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "mean_stage_meters": null,
+          "sufficient_coverage": false
+        },
+        "24h": {
+          "expected_hours": 24,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "mean_stage_meters": null,
+          "sufficient_coverage": false
+        },
+        "72h": {
+          "expected_hours": 72,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "mean_stage_meters": null,
+          "sufficient_coverage": false
+        },
+        "168h": {
+          "expected_hours": 168,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "mean_stage_meters": null,
+          "sufficient_coverage": false
+        }
+      }
+    },
+    "rainfall_overlap": "ZERO_VALID_READINGS_100_PERCENT_NULL",
+    "river_level_overlap": "ABSENT_FROM_RIVER_DATASET",
+    "audit_classification": "NEMATIGHAT_IS_RAINFALL_ONLY_NULL_STATION",
+    "audit_notes": "Phase 7C-A Audit: Nematighat has 100% null rainfall and 0 river records."
+  },
+  {
+    "event_group_id": "ASSAM_2022_EVENT_01",
+    "observation_id": "OBS_2022_05_19_18HR",
+    "event_date": "2022-05-19",
+    "observation_time": "18:00",
+    "year": 2022,
+    "state": "Assam",
+    "source": "NRSC/ISRO Bhuvan",
+    "product": "Historical Flood Inundation",
+    "coverage_name": "flood:as_2022_19_05_18",
+    "raw_layer_name": "as_2022_19_05_18",
+    "file_path": "datasets/raw/isro/flood_inundation/assam_2022_05_19_18hr_boko.tif",
+    "file_size_bytes": 33164,
+    "gauge_name": "NH17 Crossing Boko",
+    "gauge_latitude": 25.9775,
+    "gauge_longitude": 91.234167,
+    "district": "Kamrup Metropolitan",
+    "river": "Boko River",
+    "bbox": [
+      91.134,
+      25.878,
+      91.334,
+      26.078
+    ],
+    "crs": "EPSG:4326",
+    "dimensions": "512x512",
+    "flood_pixel_count": 10739,
+    "flood_pixel_percentage": 4.0966,
+    "nearest_flood_distance_meters": 1217.2,
+    "validation_status": "VALID_REAL_FLOOD_RASTER",
+    "acquisition_priority": "Priority 1",
+    "spatial_matching": {
+      "primary_rainfall_station": "Guwahati(D.C.Court)",
+      "station_distance_km": 56.3,
+      "nearby_stations": [
+        {
+          "station": "Guwahati(D.C.Court)",
+          "district": "KAMRUP",
+          "distance_km": 56.3
+        },
+        {
+          "station": "NH RD Xing(Puthimari)",
+          "district": "KAMRUP",
+          "distance_km": 58.3
+        },
+        {
+          "station": "Goalpara",
+          "district": "GOALPARA",
+          "distance_km": 64.2
+        }
+      ],
+      "matching_method": "Exact Gauge Coordinates for River Level; Catchment Centroid & Nearest Reporting Telemetry (<=30km) for Rainfall",
+      "match_quality": "MODERATE"
+    },
+    "temporal_matching": {
+      "event_timestamp": "2022-05-19 18:00",
+      "rainfall_windows": {
+        "6h": {
+          "expected_hours": 6,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "cumulative_rainfall_mm": 0.0,
+          "sufficient_coverage": false
+        },
+        "24h": {
+          "expected_hours": 24,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "cumulative_rainfall_mm": 0.0,
+          "sufficient_coverage": false
+        },
+        "72h": {
+          "expected_hours": 72,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "cumulative_rainfall_mm": 0.0,
+          "sufficient_coverage": false
+        },
+        "168h": {
+          "expected_hours": 168,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "cumulative_rainfall_mm": 0.0,
+          "sufficient_coverage": false
+        }
+      },
+      "river_level_windows": {
+        "6h": {
+          "expected_hours": 6,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "mean_stage_meters": null,
+          "sufficient_coverage": false
+        },
+        "24h": {
+          "expected_hours": 24,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "mean_stage_meters": null,
+          "sufficient_coverage": false
+        },
+        "72h": {
+          "expected_hours": 72,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "mean_stage_meters": null,
+          "sufficient_coverage": false
+        },
+        "168h": {
+          "expected_hours": 168,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "mean_stage_meters": null,
+          "sufficient_coverage": false
+        }
+      }
+    },
+    "rainfall_overlap": "PARTIAL",
+    "river_level_overlap": "PARTIAL"
+  },
+  {
+    "event_group_id": "ASSAM_2022_EVENT_02",
+    "observation_id": "OBS_2022_06_16_18HR",
+    "event_date": "2022-06-16",
+    "observation_time": "18:00",
+    "year": 2022,
+    "state": "Assam",
+    "source": "NRSC/ISRO Bhuvan",
+    "product": "Historical Flood Inundation",
+    "coverage_name": "flood:as_2022_16_06_18",
+    "raw_layer_name": "as_2022_16_06_18",
+    "file_path": "datasets/raw/isro/flood_inundation/assam_2022_06_16_18hr_fakirpara.tif",
+    "file_size_bytes": 33164,
+    "gauge_name": "NH15 Crossing Fakirpara Tangni",
+    "gauge_latitude": 26.508333,
+    "gauge_longitude": 92.116389,
+    "district": "DARRANG",
+    "river": "Tangni River",
+    "bbox": [
+      92.016,
+      26.408,
+      92.216,
+      26.608
+    ],
+    "crs": "EPSG:4326",
+    "dimensions": "512x512",
+    "flood_pixel_count": 29877,
+    "flood_pixel_percentage": 11.3972,
+    "nearest_flood_distance_meters": 1015.9,
+    "validation_status": "VALID_REAL_FLOOD_RASTER",
+    "acquisition_priority": "Priority 1",
+    "spatial_matching": {
+      "primary_rainfall_station": "Dharamtul",
+      "station_distance_km": 44.9,
+      "nearby_stations": [
+        {
+          "station": "Dharamtul",
+          "district": "MARIGAON",
+          "distance_km": 44.9
+        },
+        {
+          "station": "NH RD Xing(Puthimari)",
+          "district": "KAMRUP",
+          "distance_km": 49.9
+        },
+        {
+          "station": "Guwahati(D.C.Court)",
+          "district": "KAMRUP",
+          "distance_km": 51.0
+        }
+      ],
+      "matching_method": "Exact Gauge Coordinates for River Level; Catchment Centroid & Nearest Reporting Telemetry (<=30km) for Rainfall",
+      "match_quality": "MODERATE"
+    },
+    "temporal_matching": {
+      "event_timestamp": "2022-06-16 18:00",
+      "rainfall_windows": {
+        "6h": {
+          "expected_hours": 6,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "cumulative_rainfall_mm": 0.0,
+          "sufficient_coverage": false
+        },
+        "24h": {
+          "expected_hours": 24,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "cumulative_rainfall_mm": 0.0,
+          "sufficient_coverage": false
+        },
+        "72h": {
+          "expected_hours": 72,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "cumulative_rainfall_mm": 0.0,
+          "sufficient_coverage": false
+        },
+        "168h": {
+          "expected_hours": 168,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "cumulative_rainfall_mm": 0.0,
+          "sufficient_coverage": false
+        }
+      },
+      "river_level_windows": {
+        "6h": {
+          "expected_hours": 6,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "mean_stage_meters": null,
+          "sufficient_coverage": false
+        },
+        "24h": {
+          "expected_hours": 24,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "mean_stage_meters": null,
+          "sufficient_coverage": false
+        },
+        "72h": {
+          "expected_hours": 72,
+          "available_records": 11,
+          "coverage_percentage": 15.3,
+          "mean_stage_meters": 1.05,
+          "sufficient_coverage": false
+        },
+        "168h": {
+          "expected_hours": 168,
+          "available_records": 31,
+          "coverage_percentage": 18.5,
+          "mean_stage_meters": 0.92,
+          "sufficient_coverage": false
+        }
+      }
+    },
+    "rainfall_overlap": "PARTIAL",
+    "river_level_overlap": "PARTIAL"
+  },
+  {
+    "event_group_id": "ASSAM_2022_EVENT_02",
+    "observation_id": "OBS_2022_06_17_18HR",
+    "event_date": "2022-06-17",
+    "observation_time": "18:00",
+    "year": 2022,
+    "state": "Assam",
+    "source": "NRSC/ISRO Bhuvan",
+    "product": "Historical Flood Inundation",
+    "coverage_name": "flood:as_2022_17_06_18",
+    "raw_layer_name": "as_2022_17_06_18",
+    "file_path": "datasets/raw/isro/flood_inundation/assam_2022_06_17_18hr_fakirpara.tif",
+    "file_size_bytes": 33164,
+    "gauge_name": "NH15 Crossing Fakirpara Tangni",
+    "gauge_latitude": 26.508333,
+    "gauge_longitude": 92.116389,
+    "district": "DARRANG",
+    "river": "Tangni River",
+    "bbox": [
+      92.016,
+      26.408,
+      92.216,
+      26.608
+    ],
+    "crs": "EPSG:4326",
+    "dimensions": "512x512",
+    "flood_pixel_count": 14727,
+    "flood_pixel_percentage": 5.6179,
+    "nearest_flood_distance_meters": 156.3,
+    "validation_status": "VALID_REAL_FLOOD_RASTER",
+    "acquisition_priority": "Priority 1",
+    "spatial_matching": {
+      "primary_rainfall_station": "Dharamtul",
+      "station_distance_km": 44.9,
+      "nearby_stations": [
+        {
+          "station": "Dharamtul",
+          "district": "MARIGAON",
+          "distance_km": 44.9
+        },
+        {
+          "station": "NH RD Xing(Puthimari)",
+          "district": "KAMRUP",
+          "distance_km": 49.9
+        },
+        {
+          "station": "Guwahati(D.C.Court)",
+          "district": "KAMRUP",
+          "distance_km": 51.0
+        }
+      ],
+      "matching_method": "Exact Gauge Coordinates for River Level; Catchment Centroid & Nearest Reporting Telemetry (<=30km) for Rainfall",
+      "match_quality": "MODERATE"
+    },
+    "temporal_matching": {
+      "event_timestamp": "2022-06-17 18:00",
+      "rainfall_windows": {
+        "6h": {
+          "expected_hours": 6,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "cumulative_rainfall_mm": 0.0,
+          "sufficient_coverage": false
+        },
+        "24h": {
+          "expected_hours": 24,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "cumulative_rainfall_mm": 0.0,
+          "sufficient_coverage": false
+        },
+        "72h": {
+          "expected_hours": 72,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "cumulative_rainfall_mm": 0.0,
+          "sufficient_coverage": false
+        },
+        "168h": {
+          "expected_hours": 168,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "cumulative_rainfall_mm": 0.0,
+          "sufficient_coverage": false
+        }
+      },
+      "river_level_windows": {
+        "6h": {
+          "expected_hours": 6,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "mean_stage_meters": null,
+          "sufficient_coverage": false
+        },
+        "24h": {
+          "expected_hours": 24,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "mean_stage_meters": null,
+          "sufficient_coverage": false
+        },
+        "72h": {
+          "expected_hours": 72,
+          "available_records": 5,
+          "coverage_percentage": 6.9,
+          "mean_stage_meters": 1.17,
+          "sufficient_coverage": false
+        },
+        "168h": {
+          "expected_hours": 168,
+          "available_records": 27,
+          "coverage_percentage": 16.1,
+          "mean_stage_meters": 0.93,
+          "sufficient_coverage": false
+        }
+      }
+    },
+    "rainfall_overlap": "PARTIAL",
+    "river_level_overlap": "PARTIAL"
+  },
+  {
+    "event_group_id": "ASSAM_2023_EVENT_01",
+    "observation_id": "OBS_2023_06_16_18HR",
+    "event_date": "2023-06-16",
+    "observation_time": "18:00",
+    "year": 2023,
+    "state": "Assam",
+    "source": "NRSC/ISRO Bhuvan",
+    "product": "Historical Flood Inundation",
+    "coverage_name": "flood:as_2023_16_06_18",
+    "raw_layer_name": "as_2023_16_06_18",
+    "file_path": "datasets/raw/isro/flood_inundation/assam_2023_06_16_18hr_fakirpara.tif",
+    "file_size_bytes": 264076,
+    "gauge_name": "NH15 Crossing Fakirpara Tangni",
+    "gauge_latitude": 26.508333,
+    "gauge_longitude": 92.116389,
+    "district": "DARRANG",
+    "river": "Tangni River",
+    "bbox": [
+      92.016,
+      26.408,
+      92.216,
+      26.608
+    ],
+    "crs": "EPSG:4326",
+    "dimensions": "512x512",
+    "flood_pixel_count": 0,
+    "flood_pixel_percentage": 0.0,
+    "nearest_flood_distance_meters": null,
+    "validation_status": "EMPTY_RASTER",
+    "acquisition_priority": "Priority 1",
+    "spatial_matching": {
+      "primary_rainfall_station": "Dharamtul",
+      "station_distance_km": 44.9,
+      "nearby_stations": [
+        {
+          "station": "Dharamtul",
+          "district": "MARIGAON",
+          "distance_km": 44.9
+        },
+        {
+          "station": "NH RD Xing(Puthimari)",
+          "district": "KAMRUP",
+          "distance_km": 49.9
+        },
+        {
+          "station": "Guwahati(D.C.Court)",
+          "district": "KAMRUP",
+          "distance_km": 51.0
+        }
+      ],
+      "matching_method": "Exact Gauge Coordinates for River Level; Catchment Centroid & Nearest Reporting Telemetry (<=30km) for Rainfall",
+      "match_quality": "MODERATE"
+    },
+    "temporal_matching": {
+      "event_timestamp": "2023-06-16 18:00",
+      "rainfall_windows": {
+        "6h": {
+          "expected_hours": 6,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "cumulative_rainfall_mm": 0.0,
+          "sufficient_coverage": false
+        },
+        "24h": {
+          "expected_hours": 24,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "cumulative_rainfall_mm": 0.0,
+          "sufficient_coverage": false
+        },
+        "72h": {
+          "expected_hours": 72,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "cumulative_rainfall_mm": 0.0,
+          "sufficient_coverage": false
+        },
+        "168h": {
+          "expected_hours": 168,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "cumulative_rainfall_mm": 0.0,
+          "sufficient_coverage": false
+        }
+      },
+      "river_level_windows": {
+        "6h": {
+          "expected_hours": 6,
+          "available_records": 2,
+          "coverage_percentage": 33.3,
+          "mean_stage_meters": 5.76,
+          "sufficient_coverage": false
+        },
+        "24h": {
+          "expected_hours": 24,
+          "available_records": 10,
+          "coverage_percentage": 41.7,
+          "mean_stage_meters": 5.76,
+          "sufficient_coverage": false
+        },
+        "72h": {
+          "expected_hours": 72,
+          "available_records": 67,
+          "coverage_percentage": 93.1,
+          "mean_stage_meters": 5.76,
+          "sufficient_coverage": true
+        },
+        "168h": {
+          "expected_hours": 168,
+          "available_records": 197,
+          "coverage_percentage": 117.3,
+          "mean_stage_meters": 5.76,
+          "sufficient_coverage": true
+        }
+      }
+    },
+    "rainfall_overlap": "PARTIAL",
+    "river_level_overlap": "PARTIAL"
+  },
+  {
+    "event_group_id": "ASSAM_2023_EVENT_01",
+    "observation_id": "OBS_2023_06_18_18HR",
+    "event_date": "2023-06-18",
+    "observation_time": "18:00",
+    "year": 2023,
+    "state": "Assam",
+    "source": "NRSC/ISRO Bhuvan",
+    "product": "Historical Flood Inundation",
+    "coverage_name": "flood:as_2023_18_06_18",
+    "raw_layer_name": "as_2023_18_06_18",
+    "file_path": "datasets/raw/isro/flood_inundation/assam_2023_06_18_18hr_fakirpara.tif",
+    "file_size_bytes": 33164,
+    "gauge_name": "NH15 Crossing Fakirpara Tangni",
+    "gauge_latitude": 26.508333,
+    "gauge_longitude": 92.116389,
+    "district": "DARRANG",
+    "river": "Tangni River",
+    "bbox": [
+      92.016,
+      26.408,
+      92.216,
+      26.608
+    ],
+    "crs": "EPSG:4326",
+    "dimensions": "512x512",
+    "flood_pixel_count": 2643,
+    "flood_pixel_percentage": 1.0082,
+    "nearest_flood_distance_meters": 260.2,
+    "validation_status": "VALID_REAL_FLOOD_RASTER",
+    "acquisition_priority": "Priority 1",
+    "spatial_matching": {
+      "primary_rainfall_station": "Dharamtul",
+      "station_distance_km": 44.9,
+      "nearby_stations": [
+        {
+          "station": "Dharamtul",
+          "district": "MARIGAON",
+          "distance_km": 44.9
+        },
+        {
+          "station": "NH RD Xing(Puthimari)",
+          "district": "KAMRUP",
+          "distance_km": 49.9
+        },
+        {
+          "station": "Guwahati(D.C.Court)",
+          "district": "KAMRUP",
+          "distance_km": 51.0
+        }
+      ],
+      "matching_method": "Exact Gauge Coordinates for River Level; Catchment Centroid & Nearest Reporting Telemetry (<=30km) for Rainfall",
+      "match_quality": "MODERATE"
+    },
+    "temporal_matching": {
+      "event_timestamp": "2023-06-18 18:00",
+      "rainfall_windows": {
+        "6h": {
+          "expected_hours": 6,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "cumulative_rainfall_mm": 0.0,
+          "sufficient_coverage": false
+        },
+        "24h": {
+          "expected_hours": 24,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "cumulative_rainfall_mm": 0.0,
+          "sufficient_coverage": false
+        },
+        "72h": {
+          "expected_hours": 72,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "cumulative_rainfall_mm": 0.0,
+          "sufficient_coverage": false
+        },
+        "168h": {
+          "expected_hours": 168,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "cumulative_rainfall_mm": 0.0,
+          "sufficient_coverage": false
+        }
+      },
+      "river_level_windows": {
+        "6h": {
+          "expected_hours": 6,
+          "available_records": 7,
+          "coverage_percentage": 116.7,
+          "mean_stage_meters": 5.76,
+          "sufficient_coverage": true
+        },
+        "24h": {
+          "expected_hours": 24,
+          "available_records": 26,
+          "coverage_percentage": 108.3,
+          "mean_stage_meters": 5.76,
+          "sufficient_coverage": true
+        },
+        "72h": {
+          "expected_hours": 72,
+          "available_records": 54,
+          "coverage_percentage": 75.0,
+          "mean_stage_meters": 5.76,
+          "sufficient_coverage": true
+        },
+        "168h": {
+          "expected_hours": 168,
+          "available_records": 178,
+          "coverage_percentage": 106.0,
+          "mean_stage_meters": 5.76,
+          "sufficient_coverage": true
+        }
+      }
+    },
+    "rainfall_overlap": "PARTIAL",
+    "river_level_overlap": "ACTIVE_SUFFICIENT"
+  },
+  {
+    "event_group_id": "ASSAM_2024_EVENT_01",
+    "observation_id": "OBS_2024_06_17_18HR",
+    "event_date": "2024-06-17",
+    "observation_time": "18:00",
+    "year": 2024,
+    "state": "Assam",
+    "source": "NRSC/ISRO Bhuvan",
+    "product": "Historical Flood Inundation",
+    "coverage_name": "flood:as_2024_17_06_18",
+    "raw_layer_name": "as_2024_17_06_18",
+    "file_path": "datasets/raw/isro/flood_inundation/assam_2024_06_17_18hr_fakirpara.tif",
+    "file_size_bytes": 33164,
+    "gauge_name": "NH15 Crossing Fakirpara Tangni",
+    "gauge_latitude": 26.508333,
+    "gauge_longitude": 92.116389,
+    "district": "DARRANG",
+    "river": "Tangni River",
+    "bbox": [
+      92.016,
+      26.408,
+      92.216,
+      26.608
+    ],
+    "crs": "EPSG:4326",
+    "dimensions": "512x512",
+    "flood_pixel_count": 6116,
+    "flood_pixel_percentage": 2.3331,
+    "nearest_flood_distance_meters": 1916.7,
+    "validation_status": "VALID_REAL_FLOOD_RASTER",
+    "acquisition_priority": "Priority 1",
+    "spatial_matching": {
+      "primary_rainfall_station": "Dharamtul",
+      "station_distance_km": 44.9,
+      "nearby_stations": [
+        {
+          "station": "Dharamtul",
+          "district": "MARIGAON",
+          "distance_km": 44.9
+        },
+        {
+          "station": "NH RD Xing(Puthimari)",
+          "district": "KAMRUP",
+          "distance_km": 49.9
+        },
+        {
+          "station": "Guwahati(D.C.Court)",
+          "district": "KAMRUP",
+          "distance_km": 51.0
+        }
+      ],
+      "matching_method": "Exact Gauge Coordinates for River Level; Catchment Centroid & Nearest Reporting Telemetry (<=30km) for Rainfall",
+      "match_quality": "MODERATE"
+    },
+    "temporal_matching": {
+      "event_timestamp": "2024-06-17 18:00",
+      "rainfall_windows": {
+        "6h": {
+          "expected_hours": 6,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "cumulative_rainfall_mm": 0.0,
+          "sufficient_coverage": false
+        },
+        "24h": {
+          "expected_hours": 24,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "cumulative_rainfall_mm": 0.0,
+          "sufficient_coverage": false
+        },
+        "72h": {
+          "expected_hours": 72,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "cumulative_rainfall_mm": 0.0,
+          "sufficient_coverage": false
+        },
+        "168h": {
+          "expected_hours": 168,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "cumulative_rainfall_mm": 0.0,
+          "sufficient_coverage": false
+        }
+      },
+      "river_level_windows": {
+        "6h": {
+          "expected_hours": 6,
+          "available_records": 3,
+          "coverage_percentage": 50.0,
+          "mean_stage_meters": 32.7,
+          "sufficient_coverage": false
+        },
+        "24h": {
+          "expected_hours": 24,
+          "available_records": 18,
+          "coverage_percentage": 75.0,
+          "mean_stage_meters": 32.7,
+          "sufficient_coverage": true
+        },
+        "72h": {
+          "expected_hours": 72,
+          "available_records": 63,
+          "coverage_percentage": 87.5,
+          "mean_stage_meters": 32.7,
+          "sufficient_coverage": true
+        },
+        "168h": {
+          "expected_hours": 168,
+          "available_records": 228,
+          "coverage_percentage": 135.7,
+          "mean_stage_meters": 32.7,
+          "sufficient_coverage": true
+        }
+      }
+    },
+    "rainfall_overlap": "PARTIAL",
+    "river_level_overlap": "ACTIVE_SUFFICIENT"
+  },
+  {
+    "event_group_id": "ASSAM_2024_EVENT_01",
+    "observation_id": "OBS_2024_06_20_06HR",
+    "event_date": "2024-06-20",
+    "observation_time": "06:00",
+    "year": 2024,
+    "state": "Assam",
+    "source": "NRSC/ISRO Bhuvan",
+    "product": "Historical Flood Inundation",
+    "coverage_name": "flood:as_2024_20_06_06",
+    "raw_layer_name": "as_2024_20_06_06",
+    "file_path": "datasets/raw/isro/flood_inundation/assam_2024_06_20_06hr_fakirpara.tif",
+    "file_size_bytes": 33164,
+    "gauge_name": "NH15 Crossing Fakirpara Tangni",
+    "gauge_latitude": 26.508333,
+    "gauge_longitude": 92.116389,
+    "district": "DARRANG",
+    "river": "Tangni River",
+    "bbox": [
+      92.016,
+      26.408,
+      92.216,
+      26.608
+    ],
+    "crs": "EPSG:4326",
+    "dimensions": "512x512",
+    "flood_pixel_count": 12014,
+    "flood_pixel_percentage": 4.583,
+    "nearest_flood_distance_meters": 2621.7,
+    "validation_status": "VALID_REAL_FLOOD_RASTER",
+    "acquisition_priority": "Priority 1",
+    "spatial_matching": {
+      "primary_rainfall_station": "Dharamtul",
+      "station_distance_km": 44.9,
+      "nearby_stations": [
+        {
+          "station": "Dharamtul",
+          "district": "MARIGAON",
+          "distance_km": 44.9
+        },
+        {
+          "station": "NH RD Xing(Puthimari)",
+          "district": "KAMRUP",
+          "distance_km": 49.9
+        },
+        {
+          "station": "Guwahati(D.C.Court)",
+          "district": "KAMRUP",
+          "distance_km": 51.0
+        }
+      ],
+      "matching_method": "Exact Gauge Coordinates for River Level; Catchment Centroid & Nearest Reporting Telemetry (<=30km) for Rainfall",
+      "match_quality": "MODERATE"
+    },
+    "temporal_matching": {
+      "event_timestamp": "2024-06-20 06:00",
+      "rainfall_windows": {
+        "6h": {
+          "expected_hours": 6,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "cumulative_rainfall_mm": 0.0,
+          "sufficient_coverage": false
+        },
+        "24h": {
+          "expected_hours": 24,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "cumulative_rainfall_mm": 0.0,
+          "sufficient_coverage": false
+        },
+        "72h": {
+          "expected_hours": 72,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "cumulative_rainfall_mm": 0.0,
+          "sufficient_coverage": false
+        },
+        "168h": {
+          "expected_hours": 168,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "cumulative_rainfall_mm": 0.0,
+          "sufficient_coverage": false
+        }
+      },
+      "river_level_windows": {
+        "6h": {
+          "expected_hours": 6,
+          "available_records": 7,
+          "coverage_percentage": 116.7,
+          "mean_stage_meters": 32.7,
+          "sufficient_coverage": true
+        },
+        "24h": {
+          "expected_hours": 24,
+          "available_records": 24,
+          "coverage_percentage": 100.0,
+          "mean_stage_meters": 32.7,
+          "sufficient_coverage": true
+        },
+        "72h": {
+          "expected_hours": 72,
+          "available_records": 75,
+          "coverage_percentage": 104.2,
+          "mean_stage_meters": 32.7,
+          "sufficient_coverage": true
+        },
+        "168h": {
+          "expected_hours": 168,
+          "available_records": 185,
+          "coverage_percentage": 110.1,
+          "mean_stage_meters": 32.7,
+          "sufficient_coverage": true
+        }
+      }
+    },
+    "rainfall_overlap": "PARTIAL",
+    "river_level_overlap": "ACTIVE_SUFFICIENT"
+  },
+  {
+    "event_group_id": "ASSAM_2025_EVENT_01",
+    "observation_id": "OBS_2025_06_03_06HR",
+    "event_date": "2025-06-03",
+    "observation_time": "06:00",
+    "year": 2025,
+    "state": "Assam",
+    "source": "NRSC/ISRO Bhuvan",
+    "product": "Historical Flood Inundation",
+    "coverage_name": "flood:as_2025_03_06_06",
+    "raw_layer_name": "as_2025_03_06_06",
+    "file_path": "datasets/raw/isro/flood_inundation/assam_2025_06_03_06hr_fakirpara.tif",
+    "file_size_bytes": 33148,
+    "gauge_name": "NH15 Crossing Fakirpara Tangni",
+    "gauge_latitude": 26.508333,
+    "gauge_longitude": 92.116389,
+    "district": "DARRANG",
+    "river": "Tangni River",
+    "bbox": [
+      92.016,
+      26.408,
+      92.216,
+      26.608
+    ],
+    "crs": "EPSG:4326",
+    "dimensions": "512x512",
+    "flood_pixel_count": 8593,
+    "flood_pixel_percentage": 3.278,
+    "nearest_flood_distance_meters": 1012.2,
+    "validation_status": "VALID_REAL_FLOOD_RASTER",
+    "acquisition_priority": "Priority 1",
+    "spatial_matching": {
+      "primary_rainfall_station": "Dharamtul",
+      "station_distance_km": 44.9,
+      "nearby_stations": [
+        {
+          "station": "Dharamtul",
+          "district": "MARIGAON",
+          "distance_km": 44.9
+        },
+        {
+          "station": "NH RD Xing(Puthimari)",
+          "district": "KAMRUP",
+          "distance_km": 49.9
+        },
+        {
+          "station": "Guwahati(D.C.Court)",
+          "district": "KAMRUP",
+          "distance_km": 51.0
+        }
+      ],
+      "matching_method": "Exact Gauge Coordinates for River Level; Catchment Centroid & Nearest Reporting Telemetry (<=30km) for Rainfall",
+      "match_quality": "MODERATE"
+    },
+    "temporal_matching": {
+      "event_timestamp": "2025-06-03 06:00",
+      "rainfall_windows": {
+        "6h": {
+          "expected_hours": 6,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "cumulative_rainfall_mm": 0.0,
+          "sufficient_coverage": false
+        },
+        "24h": {
+          "expected_hours": 24,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "cumulative_rainfall_mm": 0.0,
+          "sufficient_coverage": false
+        },
+        "72h": {
+          "expected_hours": 72,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "cumulative_rainfall_mm": 0.0,
+          "sufficient_coverage": false
+        },
+        "168h": {
+          "expected_hours": 168,
+          "available_records": 0,
+          "coverage_percentage": 0.0,
+          "cumulative_rainfall_mm": 0.0,
+          "sufficient_coverage": false
+        }
+      },
+      "river_level_windows": {
+        "6h": {
+          "expected_hours": 6,
+          "available_records": 7,
+          "coverage_percentage": 116.7,
+          "mean_stage_meters": 61.42,
+          "sufficient_coverage": true
+        },
+        "24h": {
+          "expected_hours": 24,
+          "available_records": 25,
+          "coverage_percentage": 104.2,
+          "mean_stage_meters": 61.52,
+          "sufficient_coverage": true
+        },
+        "72h": {
+          "expected_hours": 72,
+          "available_records": 73,
+          "coverage_percentage": 101.4,
+          "mean_stage_meters": 61.9,
+          "sufficient_coverage": true
+        },
+        "168h": {
+          "expected_hours": 168,
+          "available_records": 169,
+          "coverage_percentage": 100.6,
+          "mean_stage_meters": 61.15,
+          "sufficient_coverage": true
+        }
+      }
+    },
+    "rainfall_overlap": "PARTIAL",
+    "river_level_overlap": "ACTIVE_SUFFICIENT"
+  }
+]

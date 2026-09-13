@@ -1,0 +1,69 @@
+{
+  "source": "NRSC/ISRO Bhuvan",
+  "agency": "National Remote Sensing Centre (NRSC), Indian Space Research Organisation (ISRO)",
+  "program": "Disaster Management Support Program (DMSP)",
+  "product": "Historical Flood Inundation",
+  "state": "Assam",
+  "event_date": "2021-07-06",
+  "observation_time": "06Hr",
+  "original_layer_name": "flood:as_2021_07_06_06",
+  "official_service_endpoint": "https://bhuvan-gp1.nrsc.gov.in/bhuvan/wcs",
+  "wcs_request_parameters": {
+    "service": "WCS",
+    "version": "1.0.0",
+    "request": "GetCoverage",
+    "coverage": "flood:as_2021_07_06_06",
+    "crs": "EPSG:4326",
+    "bbox": "92.116,26.40,93.10,26.60",
+    "format": "GeoTIFF",
+    "width": 512,
+    "height": 512
+  },
+  "associated_cwc_gauge": {
+    "station": "NH15 Crossing Fakirpara Tangni",
+    "agency": "Central Water Commission (CWC) / Assam WRD",
+    "district": "DARRANG",
+    "river": "Tangni River (NH15 Crossing)",
+    "latitude": 26.508333,
+    "longitude": 92.116389,
+    "temporal_overlap_status": "INACTIVE_FOR_2021 (Telemetry records begin 2022-01-01)",
+    "spatial_overlap_status": "NO (Gauge at Lon 92.1164 lies 0.913 deg west of layer coverage swath western limit 93.0297. WCS strict bbox returns out-of-coverage error; extended bbox clips at 93.0297)."
+  },
+  "bounding_box": {
+    "min_lon": 92.116,
+    "min_lat": 26.4,
+    "max_lon": 93.1,
+    "max_lat": 26.6,
+    "span_lon_deg": 0.984,
+    "span_lat_deg": 0.2
+  },
+  "crs": "EPSG:4326",
+  "download_timestamp": "2026-09-12T17:08:34.822826+00:00",
+  "output_format": "GeoTIFF",
+  "source_url_reference": "https://bhuvan-app1.nrsc.gov.in/disaster/usrtasks/flood/flood.php",
+  "local_filepath": "datasets/raw/isro/flood_inundation/assam_2021_07_06_06hr_fakirpara.tif",
+  "file_size_bytes": 33164,
+  "raster_properties": {
+    "width": 512,
+    "height": 512,
+    "bands": 1,
+    "data_type": "uint8",
+    "color_interpretation": "Palette-Indexed",
+    "nodata_value": 0.0,
+    "pixel_scale_deg": [
+      0.000274437,
+      0.00078125
+    ],
+    "approx_ground_resolution_m": 30.0
+  },
+  "pixel_distribution": {
+    "value_0_background_non_inundated": 262144,
+    "value_0_percentage": 100.0,
+    "value_1_flood_inundated": 0,
+    "value_1_percentage": 0.0,
+    "total_pixels": 262144
+  },
+  "flood_value_interpretation": "Pixel value 0 denotes background/nodata. Zero positive flood pixels detected in clipped western fringe.",
+  "processing_status": "RAW_ACQUIRED_CLIPPED_MARGIN",
+  "validation_verdict": "EMPTY_RASTER"
+}

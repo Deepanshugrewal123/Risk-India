@@ -1,0 +1,82 @@
+{
+  "source_raw_file": "datasets\\raw\\cwc\\rainfall\\rainfall_tel_hr_cwc_as_2021_2025.csv",
+  "target_interim_file": "datasets\\interim\\cwc_rainfall_assam_hourly_cleaned.csv",
+  "execution_status": "SUCCESS",
+  "cleaning_rules_applied": [
+    {
+      "rule_id": "RULE_1_REMOVE_NON_TELEMETRY_STATIONS",
+      "description": "Dropped 9 river gauge stations that reported 100% null rainfall.",
+      "stations_removed": [
+        "Dhubri",
+        "Dibrugarh",
+        "Goalpara",
+        "Golokganj",
+        "Guwahati(D.C.Court)",
+        "Melabazar",
+        "NH RD Xing(Puthimari)",
+        "Nematighat",
+        "Tezpur"
+      ],
+      "rows_dropped": 102350
+    },
+    {
+      "rule_id": "RULE_2_ENSURE_NON_NULL_TELEMETRY",
+      "description": "Ensured all retained records have valid numeric precipitation values.",
+      "rows_dropped": 0
+    },
+    {
+      "rule_id": "RULE_3_VERIFY_NON_NEGATIVE",
+      "description": "Verified no negative rainfall measurements.",
+      "negative_count_found": 0
+    },
+    {
+      "rule_id": "RULE_4_FLAG_EXTREME_TELEMETRY_SPIKES",
+      "description": "Flagged observations exceeding 150.0 mm/hr as sensor errors. Preserved original value in 'Telemetry Hourly Rainfall (mm)' and provided clipped value in 'cleaned_rainfall_mm'.",
+      "spikes_flagged_count": 861,
+      "max_spike_value_observed": 1005.0
+    }
+  ],
+  "statistics": {
+    "total_raw_rows": 137659,
+    "total_cleaned_rows": 35309,
+    "retained_active_stations_count": 31,
+    "retained_active_stations": [
+      "AP Ghat",
+      "BAHALPUR",
+      "Basudevthan",
+      "Beki Road bridge",
+      "Bokajan",
+      "Chenimari (Khowang)",
+      "Chouldhowaghat",
+      "DRF",
+      "Desangpani",
+      "Dharamtul",
+      "Dholabazar",
+      "Dholai",
+      "Dillighat",
+      "Gelabil",
+      "Gharmura",
+      "Golaghat",
+      "KANGKUBASTI",
+      "Kampur",
+      "Karimganj",
+      "Kheronighat",
+      "Kokrajhar",
+      "Lakhipur",
+      "Manas N H Crossing",
+      "Margherita",
+      "Mathanguri",
+      "NT Road Crossing Jia-Bharali",
+      "NT Road Crossing(Jiabharali)",
+      "Neharkatia",
+      "Numaligarh",
+      "Sivasagar",
+      "ghilamora"
+    ],
+    "earliest_timestamp": "2021-01-01 04:00:00",
+    "latest_timestamp": "2025-12-30 01:00:00",
+    "cleaned_min_rainfall_mm": 0.5,
+    "cleaned_median_rainfall_mm": 1.5,
+    "cleaned_max_rainfall_mm": 150.0
+  }
+}

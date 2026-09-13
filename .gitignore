@@ -1,0 +1,90 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build Outputs & Bundles
+dist/
+dist-ssr/
+build/
+*.local
+
+# Environment & Secrets
+.env
+.env.*
+*.env
+backend/.env
+!.env.example
+!backend/.env.example
+
+# Python Cache & Artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+develop-eggs/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage/
+.mypy_cache/
+.tox/
+
+# Local Databases (Generated at runtime / seeds)
+*.db
+*.sqlite
+*.sqlite3
+backend/*.db
+backend/*.sqlite3
+
+# Operating System & IDE
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Logs & Debugging
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Large External Raw Datasets (Official Government Telemetry & Rasters)
+# Download protocols & schemas fully documented in datasets/raw/README.md
+datasets/raw/cwc/rainfall/*.csv
+datasets/raw/cwc/river_level/*.csv
+datasets/raw/imd/*.csv
+datasets/interim/*.csv
+datasets/raw/isro/flood_inundation/*.tif
+datasets/raw/isro/flood_inundation/**/*.tif
+!datasets/**/.gitkeep

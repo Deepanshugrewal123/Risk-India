@@ -1,0 +1,42 @@
+{
+  "dataset_name": "CWC River Water Level & Telemetry Hydrometry Records",
+  "source_agency": "Central Water Commission (CWC), Ministry of Jal Shakti, Govt of India",
+  "source_url": "https://ffs.india-water.gov.in/ and https://indiawris.gov.in/",
+  "download_date": "UNKNOWN",
+  "coverage_start": "2015-01-01",
+  "coverage_end": "2024-08-31",
+  "spatial_resolution": "Point river gauge stations (designated river basins and sub-basins)",
+  "temporal_resolution": "Hourly or sub-daily telemetry observations",
+  "variables": [
+    "station_id",
+    "station_name",
+    "river_name",
+    "basin",
+    "water_level",
+    "danger_level",
+    "warning_level",
+    "highest_flood_level",
+    "discharge",
+    "rainfall_hourly",
+    "latitude",
+    "longitude",
+    "timestamp"
+  ],
+  "units": [
+    "string",
+    "string",
+    "string",
+    "string",
+    "meters_above_msl",
+    "meters_above_msl",
+    "meters_above_msl",
+    "meters_above_msl",
+    "cumec",
+    "mm",
+    "decimal_degrees",
+    "decimal_degrees",
+    "ISO_8601_or_IST"
+  ],
+  "license_or_access_notes": "India-WRIS / CWC Flood Forecast System open data portal. Restricted or non-public for classified transboundary river reaches (e.g., Indus/Brahmaputra special agreements).",
+  "notes": "Hourly river stage gauge levels allow monitoring the rate of rise (delta 6h, delta 24h). Water levels exceeding Danger Level represent immediate overbank risk."
+}

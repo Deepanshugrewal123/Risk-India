@@ -1,0 +1,769 @@
+{
+  "generated_date": "2026-09-12",
+  "description": "Authoritative catalog of verified CWC river stage gauges and active CWC rainfall telemetry stations in Assam.",
+  "source_files": {
+    "river_level_csv": "datasets/raw/cwc/river_level/rwl_tel_hr_assam_999_2021_2025.csv",
+    "rainfall_csv": "datasets/raw/cwc/rainfall/rainfall_tel_hr_cwc_as_2021_2025.csv"
+  },
+  "verified_river_gauges_count": 3,
+  "verified_active_rainfall_stations_count": 31,
+  "excluded_null_rainfall_stations_count": 9,
+  "verified_river_gauges": [
+    {
+      "station_name": "NH15 Crossing Dhansirighat",
+      "type": "CWC_RIVER_STAGE_GAUGE",
+      "district": "Udalguri",
+      "latitude": 26.69583333,
+      "longitude": 92.25777778,
+      "temporal_range": {
+        "first_record": "01-01-2023 00:00",
+        "last_record": "31-12-2022 23:00"
+      },
+      "total_records": 16498,
+      "valid_records": 16497,
+      "null_records": 1,
+      "null_percentage": 0.01,
+      "stage_range_meters": {
+        "min": 0.001,
+        "max": 80.605
+      },
+      "extreme_spikes_over_100m": 0,
+      "status": "VERIFIED_ACTIVE_RIVER_GAUGE"
+    },
+    {
+      "station_name": "NH15 Crossing Fakirpara Tangni",
+      "type": "CWC_RIVER_STAGE_GAUGE",
+      "district": "DARRANG",
+      "latitude": 26.50833333,
+      "longitude": 92.11638889,
+      "temporal_range": {
+        "first_record": "01-01-2022 20:00",
+        "last_record": "31-12-2024 23:00"
+      },
+      "total_records": 36460,
+      "valid_records": 34920,
+      "null_records": 1540,
+      "null_percentage": 4.22,
+      "stage_range_meters": {
+        "min": 0.001,
+        "max": 871.863
+      },
+      "extreme_spikes_over_100m": 16,
+      "status": "VERIFIED_ACTIVE_RIVER_GAUGE"
+    },
+    {
+      "station_name": "NH17 Crossing Boko",
+      "type": "CWC_RIVER_STAGE_GAUGE",
+      "district": "Kamrup Metropolitan",
+      "latitude": 25.9775,
+      "longitude": 91.23416667,
+      "temporal_range": {
+        "first_record": "01-01-2023 00:00",
+        "last_record": "31-12-2024 06:00"
+      },
+      "total_records": 25254,
+      "valid_records": 24951,
+      "null_records": 303,
+      "null_percentage": 1.2,
+      "stage_range_meters": {
+        "min": 0.007,
+        "max": 1018.645
+      },
+      "extreme_spikes_over_100m": 16,
+      "status": "VERIFIED_ACTIVE_RIVER_GAUGE"
+    }
+  ],
+  "verified_active_rainfall_stations": [
+    {
+      "station_name": "AP Ghat",
+      "agency": "CWC",
+      "district": "CACHAR",
+      "latitude": 24.83194444,
+      "longitude": 92.79611111,
+      "total_records": 2833,
+      "valid_records": 2833,
+      "null_records": 0,
+      "valid_percentage": 100.0,
+      "temporal_range": {
+        "first_record": "01-04-2021 05:00",
+        "last_record": "31-10-2024 21:00"
+      },
+      "type": "CWC_ACTIVE_RAINFALL_TELEMETRY",
+      "status": "VERIFIED_ACTIVE_RAIN_STATION"
+    },
+    {
+      "station_name": "BAHALPUR",
+      "agency": "CWC",
+      "district": "DHUBRI",
+      "latitude": 26.31948889,
+      "longitude": 90.46948889,
+      "total_records": 457,
+      "valid_records": 457,
+      "null_records": 0,
+      "valid_percentage": 100.0,
+      "temporal_range": {
+        "first_record": "01-04-2021 07:30",
+        "last_record": "31-07-2021 11:00"
+      },
+      "type": "CWC_ACTIVE_RAINFALL_TELEMETRY",
+      "status": "VERIFIED_ACTIVE_RAIN_STATION"
+    },
+    {
+      "station_name": "Basudevthan",
+      "agency": "CWC",
+      "district": "LAKHIMPUR",
+      "latitude": 27.37472222,
+      "longitude": 94.55472222,
+      "total_records": 1793,
+      "valid_records": 1793,
+      "null_records": 0,
+      "valid_percentage": 100.0,
+      "temporal_range": {
+        "first_record": "01-02-2024 01:00",
+        "last_record": "31-10-2024 02:00"
+      },
+      "type": "CWC_ACTIVE_RAINFALL_TELEMETRY",
+      "status": "VERIFIED_ACTIVE_RAIN_STATION"
+    },
+    {
+      "station_name": "Beki Road bridge",
+      "agency": "CWC",
+      "district": "BARPETA",
+      "latitude": 26.49413333,
+      "longitude": 90.91789722,
+      "total_records": 2692,
+      "valid_records": 2692,
+      "null_records": 0,
+      "valid_percentage": 100.0,
+      "temporal_range": {
+        "first_record": "01-04-2021 05:00",
+        "last_record": "31-10-2024 23:00"
+      },
+      "type": "CWC_ACTIVE_RAINFALL_TELEMETRY",
+      "status": "VERIFIED_ACTIVE_RAIN_STATION"
+    },
+    {
+      "station_name": "Bokajan",
+      "agency": "CWC",
+      "district": "KARBI ANGLONG",
+      "latitude": 26.01944444,
+      "longitude": 93.78972222,
+      "total_records": 171,
+      "valid_records": 171,
+      "null_records": 0,
+      "valid_percentage": 100.0,
+      "temporal_range": {
+        "first_record": "01-05-2021 16:00",
+        "last_record": "31-03-2024 02:00"
+      },
+      "type": "CWC_ACTIVE_RAINFALL_TELEMETRY",
+      "status": "VERIFIED_ACTIVE_RAIN_STATION"
+    },
+    {
+      "station_name": "Chenimari (Khowang)",
+      "agency": "CWC",
+      "district": "DIBRUGARH",
+      "latitude": 27.31222222,
+      "longitude": 94.88166667,
+      "total_records": 234,
+      "valid_records": 234,
+      "null_records": 0,
+      "valid_percentage": 100.0,
+      "temporal_range": {
+        "first_record": "01-03-2021 06:00",
+        "last_record": "31-05-2021 15:00"
+      },
+      "type": "CWC_ACTIVE_RAINFALL_TELEMETRY",
+      "status": "VERIFIED_ACTIVE_RAIN_STATION"
+    },
+    {
+      "station_name": "Chouldhowaghat",
+      "agency": "CWC",
+      "district": "LAKHIMPUR",
+      "latitude": 27.44888889,
+      "longitude": 94.25,
+      "total_records": 1991,
+      "valid_records": 1991,
+      "null_records": 0,
+      "valid_percentage": 100.0,
+      "temporal_range": {
+        "first_record": "01-03-2021 00:00",
+        "last_record": "31-08-2022 22:00"
+      },
+      "type": "CWC_ACTIVE_RAINFALL_TELEMETRY",
+      "status": "VERIFIED_ACTIVE_RAIN_STATION"
+    },
+    {
+      "station_name": "DRF",
+      "agency": "CWC",
+      "district": "Baksa",
+      "latitude": 26.77500833,
+      "longitude": 91.69288611,
+      "total_records": 1094,
+      "valid_records": 1094,
+      "null_records": 0,
+      "valid_percentage": 100.0,
+      "temporal_range": {
+        "first_record": "01-03-2021 00:30",
+        "last_record": "31-12-2024 00:00"
+      },
+      "type": "CWC_ACTIVE_RAINFALL_TELEMETRY",
+      "status": "VERIFIED_ACTIVE_RAIN_STATION"
+    },
+    {
+      "station_name": "Desangpani",
+      "agency": "CWC",
+      "district": "Charaideo",
+      "latitude": 27.04666667,
+      "longitude": 94.91222222,
+      "total_records": 727,
+      "valid_records": 727,
+      "null_records": 0,
+      "valid_percentage": 100.0,
+      "temporal_range": {
+        "first_record": "01-04-2022 02:00",
+        "last_record": "30-05-2022 22:00"
+      },
+      "type": "CWC_ACTIVE_RAINFALL_TELEMETRY",
+      "status": "VERIFIED_ACTIVE_RAIN_STATION"
+    },
+    {
+      "station_name": "Dharamtul",
+      "agency": "CWC",
+      "district": "MARIGAON",
+      "latitude": 26.16833333,
+      "longitude": 92.35861111,
+      "total_records": 167,
+      "valid_records": 167,
+      "null_records": 0,
+      "valid_percentage": 100.0,
+      "temporal_range": {
+        "first_record": "01-07-2021 16:00",
+        "last_record": "31-07-2021 07:00"
+      },
+      "type": "CWC_ACTIVE_RAINFALL_TELEMETRY",
+      "status": "VERIFIED_ACTIVE_RAIN_STATION"
+    },
+    {
+      "station_name": "Dholabazar",
+      "agency": "CWC",
+      "district": "TINSUKIA",
+      "latitude": 27.76361111,
+      "longitude": 95.56611111,
+      "total_records": 2012,
+      "valid_records": 2012,
+      "null_records": 0,
+      "valid_percentage": 100.0,
+      "temporal_range": {
+        "first_record": "01-02-2024 20:00",
+        "last_record": "31-12-2022 03:00"
+      },
+      "type": "CWC_ACTIVE_RAINFALL_TELEMETRY",
+      "status": "VERIFIED_ACTIVE_RAIN_STATION"
+    },
+    {
+      "station_name": "Dholai",
+      "agency": "CWC",
+      "district": "CACHAR",
+      "latitude": 24.59361111,
+      "longitude": 92.84527778,
+      "total_records": 30,
+      "valid_records": 30,
+      "null_records": 0,
+      "valid_percentage": 100.0,
+      "temporal_range": {
+        "first_record": "02-04-2021 06:00",
+        "last_record": "31-03-2021 05:00"
+      },
+      "type": "CWC_ACTIVE_RAINFALL_TELEMETRY",
+      "status": "VERIFIED_ACTIVE_RAIN_STATION"
+    },
+    {
+      "station_name": "Dillighat",
+      "agency": "CWC",
+      "district": "DIBRUGARH",
+      "latitude": 27.14,
+      "longitude": 95.37,
+      "total_records": 62,
+      "valid_records": 62,
+      "null_records": 0,
+      "valid_percentage": 100.0,
+      "temporal_range": {
+        "first_record": "01-04-2021 02:00",
+        "last_record": "31-03-2021 18:00"
+      },
+      "type": "CWC_ACTIVE_RAINFALL_TELEMETRY",
+      "status": "VERIFIED_ACTIVE_RAIN_STATION"
+    },
+    {
+      "station_name": "Gelabil",
+      "agency": "CWC",
+      "district": "GOLAGHAT",
+      "latitude": 26.24444444,
+      "longitude": 93.97277778,
+      "total_records": 1043,
+      "valid_records": 1043,
+      "null_records": 0,
+      "valid_percentage": 100.0,
+      "temporal_range": {
+        "first_record": "01-04-2023 06:00",
+        "last_record": "31-08-2022 03:00"
+      },
+      "type": "CWC_ACTIVE_RAINFALL_TELEMETRY",
+      "status": "VERIFIED_ACTIVE_RAIN_STATION"
+    },
+    {
+      "station_name": "Gharmura",
+      "agency": "CWC",
+      "district": "HAILAKANDI",
+      "latitude": 24.28527778,
+      "longitude": 92.51611111,
+      "total_records": 57,
+      "valid_records": 57,
+      "null_records": 0,
+      "valid_percentage": 100.0,
+      "temporal_range": {
+        "first_record": "02-05-2021 03:00",
+        "last_record": "31-03-2021 02:00"
+      },
+      "type": "CWC_ACTIVE_RAINFALL_TELEMETRY",
+      "status": "VERIFIED_ACTIVE_RAIN_STATION"
+    },
+    {
+      "station_name": "Golaghat",
+      "agency": "CWC",
+      "district": "GOLAGHAT",
+      "latitude": 26.50361111,
+      "longitude": 93.95166667,
+      "total_records": 347,
+      "valid_records": 347,
+      "null_records": 0,
+      "valid_percentage": 100.0,
+      "temporal_range": {
+        "first_record": "01-03-2024 01:00",
+        "last_record": "31-10-2022 19:00"
+      },
+      "type": "CWC_ACTIVE_RAINFALL_TELEMETRY",
+      "status": "VERIFIED_ACTIVE_RAIN_STATION"
+    },
+    {
+      "station_name": "KANGKUBASTI",
+      "agency": "CWC",
+      "district": "DHEMAJI",
+      "latitude": 27.64972222,
+      "longitude": 94.60805556,
+      "total_records": 108,
+      "valid_records": 108,
+      "null_records": 0,
+      "valid_percentage": 100.0,
+      "temporal_range": {
+        "first_record": "01-06-2022 07:00",
+        "last_record": "31-08-2024 03:00"
+      },
+      "type": "CWC_ACTIVE_RAINFALL_TELEMETRY",
+      "status": "VERIFIED_ACTIVE_RAIN_STATION"
+    },
+    {
+      "station_name": "Kampur",
+      "agency": "CWC",
+      "district": "NAGAON",
+      "latitude": 26.15277778,
+      "longitude": 92.65333333,
+      "total_records": 404,
+      "valid_records": 404,
+      "null_records": 0,
+      "valid_percentage": 100.0,
+      "temporal_range": {
+        "first_record": "01-05-2022 18:00",
+        "last_record": "31-07-2021 23:00"
+      },
+      "type": "CWC_ACTIVE_RAINFALL_TELEMETRY",
+      "status": "VERIFIED_ACTIVE_RAIN_STATION"
+    },
+    {
+      "station_name": "Karimganj",
+      "agency": "CWC",
+      "district": "KARIMGANJ",
+      "latitude": 24.87861111,
+      "longitude": 92.35666667,
+      "total_records": 5362,
+      "valid_records": 5362,
+      "null_records": 0,
+      "valid_percentage": 100.0,
+      "temporal_range": {
+        "first_record": "01-02-2025 06:30",
+        "last_record": "31-12-2024 23:00"
+      },
+      "type": "CWC_ACTIVE_RAINFALL_TELEMETRY",
+      "status": "VERIFIED_ACTIVE_RAIN_STATION"
+    },
+    {
+      "station_name": "Kheronighat",
+      "agency": "CWC",
+      "district": "KARBI ANGLONG",
+      "latitude": 25.84861111,
+      "longitude": 92.885,
+      "total_records": 41,
+      "valid_records": 41,
+      "null_records": 0,
+      "valid_percentage": 100.0,
+      "temporal_range": {
+        "first_record": "03-05-2021 05:00",
+        "last_record": "31-03-2021 08:00"
+      },
+      "type": "CWC_ACTIVE_RAINFALL_TELEMETRY",
+      "status": "VERIFIED_ACTIVE_RAIN_STATION"
+    },
+    {
+      "station_name": "Kokrajhar",
+      "agency": "CWC",
+      "district": "KOKRAJHAR",
+      "latitude": 26.39757222,
+      "longitude": 90.25405833,
+      "total_records": 3378,
+      "valid_records": 3378,
+      "null_records": 0,
+      "valid_percentage": 100.0,
+      "temporal_range": {
+        "first_record": "01-01-2023 00:00",
+        "last_record": "31-12-2022 20:00"
+      },
+      "type": "CWC_ACTIVE_RAINFALL_TELEMETRY",
+      "status": "VERIFIED_ACTIVE_RAIN_STATION"
+    },
+    {
+      "station_name": "Lakhipur",
+      "agency": "CWC",
+      "district": "CACHAR",
+      "latitude": 24.67222222,
+      "longitude": 93.10305556,
+      "total_records": 149,
+      "valid_records": 149,
+      "null_records": 0,
+      "valid_percentage": 100.0,
+      "temporal_range": {
+        "first_record": "02-02-2023 08:00",
+        "last_record": "31-07-2025 23:00"
+      },
+      "type": "CWC_ACTIVE_RAINFALL_TELEMETRY",
+      "status": "VERIFIED_ACTIVE_RAIN_STATION"
+    },
+    {
+      "station_name": "Manas N H Crossing",
+      "agency": "CWC",
+      "district": "BONGAIGAON",
+      "latitude": 26.46421667,
+      "longitude": 90.75003333,
+      "total_records": 972,
+      "valid_records": 972,
+      "null_records": 0,
+      "valid_percentage": 100.0,
+      "temporal_range": {
+        "first_record": "01-03-2021 14:00",
+        "last_record": "31-07-2022 23:00"
+      },
+      "type": "CWC_ACTIVE_RAINFALL_TELEMETRY",
+      "status": "VERIFIED_ACTIVE_RAIN_STATION"
+    },
+    {
+      "station_name": "Margherita",
+      "agency": "CWC",
+      "district": "TINSUKIA",
+      "latitude": 27.28361111,
+      "longitude": 95.66277778,
+      "total_records": 1159,
+      "valid_records": 1159,
+      "null_records": 0,
+      "valid_percentage": 100.0,
+      "temporal_range": {
+        "first_record": "01-03-2021 21:00",
+        "last_record": "31-07-2025 12:00"
+      },
+      "type": "CWC_ACTIVE_RAINFALL_TELEMETRY",
+      "status": "VERIFIED_ACTIVE_RAIN_STATION"
+    },
+    {
+      "station_name": "Mathanguri",
+      "agency": "CWC",
+      "district": "Baksa",
+      "latitude": 26.78277778,
+      "longitude": 90.95666667,
+      "total_records": 358,
+      "valid_records": 358,
+      "null_records": 0,
+      "valid_percentage": 100.0,
+      "temporal_range": {
+        "first_record": "01-03-2021 00:30",
+        "last_record": "31-07-2021 06:00"
+      },
+      "type": "CWC_ACTIVE_RAINFALL_TELEMETRY",
+      "status": "VERIFIED_ACTIVE_RAIN_STATION"
+    },
+    {
+      "station_name": "NT Road Crossing Jia-Bharali",
+      "agency": "CWC",
+      "district": "SONITPUR",
+      "latitude": 26.81,
+      "longitude": 92.87972222,
+      "total_records": 1033,
+      "valid_records": 1033,
+      "null_records": 0,
+      "valid_percentage": 100.0,
+      "temporal_range": {
+        "first_record": "01-01-2021 04:00",
+        "last_record": "31-10-2021 08:00"
+      },
+      "type": "CWC_ACTIVE_RAINFALL_TELEMETRY",
+      "status": "VERIFIED_ACTIVE_RAIN_STATION"
+    },
+    {
+      "station_name": "NT Road Crossing(Jiabharali)",
+      "agency": "CWC",
+      "district": "SONITPUR",
+      "latitude": 26.8097,
+      "longitude": 92.8789,
+      "total_records": 1771,
+      "valid_records": 1771,
+      "null_records": 0,
+      "valid_percentage": 100.0,
+      "temporal_range": {
+        "first_record": "01-01-2024 12:00",
+        "last_record": "31-08-2022 22:00"
+      },
+      "type": "CWC_ACTIVE_RAINFALL_TELEMETRY",
+      "status": "VERIFIED_ACTIVE_RAIN_STATION"
+    },
+    {
+      "station_name": "Neharkatia",
+      "agency": "CWC",
+      "district": "DIBRUGARH",
+      "latitude": 27.31888889,
+      "longitude": 95.31055556,
+      "total_records": 186,
+      "valid_records": 186,
+      "null_records": 0,
+      "valid_percentage": 100.0,
+      "temporal_range": {
+        "first_record": "01-05-2023 00:00",
+        "last_record": "31-12-2024 17:00"
+      },
+      "type": "CWC_ACTIVE_RAINFALL_TELEMETRY",
+      "status": "VERIFIED_ACTIVE_RAIN_STATION"
+    },
+    {
+      "station_name": "Numaligarh",
+      "agency": "CWC",
+      "district": "GOLAGHAT",
+      "latitude": 26.63111111,
+      "longitude": 93.73055556,
+      "total_records": 2557,
+      "valid_records": 2557,
+      "null_records": 0,
+      "valid_percentage": 100.0,
+      "temporal_range": {
+        "first_record": "01-02-2021 15:30",
+        "last_record": "31-08-2022 23:00"
+      },
+      "type": "CWC_ACTIVE_RAINFALL_TELEMETRY",
+      "status": "VERIFIED_ACTIVE_RAIN_STATION"
+    },
+    {
+      "station_name": "Sivasagar",
+      "agency": "CWC",
+      "district": "SIVSAGAR",
+      "latitude": 26.98166667,
+      "longitude": 94.57916667,
+      "total_records": 1629,
+      "valid_records": 1629,
+      "null_records": 0,
+      "valid_percentage": 100.0,
+      "temporal_range": {
+        "first_record": "01-01-2021 10:30",
+        "last_record": "31-08-2022 21:00"
+      },
+      "type": "CWC_ACTIVE_RAINFALL_TELEMETRY",
+      "status": "VERIFIED_ACTIVE_RAIN_STATION"
+    },
+    {
+      "station_name": "ghilamora",
+      "agency": "CWC",
+      "district": "LAKHIMPUR",
+      "latitude": 27.31666667,
+      "longitude": 94.41638889,
+      "total_records": 492,
+      "valid_records": 492,
+      "null_records": 0,
+      "valid_percentage": 100.0,
+      "temporal_range": {
+        "first_record": "01-01-2023 06:00",
+        "last_record": "31-12-2022 08:00"
+      },
+      "type": "CWC_ACTIVE_RAINFALL_TELEMETRY",
+      "status": "VERIFIED_ACTIVE_RAIN_STATION"
+    }
+  ],
+  "excluded_null_rainfall_stations": [
+    {
+      "station_name": "Dhubri",
+      "agency": "CWC",
+      "district": "DHUBRI",
+      "latitude": 25.99099167,
+      "longitude": 90.03248889,
+      "total_records": 4961,
+      "valid_records": 0,
+      "null_records": 4961,
+      "valid_percentage": 0.0,
+      "temporal_range": {
+        "first_record": "01-01-2021 05:30",
+        "last_record": "31-07-2021 19:00"
+      },
+      "type": "CWC_NULL_NON_REPORTING_STATION",
+      "status": "EXCLUDED_ZERO_VALID_READINGS",
+      "exclusion_reason": "100% null readings in raw rainfall telemetry CSV (river crossing gauge or inactive sensor)."
+    },
+    {
+      "station_name": "Dibrugarh",
+      "agency": "CWC",
+      "district": "DIBRUGARH",
+      "latitude": 27.48861111,
+      "longitude": 94.90972222,
+      "total_records": 4168,
+      "valid_records": 0,
+      "null_records": 4168,
+      "valid_percentage": 0.0,
+      "temporal_range": {
+        "first_record": "01-01-2021 05:30",
+        "last_record": "31-07-2021 19:00"
+      },
+      "type": "CWC_NULL_NON_REPORTING_STATION",
+      "status": "EXCLUDED_ZERO_VALID_READINGS",
+      "exclusion_reason": "100% null readings in raw rainfall telemetry CSV (river crossing gauge or inactive sensor)."
+    },
+    {
+      "station_name": "Goalpara",
+      "agency": "CWC",
+      "district": "GOALPARA",
+      "latitude": 26.18472222,
+      "longitude": 90.63388889,
+      "total_records": 21162,
+      "valid_records": 0,
+      "null_records": 21162,
+      "valid_percentage": 0.0,
+      "temporal_range": {
+        "first_record": "01-01-2021 05:30",
+        "last_record": "31-12-2024 23:00"
+      },
+      "type": "CWC_NULL_NON_REPORTING_STATION",
+      "status": "EXCLUDED_ZERO_VALID_READINGS",
+      "exclusion_reason": "100% null readings in raw rainfall telemetry CSV (river crossing gauge or inactive sensor)."
+    },
+    {
+      "station_name": "Golokganj",
+      "agency": "CWC",
+      "district": "DHUBRI",
+      "latitude": 26.10722222,
+      "longitude": 89.82361111,
+      "total_records": 12325,
+      "valid_records": 0,
+      "null_records": 12325,
+      "valid_percentage": 0.0,
+      "temporal_range": {
+        "first_record": "01-01-2021 05:30",
+        "last_record": "31-12-2022 19:00"
+      },
+      "type": "CWC_NULL_NON_REPORTING_STATION",
+      "status": "EXCLUDED_ZERO_VALID_READINGS",
+      "exclusion_reason": "100% null readings in raw rainfall telemetry CSV (river crossing gauge or inactive sensor)."
+    },
+    {
+      "station_name": "Guwahati(D.C.Court)",
+      "agency": "CWC",
+      "district": "KAMRUP",
+      "latitude": 26.1947,
+      "longitude": 91.7431,
+      "total_records": 7157,
+      "valid_records": 0,
+      "null_records": 7157,
+      "valid_percentage": 0.0,
+      "temporal_range": {
+        "first_record": "01-01-2021 05:30",
+        "last_record": "31-10-2022 23:00"
+      },
+      "type": "CWC_NULL_NON_REPORTING_STATION",
+      "status": "EXCLUDED_ZERO_VALID_READINGS",
+      "exclusion_reason": "100% null readings in raw rainfall telemetry CSV (river crossing gauge or inactive sensor)."
+    },
+    {
+      "station_name": "Melabazar",
+      "agency": "CWC",
+      "district": "BARPETA",
+      "latitude": 26.80416667,
+      "longitude": 91.52916667,
+      "total_records": 14722,
+      "valid_records": 0,
+      "null_records": 14722,
+      "valid_percentage": 0.0,
+      "temporal_range": {
+        "first_record": "01-01-2021 05:30",
+        "last_record": "31-12-2022 19:00"
+      },
+      "type": "CWC_NULL_NON_REPORTING_STATION",
+      "status": "EXCLUDED_ZERO_VALID_READINGS",
+      "exclusion_reason": "100% null readings in raw rainfall telemetry CSV (river crossing gauge or inactive sensor)."
+    },
+    {
+      "station_name": "NH RD Xing(Puthimari)",
+      "agency": "CWC",
+      "district": "KAMRUP",
+      "latitude": 26.3469,
+      "longitude": 91.6486,
+      "total_records": 4095,
+      "valid_records": 0,
+      "null_records": 4095,
+      "valid_percentage": 0.0,
+      "temporal_range": {
+        "first_record": "01-01-2021 05:30",
+        "last_record": "31-07-2021 19:00"
+      },
+      "type": "CWC_NULL_NON_REPORTING_STATION",
+      "status": "EXCLUDED_ZERO_VALID_READINGS",
+      "exclusion_reason": "100% null readings in raw rainfall telemetry CSV (river crossing gauge or inactive sensor)."
+    },
+    {
+      "station_name": "Nematighat",
+      "agency": "CWC",
+      "district": "JORHAT",
+      "latitude": 26.8603,
+      "longitude": 94.2522,
+      "total_records": 24274,
+      "valid_records": 0,
+      "null_records": 24274,
+      "valid_percentage": 0.0,
+      "temporal_range": {
+        "first_record": "01-01-2021 05:30",
+        "last_record": "31-12-2024 23:00"
+      },
+      "type": "CWC_NULL_NON_REPORTING_STATION",
+      "status": "EXCLUDED_ZERO_VALID_READINGS",
+      "exclusion_reason": "100% null readings in raw rainfall telemetry CSV (river crossing gauge or inactive sensor)."
+    },
+    {
+      "station_name": "Tezpur",
+      "agency": "CWC",
+      "district": "SONITPUR",
+      "latitude": 26.61583333,
+      "longitude": 92.79694444,
+      "total_records": 9486,
+      "valid_records": 0,
+      "null_records": 9486,
+      "valid_percentage": 0.0,
+      "temporal_range": {
+        "first_record": "01-01-2021 05:30",
+        "last_record": "31-08-2022 23:00"
+      },
+      "type": "CWC_NULL_NON_REPORTING_STATION",
+      "status": "EXCLUDED_ZERO_VALID_READINGS",
+      "exclusion_reason": "100% null readings in raw rainfall telemetry CSV (river crossing gauge or inactive sensor)."
+    }
+  ]
+}

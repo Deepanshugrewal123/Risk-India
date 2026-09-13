@@ -1,0 +1,6 @@
+date,location_id,latitude,longitude,rainfall_24h,rainfall_72h_cumulative,rainfall_anomaly,soil_moisture_index,river_gauge_above_danger,distance_to_river_km,elevation,slope,historical_flood_frequency,flood_occurred
+2018-07-15,assam,26.2006,92.9376,142.5,310.2,45.2,88.5,1.20,2.1,52.0,1.2,8,1
+2018-08-10,bihar,25.0961,85.3131,95.0,210.0,12.5,75.0,0.80,4.5,45.0,0.8,6,1
+2019-06-22,kerala,10.8505,76.2711,180.4,420.0,85.0,92.0,2.10,1.5,120.0,8.5,4,1
+2020-09-05,odisha,20.9517,85.0985,65.0,140.0,-10.0,60.0,-0.50,6.0,80.0,2.5,5,0
+2021-07-28,maharashtra,19.7515,75.7139,35.0,75.0,-25.0,42.0,-1.20,12.0,550.0,3.1,2,0

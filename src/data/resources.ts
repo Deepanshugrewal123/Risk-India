@@ -478,7 +478,7 @@ export const VERIFIED_AGENCIES: ReliefAgency[] = [
     type: 'Government Agency',
     verificationStatus: 'Government Verified',
     headquarters: 'NDMA Bhawan, A-1, Safdarjung Enclave, New Delhi',
-    operationalStates: ['Pan-India (All 28 States & 9 UTs)'],
+    operationalStates: ['Pan-India (All 28 States & 8 UTs)'],
     activeOperations: ['National Guidelines & SOPs', 'NDRF Deployment Oversight', 'Early Warning Dissemination'],
     servicesOffered: ['National Early Warnings', 'Inter-State Resource Mobilization', 'Capacity Building'],
     officialPortalUrl: 'https://ndma.gov.in',

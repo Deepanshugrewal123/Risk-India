@@ -48,14 +48,14 @@ async function callRiskAnalyzeAPI(payload: {
 
 export const riskService = {
   /**
-   * Get available States and Districts options for analysis (all 37 administrative entities)
+   * Get available States and Districts options for analysis (all 36 administrative entities)
    */
   getAvailableLocations: (): StateDistrictOption[] => {
     return INDIAN_LOCATIONS;
   },
 
   /**
-   * Returns all 37 Indian administrative locations
+   * Returns all 36 Indian administrative locations
    */
   getAllLocations: (): IndiaLocation[] => {
     return ALL_INDIAN_LOCATIONS;
@@ -69,7 +69,7 @@ export const riskService = {
   },
 
   /**
-   * Returns all 9 Union Territories
+   * Returns all 8 Union Territories
    */
   getUnionTerritories: (): IndiaLocation[] => {
     return ALL_INDIAN_UNION_TERRITORIES;
@@ -112,7 +112,7 @@ export const riskService = {
   },
 
   /**
-   * Returns all region risk evaluations (37 locations)
+   * Returns all region risk evaluations (36 locations)
    */
   getAllRegions: async (): Promise<RegionRiskData[]> => {
     await new Promise((res) => setTimeout(res, 120));
@@ -151,7 +151,7 @@ export const riskService = {
   },
 
   /**
-   * Comprehensive area risk analyzer supporting all 28 states and 9 UTs
+   * Comprehensive area risk analyzer supporting all 28 states and 8 UTs
    */
   analyzeAreaRisk: async (
     state: string,

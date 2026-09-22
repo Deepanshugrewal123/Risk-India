@@ -8,13 +8,13 @@ from app.schemas.location import LocationOut
 
 router = APIRouter(prefix="/locations", tags=["Locations"])
 
-@router.get("", response_model=List[LocationOut], summary="List all 37 Indian States and Union Territories")
+@router.get("", response_model=List[LocationOut], summary="List all 36 Indian States and Union Territories")
 def get_locations(
     type: Optional[str] = None,
     db: Session = Depends(get_db)
 ):
     """
-    Retrieve all 28 States and 9 Union Territories of India.
+    Retrieve all 28 States and 8 Union Territories of India.
     Optionally filter by administrative type: `STATE` or `UNION_TERRITORY`.
     """
     query = db.query(Location)

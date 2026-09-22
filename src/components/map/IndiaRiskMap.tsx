@@ -379,10 +379,10 @@ export const IndiaRiskMap: React.FC<IndiaRiskMapProps> = ({
               <h3 className="font-mono text-xs uppercase tracking-wider text-charcoal-500 font-semibold">
                 India Geospatial Risk Matrix
               </h3>
-              <DemoBadge label="37 REGIONS COVERED" />
+              <DemoBadge label="36 REGIONS COVERED" />
             </div>
             <p className="text-sm font-semibold text-charcoal-900 mt-0.5">
-              Interactive Multi-Hazard Map // 28 States + 9 Union Territories
+              Interactive Multi-Hazard Map // 28 States + 8 Union Territories
             </p>
           </div>
 
@@ -481,7 +481,7 @@ export const IndiaRiskMap: React.FC<IndiaRiskMapProps> = ({
                   : 'bg-white text-charcoal-700 hover:bg-paper-200 border border-paper-300'
               }`}
             >
-              All India (37)
+              All India (36)
             </button>
             <button
               onClick={() => setInternalAdminFilter('STATE')}
@@ -501,7 +501,7 @@ export const IndiaRiskMap: React.FC<IndiaRiskMapProps> = ({
                   : 'bg-white text-charcoal-700 hover:bg-paper-200 border border-paper-300'
               }`}
             >
-              Union Territories (9)
+              Union Territories (8)
             </button>
           </div>
 
@@ -624,7 +624,7 @@ export const IndiaRiskMap: React.FC<IndiaRiskMapProps> = ({
             <div className="flex items-center justify-between text-xs pt-1 border-t border-paper-200">
               <span className="text-charcoal-500">Monitored Locations</span>
               <span className="font-mono font-semibold text-charcoal-700">
-                37 (28 States + 9 UTs)
+                36 (28 States + 8 UTs)
               </span>
             </div>
           </div>
@@ -817,7 +817,7 @@ export const IndiaRiskMap: React.FC<IndiaRiskMapProps> = ({
               );
             })}
 
-            {/* Complete 37 State & Union Territory Centroid Markers */}
+            {/* Complete 36 State & Union Territory Centroid Markers */}
             {showPins &&
               ALL_INDIAN_LOCATIONS.map((loc) => {
                 const regData: RegionRiskData = regions.find((r) => r.id === loc.id || r.code === loc.code) || {

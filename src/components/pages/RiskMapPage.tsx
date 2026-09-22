@@ -144,9 +144,9 @@ export const RiskMapPage: React.FC<RiskMapPageProps> = ({ onSelectIncident }) =>
                 onChange={(e) => setSelectedLocationType(e.target.value as 'ALL' | AdministrativeType)}
                 className="px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs font-mono text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-slate-900"
               >
-                <option value="ALL">All India (37)</option>
+                <option value="ALL">All India (36)</option>
                 <option value="STATE">States Only (28)</option>
-                <option value="UNION_TERRITORY">Union Territories (9)</option>
+                <option value="UNION_TERRITORY">Union Territories (8)</option>
               </select>
             </div>
 
@@ -188,7 +188,7 @@ export const RiskMapPage: React.FC<RiskMapPageProps> = ({ onSelectIncident }) =>
       {isLoading ? (
         <LoadingState
           message="Loading Geospatial Risk Matrix..."
-          description="Fetching regional hazard evaluations and historical exposure trends for all 37 locations..."
+          description="Fetching regional hazard evaluations and historical exposure trends for all 36 locations..."
           heightClass="min-h-[480px]"
         />
       ) : errorMessage ? (

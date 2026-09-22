@@ -211,7 +211,7 @@ const DETAILED_REGIONS_MAP: Record<string, Partial<RegionRiskData>> = {
 };
 
 /**
- * Generate full 37-location region risk dataset
+ * Generate full 36-location region risk dataset
  */
 export const REGIONS_RISK_DATA: RegionRiskData[] = ALL_INDIAN_LOCATIONS.map((loc) => {
   const custom = DETAILED_REGIONS_MAP[loc.id];

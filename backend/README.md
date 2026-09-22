@@ -4,7 +4,7 @@ FastAPI backend architecture for **RISK // INDIA: AI-Powered Disaster Risk Analy
 
 ## 🚀 Overview
 
-The backend serves multi-hazard disaster risk assessments, telemetry factors, active incident monitoring, and verified relief directories across **all 28 States and 9 Union Territories of India**.
+The backend serves multi-hazard disaster risk assessments, telemetry factors, active incident monitoring, and verified relief directories across **all 28 States and 8 Union Territories of India**.
 
 - **Framework**: FastAPI (Python 3.10+)
 - **Database ORM**: SQLAlchemy 2.0 (PostgreSQL-ready with local SQLite fallback)
@@ -22,9 +22,9 @@ backend/
 │   ├── config.py                # Environment configuration
 │   ├── database/
 │   │   ├── database.py          # SQLAlchemy engine & session factory
-│   │   └── init_db.py           # DB creation & seed script (37 locations)
+│   │   └── init_db.py           # DB creation & seed script (36 locations)
 │   ├── models/                  # SQLAlchemy ORM models
-│   │   ├── location.py          # Location (28 States + 9 UTs)
+│   │   ├── location.py          # Location (28 States + 8 UTs)
 │   │   ├── risk_assessment.py   # Multi-hazard assessments
 │   │   ├── risk_factor.py       # SHAP-compatible explainability factors
 │   │   ├── disaster_event.py    # Incidents & alerts
@@ -62,7 +62,7 @@ DATABASE_URL=postgresql://user:password@localhost:5432/risk_india
 ```
 
 ### 3. Initialize & Seed Database
-Seeds all 37 Indian States and Union Territories with baseline risk assessments:
+Seeds all 36 Indian States and Union Territories with baseline risk assessments:
 ```bash
 python -m app.database.init_db
 ```
@@ -79,7 +79,7 @@ python -m uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
 | Method | Endpoint | Description |
 | :--- | :--- | :--- |
 | `GET` | `/api/health` | Operational health check |
-| `GET` | `/api/locations` | All 37 Indian States & UTs (`?type=STATE` or `?type=UNION_TERRITORY`) |
+| `GET` | `/api/locations` | All 36 Indian States & UTs (`?type=STATE` or `?type=UNION_TERRITORY`) |
 | `GET` | `/api/locations/{id}` | State or UT details by ID (e.g. `assam`, `ladakh`) or code (`AS`, `DL`) |
 | `GET` | `/api/risk/{location_id}` | Latest risk assessment and explainable factors |
 | `POST` | `/api/risk/analyze` | Predictive risk analysis for feature inputs (e.g. rainfall, soil moisture) |

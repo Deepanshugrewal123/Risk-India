@@ -22,7 +22,18 @@ import { PhoneCall, ShieldAlert, X } from 'lucide-react';
 
 const getInitialPage = (): NavigationPage => {
   if (typeof window !== 'undefined') {
-    // Check URL query param: ?page=... or ?view=...
+    // 1. Check URL pathname: /risk-map, /future-risk, etc.
+    const pathname = window.location.pathname.replace(/^\/+|\/+$/g, '').toLowerCase();
+    if (pathname === 'risk-map' || pathname === 'map') return 'risk-map';
+    if (pathname === 'future-risk' || pathname === 'future' || pathname === 'predictive') return 'future-risk';
+    if (pathname === 'cascading-risk' || pathname === 'cascading') return 'cascading-risk';
+    if (pathname === 'safety-guide' || pathname === 'safety' || pathname === 'guide') return 'safety-guide';
+    if (pathname === 'disasters' || pathname === 'incidents') return 'disasters';
+    if (pathname === 'get-help' || pathname === 'help') return 'get-help';
+    if (pathname === 'help-others' || pathname === 'volunteer') return 'help-others';
+    if (pathname === 'how-it-works' || pathname === 'about') return 'how-it-works';
+
+    // 2. Check URL query param: ?page=... or ?view=...
     const params = new URLSearchParams(window.location.search);
     const pageParam = params.get('page') || params.get('view');
     
@@ -35,7 +46,7 @@ const getInitialPage = (): NavigationPage => {
     if (pageParam === 'help-others' || pageParam === 'volunteer') return 'help-others';
     if (pageParam === 'how-it-works' || pageParam === 'about') return 'how-it-works';
 
-    // Check hash: #...
+    // 3. Check hash: #...
     if (window.location.hash) {
       const hash = window.location.hash.replace('#', '') as NavigationPage;
       const validPages: NavigationPage[] = ['home', 'future-risk', 'cascading-risk', 'safety-guide', 'risk-map', 'disasters', 'get-help', 'help-others', 'how-it-works'];
@@ -152,7 +163,8 @@ export const AppContent: React.FC = () => {
     if (context?.regionId) params.set('region', context.regionId);
 
     const queryString = params.toString();
-    const newUrl = queryString ? `?${queryString}` : '/';
+    const basePath = page === 'home' ? '/' : `/${page}`;
+    const newUrl = queryString ? `${basePath}?${queryString}` : basePath;
     window.history.pushState(null, '', newUrl);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };

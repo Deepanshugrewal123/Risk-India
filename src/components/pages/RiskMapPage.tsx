@@ -4,11 +4,10 @@ import { RegionRiskData, DisasterType, RiskLevel } from '../../types/risk';
 import { DisasterEvent } from '../../types/disaster';
 import { AdministrativeType } from '../../types/location';
 import { ALL_INDIAN_LOCATIONS } from '../../data/indiaLocations';
+import { REGIONS_RISK_DATA } from '../../data/riskData';
 import { riskService } from '../../services/riskService';
 import { RiskBadge } from '../common/RiskBadge';
 import { DemoBadge } from '../common/DemoBadge';
-import { LoadingState } from '../common/LoadingState';
-import { ErrorState } from '../common/ErrorState';
 import { EmptyState } from '../common/EmptyState';
 import { Search, ShieldCheck, MapPin, Phone, AlertCircle, Clock, Globe } from 'lucide-react';
 import { NationalFutureRisk } from '../predictive/NationalFutureRisk';
@@ -21,31 +20,38 @@ interface RiskMapPageProps {
 }
 
 export const RiskMapPage: React.FC<RiskMapPageProps> = ({ onSelectIncident, onNavigate }) => {
-  const [viewMode, setViewMode] = useState<'current' | 'future'>('current');
-  const [allRegions, setAllRegions] = useState<RegionRiskData[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [viewMode, setViewMode] = useState<'current' | 'future'>(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const mode = params.get('mode') || params.get('perspective') || params.get('view');
+      if (mode && (mode.toLowerCase() === 'future' || mode.toLowerCase() === 'predictive')) {
+        return 'future';
+      }
+    }
+    return 'current';
+  });
+  const [allRegions, setAllRegions] = useState<RegionRiskData[]>(REGIONS_RISK_DATA);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const [selectedLocationType, setSelectedLocationType] = useState<'ALL' | AdministrativeType>('ALL');
   const [selectedHazard, setSelectedHazard] = useState<string>('All');
   const [selectedSeverity, setSelectedSeverity] = useState<RiskLevel | 'All'>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [selectedRegion, setSelectedRegion] = useState<RegionRiskData | null>(null);
+  const [selectedRegion, setSelectedRegion] = useState<RegionRiskData | null>(REGIONS_RISK_DATA[0]);
 
   const fetchRegions = async () => {
-    setIsLoading(true);
     setErrorMessage(null);
     try {
       const data = await riskService.getAllRegions();
-      setAllRegions(data);
-      if (data.length > 0) {
-        setSelectedRegion(data[0]);
+      if (Array.isArray(data) && data.length > 0) {
+        setAllRegions(data);
+        if (!selectedRegion) {
+          setSelectedRegion(data[0]);
+        }
       }
     } catch (err) {
-      console.error('Failed to load regions:', err);
-      setErrorMessage('Unable to load geospatial risk dataset from the risk service.');
-    } finally {
-      setIsLoading(false);
+      console.warn('Live regional risk API unavailable, retaining static regional baseline:', err);
+      setErrorMessage('Live regional telemetry feed currently offline. Displaying authoritative national baseline.');
     }
   };
 
@@ -119,13 +125,25 @@ export const RiskMapPage: React.FC<RiskMapPageProps> = ({ onSelectIncident, onNa
         </div>
       </div>
 
-      {viewMode === 'future' ? (
-        <NationalFutureRisk />
-      ) : (
-        <>
-          {/* Filter and Search Bar */}
-          <div className="p-4 sm:p-5 rounded-3xl bg-white border border-slate-200 shadow-xs mb-8 space-y-4">
-            <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4">
+      {/* Non-intrusive alert banner if live API has warning */}
+      {errorMessage && (
+        <div className="mb-6 p-4 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <AlertCircle className="w-5 h-5 text-amber-600 shrink-0" />
+            <span className="text-xs font-mono">{errorMessage}</span>
+          </div>
+          <button
+            onClick={fetchRegions}
+            className="px-3 py-1 bg-white border border-amber-300 rounded-lg text-xs font-mono font-bold text-amber-800 hover:bg-amber-100"
+          >
+            Retry Feed
+          </button>
+        </div>
+      )}
+
+      {/* Filter and Search Bar */}
+      <div className="p-4 sm:p-5 rounded-3xl bg-white border border-slate-200 shadow-xs mb-8 space-y-4">
+        <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4">
           {/* Search box */}
           <div className="relative flex-1">
             <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
@@ -188,106 +206,99 @@ export const RiskMapPage: React.FC<RiskMapPageProps> = ({ onSelectIncident, onNa
         </div>
       </div>
 
-      {isLoading ? (
-        <LoadingState
-          message="Loading Geospatial Risk Matrix..."
-          description="Fetching regional hazard evaluations and historical exposure trends for all 36 locations..."
-          heightClass="min-h-[480px]"
-        />
-      ) : errorMessage ? (
-        <ErrorState
-          title="Unable to Load Map Data"
-          message={errorMessage}
-          onRetry={fetchRegions}
-          retryLabel="Reload Dataset"
-        />
-      ) : (
-        /* Main Layout: Interactive Map + Side Inspector */
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Map Column */}
-          <div className="lg:col-span-8">
-            <IndiaRiskMap
-              onSelectRegion={(reg) => setSelectedRegion(reg)}
-              onSelectIncident={onSelectIncident}
-              selectedRegionId={selectedRegion?.id}
-              filterHazard={selectedHazard === 'All' ? undefined : selectedHazard}
-              filterRiskLevel={selectedSeverity}
-              filterLocationType={selectedLocationType}
-            />
-          </div>
+      {/* Main Layout: Interactive Map + Side Inspector */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        {/* Map Column */}
+        <div className="lg:col-span-8">
+          <IndiaRiskMap
+            onSelectRegion={(reg) => setSelectedRegion(reg)}
+            onSelectIncident={onSelectIncident}
+            selectedRegionId={selectedRegion?.id}
+            filterHazard={selectedHazard === 'All' ? undefined : selectedHazard}
+            filterRiskLevel={selectedSeverity}
+            filterLocationType={selectedLocationType}
+            perspective={viewMode === 'future' ? 'FUTURE' : 'CURRENT'}
+            onPerspectiveChange={(p) => setViewMode(p === 'FUTURE' ? 'future' : 'current')}
+            hideInternalInspector={true}
+          />
+        </div>
 
-          {/* Side Inspector Column */}
-          <div className="lg:col-span-4 space-y-6">
-            {selectedRegion ? (
-              <div className="rounded-3xl bg-white border border-slate-200 p-6 shadow-xs space-y-6 sticky top-28">
-                {/* Region Header */}
-                <div className="border-b border-slate-100 pb-4">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-mono text-slate-400 font-semibold">
-                      {ALL_INDIAN_LOCATIONS.find((l) => l.id === selectedRegion.id)?.type === 'UNION_TERRITORY'
-                        ? 'UNION TERRITORY'
-                        : 'STATE'}{' '}
-                      INSPECTOR // {selectedRegion.code}
-                    </span>
-                    <RiskBadge level={selectedRegion.riskLevel} size="sm" score={selectedRegion.riskScore} />
-                  </div>
-                  <h2 className="text-2xl font-extrabold text-slate-900">{selectedRegion.name}</h2>
-                  <p className="text-xs text-slate-500 font-mono mt-0.5">
-                    Capital: {selectedRegion.capital} • {selectedRegion.monitoredDistricts} Districts Monitored
-                  </p>
-                </div>
-
-                {/* Summary */}
-                <p className="text-xs text-slate-600 leading-relaxed font-normal">{selectedRegion.summary}</p>
-
-                {/* Primary & Secondary Hazards */}
-                <div className="grid grid-cols-2 gap-3">
-                  <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200">
-                    <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Primary Hazard</span>
-                    <span className="text-sm font-bold text-slate-900 mt-0.5 block">{selectedRegion.primaryRisk}</span>
-                  </div>
-                  <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200">
-                    <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Secondary Hazard</span>
-                    <span className="text-sm font-bold text-slate-900 mt-0.5 block">{selectedRegion.secondaryRisk || 'None'}</span>
-                  </div>
-                </div>
-
-                {/* Key Risk Factors */}
-                <div className="space-y-2.5">
-                  <span className="text-xs font-mono text-slate-400 uppercase tracking-wider block font-semibold">
-                    Telemetry Factors
+        {/* Side Inspector Column */}
+        <div className="lg:col-span-4 space-y-6">
+          {selectedRegion ? (
+            <div className="rounded-3xl bg-white border border-slate-200 p-6 shadow-xs space-y-6 sticky top-28">
+              {/* Region Header */}
+              <div className="border-b border-slate-100 pb-4">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs font-mono text-slate-400 font-semibold">
+                    {ALL_INDIAN_LOCATIONS.find((l) => l.id === selectedRegion.id)?.type === 'UNION_TERRITORY'
+                      ? 'UNION TERRITORY'
+                      : 'STATE'}{' '}
+                    INSPECTOR // {selectedRegion.code}
                   </span>
-                  {selectedRegion.factors.map((f, i) => (
-                    <div key={i} className="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
-                      <div className="flex items-center justify-between text-xs">
-                        <span className="font-semibold text-slate-900">{f.name}</span>
-                        <span className="font-mono text-[10px] text-slate-500">{f.weight}%</span>
-                      </div>
-                      <p className="text-[11px] text-slate-600 leading-snug">{f.description}</p>
-                    </div>
-                  ))}
+                  <RiskBadge level={selectedRegion.riskLevel} size="sm" score={selectedRegion.riskScore} />
                 </div>
+                <h2 className="text-2xl font-extrabold text-slate-900">{selectedRegion.name}</h2>
+                <p className="text-xs text-slate-500 font-mono mt-0.5">
+                  Capital: {selectedRegion.capital} • {selectedRegion.monitoredDistricts} Districts Monitored
+                </p>
+              </div>
 
-                {/* SDMA Helpline */}
-                <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 flex items-center gap-3">
-                  <Phone className="w-4 h-4 text-slate-600 shrink-0" />
-                  <div>
-                    <span className="text-[10px] font-mono uppercase text-slate-400 block">Emergency SDMA Contact</span>
-                    <span className="text-xs font-bold text-slate-900 font-mono">{selectedRegion.emergencyHelpline}</span>
-                  </div>
+              {/* Summary */}
+              <p className="text-xs text-slate-600 leading-relaxed font-normal">{selectedRegion.summary}</p>
+
+              {/* Primary & Secondary Hazards */}
+              <div className="grid grid-cols-2 gap-3">
+                <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200">
+                  <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Primary Hazard</span>
+                  <span className="text-sm font-bold text-slate-900 mt-0.5 block">{selectedRegion.primaryRisk}</span>
+                </div>
+                <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200">
+                  <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Secondary Hazard</span>
+                  <span className="text-sm font-bold text-slate-900 mt-0.5 block">{selectedRegion.secondaryRisk || 'None'}</span>
                 </div>
               </div>
-            ) : (
-              <EmptyState
-                title="No Region Selected"
-                description="Click on any state, UT, or marker on the map to inspect its multi-hazard telemetry factors."
-                icon={<MapPin className="w-5 h-5 text-slate-400" />}
-              />
-            )}
-          </div>
+
+              {/* Key Risk Factors */}
+              <div className="space-y-2.5">
+                <span className="text-xs font-mono text-slate-400 uppercase tracking-wider block font-semibold">
+                  Telemetry Factors
+                </span>
+                {selectedRegion.factors.map((f, i) => (
+                  <div key={i} className="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="font-semibold text-slate-900">{f.name}</span>
+                      <span className="font-mono text-[10px] text-slate-500">{f.weight}%</span>
+                    </div>
+                    <p className="text-[11px] text-slate-600 leading-snug">{f.description}</p>
+                  </div>
+                ))}
+              </div>
+
+              {/* SDMA Helpline */}
+              <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 flex items-center gap-3">
+                <Phone className="w-4 h-4 text-slate-600 shrink-0" />
+                <div>
+                  <span className="text-[10px] font-mono uppercase text-slate-400 block">Emergency SDMA Contact</span>
+                  <span className="text-xs font-bold text-slate-900 font-mono">{selectedRegion.emergencyHelpline}</span>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <EmptyState
+              title="No Region Selected"
+              description="Click on any state, UT, or marker on the map to inspect its multi-hazard telemetry factors."
+              icon={<MapPin className="w-5 h-5 text-slate-400" />}
+            />
+          )}
         </div>
-      )}
-        </>
+      </div>
+
+      {/* Comprehensive Predictive Intelligence section when in Future mode */}
+      {viewMode === 'future' && (
+        <div className="mt-12">
+          <NationalFutureRisk />
+        </div>
       )}
 
       {/* Connected Public Safety Workflow Navigation Bar */}

@@ -27,6 +27,9 @@ import {
 } from 'lucide-react';
 import { resourceService } from '../../services/resourceService';
 import { Resource } from '../../types/resource';
+import { REGIONS_RISK_DATA, NATIONAL_RISK_SNAPSHOT } from '../../data/riskData';
+import { ACTIVE_DISASTERS } from '../../data/disasters';
+import { UNIFIED_RESOURCES } from '../../data/resources';
 
 interface IndiaRiskMapProps {
   onSelectRegion?: (region: RegionRiskData) => void;
@@ -37,6 +40,9 @@ interface IndiaRiskMapProps {
   filterRiskLevel?: RiskLevel | 'All';
   filterLocationType?: AdministrativeType | 'ALL';
   compactMode?: boolean;
+  perspective?: 'CURRENT' | 'FUTURE';
+  onPerspectiveChange?: (perspective: 'CURRENT' | 'FUTURE') => void;
+  hideInternalInspector?: boolean;
 }
 
 interface StatePathDef {
@@ -241,60 +247,103 @@ export const IndiaRiskMap: React.FC<IndiaRiskMapProps> = ({
   filterHazard,
   filterRiskLevel = 'All',
   filterLocationType = 'ALL',
-  compactMode = false
+  compactMode = false,
+  perspective = 'CURRENT',
+  onPerspectiveChange,
+  hideInternalInspector = false
 }) => {
   const [internalHazardFilter, setInternalHazardFilter] = useState<string>(filterHazard || 'ALL');
   const [internalAdminFilter, setInternalAdminFilter] = useState<'ALL' | AdministrativeType>(filterLocationType);
   const [hoveredRegion, setHoveredRegion] = useState<RegionRiskData | null>(null);
   const [hoveredLocationType, setHoveredLocationType] = useState<AdministrativeType>('STATE');
   const [mouseCoord, setMouseCoord] = useState({ x: 0, y: 0 });
-  const [regions, setRegions] = useState<RegionRiskData[]>([]);
-  const [snapshot, setSnapshot] = useState({
-    criticalAreas: 8,
-    highRiskAreas: 27,
-    activeDisasters: 12,
-    monitoredRegions: 766,
-    lastSyncTime: '5 mins ago'
+  const [regions, setRegions] = useState<RegionRiskData[]>(REGIONS_RISK_DATA);
+  const [snapshot, setSnapshot] = useState(NATIONAL_RISK_SNAPSHOT);
+  const [disasters, setDisasters] = useState<DisasterEvent[]>(() => ACTIVE_DISASTERS.slice(0, 12));
+  const [activeSelectedRegion, setActiveSelectedRegion] = useState<RegionRiskData | null>(() => {
+    if (selectedRegionId) {
+      return REGIONS_RISK_DATA.find((r) => r.id === selectedRegionId) || REGIONS_RISK_DATA[0];
+    }
+    return REGIONS_RISK_DATA[0];
   });
-  const [disasters, setDisasters] = useState<DisasterEvent[]>([]);
-  const [activeSelectedRegion, setActiveSelectedRegion] = useState<RegionRiskData | null>(null);
   const [showPins, setShowPins] = useState<boolean>(true);
-  const [verifiedResources, setVerifiedResources] = useState<Resource[]>([]);
+  const [verifiedResources, setVerifiedResources] = useState<Resource[]>(() =>
+    UNIFIED_RESOURCES.filter((r) => r.verificationStatus === 'VERIFIED')
+  );
   const [showResources, setShowResources] = useState<boolean>(true);
   const [hoveredResource, setHoveredResource] = useState<Resource | null>(null);
   const [selectedResource, setSelectedResource] = useState<Resource | null>(null);
   const [displayMode, setDisplayMode] = useState<'map' | 'cards' | 'list'>('map');
   const [mapRenderError, setMapRenderError] = useState<boolean>(false);
-  const [mapPerspective, setMapPerspective] = useState<'CURRENT' | 'FUTURE'>('CURRENT');
+  const [mapPerspective, setMapPerspective] = useState<'CURRENT' | 'FUTURE'>(perspective);
   const [futureHorizon, setFutureHorizon] = useState<string>('6-24h');
 
-
+  // Synchronize internal perspective with incoming prop if controlled
   useEffect(() => {
-    const loadMapData = async () => {
-      try {
-        const [allRegs, natSnap, activeIncidents, resList] = await Promise.all([
-          riskService.getAllRegions(),
-          riskService.getNationalSnapshot(),
-          disasterService.getActiveDisasters(),
-          resourceService.getResources({ verificationStatus: 'VERIFIED' })
-        ]);
-        setRegions(allRegs);
-        setSnapshot(natSnap);
-        setDisasters(activeIncidents);
-        setVerifiedResources(resList);
+    if (perspective && perspective !== mapPerspective) {
+      setMapPerspective(perspective);
+    }
+  }, [perspective]);
 
+  // Synchronize incoming selectedRegionId
+  useEffect(() => {
+    if (selectedRegionId) {
+      const matched = regions.find((r) => r.id === selectedRegionId);
+      if (matched) setActiveSelectedRegion(matched);
+    }
+  }, [selectedRegionId, regions]);
+
+  // Decoupled, fault-tolerant telemetry loading: one failing service does NOT abort others
+  useEffect(() => {
+    let isMounted = true;
+
+    // 1. Regional multi-hazard risk
+    riskService.getAllRegions()
+      .then((allRegs) => {
+        if (!isMounted || !Array.isArray(allRegs) || allRegs.length === 0) return;
+        setRegions(allRegs);
         if (selectedRegionId) {
           const matched = allRegs.find((r) => r.id === selectedRegionId);
           if (matched) setActiveSelectedRegion(matched);
-        } else if (allRegs.length > 0 && !activeSelectedRegion) {
+        } else if (!activeSelectedRegion) {
           setActiveSelectedRegion(allRegs[0]);
         }
-      } catch (err) {
-        console.error('Error fetching map telemetry:', err);
-      }
+      })
+      .catch((err) => {
+        console.warn('Live regional risk API unavailable, preserving static baseline:', err);
+      });
+
+    // 2. National telemetry snapshot
+    riskService.getNationalSnapshot()
+      .then((natSnap) => {
+        if (isMounted && natSnap) setSnapshot(natSnap);
+      })
+      .catch((err) => {
+        console.warn('National snapshot API unavailable, preserving baseline snapshot:', err);
+      });
+
+    // 3. Active disaster incidents (USGS, IMD, CWC feeds)
+    disasterService.getActiveDisasters()
+      .then((incidents) => {
+        if (isMounted && Array.isArray(incidents)) setDisasters(incidents);
+      })
+      .catch((err) => {
+        console.warn('Active disasters feed unavailable, preserving static catalog:', err);
+      });
+
+    // 4. Verified relief resources
+    resourceService.getResources({ verificationStatus: 'VERIFIED' })
+      .then((resList) => {
+        if (isMounted && Array.isArray(resList)) setVerifiedResources(resList);
+      })
+      .catch((err) => {
+        console.warn('Resources feed unavailable, preserving verified catalog:', err);
+      });
+
+    return () => {
+      isMounted = false;
     };
-    loadMapData();
-  }, [selectedRegionId]);
+  }, []);
 
   const hazardTabs = ['ALL', 'FLOOD', 'LANDSLIDE', 'CYCLONE', 'EARTHQUAKE', 'HEATWAVE'];
   const effectiveHazard = filterHazard || internalHazardFilter;
@@ -386,34 +435,58 @@ export const IndiaRiskMap: React.FC<IndiaRiskMapProps> = ({
             </p>
           </div>
 
-          {/* Legend */}
-          <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs font-mono">
-            <div className="flex items-center gap-1.5 mr-1">
-              <span className="text-charcoal-500 font-bold">Historical Baseline:</span>
+          {/* Legend: Evidence Postures & Hazard Severity */}
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs font-mono">
+            <div className="flex flex-wrap items-center gap-2 mr-1">
+              <span className="text-charcoal-500 font-bold uppercase tracking-wider text-[10px]">Evidence Posture:</span>
+              <span className="flex items-center gap-1">
+                <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                <span className="text-charcoal-700 font-semibold text-[11px]">LIVE</span>
+              </span>
+              <span className="flex items-center gap-1">
+                <span className="w-2 h-2 rounded-full bg-blue-500" />
+                <span className="text-charcoal-700 font-semibold text-[11px]">RECENT</span>
+              </span>
+              <span className="flex items-center gap-1">
+                <span className="w-2 h-2 rounded-full bg-indigo-500" />
+                <span className="text-charcoal-700 font-semibold text-[11px]">FORECAST</span>
+              </span>
+              <span className="flex items-center gap-1">
+                <span className="w-2 h-2 rounded-full bg-slate-400" />
+                <span className="text-charcoal-700 font-semibold text-[11px]">BASELINE</span>
+              </span>
+              <span className="flex items-center gap-1">
+                <span className="w-2 h-2 rounded-full bg-slate-300 border border-slate-400" />
+                <span className="text-charcoal-500 font-semibold text-[11px]">DATA UNAVAILABLE</span>
+              </span>
+            </div>
+
+            <div className="flex items-center gap-1.5 border-l border-paper-300 pl-3">
+              <span className="text-charcoal-500 font-bold text-[10px]">Risk Tier:</span>
               <span className="flex items-center gap-1">
                 <span className="w-2 h-2 rounded-full bg-risk-low border border-risk-low-border" />
-                <span className="text-charcoal-600">Low</span>
+                <span className="text-charcoal-600 text-[11px]">Low</span>
               </span>
               <span className="flex items-center gap-1">
                 <span className="w-2 h-2 rounded-full bg-risk-moderate border border-risk-moderate-border" />
-                <span className="text-charcoal-600">Mod</span>
+                <span className="text-charcoal-600 text-[11px]">Mod</span>
               </span>
               <span className="flex items-center gap-1">
                 <span className="w-2 h-2 rounded-full bg-risk-high border border-risk-high-border" />
-                <span className="text-charcoal-600">High</span>
+                <span className="text-charcoal-600 text-[11px]">High</span>
               </span>
               <span className="flex items-center gap-1">
                 <span className="w-2 h-2 rounded-full bg-risk-critical border border-risk-critical-border" />
-                <span className="text-charcoal-600">Crit</span>
+                <span className="text-charcoal-600 text-[11px]">Crit</span>
               </span>
             </div>
             <div className="flex items-center gap-1.5 border-l border-paper-300 pl-3">
               <span className="w-2.5 h-2.5 rounded-full bg-risk-critical animate-ping" />
-              <span className="text-charcoal-700 font-medium">Reported Disaster Incident</span>
+              <span className="text-charcoal-700 font-medium text-[11px]">Reported Disaster Incident</span>
             </div>
             <div className="flex items-center gap-1.5 border-l border-paper-300 pl-3">
               <span className="w-2.5 h-2.5 rotate-45 bg-emerald-500 border border-white inline-block shadow-xs" />
-              <span className="text-charcoal-700 font-medium">Verified Help Center</span>
+              <span className="text-charcoal-700 font-medium text-[11px]">Verified Help Center</span>
             </div>
           </div>
         </div>
@@ -422,7 +495,10 @@ export const IndiaRiskMap: React.FC<IndiaRiskMapProps> = ({
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 p-2.5 rounded-2xl bg-white border border-paper-300 shadow-xs">
           <div className="flex items-center gap-1 bg-paper-100 p-1 rounded-xl">
             <button
-              onClick={() => setMapPerspective('CURRENT')}
+              onClick={() => {
+                setMapPerspective('CURRENT');
+                onPerspectiveChange?.('CURRENT');
+              }}
               className={`px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold transition-all ${
                 mapPerspective === 'CURRENT'
                   ? 'bg-charcoal-900 text-paper-50 shadow-xs'
@@ -432,7 +508,10 @@ export const IndiaRiskMap: React.FC<IndiaRiskMapProps> = ({
               CURRENT RISK
             </button>
             <button
-              onClick={() => setMapPerspective('FUTURE')}
+              onClick={() => {
+                setMapPerspective('FUTURE');
+                onPerspectiveChange?.('FUTURE');
+              }}
               className={`px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold transition-all ${
                 mapPerspective === 'FUTURE'
                   ? 'bg-indigo-600 text-white shadow-xs'
@@ -1091,7 +1170,7 @@ export const IndiaRiskMap: React.FC<IndiaRiskMapProps> = ({
 
 
         {/* Selected Region Detailed Panel */}
-        {activeSelectedRegion && (
+        {!hideInternalInspector && activeSelectedRegion && (
           <TiltCard
             maxTilt={1.5}
             className="lg:absolute lg:bottom-6 lg:right-6 z-20 w-full lg:w-80 p-5 rounded-3xl bg-white border border-paper-300 shadow-floating mt-4 lg:mt-0"

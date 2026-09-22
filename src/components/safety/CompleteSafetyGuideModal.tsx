@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import { SafetyPhase, SafetyPriority, SafetyCategory, SafetyInstructionItem } from '../../types/safetyGuide';
 import { EXTENDED_SAFETY_ITEMS } from '../../data/extendedSafetyData';
+import { SafetyActionItemCard } from './SafetyActionItemCard';
 
 interface CompleteSafetyGuideModalProps {
   isOpen: boolean;
@@ -268,103 +269,14 @@ export const CompleteSafetyGuideModal: React.FC<CompleteSafetyGuideModalProps> =
                 </span>
               </div>
 
-              {filteredItems.map((item) => {
-                const isChecked = !!checkedItems[item.id];
-
-                return (
-                  <div
-                    key={item.id}
-                    className={`p-5 rounded-2xl border transition-all ${
-                      isChecked
-                        ? 'bg-emerald-50/50 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800'
-                        : 'bg-white dark:bg-slate-850 border-paper-200 dark:border-slate-800 shadow-xs'
-                    }`}
-                  >
-                    {/* Item Top Bar */}
-                    <div className="flex flex-wrap items-center justify-between gap-2 pb-2 mb-2 border-b border-paper-100 dark:border-slate-800">
-                      <div className="flex items-center gap-2">
-                        <span
-                          className={`text-[10px] font-mono px-2 py-0.5 rounded font-bold uppercase tracking-wider ${getPhaseColor(
-                            item.phase
-                          )}`}
-                        >
-                          {item.phase}
-                        </span>
-                        <span className="text-[10px] font-mono text-charcoal-400 dark:text-slate-500 uppercase">
-                          {item.category.replace(/_/g, ' ')}
-                        </span>
-                      </div>
-
-                      <div className="flex items-center gap-2">
-                        <span
-                          className={`text-[10px] font-mono px-2 py-0.5 rounded-full border font-bold uppercase ${getPriorityBadge(
-                            item.priority
-                          )}`}
-                        >
-                          {item.priority}
-                        </span>
-                        <button
-                          onClick={() => toggleCheck(item.id)}
-                          className="min-h-[44px] min-w-[44px] -my-2 -mr-2 px-2 flex items-center justify-center text-charcoal-600 dark:text-slate-400 hover:text-emerald-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 rounded-lg"
-                          aria-label={isChecked ? `Mark ${item.title} as incomplete` : `Mark ${item.title} as completed`}
-                        >
-                          {isChecked ? (
-                            <CheckSquare className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
-                          ) : (
-                            <Square className="w-5 h-5" />
-                          )}
-                        </button>
-                      </div>
-                    </div>
-
-                    {/* Title & Instruction */}
-                    <div className="space-y-1.5">
-                      <h3
-                        className={`text-base font-bold ${
-                          isChecked ? 'line-through text-charcoal-500 dark:text-slate-400' : 'text-charcoal-950 dark:text-white'
-                        }`}
-                      >
-                        {item.title}
-                      </h3>
-                      <p className="text-xs sm:text-sm text-charcoal-700 dark:text-slate-300 leading-relaxed">
-                        {item.instruction}
-                      </p>
-                    </div>
-
-                    {/* Scientific Rationale */}
-                    <div className="mt-3 p-3 rounded-xl bg-paper-50 dark:bg-slate-800/60 border border-paper-200 dark:border-slate-800 text-xs text-charcoal-600 dark:text-slate-400 space-y-1">
-                      <div className="font-mono text-[10px] uppercase font-bold text-charcoal-500 dark:text-slate-400">
-                        Scientific / Medical Rationale:
-                      </div>
-                      <p className="leading-relaxed">{item.reason}</p>
-                    </div>
-
-                    {/* Warning Box if present */}
-                    {item.warning && (
-                      <div className="mt-2.5 p-2.5 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900 text-rose-900 dark:text-rose-200 text-xs flex items-start gap-2">
-                        <AlertOctagon className="w-4 h-4 text-rose-600 dark:text-rose-400 shrink-0 mt-0.5" />
-                        <div>
-                          <strong>What NOT To Do: </strong>
-                          <span>{item.warning}</span>
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Related Cascading Secondary Risk */}
-                    {item.related_cascading_risk && (
-                      <div className="mt-2 text-[11px] font-mono text-indigo-700 dark:text-indigo-400 flex items-center gap-1.5">
-                        <span className="font-bold">→ Related Cascading Secondary Hazard:</span>
-                        <span>{item.related_cascading_risk}</span>
-                      </div>
-                    )}
-
-                    {/* Source Citation */}
-                    <div className="mt-2 text-[10px] font-mono text-charcoal-400 dark:text-slate-500">
-                      Authoritative Standard: {item.source}
-                    </div>
-                  </div>
-                );
-              })}
+              {filteredItems.map((item) => (
+                <SafetyActionItemCard
+                  key={item.id}
+                  item={item}
+                  isCompleted={!!checkedItems[item.id]}
+                  onToggleComplete={toggleCheck}
+                />
+              ))}
             </div>
           )}
         </div>

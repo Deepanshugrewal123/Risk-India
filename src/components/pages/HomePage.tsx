@@ -105,7 +105,87 @@ export const HomePage: React.FC<HomePageProps> = ({
 
       {/* 6. Citizen Action Protocols: WHAT SHOULD I DO? (Do Now, Before, During, After, 72h Family Kit) */}
       <ScrollReveal>
-        <CitizenActionSection />
+        <CitizenActionSection onNavigate={onNavigate} />
+      </ScrollReveal>
+
+      {/* Deep Citizen Exploration Hub */}
+      <ScrollReveal>
+        <section className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto py-4">
+          <div className="p-6 sm:p-8 rounded-3xl bg-paper-50 dark:bg-slate-900 border border-paper-300 dark:border-slate-800 space-y-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <span className="text-[11px] font-mono uppercase tracking-wider text-indigo-700 dark:text-indigo-400 font-bold block">
+                  CITIZEN INTELLIGENCE PORTAL // DEEPER PERSPECTIVES
+                </span>
+                <h3 className="text-xl sm:text-2xl font-bold text-charcoal-950 dark:text-white">
+                  Explore Specialized Disaster Intelligence
+                </h3>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
+              <button
+                onClick={() => onNavigate('future-risk')}
+                className="p-4 rounded-2xl bg-white dark:bg-slate-850 border border-paper-200 dark:border-slate-800 hover:border-indigo-400 dark:hover:border-indigo-600 text-left transition-all shadow-xs group min-h-[44px]"
+              >
+                <div className="text-xs font-mono font-bold uppercase text-indigo-600 dark:text-indigo-400 mb-1">
+                  01 // FORWARD OUTLOOK
+                </div>
+                <h4 className="font-bold text-charcoal-900 dark:text-white text-base group-hover:text-indigo-600 transition-colors">
+                  Future Risk Projections
+                </h4>
+                <p className="text-xs text-charcoal-600 dark:text-slate-400 mt-1">
+                  5 forecast horizons from NOW to 7 days across all 36 States & UTs.
+                </p>
+              </button>
+
+              <button
+                onClick={() => onNavigate('cascading-risk')}
+                className="p-4 rounded-2xl bg-white dark:bg-slate-850 border border-paper-200 dark:border-slate-800 hover:border-indigo-400 dark:hover:border-indigo-600 text-left transition-all shadow-xs group min-h-[44px]"
+              >
+                <div className="text-xs font-mono font-bold uppercase text-indigo-600 dark:text-indigo-400 mb-1">
+                  02 // WHAT HAPPENS NEXT
+                </div>
+                <h4 className="font-bold text-charcoal-900 dark:text-white text-base group-hover:text-indigo-600 transition-colors">
+                  Cascading Risk Intelligence
+                </h4>
+                <p className="text-xs text-charcoal-600 dark:text-slate-400 mt-1">
+                  Trace secondary hazards and systemic breakdowns triggered by initial events.
+                </p>
+              </button>
+
+              <button
+                onClick={() => onNavigate('safety-guide')}
+                className="p-4 rounded-2xl bg-white dark:bg-slate-850 border border-paper-200 dark:border-slate-800 hover:border-emerald-400 dark:hover:border-emerald-600 text-left transition-all shadow-xs group min-h-[44px]"
+              >
+                <div className="text-xs font-mono font-bold uppercase text-emerald-600 dark:text-emerald-400 mb-1">
+                  03 // LIFE SAFETY
+                </div>
+                <h4 className="font-bold text-charcoal-900 dark:text-white text-base group-hover:text-emerald-600 transition-colors">
+                  Complete Safety Guide
+                </h4>
+                <p className="text-xs text-charcoal-600 dark:text-slate-400 mt-1">
+                  Before, During, and After actionable guidance across all 6 disaster types.
+                </p>
+              </button>
+
+              <button
+                onClick={() => onNavigate('risk-map')}
+                className="p-4 rounded-2xl bg-white dark:bg-slate-850 border border-paper-200 dark:border-slate-800 hover:border-charcoal-500 text-left transition-all shadow-xs group min-h-[44px]"
+              >
+                <div className="text-xs font-mono font-bold uppercase text-charcoal-500 dark:text-slate-400 mb-1">
+                  04 // GEOSPATIAL
+                </div>
+                <h4 className="font-bold text-charcoal-900 dark:text-white text-base group-hover:text-charcoal-700 transition-colors">
+                  Open Risk Map
+                </h4>
+                <p className="text-xs text-charcoal-600 dark:text-slate-400 mt-1">
+                  Interactive multi-hazard geospatial map with live district telemetry.
+                </p>
+              </button>
+            </div>
+          </div>
+        </section>
       </ScrollReveal>
 
       {/* 7. Live Geospatial Risk Matrix: Open Risk Map */}

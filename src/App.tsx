@@ -5,6 +5,8 @@ import { Footer } from './components/common/Footer';
 import { OfflineIndicator } from './components/common/OfflineIndicator';
 import { HomePage } from './components/pages/HomePage';
 import { FutureRiskPage } from './components/pages/FutureRiskPage';
+import { CascadingRiskPage } from './components/pages/CascadingRiskPage';
+import { SafetyGuidePage } from './components/pages/SafetyGuidePage';
 import { RiskMapPage } from './components/pages/RiskMapPage';
 import { DisastersPage } from './components/pages/DisastersPage';
 import { GetHelpPage } from './components/pages/GetHelpPage';
@@ -25,6 +27,8 @@ const getInitialPage = (): NavigationPage => {
     const pageParam = params.get('page') || params.get('view');
     
     if (pageParam === 'future-risk' || pageParam === 'future' || pageParam === 'predictive') return 'future-risk';
+    if (pageParam === 'cascading-risk' || pageParam === 'cascading') return 'cascading-risk';
+    if (pageParam === 'safety-guide' || pageParam === 'safety' || pageParam === 'guide') return 'safety-guide';
     if (pageParam === 'map' || pageParam === 'risk-map') return 'risk-map';
     if (pageParam === 'disasters' || pageParam === 'incidents') return 'disasters';
     if (pageParam === 'get-help' || pageParam === 'help') return 'get-help';
@@ -34,7 +38,7 @@ const getInitialPage = (): NavigationPage => {
     // Check hash: #...
     if (window.location.hash) {
       const hash = window.location.hash.replace('#', '') as NavigationPage;
-      const validPages: NavigationPage[] = ['home', 'future-risk', 'risk-map', 'disasters', 'get-help', 'help-others', 'how-it-works'];
+      const validPages: NavigationPage[] = ['home', 'future-risk', 'cascading-risk', 'safety-guide', 'risk-map', 'disasters', 'get-help', 'help-others', 'how-it-works'];
       if (validPages.includes(hash)) return hash;
     }
   }
@@ -138,6 +142,18 @@ export const AppContent: React.FC = () => {
 
             {currentPage === 'future-risk' && (
               <FutureRiskPage
+                onNavigate={handleNavigate}
+              />
+            )}
+
+            {currentPage === 'cascading-risk' && (
+              <CascadingRiskPage
+                onNavigate={handleNavigate}
+              />
+            )}
+
+            {currentPage === 'safety-guide' && (
+              <SafetyGuidePage
                 onNavigate={handleNavigate}
               />
             )}

@@ -550,6 +550,41 @@ export const FutureRiskPage: React.FC<FutureRiskPageProps> = ({
         </div>
       )}
 
+      {/* CASCADING RISK INTELLIGENCE SPOTLIGHT BANNER */}
+      <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-amber-500/10 via-rose-500/10 to-indigo-500/10 border-2 border-amber-300 dark:border-amber-700/60 shadow-lg space-y-4">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+          <div className="space-y-2 max-w-2xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-950/60 border border-amber-300 dark:border-amber-800 text-amber-900 dark:text-amber-300 text-xs font-mono font-bold uppercase tracking-wider">
+              <Layers className="w-3.5 h-3.5" />
+              <span>SYSTEMIC & CASCADING RISK INTELLIGENCE</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-charcoal-950 dark:text-white tracking-tight">
+              If this disaster happens, what could happen next?
+            </h2>
+            <p className="text-sm text-charcoal-700 dark:text-slate-300 leading-relaxed font-sans">
+              Disasters rarely strike in isolation. A primary hazard triggers slope instability, water grid contamination, power outages, and public health threats. Understand the 4-stage chain of consequences and explore defensive citizen measures before secondary hazards strike.
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
+            <button
+              onClick={() => onNavigate('cascading-risk')}
+              className="min-h-[48px] px-5 py-3 rounded-2xl bg-amber-600 hover:bg-amber-700 text-white font-mono text-xs font-bold transition-all shadow-md flex items-center justify-center gap-2 group"
+            >
+              <span>EXPLORE WHAT COULD HAPPEN NEXT</span>
+              <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
+            <button
+              onClick={() => onNavigate('safety-guide')}
+              className="min-h-[48px] px-5 py-3 rounded-2xl bg-white dark:bg-slate-800 hover:bg-paper-100 text-charcoal-900 dark:text-white border border-paper-300 dark:border-slate-700 font-mono text-xs font-bold transition-all flex items-center justify-center gap-2"
+            >
+              <FileCheck2 className="w-4 h-4 text-emerald-600" />
+              <span>SAFETY ACTION GUIDE</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
       {/* 4. Multi-Hazard Matrix across all 6 Hazards */}
       <FutureHazardMatrix
         onSelectHazard={(h) => setSelectedHazard(h)}
@@ -566,6 +601,8 @@ export const FutureRiskPage: React.FC<FutureRiskPageProps> = ({
         regionId={selectedRegion || 'assam'}
         regionName={selectedLocationMeta?.name || 'National Baseline'}
         hazard={selectedHazard}
+        onNavigate={onNavigate}
+        onExploreSafetyGuide={(h) => onNavigate('safety-guide')}
       />
 
       {/* 7. Citizen Action Protocols (What Should I Do, 72h Family Kit) */}

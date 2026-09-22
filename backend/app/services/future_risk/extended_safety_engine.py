@@ -48,6 +48,10 @@ class SafetyCategory(str, Enum):
     AVOIDANCE_WHAT_NOT_TO_DO = "AVOIDANCE_WHAT_NOT_TO_DO"
     RECOVERY_AND_HEALTH = "RECOVERY_AND_HEALTH"
     DAMAGE_DOCUMENTATION = "DAMAGE_DOCUMENTATION"
+    SHELTER = "SHELTER"
+    TRANSPORTATION = "TRANSPORTATION"
+    SANITATION = "SANITATION"
+    STRUCTURAL_SAFETY = "STRUCTURAL_SAFETY"
 
 
 @dataclass
@@ -63,6 +67,11 @@ class SafetyInstructionItem:
     source: str
     warning: Optional[str] = None
     related_cascading_risk: Optional[str] = None
+    practical_steps: Optional[List[str]] = None
+    warning_signs: Optional[List[str]] = None
+    what_not_to_do: Optional[List[str]] = None
+    vulnerable_groups: Optional[str] = None
+    checklist: Optional[List[str]] = None
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -76,7 +85,12 @@ class SafetyInstructionItem:
             "reason": self.reason,
             "source": self.source,
             "warning": self.warning,
-            "related_cascading_risk": self.related_cascading_risk
+            "related_cascading_risk": self.related_cascading_risk,
+            "practical_steps": self.practical_steps or [],
+            "warning_signs": self.warning_signs or [],
+            "what_not_to_do": self.what_not_to_do or [],
+            "vulnerable_groups": self.vulnerable_groups or "",
+            "checklist": self.checklist or []
         }
 
 
@@ -96,7 +110,30 @@ RAW_SAFETY_INSTRUCTIONS: List[SafetyInstructionItem] = [
         reason="Floodwaters submerge municipal distribution pipes and open wells, introducing toxic bacteria, sewage, and chemical runoff into the drinking supply.",
         source="NDMA National Disaster Management Guidelines: Management of Floods (Section 4.3)",
         warning="Do not rely on municipal taps once floodwaters approach your street.",
-        related_cascading_risk="Water supply contamination and enteric waterborne epidemics."
+        related_cascading_risk="Water supply contamination and enteric waterborne epidemics.",
+        practical_steps=[
+            "Thoroughly sanitize food-grade drums, jerrycans, or high-density food-safe polyethylene containers with clean boiled water.",
+            "Fill containers to the brim to reduce air headspace and seal lids tightly with food-grade plastic wrap.",
+            "Elevate stored containers at least 1 metre above ground floor slab onto sturdy tables, shelves, or upper floor lofts.",
+            "Stock 100 chlorine halogen tablets (Halazone or NaDCC) for emergency point-of-use purification."
+        ],
+        warning_signs=[
+            "Municipal tap water appears cloudy, yellowish, or carries an earthy/musty sewage smell.",
+            "Local drains or stormwater culverts begin backing up into neighborhood road channels.",
+            "CWC hydrological bulletin signals warning stage breach at upstream gauging station."
+        ],
+        what_not_to_do=[
+            "Do NOT use chemical drums, oil carboys, or pesticide containers to store potable water.",
+            "Do NOT leave water storage containers uncovered or resting directly on flood-prone mud ground.",
+            "Do NOT wait until municipal water pressure drops to begin emergency filling."
+        ],
+        vulnerable_groups="Infants needing reconstituted milk formulas, pregnant mothers, dialysis patients, and bedridden elders who require uninterrupted oral hydration.",
+        checklist=[
+            "Sanitize food-grade water containers",
+            "Fill 4 litres per family member per day for 3 days",
+            "Store containers on upper level or raised tables",
+            "Pack chlorine halogen tablets and water dropper in emergency kit"
+        ]
     ),
     SafetyInstructionItem(
         id="fld-bef-02",
@@ -175,7 +212,30 @@ RAW_SAFETY_INSTRUCTIONS: List[SafetyInstructionItem] = [
         reason="Moving water exerts immense hydrodynamic pressure, and submerged road surfaces may have been entirely washed away beneath the murky water.",
         source="NDMA Standard Operating Procedure for Flood Response",
         warning="Turn Around, Don't Drown! Over 50% of flood fatalities occur in vehicles attempting to cross submerged roads.",
-        related_cascading_risk="Culvert scour and vehicular drowning."
+        related_cascading_risk="Culvert scour and vehicular drowning.",
+        practical_steps=[
+            "If driving and encountering water of unknown depth over the road, stop immediately, reverse safely, and seek alternate high routes.",
+            "If your vehicle stalls in rapidly rising water, abandon it immediately and scramble to higher ground.",
+            "If compelled to wade through shallow, standing water, probe every footstep ahead using a sturdy wooden stick.",
+            "Wear sturdy closed-toe shoes or gumboots to protect feet from submerged rusty iron, sharp debris, and venomous snakes."
+        ],
+        warning_signs=[
+            "Water flowing rapidly across road dips with visible surface ripples or eddies.",
+            "Roadside markers, culvert railings, or median curbs disappear under murky water.",
+            "Vehicle floating sensation, loss of steering traction, or water entering vehicle door floorboards."
+        ],
+        what_not_to_do=[
+            "Do NOT drive around police barricades or road-closed warning signs on flooded causeways.",
+            "Do NOT walk near open storm drains, drainage catch basins, or manholes with dislodged covers.",
+            "Do NOT allow curious children or youth to swim or take selfies near swollen rivers or flood culverts."
+        ],
+        vulnerable_groups="Schoolchildren, elderly citizens with walking aids, motorcycle commuters, and auto-rickshaw drivers.",
+        checklist=[
+            "Turn vehicle around upon spotting submerged roadway",
+            "Abandon vehicle immediately if water reaches door frame",
+            "Use a wooden probe stick when wading through necessary shallow water",
+            "Keep hands free and children secured in life vests or carry pouches"
+        ]
     ),
     SafetyInstructionItem(
         id="fld-dur-02",
@@ -231,7 +291,30 @@ RAW_SAFETY_INSTRUCTIONS: List[SafetyInstructionItem] = [
         reason="Floodwaters carry sewage pathogens, Escherichia coli, Vibrio cholerae, and Leptospira interrogans bacteria, causing cholera, acute gastroenteritis, and leptospirosis.",
         source="National Centre for Disease Control (NCDC) Post-Disaster Health Advisory",
         warning="Water filters alone may not eliminate viral contaminants if backflow pressure damaged the membrane.",
-        related_cascading_risk="Leptospirosis and waterborne diarrheal epidemics."
+        related_cascading_risk="Leptospirosis and waterborne diarrheal epidemics.",
+        practical_steps=[
+            "Bring water to a full rolling boil for a minimum of 60 seconds (or 3 minutes at altitudes above 2000 m).",
+            "Allow water to cool naturally in clean, covered glass or stainless steel vessels.",
+            "If fuel is unavailable, add 1 certified chlorine purification tablet per 20 litres of clear water; wait 30 minutes before drinking.",
+            "Disinfect open well sources using bleaching powder at 2.5 grams per 1,000 litres under PHED supervision."
+        ],
+        warning_signs=[
+            "Family members report sudden vomiting, watery diarrhea, or high fever with muscle cramps.",
+            "Well water appears turbid, foul-smelling, or shows visible surface scum post-flood.",
+            "Local community PHC reports sudden spike in gastrointestinal infections."
+        ],
+        what_not_to_do=[
+            "Do NOT drink unboiled tap water or ice made from untreated water even if it looks visually clear.",
+            "Do NOT use untreated water to wash cooking utensils, vegetables, or baby feeding bottles.",
+            "Do NOT swallow water while taking bucket baths."
+        ],
+        vulnerable_groups="Children under 5 years, elderly grandparents, chemotherapy patients, and anyone with compromised immunity.",
+        checklist=[
+            "Bring all drinking and cooking water to a 60-second rolling boil",
+            "Store boiled water in covered stainless steel vessels with taps",
+            "Disinfect water storage tanks and household filters before reuse",
+            "Prepare Oral Rehydration Salts (ORS) solution at the first sign of loose stools"
+        ]
     ),
     SafetyInstructionItem(
         id="fld-aft-02",

@@ -116,6 +116,25 @@ class TestExtendedCitizenSafetyGuidance(unittest.TestCase):
             guide = extended_safety_engine.get_complete_hazard_guide(h)
             self.assertEqual(guide["synthetic_records"], 0)
 
+    def test_progressive_disclosure_structure(self):
+        """Safety items provide progressive disclosure fields (steps, signs, what not to do, checklist)."""
+        flood_items = extended_safety_engine.get_instructions(hazard="FLOOD")
+        enriched = [i for i in flood_items if len(i.get("practical_steps", [])) > 0]
+        self.assertTrue(len(enriched) >= 2, "Expected at least 2 enriched items with practical steps")
+        for item in enriched:
+            self.assertIn("warning_signs", item)
+            self.assertIn("what_not_to_do", item)
+            self.assertIn("checklist", item)
+            self.assertIsInstance(item["practical_steps"], list)
+            self.assertIsInstance(item["checklist"], list)
+
+    def test_expanded_categories_exist(self):
+        """SafetyCategory enum supports expanded hazard safety categories."""
+        self.assertIn("SHELTER", SafetyCategory.__members__)
+        self.assertIn("TRANSPORTATION", SafetyCategory.__members__)
+        self.assertIn("SANITATION", SafetyCategory.__members__)
+        self.assertIn("STRUCTURAL_SAFETY", SafetyCategory.__members__)
+
     # -------------------------------------------------------------------------
     # REST API Endpoint Tests
     # -------------------------------------------------------------------------

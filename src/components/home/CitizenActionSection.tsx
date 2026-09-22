@@ -76,9 +76,15 @@ const DEFAULT_KIT_ITEMS: ChecklistItem[] = [
   },
 ];
 
+import { NavigationPage } from '../common/Navbar';
+
+interface CitizenActionSectionProps {
+  onNavigate?: (page: NavigationPage) => void;
+}
+
 type ActionTab = 'now' | 'before' | 'during' | 'after' | 'checklist';
 
-export const CitizenActionSection: React.FC = () => {
+export const CitizenActionSection: React.FC<CitizenActionSectionProps> = ({ onNavigate }) => {
   const [activeTab, setActiveTab] = useState<ActionTab>('now');
   const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({});
   const [showCompleteGuide, setShowCompleteGuide] = useState<boolean>(false);
@@ -109,7 +115,7 @@ export const CitizenActionSection: React.FC = () => {
 
         {/* Extended Citizen Safety Guide CTA Button */}
         <button
-          onClick={() => setShowCompleteGuide(true)}
+          onClick={() => (onNavigate ? onNavigate('safety-guide') : setShowCompleteGuide(true))}
           className="min-h-[48px] px-5 py-3 rounded-2xl bg-charcoal-950 hover:bg-charcoal-850 text-white font-mono text-xs sm:text-sm font-bold flex items-center justify-center gap-2.5 transition-all shadow-subtle shrink-0 border border-charcoal-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 self-start lg:self-end"
           aria-label="Explore Complete Citizen Disaster Safety Guide"
         >

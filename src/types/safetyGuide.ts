@@ -23,7 +23,11 @@ export type SafetyCategory =
   | 'UTILITY_SAFETY'
   | 'AVOIDANCE_WHAT_NOT_TO_DO'
   | 'RECOVERY_AND_HEALTH'
-  | 'DAMAGE_DOCUMENTATION';
+  | 'DAMAGE_DOCUMENTATION'
+  | 'SHELTER'
+  | 'TRANSPORTATION'
+  | 'SANITATION'
+  | 'STRUCTURAL_SAFETY';
 
 export interface SafetyInstructionItem {
   id: string;
@@ -37,6 +41,12 @@ export interface SafetyInstructionItem {
   source: string;
   warning?: string | null;
   related_cascading_risk?: string | null;
+  // Progressive disclosure detailed guidance:
+  practical_steps?: string[];
+  warning_signs?: string[];
+  what_not_to_do?: string[];
+  vulnerable_groups?: string;
+  checklist?: string[];
 }
 
 export interface PhaseGroup {

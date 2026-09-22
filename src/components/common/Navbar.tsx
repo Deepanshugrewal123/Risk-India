@@ -6,6 +6,8 @@ import { useCrisis } from '../../context/CrisisContext';
 export type NavigationPage = 
   | 'home'
   | 'future-risk'
+  | 'cascading-risk'
+  | 'safety-guide'
   | 'risk-map'
   | 'disasters'
   | 'get-help'
@@ -46,6 +48,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   const navLinks: NavLinkItem[] = [
     { id: 'home', label: 'Home' },
     { id: 'future-risk', label: 'Future Risk' },
+    { id: 'cascading-risk', label: 'Cascading Risk' },
+    { id: 'safety-guide', label: 'Safety Guide' },
     { id: 'home', label: 'Early Warnings', sectionId: 'early-warnings' },
     { id: 'risk-map', label: 'Open Risk Map' },
     { id: 'disasters', label: 'Live Disasters' },

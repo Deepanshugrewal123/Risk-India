@@ -142,7 +142,7 @@ export const AppContent: React.FC = () => {
 
   const handleNavigate = (
     page: NavigationPage,
-    context?: { hazard?: string; category?: string; regionId?: string }
+    context?: { hazard?: string; category?: string; regionId?: string; phase?: string }
   ) => {
     setCurrentPage(page);
     if (context?.hazard) {
@@ -161,6 +161,7 @@ export const AppContent: React.FC = () => {
     if (context?.hazard) params.set('hazard', context.hazard);
     if (context?.category) params.set('category', context.category);
     if (context?.regionId) params.set('region', context.regionId);
+    if (context?.phase) params.set('phase', context.phase);
 
     const queryString = params.toString();
     const basePath = page === 'home' ? '/' : `/${page}`;

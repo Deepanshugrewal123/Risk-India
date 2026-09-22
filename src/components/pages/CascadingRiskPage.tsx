@@ -433,7 +433,7 @@ export const CascadingRiskPage: React.FC<CascadingRiskPageProps> = ({
         onNavigate={onNavigate}
         onExploreSafetyGuide={(h) => {
           if (onNavigate) {
-            onNavigate('safety-guide');
+            onNavigate('safety-guide', { hazard: h });
           }
         }}
       />

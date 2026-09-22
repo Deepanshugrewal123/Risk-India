@@ -75,6 +75,25 @@ export const SafetyGuidePage: React.FC<SafetyGuidePageProps> = ({
     }
   }, [initialCategory]);
 
+  // Support direct URL parameters (?hazard=..., ?phase=..., ?category=...)
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const urlHazard = params.get('hazard');
+      if (urlHazard) {
+        setSelectedHazard(urlHazard.toUpperCase().trim());
+      }
+      const urlPhase = params.get('phase');
+      if (urlPhase && ['BEFORE', 'DURING', 'AFTER', 'ALL'].includes(urlPhase.toUpperCase())) {
+        setSelectedPhase(urlPhase.toUpperCase() as any);
+      }
+      const urlCat = params.get('category');
+      if (urlCat) {
+        setSelectedCategory(urlCat);
+      }
+    }
+  }, []);
+
   // Extract items for selected hazard
   const hazardItems = useMemo(() => {
     return EXTENDED_SAFETY_ITEMS.filter((i) => i.hazard === selectedHazard);

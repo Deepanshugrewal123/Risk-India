@@ -18,6 +18,7 @@ import {
 import { SafetyPhase, SafetyPriority, SafetyInstructionItem } from '../../types/safetyGuide';
 import { EXTENDED_SAFETY_ITEMS } from '../../data/extendedSafetyData';
 import { SafetyActionItemCard } from '../safety/SafetyActionItemCard';
+import { PublicSafetyWorkflowBar } from '../common/PublicSafetyWorkflowBar';
 import { NavigationPage } from '../common/Navbar';
 
 interface SafetyGuidePageProps {
@@ -420,6 +421,13 @@ export const SafetyGuidePage: React.FC<SafetyGuidePageProps> = ({
           </div>
         )}
       </div>
+
+      {/* Connected Public Safety Workflow Navigation Bar */}
+      <PublicSafetyWorkflowBar
+        currentPage="safety-guide"
+        onNavigate={onNavigate}
+        className="mt-8"
+      />
     </main>
   );
 };

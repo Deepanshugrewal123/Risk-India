@@ -12,12 +12,15 @@ import { ErrorState } from '../common/ErrorState';
 import { EmptyState } from '../common/EmptyState';
 import { Search, ShieldCheck, MapPin, Phone, AlertCircle, Clock, Globe } from 'lucide-react';
 import { NationalFutureRisk } from '../predictive/NationalFutureRisk';
+import { NavigationPage } from '../common/Navbar';
+import { PublicSafetyWorkflowBar } from '../common/PublicSafetyWorkflowBar';
 
 interface RiskMapPageProps {
   onSelectIncident?: (incident: DisasterEvent) => void;
+  onNavigate?: (page: NavigationPage, context?: any) => void;
 }
 
-export const RiskMapPage: React.FC<RiskMapPageProps> = ({ onSelectIncident }) => {
+export const RiskMapPage: React.FC<RiskMapPageProps> = ({ onSelectIncident, onNavigate }) => {
   const [viewMode, setViewMode] = useState<'current' | 'future'>('current');
   const [allRegions, setAllRegions] = useState<RegionRiskData[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -286,6 +289,13 @@ export const RiskMapPage: React.FC<RiskMapPageProps> = ({ onSelectIncident }) =>
       )}
         </>
       )}
+
+      {/* Connected Public Safety Workflow Navigation Bar */}
+      <PublicSafetyWorkflowBar
+        currentPage="risk-map"
+        onNavigate={onNavigate}
+        className="mt-12"
+      />
     </div>
   );
 };

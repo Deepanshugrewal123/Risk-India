@@ -120,39 +120,39 @@ export const CascadingRiskSection: React.FC<CascadingRiskSectionProps> = ({
     switch (posture) {
       case 'LIVE_EVIDENCE':
         return {
-          label: 'LIVE EVIDENCE ACTIVE',
-          bg: 'bg-rose-50 text-rose-900 border-rose-200',
+          label: 'LIVE EVIDENCE // REAL-TIME SENSORS',
+          bg: 'bg-rose-50 text-rose-900 border-rose-300',
           dot: 'bg-rose-600 animate-pulse'
         };
       case 'RECENT_EVIDENCE':
         return {
-          label: 'RECENT OBSERVATION',
-          bg: 'bg-orange-50 text-orange-900 border-orange-200',
+          label: 'RECENT EVIDENCE // <48H OBSERVATION',
+          bg: 'bg-orange-50 text-orange-900 border-orange-300',
           dot: 'bg-orange-600'
         };
       case 'FORECAST_AVAILABLE':
         return {
-          label: 'FORECAST INDICATION',
-          bg: 'bg-blue-50 text-blue-900 border-blue-200',
+          label: 'FORECAST AVAILABLE // MET MODEL',
+          bg: 'bg-blue-50 text-blue-900 border-blue-300',
           dot: 'bg-blue-600'
         };
       case 'BASELINE_ONLY':
         return {
-          label: 'ESTABLISHED BASELINE RELATIONSHIP',
-          bg: 'bg-slate-100 text-slate-800 border-slate-200',
+          label: 'BASELINE ONLY // SCIENTIFIC CORRELATION',
+          bg: 'bg-slate-100 text-slate-900 border-slate-300',
           dot: 'bg-slate-500'
         };
       case 'LIMITED_EVIDENCE':
         return {
-          label: 'LIMITED REGIONAL TELEMETRY',
-          bg: 'bg-amber-50 text-amber-900 border-amber-200',
+          label: 'LIMITED EVIDENCE // SPARSE TELEMETRY',
+          bg: 'bg-amber-50 text-amber-900 border-amber-300',
           dot: 'bg-amber-600'
         };
       case 'DATA_UNAVAILABLE':
       default:
         return {
-          label: 'DATA UNAVAILABLE (HONEST GAP)',
-          bg: 'bg-slate-100 text-slate-700 border-slate-200',
+          label: 'DATA UNAVAILABLE // TRANSPARENT GAP',
+          bg: 'bg-slate-100 text-slate-800 border-slate-300',
           dot: 'bg-slate-400'
         };
     }
@@ -307,15 +307,51 @@ export const CascadingRiskSection: React.FC<CascadingRiskSectionProps> = ({
           </span>
         </div>
 
-        {/* Step Progression Bar with Directional Connectors */}
-        <div className="hidden md:flex items-center justify-between px-4 py-2 rounded-xl bg-slate-50 text-[10px] font-mono font-bold text-slate-700 border border-slate-200">
-          <span className="text-blue-800">STEP 1: PRIMARY TRIGGER</span>
-          <ArrowRight className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-          <span className="text-blue-800">STEP 2: PHYSICAL CHANGE</span>
-          <ArrowRight className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-          <span className="text-blue-800">STEP 3: SECONDARY HAZARD</span>
-          <ArrowRight className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-          <span className="text-blue-800">STEP 4: SYSTEMIC IMPACT</span>
+        {/* Step Progression Bar with Directional Connectors (5-Stage Flagship Architecture) */}
+        <div className="hidden lg:flex items-center justify-between p-3 rounded-2xl bg-slate-50 text-[10px] font-mono font-bold border border-slate-200 shadow-2xs">
+          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white border border-slate-200">
+            <span className="w-5 h-5 rounded-full bg-blue-100 text-blue-800 flex items-center justify-center text-[10px] font-bold">1</span>
+            <span className="text-slate-900">PRIMARY HAZARD</span>
+          </div>
+          <ArrowRight className="w-3.5 h-3.5 text-blue-500 shrink-0" />
+          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white border border-slate-200">
+            <span className="w-5 h-5 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center text-[10px] font-bold">2</span>
+            <span className="text-slate-900">PHYSICAL CHANGE</span>
+          </div>
+          <ArrowRight className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white border border-slate-200">
+            <span className="w-5 h-5 rounded-full bg-orange-100 text-orange-800 flex items-center justify-center text-[10px] font-bold">3</span>
+            <span className="text-slate-900">SECONDARY HAZARD</span>
+          </div>
+          <ArrowRight className="w-3.5 h-3.5 text-orange-500 shrink-0" />
+          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white border border-slate-200">
+            <span className="w-5 h-5 rounded-full bg-indigo-100 text-indigo-800 flex items-center justify-center text-[10px] font-bold">4</span>
+            <span className="text-slate-900">SYSTEMIC CONSEQUENCE</span>
+          </div>
+          <ArrowRight className="w-3.5 h-3.5 text-indigo-500 shrink-0" />
+          <button
+            onClick={() => {
+              if (onExploreSafetyGuide) onExploreSafetyGuide(hazard);
+              else if (onNavigate) onNavigate('safety-guide');
+            }}
+            className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-50 border border-emerald-300 text-emerald-900 hover:bg-emerald-100 transition-colors"
+          >
+            <span className="w-5 h-5 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[10px] font-bold">5</span>
+            <span>WHAT CITIZENS SHOULD DO →</span>
+          </button>
+        </div>
+
+        {/* Mobile / Compact Stepper */}
+        <div className="lg:hidden flex flex-wrap items-center gap-1.5 p-2.5 rounded-xl bg-slate-50 text-[10px] font-mono font-bold text-slate-700 border border-slate-200">
+          <span className="text-blue-800">1. PRIMARY HAZARD</span>
+          <span className="text-slate-400">→</span>
+          <span className="text-amber-800">2. PHYSICAL CHANGE</span>
+          <span className="text-slate-400">→</span>
+          <span className="text-orange-800">3. SECONDARY HAZARD</span>
+          <span className="text-slate-400">→</span>
+          <span className="text-indigo-800">4. SYSTEMIC CONSEQUENCE</span>
+          <span className="text-slate-400">→</span>
+          <span className="text-emerald-800 font-bold">5. CITIZEN DEFENSE</span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-3">

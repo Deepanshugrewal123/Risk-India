@@ -21,6 +21,7 @@ import { RiskTrendIndicator } from '../predictive/RiskTrendIndicator';
 import { UncertaintyBadge } from '../predictive/UncertaintyBadge';
 import { PredictionScopeNotice } from '../predictive/PredictionScopeNotice';
 import { ScenarioPanel } from '../predictive/ScenarioPanel';
+import { PublicSafetyWorkflowBar } from '../common/PublicSafetyWorkflowBar';
 import { NavigationPage } from '../common/Navbar';
 import {
   Sparkles,
@@ -584,8 +585,8 @@ export const FutureRiskPage: React.FC<FutureRiskPageProps> = ({
           </div>
         </div>
 
-        {/* 4-Stage Visual Causal Progression */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-3 pt-2">
+        {/* 5-Stage Visual Causal Progression */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 pt-2">
           <div className="p-4 rounded-2xl bg-white border border-amber-200 shadow-2xs space-y-1">
             <span className="text-[10px] font-mono uppercase font-bold text-amber-700 block">
               1. PRIMARY TRIGGER
@@ -633,6 +634,18 @@ export const FutureRiskPage: React.FC<FutureRiskPageProps> = ({
               Road isolation, healthcare overload, potable water interruption, and supply bottlenecks.
             </p>
           </div>
+
+          <div className="p-4 rounded-2xl bg-emerald-50/80 border border-emerald-300 shadow-2xs space-y-1 sm:col-span-2 lg:col-span-1">
+            <span className="text-[10px] font-mono uppercase font-bold text-emerald-800 block">
+              5. CITIZEN DEFENSE
+            </span>
+            <strong className="text-xs sm:text-sm font-bold text-emerald-950 block">
+              Verified Action
+            </strong>
+            <p className="text-[11px] text-emerald-900">
+              Immediate household mitigation protocols, safe evacuation routes, and speed dials.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -660,6 +673,13 @@ export const FutureRiskPage: React.FC<FutureRiskPageProps> = ({
       <FutureRiskActionPanel
         regionName={selectedLocationMeta?.name || 'National Outlook'}
         hazardName={selectedHazard}
+      />
+
+      {/* Connected Public Safety Workflow Navigation Bar */}
+      <PublicSafetyWorkflowBar
+        currentPage="future-risk"
+        onNavigate={onNavigate}
+        className="mt-8"
       />
     </div>
   );

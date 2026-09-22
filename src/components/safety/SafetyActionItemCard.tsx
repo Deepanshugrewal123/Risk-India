@@ -198,25 +198,25 @@ export const SafetyActionItemCard: React.FC<SafetyActionItemCardProps> = ({
           id={panelId}
           className="p-5 sm:p-6 bg-slate-50 border-t border-slate-200 space-y-4 animate-in fade-in duration-200 text-slate-900"
         >
-          {/* 1. WHAT TO DO */}
-          <div className="p-3.5 rounded-xl bg-white border border-slate-200 space-y-1">
+          {/* 1. WHAT TO DO (Core Operational Directive) */}
+          <div className="p-4 rounded-2xl bg-white border border-slate-200 space-y-1.5 shadow-2xs">
             <div className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
-              <CheckCircle2 className="w-3.5 h-3.5 text-blue-700" />
+              <CheckCircle2 className="w-4 h-4 text-blue-700" />
               <span>1. WHAT TO DO // CORE OPERATIONAL DIRECTIVE</span>
             </div>
-            <p className="text-xs sm:text-sm text-slate-800 leading-relaxed pl-5 font-semibold">
+            <p className="text-xs sm:text-sm text-slate-900 leading-relaxed pl-5 font-semibold">
               {item.action || item.instruction}
             </p>
           </div>
 
           {/* 2. HOW TO DO IT (Step-by-Step Practical Actions) */}
           {((item.practical_steps && item.practical_steps.length > 0) || (item.how_to_do_it && item.how_to_do_it.length > 0)) && (
-            <div className="p-4 rounded-xl bg-white border border-slate-200 space-y-2">
+            <div className="p-4 rounded-2xl bg-white border border-slate-200 space-y-2.5 shadow-2xs">
               <div className="text-[11px] font-mono font-bold uppercase tracking-wider text-emerald-800 flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                <span>2. HOW TO DO IT // PRACTICAL STEP-BY-STEP ACTIONS</span>
+                <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                <span>2. HOW TO DO IT // STEP-BY-STEP METHOD</span>
               </div>
-              <ol className="space-y-1.5 pl-5 list-decimal text-xs sm:text-sm text-slate-800 leading-relaxed">
+              <ol className="space-y-1.5 pl-6 list-decimal text-xs sm:text-sm text-slate-800 leading-relaxed font-sans">
                 {(item.practical_steps || item.how_to_do_it || []).map((step, idx) => (
                   <li key={idx} className="pl-1">
                     {step}
@@ -226,31 +226,49 @@ export const SafetyActionItemCard: React.FC<SafetyActionItemCardProps> = ({
             </div>
           )}
 
-          {/* 3. WHEN TO DO IT (Timing & Execution Trigger Window) */}
-          <div className="p-3.5 rounded-xl bg-blue-50/80 border border-blue-200 text-xs text-slate-800 flex items-start gap-2.5">
-            <Clock className="w-4 h-4 text-blue-700 shrink-0 mt-0.5" />
-            <div>
-              <strong className="font-mono text-[11px] uppercase tracking-wider text-blue-900 block mb-0.5">
-                3. When To Do It // Action Window &amp; Execution Trigger:
-              </strong>
-              <span className="leading-relaxed text-slate-800">{getTimingGuidance()}</span>
+          {/* Scannable 2-Column Row: When To Do It & Who Needs Extra Attention */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+            {/* 3. WHEN TO DO IT (Timing & Execution Trigger Window) */}
+            <div className="p-4 rounded-2xl bg-blue-50/90 border border-blue-200 text-xs text-slate-800 flex items-start gap-3 shadow-2xs">
+              <Clock className="w-4 h-4 text-blue-700 shrink-0 mt-0.5" />
+              <div className="space-y-1">
+                <strong className="font-mono text-[11px] uppercase tracking-wider text-blue-900 block">
+                  3. When To Do It // Execution Trigger Window:
+                </strong>
+                <p className="leading-relaxed text-slate-800 text-xs">
+                  {getTimingGuidance()}
+                </p>
+              </div>
+            </div>
+
+            {/* 7. WHO NEEDS EXTRA ATTENTION (Vulnerable Household Members) */}
+            <div className="p-4 rounded-2xl bg-indigo-50/80 border border-indigo-200 text-xs text-slate-800 flex items-start gap-3 shadow-2xs">
+              <Users className="w-4 h-4 text-indigo-700 shrink-0 mt-0.5" />
+              <div className="space-y-1">
+                <strong className="font-mono text-[11px] uppercase tracking-wider text-indigo-900 block">
+                  7. Who Needs Extra Attention // Priority Vulnerable Groups:
+                </strong>
+                <p className="leading-relaxed text-indigo-950 text-xs">
+                  {item.vulnerable_groups || 'Infants, pregnant women, mobility-impaired elders, dialysis patients, and unconfined household livestock.'}
+                </p>
+              </div>
             </div>
           </div>
 
-          {/* 4. WHY THIS MATTERS (Life-Safety Rationale) */}
-          <div className="p-3.5 rounded-xl bg-white border border-slate-200 space-y-1 border-l-4 border-l-blue-600">
-            <div className="text-[11px] font-mono font-bold uppercase tracking-wider text-blue-800 flex items-center gap-1.5">
-              <Info className="w-3.5 h-3.5 text-blue-600" />
+          {/* 4. WHY THIS MATTERS (Life-Safety & Scientific Rationale) */}
+          <div className="p-4 rounded-2xl bg-white border border-slate-200 space-y-1.5 border-l-4 border-l-blue-600 shadow-2xs">
+            <div className="text-[11px] font-mono font-bold uppercase tracking-wider text-blue-900 flex items-center gap-1.5">
+              <Info className="w-4 h-4 text-blue-700" />
               <span>4. WHY THIS MATTERS // LIFE-SAFETY &amp; SCIENTIFIC RATIONALE</span>
             </div>
-            <p className="text-xs sm:text-sm text-slate-700 leading-relaxed pl-5">
+            <p className="text-xs sm:text-sm text-slate-700 leading-relaxed pl-5 font-sans">
               {item.why_it_matters || item.reason}
             </p>
           </div>
 
-          {/* 5. WHAT NOT TO DO (Dangerous Mistakes & Avoidance) */}
+          {/* 5. WHAT NOT TO DO (Dangerous Civilian Mistakes & Avoidance) */}
           {((item.what_not_to_do && item.what_not_to_do.length > 0) || item.warning || item.common_mistake || (item.what_to_avoid && item.what_to_avoid.length > 0)) && (
-            <div className="p-4 rounded-xl bg-rose-50/80 border border-rose-200 text-rose-950 space-y-2">
+            <div className="p-4 sm:p-5 rounded-2xl bg-rose-50/90 border border-rose-200 text-rose-950 space-y-2.5 shadow-2xs">
               <div className="text-[11px] font-mono font-bold uppercase tracking-wider text-rose-800 flex items-center gap-1.5">
                 <AlertOctagon className="w-4 h-4 text-rose-600 shrink-0" />
                 <span>5. WHAT NOT TO DO // DANGEROUS MISTAKES &amp; LETHAL PITFALLS</span>
@@ -262,12 +280,12 @@ export const SafetyActionItemCard: React.FC<SafetyActionItemCardProps> = ({
               )}
               {item.common_mistake && (
                 <div className="pl-5 text-xs text-rose-900">
-                  <strong>Common Civilian Mistake: </strong>
+                  <strong>Common Civilian Misconception: </strong>
                   <span>{item.common_mistake}</span>
                 </div>
               )}
               {((item.what_not_to_do && item.what_not_to_do.length > 0) || (item.what_to_avoid && item.what_to_avoid.length > 0)) && (
-                <ul className="space-y-1 pl-5 list-disc text-xs leading-relaxed text-rose-900">
+                <ul className="space-y-1.5 pl-5 list-disc text-xs leading-relaxed text-rose-900">
                   {(item.what_not_to_do || item.what_to_avoid || []).map((dont, idx) => (
                     <li key={idx}>{dont}</li>
                   ))}
@@ -278,12 +296,12 @@ export const SafetyActionItemCard: React.FC<SafetyActionItemCardProps> = ({
 
           {/* 6. WARNING SIGNS (Observable Field Indicators) */}
           {item.warning_signs && item.warning_signs.length > 0 && (
-            <div className="p-4 rounded-xl bg-amber-50/70 border border-amber-200 text-amber-950 space-y-2">
+            <div className="p-4 rounded-2xl bg-amber-50/80 border border-amber-200 text-amber-950 space-y-2 shadow-2xs">
               <div className="text-[11px] font-mono font-bold uppercase tracking-wider text-amber-800 flex items-center gap-1.5">
-                <AlertTriangle className="w-3.5 h-3.5 text-amber-600" />
+                <AlertTriangle className="w-4 h-4 text-amber-600" />
                 <span>6. WARNING SIGNS // OBSERVED GROUND-LEVEL FIELD SIGNS</span>
               </div>
-              <ul className="space-y-1 pl-5 list-disc text-xs sm:text-sm text-amber-950 leading-relaxed">
+              <ul className="space-y-1.5 pl-5 list-disc text-xs sm:text-sm text-amber-950 leading-relaxed">
                 {item.warning_signs.map((sign, idx) => (
                   <li key={idx} className="pl-1">
                     {sign}
@@ -293,65 +311,17 @@ export const SafetyActionItemCard: React.FC<SafetyActionItemCardProps> = ({
             </div>
           )}
 
-          {/* 7. WHO NEEDS EXTRA ATTENTION (Vulnerable Household Members) */}
-          {item.vulnerable_groups && (
-            <div className="p-3.5 rounded-xl bg-indigo-50/70 border border-indigo-200 text-xs text-slate-800 flex items-start gap-2.5">
-              <Users className="w-4 h-4 text-indigo-700 shrink-0 mt-0.5" />
-              <div>
-                <strong className="font-mono text-[11px] uppercase tracking-wider text-indigo-900 block mb-0.5">
-                  7. Who Needs Extra Attention // Vulnerable Household Demographics:
-                </strong>
-                <span className="leading-relaxed text-indigo-950">{item.vulnerable_groups}</span>
-              </div>
-            </div>
-          )}
-
-          {/* 8. ACTION CHECKLIST (Interactive Subtasks) */}
-          {item.checklist && item.checklist.length > 0 && (
-            <div className="p-4 rounded-xl bg-white border border-slate-200 space-y-2">
-              <div className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                <span>8. HOUSEHOLD ACTION CHECKLIST // INTERACTIVE SUBTASKS</span>
-              </div>
-              <div className="space-y-1.5 pl-1">
-                {item.checklist.map((task, idx) => {
-                  const taskKey = `${item.id}-sub-${idx}`;
-                  const isChecked = !!checkedSubtasks[taskKey];
-                  return (
-                    <label
-                      key={idx}
-                      onClick={() => toggleSubtask(idx)}
-                      className="flex items-start gap-2.5 p-2 rounded-lg hover:bg-slate-100 cursor-pointer transition-colors text-xs leading-relaxed"
-                    >
-                      <input
-                        type="checkbox"
-                        checked={isChecked}
-                        onChange={() => {}}
-                        className="sr-only"
-                      />
-                      <span className="min-w-[18px] min-h-[18px] mt-0.5 flex items-center justify-center">
-                        {isChecked ? (
-                          <CheckSquare className="w-4 h-4 text-emerald-600" />
-                        ) : (
-                          <Square className="w-4 h-4 text-slate-400" />
-                        )}
-                      </span>
-                      <span className={isChecked ? 'line-through text-slate-400' : 'text-slate-800 font-medium'}>
-                        {task}
-                      </span>
-                    </label>
-                  );
-                })}
-              </div>
-            </div>
-          )}
-
-          {/* 9. RELATED SECONDARY / CASCADING RISK (With Direct Link to Cascading Explorer) */}
+          {/* 9. RELATED SECONDARY / CASCADING RISK (Direct Link to Cascading Explorer) */}
           {item.related_cascading_risk && (
-            <div className="p-4 rounded-xl bg-purple-50/70 border border-purple-200 text-purple-950 space-y-2">
-              <div className="text-[11px] font-mono font-bold uppercase tracking-wider text-purple-800 flex items-center gap-1.5">
-                <GitBranch className="w-3.5 h-3.5 text-purple-700" />
-                <span>9. RELATED SECONDARY &amp; CASCADING RISK PATHWAY</span>
+            <div className="p-4 rounded-2xl bg-purple-50/80 border border-purple-200 text-purple-950 space-y-2.5 shadow-2xs">
+              <div className="flex items-center justify-between gap-2">
+                <div className="text-[11px] font-mono font-bold uppercase tracking-wider text-purple-800 flex items-center gap-1.5">
+                  <GitBranch className="w-4 h-4 text-purple-700" />
+                  <span>9. RELATED SECONDARY &amp; CASCADING RISK PATHWAY</span>
+                </div>
+                <span className="text-[10px] font-mono font-bold text-purple-700 uppercase bg-purple-100 px-2 py-0.5 rounded-md">
+                  Causal Progression
+                </span>
               </div>
               <p className="text-xs sm:text-sm text-purple-950 font-medium leading-relaxed pl-5">
                 {item.related_cascading_risk}
@@ -360,7 +330,7 @@ export const SafetyActionItemCard: React.FC<SafetyActionItemCardProps> = ({
                 <div className="pl-5 pt-1">
                   <button
                     onClick={() => onNavigate('cascading-risk', { hazard: item.hazard })}
-                    className="min-h-[36px] px-3.5 py-1.5 rounded-lg bg-purple-700 hover:bg-purple-800 text-white font-mono text-[11px] font-bold flex items-center gap-1.5 transition-colors shadow-2xs"
+                    className="min-h-[40px] px-4 py-2 rounded-xl bg-purple-700 hover:bg-purple-800 text-white font-mono text-xs font-bold flex items-center gap-2 transition-all shadow-xs"
                   >
                     <GitBranch className="w-3.5 h-3.5" />
                     <span>VIEW {item.hazard} CASCADING CONSEQUENCE CHAIN →</span>
@@ -370,20 +340,95 @@ export const SafetyActionItemCard: React.FC<SafetyActionItemCardProps> = ({
             </div>
           )}
 
-          {/* 10. STATUTORY CITATION & EMERGENCY ACTIONS */}
-          <div className="pt-3 border-t border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[10px] font-mono text-slate-500">
-            <div>
-              <strong className="text-slate-700">10. Official Statutory Citation: </strong>
-              <span>{item.source}</span>
+          {/* Scannable 2-Column Row: Relevant Emergency Action & Statutory Citation */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 pt-1">
+            {/* Relevant Emergency Action & Speed Dial */}
+            <div className="p-3.5 rounded-2xl bg-emerald-50/80 border border-emerald-200 text-xs text-emerald-950 space-y-1.5 shadow-2xs">
+              <div className="flex items-center gap-1.5 text-emerald-900 font-mono font-bold uppercase text-[11px]">
+                <ShieldCheck className="w-4 h-4 text-emerald-700" />
+                <span>Relevant Emergency Action &amp; Speed Dial</span>
+              </div>
+              <p className="text-[11px] leading-relaxed text-emerald-900">
+                {item.related_emergency_action || (
+                  item.hazard === 'FLOOD'
+                    ? 'Swift water or residential inundation threat: Dial National Emergency 112 or NDRF helpline. Do not enter moving currents on foot or by motor vehicle.'
+                    : item.hazard === 'CYCLONE'
+                    ? 'Structural breach during high-velocity squall: Retreat to internal hallway or bathroom; alert NDMA Disaster Helpline (1078) once winds abate.'
+                    : item.hazard === 'HEATWAVE'
+                    ? 'Suspected heat stroke (confusion, anhidrosis, hot dry skin): Call 108 immediately. Apply ice packs to axillae and groin, provide active fan cooling.'
+                    : item.hazard === 'SEVERE_WEATHER'
+                    ? 'Downed electrical line or lightning strike: Dial 108/112 immediately. Victims carry no electrical charge; administer bystander CPR if unresponsive.'
+                    : item.hazard === 'LANDSLIDE'
+                    ? 'Slope failure or debris blockages: Evacuate laterally away from the debris chute. Contact District Control Room (1077) or State Relief (1070).'
+                    : 'Earthquake collapse entrapment: Tap metal pipes rhythmically; protect airways with cloth; dial 112 if cellular tower connection holds.'
+                )}
+              </p>
             </div>
 
-            {item.related_emergency_action && (
-              <div className="flex items-center gap-1 text-emerald-800 font-semibold">
-                <ShieldCheck className="w-3 h-3 text-emerald-600" />
-                <span>Cross-Ref: {item.related_emergency_action}</span>
+            {/* 10. Official Statutory Citation */}
+            <div className="p-3.5 rounded-2xl bg-white border border-slate-200 text-xs text-slate-700 space-y-1.5 shadow-2xs flex flex-col justify-between">
+              <div>
+                <div className="text-slate-900 font-mono font-bold uppercase text-[11px] mb-1">
+                  10. Official Statutory Citation
+                </div>
+                <p className="text-[11px] leading-relaxed text-slate-600 font-mono">
+                  {item.source}
+                </p>
               </div>
-            )}
+              <div className="text-[10px] font-mono text-slate-500 pt-1 border-t border-slate-100 flex items-center justify-between">
+                <span>NDMA National Guidelines</span>
+                <span>DM Act 2005</span>
+              </div>
+            </div>
           </div>
+
+          {/* 8. HOUSEHOLD ACTION CHECKLIST (Interactive Subtasks) */}
+          {item.checklist && item.checklist.length > 0 && (
+            <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 space-y-3 shadow-2xs">
+              <div className="flex items-center justify-between">
+                <div className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  <span>8. HOUSEHOLD ACTION CHECKLIST // INTERACTIVE SUBTASKS</span>
+                </div>
+                <span className="text-[10px] font-mono text-slate-500">
+                  {item.checklist.filter((_, idx) => checkedSubtasks[`${item.id}-sub-${idx}`]).length} / {item.checklist.length} Completed
+                </span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pl-1">
+                {item.checklist.map((task, idx) => {
+                  const taskKey = `${item.id}-sub-${idx}`;
+                  const isChecked = !!checkedSubtasks[taskKey];
+                  return (
+                    <label
+                      key={idx}
+                      className={`flex items-start gap-2.5 p-2 rounded-xl border text-xs cursor-pointer select-none transition-all ${
+                        isChecked
+                          ? 'bg-emerald-50/60 border-emerald-300 text-emerald-900'
+                          : 'bg-slate-50/60 border-slate-200 hover:bg-slate-100 text-slate-800'
+                      }`}
+                    >
+                      <input
+                        type="checkbox"
+                        checked={isChecked}
+                        onChange={() => toggleSubtask(idx)}
+                        className="sr-only"
+                      />
+                      <span className="min-w-[18px] min-h-[18px] mt-0.5 flex items-center justify-center shrink-0">
+                        {isChecked ? (
+                          <CheckSquare className="w-4 h-4 text-emerald-600" />
+                        ) : (
+                          <Square className="w-4 h-4 text-slate-400" />
+                        )}
+                      </span>
+                      <span className={isChecked ? 'line-through text-slate-400' : 'text-slate-800 font-medium leading-relaxed'}>
+                        {task}
+                      </span>
+                    </label>
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </div>
       )}
     </article>

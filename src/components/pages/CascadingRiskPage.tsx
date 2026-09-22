@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { CascadingRiskSection } from '../cascading/CascadingRiskSection';
 import { WhatCanHappenNextPanel } from '../cascading/WhatCanHappenNextPanel';
+import { PublicSafetyWorkflowBar } from '../common/PublicSafetyWorkflowBar';
 import { NavigationPage } from '../common/Navbar';
 import { ALL_INDIAN_STATES, ALL_INDIAN_UNION_TERRITORIES } from '../../data/indiaLocations';
 
@@ -111,53 +112,242 @@ export const CascadingRiskPage: React.FC<CascadingRiskPageProps> = ({
       </div>
 
       {/* Hero Header */}
-      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-paper-300 dark:border-slate-800">
+      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-slate-200">
         <div className="max-w-3xl space-y-2">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 text-indigo-800 dark:text-indigo-300 text-xs font-mono uppercase tracking-wider font-bold">
-            <GitBranch className="w-3.5 h-3.5" />
-            <span>CAUSAL DISASTER SEQUENCE // ALL 36 STATES &amp; UNION TERRITORIES</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-800 text-xs font-mono uppercase tracking-wider font-bold">
+            <GitBranch className="w-3.5 h-3.5 text-blue-700" />
+            <span>DISASTER CONSEQUENCE INTELLIGENCE // ALL 36 STATES &amp; UNION TERRITORIES</span>
           </div>
-          <h1 className="text-3xl sm:text-5xl font-black text-charcoal-950 dark:text-white tracking-tight">
+          <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
             Cascading Risk Intelligence
           </h1>
-          <p className="text-base sm:text-lg text-charcoal-600 dark:text-slate-300 leading-relaxed">
-            Answers the vital citizen question: <em>&quot;If this disaster happens, what physical changes, secondary hazards, and systemic breakdowns could follow?&quot;</em>
+          <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+            Answers the vital citizen question: <strong className="text-slate-900 font-semibold">&quot;A disaster happens — what could happen NEXT?&quot;</strong>
           </p>
         </div>
 
         {/* Action Link to Safety Guide */}
         <button
           onClick={() => onNavigate && onNavigate('safety-guide')}
-          className="min-h-[48px] px-5 py-3 rounded-2xl bg-charcoal-950 dark:bg-white text-white dark:text-charcoal-950 font-mono text-xs sm:text-sm font-bold flex items-center justify-center gap-2.5 transition-all shadow-subtle shrink-0 self-start lg:self-end hover:bg-charcoal-850 dark:hover:bg-slate-100"
+          className="min-h-[48px] px-5 py-3 rounded-2xl bg-slate-900 text-white hover:bg-slate-800 font-mono text-xs sm:text-sm font-bold flex items-center justify-center gap-2.5 transition-all shadow-xs shrink-0 self-start lg:self-end"
         >
-          <BookOpen className="w-4 h-4 text-emerald-400 dark:text-emerald-600" />
+          <BookOpen className="w-4 h-4 text-emerald-400" />
           <span>VIEW COMPLETE SAFETY GUIDE</span>
           <ChevronRight className="w-4 h-4" />
         </button>
       </div>
 
+      {/* Flagship Concept Card: “A disaster happens — what could happen NEXT?” */}
+      <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-xs space-y-6">
+        <div className="space-y-1.5 max-w-3xl">
+          <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-[11px] font-mono font-bold uppercase tracking-wider">
+            <Layers className="w-3 h-3 text-amber-700" />
+            <span>PRIMARY DIFFERENTIATING ARCHITECTURE</span>
+          </div>
+          <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+            “A disaster happens — what could happen NEXT?”
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Disaster impact rarely stops at the initial shock. A cyclone breaches coastal sea dykes; saline flooding poisons freshwater borewells; submerged transformers plunge hospitals into blackout. RISK // INDIA models the physical cascade across five progressive stages:
+          </p>
+        </div>
+
+        {/* 5-Stage Consequence Progression Chain */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 pt-2">
+          {/* Stage 1 */}
+          <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between space-y-2">
+            <div>
+              <div className="flex items-center justify-between mb-1">
+                <span className="w-6 h-6 rounded-full bg-blue-100 text-blue-800 text-xs font-mono font-bold flex items-center justify-center">1</span>
+                <span className="text-[10px] font-mono text-slate-500 uppercase font-bold">Inception</span>
+              </div>
+              <h3 className="text-xs font-mono font-bold uppercase text-blue-900">
+                PRIMARY HAZARD
+              </h3>
+              <p className="text-[11px] text-slate-600 mt-1 leading-relaxed">
+                The primary event: torrential rainfall, cyclonic winds, seismic shaking, or heat dome.
+              </p>
+            </div>
+            <div className="text-[10px] font-mono text-blue-700 font-semibold pt-2 border-t border-slate-200">
+              Triggers initial shock
+            </div>
+          </div>
+
+          {/* Stage 2 */}
+          <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between space-y-2">
+            <div>
+              <div className="flex items-center justify-between mb-1">
+                <span className="w-6 h-6 rounded-full bg-amber-100 text-amber-800 text-xs font-mono font-bold flex items-center justify-center">2</span>
+                <span className="text-[10px] font-mono text-slate-500 uppercase font-bold">Terrain Shift</span>
+              </div>
+              <h3 className="text-xs font-mono font-bold uppercase text-amber-900">
+                PHYSICAL CHANGE
+              </h3>
+              <p className="text-[11px] text-slate-600 mt-1 leading-relaxed">
+                Environmental shifts: soil pore-water saturation, embankment scour, drainage backflow.
+              </p>
+            </div>
+            <div className="text-[10px] font-mono text-amber-700 font-semibold pt-2 border-t border-slate-200">
+              Alters physical system
+            </div>
+          </div>
+
+          {/* Stage 3 */}
+          <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between space-y-2">
+            <div>
+              <div className="flex items-center justify-between mb-1">
+                <span className="w-6 h-6 rounded-full bg-orange-100 text-orange-800 text-xs font-mono font-bold flex items-center justify-center">3</span>
+                <span className="text-[10px] font-mono text-slate-500 uppercase font-bold">Emergent Threat</span>
+              </div>
+              <h3 className="text-xs font-mono font-bold uppercase text-orange-900">
+                SECONDARY HAZARD
+              </h3>
+              <p className="text-[11px] text-slate-600 mt-1 leading-relaxed">
+                Consequential perils: slope failures/landslides, water table contamination, electrical fire.
+              </p>
+            </div>
+            <div className="text-[10px] font-mono text-orange-700 font-semibold pt-2 border-t border-slate-200">
+              Spawns subsequent hazard
+            </div>
+          </div>
+
+          {/* Stage 4 */}
+          <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between space-y-2">
+            <div>
+              <div className="flex items-center justify-between mb-1">
+                <span className="w-6 h-6 rounded-full bg-indigo-100 text-indigo-800 text-xs font-mono font-bold flex items-center justify-center">4</span>
+                <span className="text-[10px] font-mono text-slate-500 uppercase font-bold">Lifeline Stress</span>
+              </div>
+              <h3 className="text-xs font-mono font-bold uppercase text-indigo-900">
+                SYSTEMIC CONSEQUENCE
+              </h3>
+              <p className="text-[11px] text-slate-600 mt-1 leading-relaxed">
+                Critical lifeline breakdown: grid blackout, severed highway access, waterborne epidemic.
+              </p>
+            </div>
+            <div className="text-[10px] font-mono text-indigo-700 font-semibold pt-2 border-t border-slate-200">
+              Disrupts human society
+            </div>
+          </div>
+
+          {/* Stage 5 */}
+          <div className="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-300 flex flex-col justify-between space-y-2">
+            <div>
+              <div className="flex items-center justify-between mb-1">
+                <span className="w-6 h-6 rounded-full bg-emerald-600 text-white text-xs font-mono font-bold flex items-center justify-center">5</span>
+                <span className="text-[10px] font-mono text-emerald-800 uppercase font-bold">Action Directive</span>
+              </div>
+              <h3 className="text-xs font-mono font-bold uppercase text-emerald-950">
+                WHAT CITIZENS SHOULD DO
+              </h3>
+              <p className="text-[11px] text-emerald-900 mt-1 leading-relaxed">
+                Immediate defensive countermeasures: isolate utilities, boil water, evacuate via vetted routes.
+              </p>
+            </div>
+            <div className="text-[10px] font-mono text-emerald-800 font-bold pt-2 border-t border-emerald-200 flex items-center gap-1">
+              <span>Direct Safety Action</span>
+              <span>→</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Evidence Posture Reference Key: Explicit Distinction of All 6 Postures */}
+        <div className="pt-4 border-t border-slate-200 space-y-2.5">
+          <div className="flex items-center justify-between">
+            <span className="text-[11px] font-mono uppercase font-bold text-slate-700 block">
+              SCIENTIFIC HONESTY // 6 STANDARDIZED EVIDENCE POSTURES
+            </span>
+            <span className="text-[10px] font-mono text-slate-500">
+              Zero fabricated percentages • Explicit data posture transparency
+            </span>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 text-xs">
+            <div className="p-2.5 rounded-xl bg-rose-50 border border-rose-200 space-y-1">
+              <div className="flex items-center gap-1.5 font-mono font-bold text-[10px] text-rose-900">
+                <span className="w-2 h-2 rounded-full bg-rose-600 animate-pulse" />
+                <span>LIVE EVIDENCE</span>
+              </div>
+              <p className="text-[10px] text-rose-950 leading-tight">
+                Confirmed by real-time sensor, river gauge, or IMD radar.
+              </p>
+            </div>
+
+            <div className="p-2.5 rounded-xl bg-orange-50 border border-orange-200 space-y-1">
+              <div className="flex items-center gap-1.5 font-mono font-bold text-[10px] text-orange-900">
+                <span className="w-2 h-2 rounded-full bg-orange-600" />
+                <span>RECENT EVIDENCE</span>
+              </div>
+              <p className="text-[10px] text-orange-950 leading-tight">
+                Satellite or field report recorded in past 24–48 hours.
+              </p>
+            </div>
+
+            <div className="p-2.5 rounded-xl bg-blue-50 border border-blue-200 space-y-1">
+              <div className="flex items-center gap-1.5 font-mono font-bold text-[10px] text-blue-900">
+                <span className="w-2 h-2 rounded-full bg-blue-600" />
+                <span>FORECAST AVAILABLE</span>
+              </div>
+              <p className="text-[10px] text-blue-950 leading-tight">
+                Projected by official IMD NWP or CWC basin model.
+              </p>
+            </div>
+
+            <div className="p-2.5 rounded-xl bg-slate-100 border border-slate-200 space-y-1">
+              <div className="flex items-center gap-1.5 font-mono font-bold text-[10px] text-slate-900">
+                <span className="w-2 h-2 rounded-full bg-slate-500" />
+                <span>BASELINE ONLY</span>
+              </div>
+              <p className="text-[10px] text-slate-700 leading-tight">
+                Physical/geotechnical correlation without live sensors.
+              </p>
+            </div>
+
+            <div className="p-2.5 rounded-xl bg-amber-50 border border-amber-200 space-y-1">
+              <div className="flex items-center gap-1.5 font-mono font-bold text-[10px] text-amber-900">
+                <span className="w-2 h-2 rounded-full bg-amber-600" />
+                <span>LIMITED EVIDENCE</span>
+              </div>
+              <p className="text-[10px] text-amber-950 leading-tight">
+                Sparse telemetry; baseline physical correlations applied.
+              </p>
+            </div>
+
+            <div className="p-2.5 rounded-xl bg-slate-100 border border-slate-200 space-y-1">
+              <div className="flex items-center gap-1.5 font-mono font-bold text-[10px] text-slate-700">
+                <span className="w-2 h-2 rounded-full bg-slate-400" />
+                <span>DATA UNAVAILABLE</span>
+              </div>
+              <p className="text-[10px] text-slate-600 leading-tight">
+                Honest reporting of data gap; zero synthetic assumptions.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Statutory & Scientific Guardrail Disclaimers */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="p-4 rounded-2xl bg-indigo-50/70 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-900 text-xs text-indigo-950 dark:text-indigo-200 flex items-start gap-3">
-          <Info className="w-4.5 h-4.5 text-indigo-600 dark:text-indigo-400 shrink-0 mt-0.5" />
+        <div className="p-4 rounded-2xl bg-blue-50/70 border border-blue-200 text-xs text-slate-800 flex items-start gap-3">
+          <Info className="w-4.5 h-4.5 text-blue-700 shrink-0 mt-0.5" />
           <div className="space-y-1">
-            <strong className="font-mono uppercase font-bold block">
+            <strong className="font-mono uppercase font-bold block text-blue-900">
               Physically Established Consequence Pathways
             </strong>
-            <p className="leading-relaxed">
+            <p className="leading-relaxed text-slate-700">
               Cascading risk relationships reflect physically established and empirical vulnerability pathways.
               They do <strong>NOT</strong> represent predictive forecasts or synthetic probability models.
             </p>
           </div>
         </div>
 
-        <div className="p-4 rounded-2xl bg-amber-50/70 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900 text-xs text-amber-950 dark:text-amber-200 flex items-start gap-3">
-          <ShieldAlert className="w-4.5 h-4.5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+        <div className="p-4 rounded-2xl bg-amber-50/70 border border-amber-200 text-xs text-amber-950 flex items-start gap-3">
+          <ShieldAlert className="w-4.5 h-4.5 text-amber-600 shrink-0 mt-0.5" />
           <div className="space-y-1">
-            <strong className="font-mono uppercase font-bold block">
+            <strong className="font-mono uppercase font-bold block text-amber-900">
               Seismic Non-Prediction Guarantee
             </strong>
-            <p className="leading-relaxed">
+            <p className="leading-relaxed text-amber-900">
               Earthquakes are fundamentally non-predictable: ground shaking triggers structural and geotechnical failures,
               not scheduled calendar events. Temporal earthquake prediction is scientifically prohibited.
             </p>
@@ -249,12 +439,19 @@ export const CascadingRiskPage: React.FC<CascadingRiskPageProps> = ({
       />
 
       {/* What Can Happen Next? Multi-Stage Consequence & Observable Signs Panel */}
-      <div className="pt-6 border-t border-paper-200 dark:border-slate-800">
+      <div className="pt-6 border-t border-slate-200">
         <WhatCanHappenNextPanel
           initialHazard={selectedHazard}
           onNavigate={onNavigate}
         />
       </div>
+
+      {/* Connected Public Safety Workflow Navigation Bar */}
+      <PublicSafetyWorkflowBar
+        currentPage="cascading-risk"
+        onNavigate={onNavigate}
+        className="mt-8"
+      />
     </main>
   );
 };

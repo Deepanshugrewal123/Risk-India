@@ -110,78 +110,105 @@ export const HomePage: React.FC<HomePageProps> = ({
 
       {/* Deep Citizen Exploration Hub */}
       <ScrollReveal>
-        <section className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto py-4">
-          <div className="p-6 sm:p-8 rounded-3xl bg-paper-50 dark:bg-slate-900 border border-paper-300 dark:border-slate-800 space-y-4">
+        <section className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto py-6">
+          <div className="p-6 sm:p-8 rounded-3xl bg-slate-50 border border-slate-200 space-y-4 shadow-xs">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
-                <span className="text-[11px] font-mono uppercase tracking-wider text-indigo-700 dark:text-indigo-400 font-bold block">
+                <span className="text-[11px] font-mono uppercase tracking-wider text-blue-700 font-bold block">
                   CITIZEN INTELLIGENCE PORTAL // DEEPER PERSPECTIVES
                 </span>
-                <h3 className="text-xl sm:text-2xl font-bold text-charcoal-950 dark:text-white">
+                <h3 className="text-xl sm:text-2xl font-black text-slate-900">
                   Explore Specialized Disaster Intelligence
                 </h3>
+                <p className="text-xs sm:text-sm text-slate-600 mt-1">
+                  Move beyond surface headlines into forward modeling, secondary causality, and verified citizen defense.
+                </p>
               </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
               <button
                 onClick={() => onNavigate('future-risk')}
-                className="p-4 rounded-2xl bg-white dark:bg-slate-850 border border-paper-200 dark:border-slate-800 hover:border-indigo-400 dark:hover:border-indigo-600 text-left transition-all shadow-xs group min-h-[44px]"
+                className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-xs text-left transition-all group min-h-[44px] flex flex-col justify-between"
               >
-                <div className="text-xs font-mono font-bold uppercase text-indigo-600 dark:text-indigo-400 mb-1">
-                  01 // FORWARD OUTLOOK
+                <div>
+                  <div className="text-[10px] font-mono font-bold uppercase text-blue-700 mb-1.5 flex items-center justify-between">
+                    <span>01 // FORWARD OUTLOOK</span>
+                    <span className="text-blue-500 group-hover:translate-x-0.5 transition-transform">→</span>
+                  </div>
+                  <h4 className="font-bold text-slate-900 text-base group-hover:text-blue-700 transition-colors">
+                    Future Risk Projections
+                  </h4>
+                  <p className="text-xs text-slate-600 mt-1.5 leading-relaxed font-sans">
+                    5 forecast horizons from NOW to 7 days across all 36 monitored States &amp; UTs.
+                  </p>
                 </div>
-                <h4 className="font-bold text-charcoal-900 dark:text-white text-base group-hover:text-indigo-600 transition-colors">
-                  Future Risk Projections
-                </h4>
-                <p className="text-xs text-charcoal-600 dark:text-slate-400 mt-1">
-                  5 forecast horizons from NOW to 7 days across all 36 States & UTs.
-                </p>
+                <div className="mt-3 text-[10px] font-mono text-slate-500 font-semibold pt-2 border-t border-slate-100">
+                  NWP Forecast Fusion
+                </div>
               </button>
 
               <button
                 onClick={() => onNavigate('cascading-risk')}
-                className="p-4 rounded-2xl bg-white dark:bg-slate-850 border border-paper-200 dark:border-slate-800 hover:border-indigo-400 dark:hover:border-indigo-600 text-left transition-all shadow-xs group min-h-[44px]"
+                className="p-5 rounded-2xl bg-amber-50/50 border border-amber-300 hover:border-amber-500 hover:shadow-xs text-left transition-all group min-h-[44px] flex flex-col justify-between relative overflow-hidden"
               >
-                <div className="text-xs font-mono font-bold uppercase text-indigo-600 dark:text-indigo-400 mb-1">
-                  02 // WHAT HAPPENS NEXT
+                <div>
+                  <div className="text-[10px] font-mono font-bold uppercase text-amber-800 mb-1.5 flex items-center justify-between">
+                    <span className="font-extrabold">02 // WHAT HAPPENS NEXT?</span>
+                    <span className="text-amber-700 group-hover:translate-x-0.5 transition-transform">→</span>
+                  </div>
+                  <h4 className="font-bold text-slate-900 text-base group-hover:text-amber-800 transition-colors">
+                    Cascading Risk Intelligence
+                  </h4>
+                  <p className="text-xs text-slate-700 mt-1.5 leading-relaxed font-sans font-medium">
+                    &ldquo;A disaster happens — what could happen NEXT?&rdquo; Trace the 5-stage causal consequence sequence.
+                  </p>
                 </div>
-                <h4 className="font-bold text-charcoal-900 dark:text-white text-base group-hover:text-indigo-600 transition-colors">
-                  Cascading Risk Intelligence
-                </h4>
-                <p className="text-xs text-charcoal-600 dark:text-slate-400 mt-1">
-                  Trace secondary hazards and systemic breakdowns triggered by initial events.
-                </p>
+                <div className="mt-3 text-[10px] font-mono text-amber-800 font-bold pt-2 border-t border-amber-200">
+                  Secondary Hazards &amp; Lifelines →
+                </div>
               </button>
 
               <button
                 onClick={() => onNavigate('safety-guide')}
-                className="p-4 rounded-2xl bg-white dark:bg-slate-850 border border-paper-200 dark:border-slate-800 hover:border-emerald-400 dark:hover:border-emerald-600 text-left transition-all shadow-xs group min-h-[44px]"
+                className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-500 hover:shadow-xs text-left transition-all group min-h-[44px] flex flex-col justify-between"
               >
-                <div className="text-xs font-mono font-bold uppercase text-emerald-600 dark:text-emerald-400 mb-1">
-                  03 // LIFE SAFETY
+                <div>
+                  <div className="text-[10px] font-mono font-bold uppercase text-emerald-700 mb-1.5 flex items-center justify-between">
+                    <span>03 // LIFE SAFETY</span>
+                    <span className="text-emerald-500 group-hover:translate-x-0.5 transition-transform">→</span>
+                  </div>
+                  <h4 className="font-bold text-slate-900 text-base group-hover:text-emerald-700 transition-colors">
+                    Complete Safety Guide
+                  </h4>
+                  <p className="text-xs text-slate-600 mt-1.5 leading-relaxed font-sans">
+                    148 Before, During, and After actionable guidance protocols across all 6 disaster types.
+                  </p>
                 </div>
-                <h4 className="font-bold text-charcoal-900 dark:text-white text-base group-hover:text-emerald-600 transition-colors">
-                  Complete Safety Guide
-                </h4>
-                <p className="text-xs text-charcoal-600 dark:text-slate-400 mt-1">
-                  Before, During, and After actionable guidance across all 6 disaster types.
-                </p>
+                <div className="mt-3 text-[10px] font-mono text-slate-500 font-semibold pt-2 border-t border-slate-100">
+                  NDMA Verified Protocols
+                </div>
               </button>
 
               <button
                 onClick={() => onNavigate('risk-map')}
-                className="p-4 rounded-2xl bg-white dark:bg-slate-850 border border-paper-200 dark:border-slate-800 hover:border-charcoal-500 text-left transition-all shadow-xs group min-h-[44px]"
+                className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-slate-400 hover:shadow-xs text-left transition-all group min-h-[44px] flex flex-col justify-between"
               >
-                <div className="text-xs font-mono font-bold uppercase text-charcoal-500 dark:text-slate-400 mb-1">
-                  04 // GEOSPATIAL
+                <div>
+                  <div className="text-[10px] font-mono font-bold uppercase text-slate-600 mb-1.5 flex items-center justify-between">
+                    <span>04 // GEOSPATIAL</span>
+                    <span className="text-slate-500 group-hover:translate-x-0.5 transition-transform">→</span>
+                  </div>
+                  <h4 className="font-bold text-slate-900 text-base group-hover:text-slate-700 transition-colors">
+                    Open Risk Map
+                  </h4>
+                  <p className="text-xs text-slate-600 mt-1.5 leading-relaxed font-sans">
+                    Interactive multi-hazard geospatial map with live district telemetry across all 36 entities.
+                  </p>
                 </div>
-                <h4 className="font-bold text-charcoal-900 dark:text-white text-base group-hover:text-charcoal-700 transition-colors">
-                  Open Risk Map
-                </h4>
-                <p className="text-xs text-charcoal-600 dark:text-slate-400 mt-1">
-                  Interactive multi-hazard geospatial map with live district telemetry.
-                </p>
+                <div className="mt-3 text-[10px] font-mono text-slate-500 font-semibold pt-2 border-t border-slate-100">
+                  28 States + 8 UTs Covered
+                </div>
               </button>
             </div>
           </div>

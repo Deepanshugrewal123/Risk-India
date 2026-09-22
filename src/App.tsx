@@ -227,6 +227,7 @@ export const AppContent: React.FC = () => {
             {currentPage === 'risk-map' && (
               <RiskMapPage
                 onSelectIncident={(incident) => setSelectedIncident(incident)}
+                onNavigate={handleNavigate}
               />
             )}
 

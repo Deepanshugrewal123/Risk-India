@@ -21,11 +21,13 @@ import {
 import { SafetyPhase, SafetyPriority, SafetyCategory, SafetyInstructionItem } from '../../types/safetyGuide';
 import { EXTENDED_SAFETY_ITEMS } from '../../data/extendedSafetyData';
 import { SafetyActionItemCard } from './SafetyActionItemCard';
+import { NavigationPage } from '../common/Navbar';
 
 interface CompleteSafetyGuideModalProps {
   isOpen: boolean;
   onClose: () => void;
   initialHazard?: string;
+  onNavigate?: (page: NavigationPage, context?: { hazard?: string; category?: string; regionId?: string }) => void;
 }
 
 const ALL_HAZARDS = [
@@ -40,7 +42,8 @@ const ALL_HAZARDS = [
 export const CompleteSafetyGuideModal: React.FC<CompleteSafetyGuideModalProps> = ({
   isOpen,
   onClose,
-  initialHazard = 'FLOOD'
+  initialHazard = 'FLOOD',
+  onNavigate
 }) => {
   const [selectedHazard, setSelectedHazard] = useState<string>(initialHazard);
   const [selectedPhase, setSelectedPhase] = useState<SafetyPhase | 'ALL'>('ALL');
@@ -275,6 +278,10 @@ export const CompleteSafetyGuideModal: React.FC<CompleteSafetyGuideModalProps> =
                   item={item}
                   isCompleted={!!checkedItems[item.id]}
                   onToggleComplete={toggleCheck}
+                  onNavigate={(p, c) => {
+                    onClose();
+                    if (onNavigate) onNavigate(p, c);
+                  }}
                 />
               ))}
             </div>

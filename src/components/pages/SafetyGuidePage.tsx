@@ -21,8 +21,9 @@ import { SafetyActionItemCard } from '../safety/SafetyActionItemCard';
 import { NavigationPage } from '../common/Navbar';
 
 interface SafetyGuidePageProps {
-  onNavigate?: (page: NavigationPage) => void;
+  onNavigate?: (page: NavigationPage, context?: { hazard?: string; category?: string; regionId?: string }) => void;
   initialHazard?: string;
+  initialCategory?: string;
 }
 
 const HAZARD_OPTIONS = [
@@ -50,11 +51,12 @@ const PHASE_ORDER: Record<string, number> = {
 
 export const SafetyGuidePage: React.FC<SafetyGuidePageProps> = ({
   onNavigate,
-  initialHazard = 'FLOOD'
+  initialHazard = 'FLOOD',
+  initialCategory = 'ALL'
 }) => {
   const [selectedHazard, setSelectedHazard] = useState<string>(initialHazard);
   const [selectedPhase, setSelectedPhase] = useState<SafetyPhase | 'ALL'>('ALL');
-  const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
+  const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory || 'ALL');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [completedItems, setCompletedItems] = useState<Record<string, boolean>>({});
 
@@ -64,6 +66,13 @@ export const SafetyGuidePage: React.FC<SafetyGuidePageProps> = ({
       setSelectedHazard(initialHazard.toUpperCase().trim());
     }
   }, [initialHazard]);
+
+  // Sync initial category from props or navigation context
+  useEffect(() => {
+    if (initialCategory) {
+      setSelectedCategory(initialCategory);
+    }
+  }, [initialCategory]);
 
   // Extract items for selected hazard
   const hazardItems = useMemo(() => {
@@ -255,11 +264,14 @@ export const SafetyGuidePage: React.FC<SafetyGuidePageProps> = ({
           <div className="flex flex-wrap items-center gap-2">
             {(['ALL', 'BEFORE', 'DURING', 'AFTER'] as const).map((phase) => {
               const isSelected = selectedPhase === phase;
+              const count = phase === 'ALL'
+                ? hazardItems.length
+                : hazardItems.filter((i) => i.phase === phase).length;
               return (
                 <button
                   key={phase}
                   onClick={() => setSelectedPhase(phase)}
-                  className={`min-h-[44px] px-4 py-2 rounded-xl text-xs font-mono font-bold uppercase transition-all flex items-center gap-1.5 ${
+                  className={`min-h-[44px] px-3.5 py-2 rounded-xl text-xs font-mono font-bold uppercase transition-all flex items-center gap-1.5 ${
                     isSelected
                       ? 'bg-emerald-600 text-white shadow-sm'
                       : 'bg-paper-100 dark:bg-slate-800 text-charcoal-700 dark:text-slate-300 hover:bg-paper-200 dark:hover:bg-slate-700'
@@ -269,6 +281,11 @@ export const SafetyGuidePage: React.FC<SafetyGuidePageProps> = ({
                   {phase === 'DURING' && <Flame className="w-3.5 h-3.5 text-amber-400" />}
                   {phase === 'AFTER' && <HeartHandshake className="w-3.5 h-3.5 text-teal-300" />}
                   <span>{phase === 'ALL' ? 'ALL PHASES' : phase}</span>
+                  <span className={`text-[10px] px-1.5 py-0.5 rounded-md font-mono ${
+                    isSelected ? 'bg-white/20 text-white' : 'bg-paper-200 dark:bg-slate-700 text-charcoal-600 dark:text-slate-300'
+                  }`}>
+                    {count}
+                  </span>
                 </button>
               );
             })}
@@ -321,6 +338,41 @@ export const SafetyGuidePage: React.FC<SafetyGuidePageProps> = ({
             </select>
           </div>
         </div>
+
+        {/* Active Filter Clear Bar (when filtered by category, phase, or search) */}
+        {(selectedCategory !== 'ALL' || selectedPhase !== 'ALL' || searchQuery !== '') && (
+          <div className="flex items-center justify-between gap-2 pt-2 text-xs font-mono text-charcoal-600 dark:text-slate-400 border-t border-paper-100 dark:border-slate-850">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span>Active Filters:</span>
+              {selectedPhase !== 'ALL' && (
+                <span className="px-2 py-0.5 rounded bg-paper-200 dark:bg-slate-800 text-[11px] font-bold">
+                  Phase: {selectedPhase}
+                </span>
+              )}
+              {selectedCategory !== 'ALL' && (
+                <span className="px-2 py-0.5 rounded bg-indigo-100 dark:bg-indigo-950/60 text-indigo-800 dark:text-indigo-300 text-[11px] font-bold">
+                  Category: {selectedCategory.replace(/_/g, ' ')}
+                </span>
+              )}
+              {searchQuery && (
+                <span className="px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 text-[11px] font-bold">
+                  &quot;{searchQuery}&quot;
+                </span>
+              )}
+            </div>
+            <button
+              onClick={() => {
+                setSelectedPhase('ALL');
+                setSelectedCategory('ALL');
+                setSearchQuery('');
+              }}
+              className="text-xs font-mono text-emerald-700 dark:text-emerald-400 hover:underline flex items-center gap-1 font-bold shrink-0"
+            >
+              <RotateCcw className="w-3.5 h-3.5" />
+              <span>Reset Filters</span>
+            </button>
+          </div>
+        )}
       </div>
 
       {/* 6. Active Actions Grid (Zero 4-Item Limit) */}
@@ -362,6 +414,7 @@ export const SafetyGuidePage: React.FC<SafetyGuidePageProps> = ({
                 item={item}
                 isCompleted={!!completedItems[item.id]}
                 onToggleComplete={toggleItemComplete}
+                onNavigate={onNavigate}
               />
             ))}
           </div>

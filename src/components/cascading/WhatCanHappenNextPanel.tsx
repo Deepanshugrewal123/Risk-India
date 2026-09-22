@@ -404,9 +404,29 @@ export const CASCADING_PATHWAYS: Record<string, ConsequencePathway> = {
   }
 };
 
+const getDownstreamContext = (name: string, impact: string, currentHazard: string) => {
+  const combined = (name + ' ' + impact).toLowerCase();
+  if (combined.includes('landslide') || combined.includes('slope')) {
+    return { label: '⛰️ LANDSLIDE SAFETY', hazard: 'LANDSLIDE', category: 'STRUCTURAL_SAFETY' };
+  }
+  if (combined.includes('water') || combined.includes('contamination') || combined.includes('epidemic') || combined.includes('cholera')) {
+    return { label: '💧 WATER SAFETY', hazard: currentHazard, category: 'WATER_AND_FOOD' };
+  }
+  if (combined.includes('power') || combined.includes('blackout') || combined.includes('electric') || combined.includes('substation') || combined.includes('cable')) {
+    return { label: '⚡ POWER SAFETY', hazard: currentHazard, category: 'UTILITY_SAFETY' };
+  }
+  if (combined.includes('road') || combined.includes('transport') || combined.includes('debris') || combined.includes('access') || combined.includes('isolation')) {
+    return { label: '🚶 EVACUATION & ROUTES', hazard: currentHazard, category: 'SAFE_ROUTES_EVACUATION' };
+  }
+  if (combined.includes('hospital') || combined.includes('triage') || combined.includes('medical') || combined.includes('heat stroke') || combined.includes('icu')) {
+    return { label: '🏥 MEDICAL & HEALTH', hazard: currentHazard, category: 'MEDICAL_AND_HEALTH' };
+  }
+  return { label: '🛡️ DEFENSIVE ACTION', hazard: currentHazard, category: 'ALL' };
+};
+
 interface WhatCanHappenNextPanelProps {
   initialHazard?: string;
-  onNavigate?: (page: NavigationPage) => void;
+  onNavigate?: (page: NavigationPage, context?: { hazard?: string; category?: string; regionId?: string }) => void;
   className?: string;
 }
 
@@ -556,9 +576,22 @@ export const WhatCanHappenNextPanel: React.FC<WhatCanHappenNextPanelProps> = ({
                           <strong className="text-charcoal-900 dark:text-white font-mono text-[11px] uppercase">Why: </strong>
                           {sec.explanation}
                         </p>
-                        <div className="p-2 rounded-lg bg-amber-50 dark:bg-amber-950/40 text-amber-950 dark:text-amber-200 text-[11px]">
-                          <strong className="font-mono uppercase font-bold">Watch For: </strong>
-                          <span>{sec.watchFor}</span>
+                        <div className="p-2 rounded-lg bg-amber-50 dark:bg-amber-950/40 text-amber-950 dark:text-amber-200 text-[11px] flex flex-col gap-1.5">
+                          <div>
+                            <strong className="font-mono uppercase font-bold">Watch For: </strong>
+                            <span>{sec.watchFor}</span>
+                          </div>
+                          {onNavigate && (
+                            <button
+                              onClick={() => {
+                                const ctx = getDownstreamContext(sec.name, sec.explanation, activeHazard);
+                                onNavigate('safety-guide', { hazard: ctx.hazard, category: ctx.category });
+                              }}
+                              className="min-h-[28px] px-2.5 py-0.5 rounded-lg bg-amber-200 hover:bg-amber-300 text-amber-950 border border-amber-300 text-[10px] font-mono font-bold flex items-center gap-1 self-start transition-colors"
+                            >
+                              <span>{getDownstreamContext(sec.name, sec.explanation, activeHazard).label} →</span>
+                            </button>
+                          )}
                         </div>
                       </div>
                     )}
@@ -592,40 +625,39 @@ export const WhatCanHappenNextPanel: React.FC<WhatCanHappenNextPanelProps> = ({
             </p>
 
             <div className="space-y-2 pt-1 text-xs">
-              {pathway.downstream.items.map((down, idx) => (
-                <div
-                  key={idx}
-                  className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-indigo-100 dark:border-indigo-900/50 space-y-1"
-                >
-                  <div className="font-bold text-charcoal-900 dark:text-white text-xs">
-                    {down.name}
-                  </div>
-                  <p className="text-[11px] text-charcoal-600 dark:text-slate-400 leading-relaxed">
-                    {down.impact}
-                  </p>
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 pt-1.5 border-t border-indigo-50 dark:border-slate-800">
-                    <div className="text-[11px] text-emerald-800 dark:text-emerald-300 font-medium flex items-start gap-1">
-                      <ShieldCheck className="w-3.5 h-3.5 shrink-0 text-emerald-600 mt-0.5" />
-                      <span>{down.defensiveAction}</span>
+              {pathway.downstream.items.map((down, idx) => {
+                const ctx = getDownstreamContext(down.name, down.impact, activeHazard);
+                return (
+                  <div
+                    key={idx}
+                    className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-indigo-100 dark:border-indigo-900/50 space-y-1"
+                  >
+                    <div className="font-bold text-charcoal-900 dark:text-white text-xs">
+                      {down.name}
                     </div>
-                    <button
-                      onClick={() => onNavigate && onNavigate('safety-guide')}
-                      className="min-h-[32px] px-2.5 py-1 rounded-lg bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-950/60 dark:hover:bg-emerald-900/80 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 text-[10px] font-mono font-bold flex items-center gap-1 self-start sm:self-auto shrink-0 transition-colors"
-                    >
-                      <span>
-                        {down.name.toLowerCase().includes('water')
-                          ? '💧 WATER SAFETY'
-                          : down.name.toLowerCase().includes('power')
-                          ? '⚡ POWER SAFETY'
-                          : down.name.toLowerCase().includes('landslide')
-                          ? '⛰️ LANDSLIDE SAFETY'
-                          : '🛡️ DEFENSIVE ACTION'}
-                      </span>
-                      <ArrowRight className="w-3 h-3" />
-                    </button>
+                    <p className="text-[11px] text-charcoal-600 dark:text-slate-400 leading-relaxed">
+                      {down.impact}
+                    </p>
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 pt-1.5 border-t border-indigo-50 dark:border-slate-800">
+                      <div className="text-[11px] text-emerald-800 dark:text-emerald-300 font-medium flex items-start gap-1">
+                        <ShieldCheck className="w-3.5 h-3.5 shrink-0 text-emerald-600 mt-0.5" />
+                        <span>{down.defensiveAction}</span>
+                      </div>
+                      <button
+                        onClick={() => {
+                          if (onNavigate) {
+                            onNavigate('safety-guide', { hazard: ctx.hazard, category: ctx.category });
+                          }
+                        }}
+                        className="min-h-[32px] px-2.5 py-1 rounded-lg bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-950/60 dark:hover:bg-emerald-900/80 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 text-[10px] font-mono font-bold flex items-center gap-1 self-start sm:self-auto shrink-0 transition-colors shadow-2xs"
+                      >
+                        <span>{ctx.label}</span>
+                        <ArrowRight className="w-3 h-3" />
+                      </button>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 

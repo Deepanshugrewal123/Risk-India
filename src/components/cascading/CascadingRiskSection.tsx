@@ -25,9 +25,60 @@ interface CascadingRiskSectionProps {
   regionId?: string;
   regionName?: string;
   hazard?: string;
-  onNavigate?: (page: NavigationPage) => void;
+  onNavigate?: (page: NavigationPage, context?: { hazard?: string; category?: string; regionId?: string }) => void;
   onExploreSafetyGuide?: (hazard: string) => void;
 }
+
+const getActionContext = (actionText: string, currentHazard: string) => {
+  const lower = actionText.toLowerCase();
+  if (lower.includes('landslide') || lower.includes('slope') || lower.includes('hill')) {
+    return {
+      label: '⛰️ LANDSLIDE GUIDE',
+      hazard: 'LANDSLIDE',
+      category: 'STRUCTURAL_SAFETY'
+    };
+  }
+  if (lower.includes('water') || lower.includes('boil') || lower.includes('drink') || lower.includes('chlorin')) {
+    return {
+      label: '💧 WATER SAFETY',
+      hazard: currentHazard,
+      category: 'WATER_AND_FOOD'
+    };
+  }
+  if (lower.includes('power') || lower.includes('electric') || lower.includes('switch') || lower.includes('cable') || lower.includes('wire')) {
+    return {
+      label: '⚡ POWER SAFETY',
+      hazard: currentHazard,
+      category: 'UTILITY_SAFETY'
+    };
+  }
+  if (lower.includes('evacuat') || lower.includes('route') || lower.includes('drive') || lower.includes('road')) {
+    return {
+      label: '🚶 EVACUATION GUIDE',
+      hazard: currentHazard,
+      category: 'SAFE_ROUTES_EVACUATION'
+    };
+  }
+  if (lower.includes('doctor') || lower.includes('medic') || lower.includes('hospital') || lower.includes('first aid') || lower.includes('cpr')) {
+    return {
+      label: '🏥 MEDICAL GUIDE',
+      hazard: currentHazard,
+      category: 'MEDICAL_AND_HEALTH'
+    };
+  }
+  if (lower.includes('shelter') || lower.includes('roof') || lower.includes('shutter') || lower.includes('window')) {
+    return {
+      label: '🏠 SHELTER GUIDE',
+      hazard: currentHazard,
+      category: 'SHELTER'
+    };
+  }
+  return {
+    label: '🛡️ ACTION GUIDE',
+    hazard: currentHazard,
+    category: 'ALL'
+  };
+};
 
 export const CascadingRiskSection: React.FC<CascadingRiskSectionProps> = ({
   regionId = 'assam',
@@ -153,26 +204,35 @@ export const CascadingRiskSection: React.FC<CascadingRiskSectionProps> = ({
         <div className="space-y-1.5 max-w-3xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-800 text-xs font-mono font-bold uppercase tracking-wider">
             <GitBranch className="w-3.5 h-3.5" />
-            <span>SYSTEMIC RISK INTELLIGENCE // FIRST-CLASS CITIZEN EXPERIENCE</span>
+            <span>WHAT COULD HAPPEN NEXT? // SECONDARY &amp; CASCADING RISKS</span>
           </div>
           <h2
             id="cascading-risk-heading"
             className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight"
           >
-            Cascading Risk: What Could Happen Next?
+            What Could Happen Next? // Secondary &amp; Cascading Risks
           </h2>
           <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-            One hazard can trigger a chain of secondary hazards and systemic breakdowns. 
-            Ground-failure relationships, infrastructure impacts, and health consequences are evaluated using verified physical laws—never fabricated percentages.
+            One hazard can trigger an interconnected sequence of disruptions:
+            <strong className="text-slate-800 font-semibold"> Primary Trigger → Physical Change → Secondary Hazard → Lifeline Disruption → Citizen Consequence.</strong> Ground-failure relationships, utility interruptions, and public health risks are evaluated using verified physical and environmental science—never unsupported percentages.
           </p>
         </div>
 
-        {/* Global Evidence Posture Badge */}
-        <div className="flex flex-col sm:flex-row lg:flex-col items-start lg:items-end gap-2 shrink-0">
+        {/* Global Evidence Posture Badge & Action Button */}
+        <div className="flex flex-col sm:flex-row lg:flex-col items-start lg:items-end gap-2.5 shrink-0">
           <div className={`px-3 py-1.5 rounded-xl border text-xs font-mono font-bold flex items-center gap-2 ${overallBadge.bg}`}>
             <span className={`w-2 h-2 rounded-full ${overallBadge.dot}`} />
             <span>{overallBadge.label}</span>
           </div>
+          {onNavigate && (
+            <button
+              onClick={() => onNavigate('cascading-risk', { hazard, regionId })}
+              className="min-h-[40px] px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-mono text-xs font-bold flex items-center gap-2 transition-all shadow-xs"
+            >
+              <GitBranch className="w-3.5 h-3.5 text-blue-400" />
+              <span>EXAMINE CASCADING RISKS →</span>
+            </button>
+          )}
           <span className="text-[10px] font-mono text-slate-500">
             Region: {regionName} • Target: {hazard}
           </span>
@@ -447,28 +507,32 @@ export const CascadingRiskSection: React.FC<CascadingRiskSectionProps> = ({
 
                   {currentStage.defensive_actions.length > 0 ? (
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-900">
-                      {currentStage.defensive_actions.map((act, i) => (
-                        <div key={i} className="flex items-start justify-between gap-2 p-2.5 rounded-lg bg-white border border-emerald-200">
-                          <div className="flex items-start gap-2">
-                            <span className="font-mono font-bold text-emerald-700 shrink-0">
-                              ✓
-                            </span>
-                            <span className="leading-relaxed text-slate-800">{act}</span>
+                      {currentStage.defensive_actions.map((act, i) => {
+                        const ctx = getActionContext(act, hazard);
+                        return (
+                          <div key={i} className="flex items-start justify-between gap-2 p-2.5 rounded-lg bg-white border border-emerald-200 shadow-2xs">
+                            <div className="flex items-start gap-2">
+                              <span className="font-mono font-bold text-emerald-700 shrink-0">
+                                ✓
+                              </span>
+                              <span className="leading-relaxed text-slate-800">{act}</span>
+                            </div>
+                            <button
+                              onClick={() => {
+                                if (onNavigate) {
+                                  onNavigate('safety-guide', { hazard: ctx.hazard, category: ctx.category });
+                                } else if (onExploreSafetyGuide) {
+                                  onExploreSafetyGuide(ctx.hazard);
+                                }
+                              }}
+                              className="min-h-[28px] px-2 py-0.5 rounded-md bg-emerald-700 hover:bg-emerald-800 text-white text-[10px] font-mono font-bold shrink-0 self-start transition-colors flex items-center gap-1 shadow-2xs"
+                            >
+                              <span>{ctx.label}</span>
+                              <ArrowRight className="w-2.5 h-2.5" />
+                            </button>
                           </div>
-                          <button
-                            onClick={() => {
-                              if (onExploreSafetyGuide) {
-                                onExploreSafetyGuide(hazard);
-                              } else if (onNavigate) {
-                                onNavigate('safety-guide');
-                              }
-                            }}
-                            className="min-h-[28px] px-2 py-0.5 rounded-md bg-emerald-700 hover:bg-emerald-800 text-white text-[10px] font-mono font-bold shrink-0 self-start transition-colors"
-                          >
-                            <span>GUIDE</span>
-                          </button>
-                        </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   ) : (
                     <p className="text-xs text-emerald-900 italic">

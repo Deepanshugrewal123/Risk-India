@@ -58,10 +58,51 @@ export const AppContent: React.FC = () => {
   });
   const [showQuickSOS, setShowQuickSOS] = useState<boolean>(false);
 
+  const [safetyGuideHazard, setSafetyGuideHazard] = useState<string>(() => {
+    if (typeof window !== 'undefined') {
+      const p = new URLSearchParams(window.location.search).get('hazard');
+      if (p) return p.toUpperCase().trim();
+    }
+    return 'FLOOD';
+  });
+  const [safetyGuideCategory, setSafetyGuideCategory] = useState<string>(() => {
+    if (typeof window !== 'undefined') {
+      const p = new URLSearchParams(window.location.search).get('category');
+      if (p) return p.trim();
+    }
+    return 'ALL';
+  });
+  const [cascadingHazard, setCascadingHazard] = useState<string>(() => {
+    if (typeof window !== 'undefined') {
+      const p = new URLSearchParams(window.location.search).get('hazard');
+      if (p) return p.toUpperCase().trim();
+    }
+    return 'FLOOD';
+  });
+  const [cascadingRegionId, setCascadingRegionId] = useState<string>(() => {
+    if (typeof window !== 'undefined') {
+      const p = new URLSearchParams(window.location.search).get('region');
+      if (p) return p.toLowerCase().trim();
+    }
+    return 'assam';
+  });
+
   // Sync back/forward browser history and query parameters
   useEffect(() => {
     const handlePopState = () => {
       setCurrentPage(getInitialPage());
+      if (typeof window !== 'undefined') {
+        const params = new URLSearchParams(window.location.search);
+        const h = params.get('hazard');
+        if (h) {
+          setSafetyGuideHazard(h.toUpperCase().trim());
+          setCascadingHazard(h.toUpperCase().trim());
+        }
+        const c = params.get('category');
+        if (c) setSafetyGuideCategory(c);
+        const r = params.get('region');
+        if (r) setCascadingRegionId(r);
+      }
     };
 
     window.addEventListener('popstate', handlePopState);
@@ -88,9 +129,30 @@ export const AppContent: React.FC = () => {
     }
   }, []);
 
-  const handleNavigate = (page: NavigationPage) => {
+  const handleNavigate = (
+    page: NavigationPage,
+    context?: { hazard?: string; category?: string; regionId?: string }
+  ) => {
     setCurrentPage(page);
-    const newUrl = page === 'home' ? '/' : `?page=${page}`;
+    if (context?.hazard) {
+      setSafetyGuideHazard(context.hazard.toUpperCase().trim());
+      setCascadingHazard(context.hazard.toUpperCase().trim());
+    }
+    if (context?.category) {
+      setSafetyGuideCategory(context.category);
+    }
+    if (context?.regionId) {
+      setCascadingRegionId(context.regionId);
+    }
+
+    const params = new URLSearchParams();
+    if (page !== 'home') params.set('page', page);
+    if (context?.hazard) params.set('hazard', context.hazard);
+    if (context?.category) params.set('category', context.category);
+    if (context?.regionId) params.set('region', context.regionId);
+
+    const queryString = params.toString();
+    const newUrl = queryString ? `?${queryString}` : '/';
     window.history.pushState(null, '', newUrl);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -149,12 +211,16 @@ export const AppContent: React.FC = () => {
             {currentPage === 'cascading-risk' && (
               <CascadingRiskPage
                 onNavigate={handleNavigate}
+                initialRegionId={cascadingRegionId}
+                initialHazard={cascadingHazard}
               />
             )}
 
             {currentPage === 'safety-guide' && (
               <SafetyGuidePage
                 onNavigate={handleNavigate}
+                initialHazard={safetyGuideHazard}
+                initialCategory={safetyGuideCategory}
               />
             )}
 

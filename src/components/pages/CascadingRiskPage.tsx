@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   GitBranch,
   MapPin,
@@ -19,7 +19,7 @@ import { NavigationPage } from '../common/Navbar';
 import { ALL_INDIAN_STATES, ALL_INDIAN_UNION_TERRITORIES } from '../../data/indiaLocations';
 
 interface CascadingRiskPageProps {
-  onNavigate?: (page: NavigationPage) => void;
+  onNavigate?: (page: NavigationPage, context?: { hazard?: string; category?: string; regionId?: string }) => void;
   initialRegionId?: string;
   initialRegionName?: string;
   initialHazard?: string;
@@ -73,6 +73,14 @@ export const CascadingRiskPage: React.FC<CascadingRiskPageProps> = ({
 }) => {
   const [selectedRegionId, setSelectedRegionId] = useState<string>(initialRegionId);
   const [selectedHazard, setSelectedHazard] = useState<string>(initialHazard);
+
+  useEffect(() => {
+    if (initialRegionId) setSelectedRegionId(initialRegionId);
+  }, [initialRegionId]);
+
+  useEffect(() => {
+    if (initialHazard) setSelectedHazard(initialHazard);
+  }, [initialHazard]);
 
   const currentRegion = ALL_JURISDICTIONS.find((r) => r.id === selectedRegionId) || {
     id: selectedRegionId,

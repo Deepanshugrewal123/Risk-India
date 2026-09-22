@@ -139,16 +139,16 @@ export const FutureHazardMatrix: React.FC<FutureHazardMatrixProps> = ({ onSelect
   const getRiskColor = (state: RiskState) => {
     switch (state) {
       case 'CRITICAL':
-        return 'text-rose-700 bg-rose-50 border-rose-200 dark:bg-rose-950/40 dark:text-rose-300 dark:border-rose-900';
+        return 'text-rose-800 bg-rose-50 border-rose-200 font-bold';
       case 'HIGH':
-        return 'text-orange-700 bg-orange-50 border-orange-200 dark:bg-orange-950/40 dark:text-orange-300 dark:border-orange-900';
+        return 'text-orange-800 bg-orange-50 border-orange-200 font-bold';
       case 'ELEVATED':
-        return 'text-amber-700 bg-amber-50 border-amber-200 dark:bg-amber-950/40 dark:text-amber-300 dark:border-amber-900';
+        return 'text-amber-800 bg-amber-50 border-amber-200 font-bold';
       case 'WATCH':
-        return 'text-blue-700 bg-blue-50 border-blue-200 dark:bg-blue-950/40 dark:text-blue-300 dark:border-blue-900';
+        return 'text-blue-800 bg-blue-50 border-blue-200 font-bold';
       case 'NORMAL':
       default:
-        return 'text-emerald-700 bg-emerald-50 border-emerald-200 dark:bg-emerald-950/40 dark:text-emerald-300 dark:border-emerald-900';
+        return 'text-emerald-800 bg-emerald-50 border-emerald-200 font-bold';
     }
   };
 
@@ -158,20 +158,20 @@ export const FutureHazardMatrix: React.FC<FutureHazardMatrixProps> = ({ onSelect
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-1">
+            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-blue-700 mb-1">
               <Clock className="w-4 h-4" />
               <span>MULTI-HAZARD PREDICTIVE MATRIX // 6 DISASTER DOMAINS</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-charcoal-950 dark:text-white tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
               Forward Risk Across All 6 Hazards
             </h2>
-            <p className="text-xs sm:text-sm text-charcoal-600 dark:text-slate-400 max-w-2xl mt-1">
+            <p className="text-xs sm:text-sm text-slate-600 max-w-2xl mt-1">
               Statutory forward assessments with explicit provenance attribution.
               Earthquake timing is strictly non-predictable; seismic metrics reflect structural and tectonic baselines.
             </p>
           </div>
 
-          <div className="text-[11px] font-mono text-charcoal-500 dark:text-slate-400">
+          <div className="text-[11px] font-mono text-slate-500">
             Authoritative Sources: IMD • CWC • NDMA • GSI • NCS • USGS
           </div>
         </div>
@@ -190,22 +190,22 @@ export const FutureHazardMatrix: React.FC<FutureHazardMatrixProps> = ({ onSelect
                 }}
                 className={`p-5 rounded-3xl border transition-all cursor-pointer flex flex-col justify-between ${
                   isSelected
-                    ? 'bg-paper-50 dark:bg-slate-800 border-indigo-500 ring-2 ring-indigo-400/40 shadow-lg'
-                    : 'bg-white dark:bg-slate-900 border-paper-300 dark:border-slate-800 hover:border-paper-400 dark:hover:border-slate-700 shadow-sm'
+                    ? 'bg-slate-50 border-blue-600 ring-2 ring-blue-500/30 shadow-md'
+                    : 'bg-white border-slate-200 hover:border-slate-300 shadow-xs'
                 }`}
               >
                 <div className="space-y-3">
                   {/* Top Header */}
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2.5">
-                      <div className="p-2 rounded-xl bg-paper-100 dark:bg-slate-800 text-indigo-600 dark:text-indigo-400">
+                      <div className="p-2 rounded-xl bg-blue-50 text-blue-700">
                         <Icon className="w-5 h-5" />
                       </div>
                       <div>
-                        <h3 className="text-sm font-bold text-charcoal-950 dark:text-white font-mono">
+                        <h3 className="text-sm font-bold text-slate-900 font-mono">
                           {h.name}
                         </h3>
-                        <span className="text-[10px] text-charcoal-500 dark:text-slate-400 block font-mono -mt-0.5">
+                        <span className="text-[10px] text-slate-500 block font-mono -mt-0.5">
                           {h.leadAgency}
                         </span>
                       </div>
@@ -218,7 +218,7 @@ export const FutureHazardMatrix: React.FC<FutureHazardMatrixProps> = ({ onSelect
 
                   {/* Earthquake Non-Prediction Disclaimer Banner */}
                   {h.isEarthquake && (
-                    <div className="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 text-amber-900 dark:text-amber-200 text-[10px] font-mono leading-tight">
+                    <div className="p-2.5 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-[10px] font-mono leading-tight">
                       <strong>SCIENTIFIC MANDATE:</strong> Earthquake timing cannot currently be predicted reliably.
                       Metrics represent tectonic baseline and structural safety guidance.
                     </div>
@@ -226,27 +226,27 @@ export const FutureHazardMatrix: React.FC<FutureHazardMatrixProps> = ({ onSelect
 
                   {/* Metrics Strip */}
                   <div className="grid grid-cols-2 gap-2 pt-1 text-[11px] font-mono">
-                    <div className="p-2 rounded-xl bg-paper-50 dark:bg-slate-800/60 border border-paper-200 dark:border-slate-700">
-                      <span className="text-charcoal-500 block text-[9px] uppercase">Trend</span>
+                    <div className="p-2 rounded-xl bg-slate-50 border border-slate-200">
+                      <span className="text-slate-500 block text-[9px] uppercase font-semibold">Trend</span>
                       <RiskTrendIndicator trend={h.trend} size="sm" />
                     </div>
-                    <div className="p-2 rounded-xl bg-paper-50 dark:bg-slate-800/60 border border-paper-200 dark:border-slate-700">
-                      <span className="text-charcoal-500 block text-[9px] uppercase">Peak Horizon</span>
-                      <span className="font-bold text-charcoal-900 dark:text-white">{h.peakHorizon}</span>
+                    <div className="p-2 rounded-xl bg-slate-50 border border-slate-200">
+                      <span className="text-slate-500 block text-[9px] uppercase font-semibold">Peak Horizon</span>
+                      <span className="font-bold text-slate-900">{h.peakHorizon}</span>
                     </div>
                   </div>
 
                   {/* Why / Causal Driver */}
-                  <div className="text-xs text-charcoal-700 dark:text-slate-300 leading-relaxed">
-                    <span className="font-mono text-[10px] uppercase font-bold text-charcoal-500 dark:text-slate-400 block mb-0.5">
+                  <div className="text-xs text-slate-600 leading-relaxed">
+                    <span className="font-mono text-[10px] uppercase font-bold text-slate-500 block mb-0.5">
                       Causal Driver
                     </span>
                     {h.why}
                   </div>
 
                   {/* What Should I Do */}
-                  <div className="text-xs text-charcoal-800 dark:text-slate-200 leading-relaxed p-2.5 rounded-xl bg-paper-50 dark:bg-slate-800/80 border border-paper-200 dark:border-slate-700">
-                    <span className="font-mono text-[10px] uppercase font-bold text-indigo-700 dark:text-indigo-400 block mb-0.5 flex items-center gap-1">
+                  <div className="text-xs text-slate-700 leading-relaxed p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                    <span className="font-mono text-[10px] uppercase font-bold text-blue-700 block mb-0.5 flex items-center gap-1">
                       <CheckCircle2 className="w-3 h-3" />
                       <span>Action Protocol</span>
                     </span>
@@ -255,9 +255,9 @@ export const FutureHazardMatrix: React.FC<FutureHazardMatrixProps> = ({ onSelect
                 </div>
 
                 {/* Footer Badges */}
-                <div className="mt-4 pt-3 border-t border-paper-200 dark:border-slate-800 flex items-center justify-between text-[10px] font-mono">
+                <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[10px] font-mono">
                   <UncertaintyBadge confidence={h.confidence} uncertainty={h.uncertainty} />
-                  <span className="text-charcoal-500 dark:text-slate-400">
+                  <span className="text-slate-500">
                     {h.dataClassification}
                   </span>
                 </div>

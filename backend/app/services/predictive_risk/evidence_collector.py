@@ -63,7 +63,13 @@ class PredictiveEvidenceCollector:
         baseline_data = profile.to_dict() if profile else None
 
         # 2. Weather Observations
-        obs = national_weather_service.get_current_weather(region_name)
+        obs = None
+        try:
+            obs = national_weather_service.get_current_weather(region_name)
+        except Exception as e:
+            logger.warning("Could not fetch current weather for %s: %s", region_name, str(e))
+            obs = None
+
         obs_dict: Optional[Dict[str, Any]] = None
         if obs:
             obs_dict = {
@@ -141,7 +147,13 @@ class PredictiveEvidenceCollector:
             overall_freshness = "REGIONAL_BASELINE"
 
         # 3. Weather Forecast Timeline
-        raw_fcs = national_weather_service.get_forecast_timeline(region_name)
+        raw_fcs = []
+        try:
+            raw_fcs = national_weather_service.get_forecast_timeline(region_name)
+        except Exception as e:
+            logger.warning("Could not fetch forecast timeline for %s: %s", region_name, str(e))
+            raw_fcs = []
+
         forecast_list: List[Dict[str, Any]] = []
         for fc in raw_fcs:
             fc_dict = fc.to_dict()
@@ -170,7 +182,13 @@ class PredictiveEvidenceCollector:
             missing_signals.append("NWP Numerical Precipitation Forecasts")
 
         # 4. Statutory Official Warnings
-        raw_warnings = national_weather_service.get_active_warnings(region_name)
+        raw_warnings = []
+        try:
+            raw_warnings = national_weather_service.get_active_warnings(region_name)
+        except Exception as e:
+            logger.warning("Could not fetch active warnings for %s: %s", region_name, str(e))
+            raw_warnings = []
+
         official_warnings: List[Dict[str, Any]] = []
         for w in raw_warnings:
             w_id = getattr(w, "warning_id", getattr(w, "id", "warn-001"))
@@ -210,44 +228,48 @@ class PredictiveEvidenceCollector:
         hydro_list: List[Dict[str, Any]] = []
         basin_name = profile.primary_basin.lower() if profile else ""
         if norm_hazard == "FLOOD" or not norm_hazard:
-            readings = (
-                dynamic_telemetry_service.get_observations(basin=basin_name, variable_type="WATER_LEVEL", limit=50)
-                if basin_name
-                else dynamic_telemetry_service.get_observations(variable_type="WATER_LEVEL", limit=50)
-            )
-            for r in readings:
-                danger_m = float(r.provenance.get("danger_level_m", 0.0)) if r.provenance else 0.0
-                ratio = (r.normalized_value / danger_m) if (danger_m > 0 and r.normalized_value is not None) else 0.0
-                hydro_dict = {
-                    "gauge_id": r.gauge_id,
-                    "gauge_name": r.gauge_name,
-                    "river_name": r.river_name,
-                    "water_level_m": r.normalized_value,
-                    "danger_level_m": danger_m,
-                    "danger_ratio": round(ratio, 3),
-                    "observed_at": r.observed_at,
-                    "freshness": r.freshness
-                }
-                hydro_list.append(hydro_dict)
-                signals.append(
-                    EvidenceSignal(
-                        id=f"sig-hydro-{r.gauge_id.lower()}",
-                        provider="CWC",
-                        source="Central Water Commission Catchment Telemetry",
-                        source_record_id=r.observation_id,
-                        observed_at=r.observed_at,
-                        ingested_at=r.ingested_at,
-                        geographic_scope=f"{r.river_name} ({r.basin_id if hasattr(r, 'basin_id') else basin_name})",
-                        variable="RIVER_WATER_LEVEL",
-                        unit="m",
-                        raw_value=r.normalized_value,
-                        normalized_value=r.normalized_value,
-                        freshness=r.freshness,
-                        data_classification="OBSERVED",
-                        official_status="VERIFIED",
-                        url="https://ffs.india-water.gov.in"
-                    )
+            try:
+                readings = (
+                    dynamic_telemetry_service.get_observations(basin=basin_name, variable_type="WATER_LEVEL", limit=50)
+                    if basin_name
+                    else dynamic_telemetry_service.get_observations(variable_type="WATER_LEVEL", limit=50)
                 )
+                for r in readings:
+                    danger_m = float(r.provenance.get("danger_level_m", 0.0)) if r.provenance else 0.0
+                    ratio = (r.normalized_value / danger_m) if (danger_m > 0 and r.normalized_value is not None) else 0.0
+                    hydro_dict = {
+                        "gauge_id": r.gauge_id,
+                        "gauge_name": r.gauge_name,
+                        "river_name": r.river_name,
+                        "water_level_m": r.normalized_value,
+                        "danger_level_m": danger_m,
+                        "danger_ratio": round(ratio, 3),
+                        "observed_at": r.observed_at,
+                        "freshness": r.freshness
+                    }
+                    hydro_list.append(hydro_dict)
+                    signals.append(
+                        EvidenceSignal(
+                            id=f"sig-hydro-{r.gauge_id.lower()}",
+                            provider="CWC",
+                            source="Central Water Commission Catchment Telemetry",
+                            source_record_id=r.observation_id,
+                            observed_at=r.observed_at,
+                            ingested_at=r.ingested_at,
+                            geographic_scope=f"{r.river_name} ({r.basin_id if hasattr(r, 'basin_id') else basin_name})",
+                            variable="RIVER_WATER_LEVEL",
+                            unit="m",
+                            raw_value=r.normalized_value,
+                            normalized_value=r.normalized_value,
+                            freshness=r.freshness,
+                            data_classification="OBSERVED",
+                            official_status="VERIFIED",
+                            url="https://ffs.india-water.gov.in"
+                        )
+                    )
+            except Exception as e:
+                logger.warning("Could not fetch hydrological observations for %s: %s", region_name, str(e))
+                missing_signals.append("Catchment River Gauge Telemetry")
             if not hydro_list and norm_hazard == "FLOOD":
                 missing_signals.append("Catchment River Gauge Telemetry")
 

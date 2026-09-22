@@ -133,16 +133,16 @@ export const FutureRiskPage: React.FC<FutureRiskPageProps> = ({
   const getRiskColor = (state?: string) => {
     switch (state) {
       case 'CRITICAL':
-        return 'text-rose-700 bg-rose-50 border-rose-200 dark:bg-rose-950/40 dark:text-rose-300 dark:border-rose-900';
+        return 'text-rose-800 bg-rose-50 border-rose-200 font-bold';
       case 'HIGH':
-        return 'text-orange-700 bg-orange-50 border-orange-200 dark:bg-orange-950/40 dark:text-orange-300 dark:border-orange-900';
+        return 'text-orange-800 bg-orange-50 border-orange-200 font-bold';
       case 'ELEVATED':
-        return 'text-amber-700 bg-amber-50 border-amber-200 dark:bg-amber-950/40 dark:text-amber-300 dark:border-amber-900';
+        return 'text-amber-800 bg-amber-50 border-amber-200 font-bold';
       case 'WATCH':
-        return 'text-blue-700 bg-blue-50 border-blue-200 dark:bg-blue-950/40 dark:text-blue-300 dark:border-blue-900';
+        return 'text-blue-800 bg-blue-50 border-blue-200 font-bold';
       case 'NORMAL':
       default:
-        return 'text-emerald-700 bg-emerald-50 border-emerald-200 dark:bg-emerald-950/40 dark:text-emerald-300 dark:border-emerald-900';
+        return 'text-emerald-800 bg-emerald-50 border-emerald-200 font-bold';
     }
   };
 
@@ -150,20 +150,20 @@ export const FutureRiskPage: React.FC<FutureRiskPageProps> = ({
     <div className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8">
       {/* 1. Breadcrumbs & Top Navigation Bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-mono">
-        <div className="flex items-center gap-2 text-charcoal-500 dark:text-slate-400">
+        <div className="flex items-center gap-2 text-slate-500">
           <button
             onClick={() => onNavigate('home')}
-            className="hover:text-charcoal-900 dark:hover:text-white flex items-center gap-1"
+            className="hover:text-slate-900 flex items-center gap-1 font-medium transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Home</span>
           </button>
           <span>/</span>
-          <span className="text-charcoal-900 dark:text-white font-bold">Future Risk Intelligence</span>
+          <span className="text-slate-900 font-bold">Future Risk Intelligence</span>
           {selectedRegion && (
             <>
               <span>/</span>
-              <span className="text-indigo-600 dark:text-indigo-400 font-bold">
+              <span className="text-blue-700 font-bold">
                 {selectedLocationMeta?.name || selectedRegion}
               </span>
             </>
@@ -173,7 +173,7 @@ export const FutureRiskPage: React.FC<FutureRiskPageProps> = ({
         <div className="flex items-center gap-2">
           <button
             onClick={() => onNavigate('risk-map')}
-            className="px-3.5 py-1.5 rounded-xl font-bold bg-charcoal-900 text-paper-50 hover:bg-charcoal-800 transition-colors flex items-center gap-1.5 shadow-xs"
+            className="px-3.5 py-1.5 rounded-xl font-bold bg-slate-900 text-white hover:bg-slate-800 transition-colors flex items-center gap-1.5 shadow-xs"
           >
             <Compass className="w-3.5 h-3.5" />
             <span>Open Risk Map</span>
@@ -182,32 +182,32 @@ export const FutureRiskPage: React.FC<FutureRiskPageProps> = ({
       </div>
 
       {/* 2. Page Hero Banner: National Scope & Scientific Invariant Mandate */}
-      <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-paper-300 dark:border-slate-800 shadow-xl space-y-4">
+      <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-xs space-y-4">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 text-indigo-900 dark:text-indigo-300 text-xs font-mono font-bold uppercase tracking-wider mb-2">
-              <Sparkles className="w-3.5 h-3.5 text-indigo-600" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-800 text-xs font-mono font-bold uppercase tracking-wider mb-2">
+              <Sparkles className="w-3.5 h-3.5 text-blue-700" />
               <span>NATIONAL PREDICTIVE DECISION SUPPORT SYSTEM</span>
             </div>
-            <h1 className="text-3xl sm:text-5xl font-extrabold text-charcoal-950 dark:text-white tracking-tight">
+            <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
               Future Risk Intelligence
             </h1>
-            <p className="text-sm sm:text-base text-charcoal-600 dark:text-slate-400 max-w-3xl mt-2 font-normal">
+            <p className="text-sm sm:text-base text-slate-600 max-w-3xl mt-2 font-normal">
               Official predictive modeling across 5 lead horizons (NOW to 7 days).
               Strictly non-synthetic observational fusion across IMD, CWC, NDMA, and Earth observations.
             </p>
           </div>
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
-            <div className="px-4 py-3 rounded-2xl bg-paper-50 dark:bg-slate-800 border border-paper-200 dark:border-slate-700 text-center">
-              <div className="text-[10px] font-mono text-charcoal-500 uppercase">Monitored Entities</div>
-              <div className="text-xl font-mono font-extrabold text-charcoal-950 dark:text-white">
+            <div className="px-4 py-3 rounded-2xl bg-slate-50 border border-slate-200 text-center">
+              <div className="text-[10px] font-mono text-slate-500 uppercase">Monitored Entities</div>
+              <div className="text-xl font-mono font-extrabold text-slate-900">
                 36 / 36
               </div>
             </div>
-            <div className="px-4 py-3 rounded-2xl bg-paper-50 dark:bg-slate-800 border border-paper-200 dark:border-slate-700 text-center">
-              <div className="text-[10px] font-mono text-charcoal-500 uppercase">Synthetic Records</div>
-              <div className="text-xl font-mono font-extrabold text-emerald-600 dark:text-emerald-400">
+            <div className="px-4 py-3 rounded-2xl bg-slate-50 border border-slate-200 text-center">
+              <div className="text-[10px] font-mono text-slate-500 uppercase">Synthetic Records</div>
+              <div className="text-xl font-mono font-extrabold text-emerald-600">
                 0
               </div>
             </div>
@@ -215,14 +215,14 @@ export const FutureRiskPage: React.FC<FutureRiskPageProps> = ({
         </div>
 
         {/* Location Selector Bar */}
-        <div className="pt-4 border-t border-paper-200 dark:border-slate-800 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+        <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
           <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={() => setSelectedRegion(null)}
               className={`px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all ${
                 selectedRegion === null
-                  ? 'bg-indigo-600 text-white shadow-xs'
-                  : 'bg-paper-100 dark:bg-slate-800 text-charcoal-700 dark:text-slate-300 border border-paper-200 dark:border-slate-700 hover:bg-paper-200'
+                  ? 'bg-blue-700 text-white shadow-xs'
+                  : 'bg-slate-100 text-slate-700 border border-slate-200 hover:bg-slate-200'
               }`}
             >
               🇮🇳 National Overview (All 36 Jurisdictions)
@@ -231,7 +231,7 @@ export const FutureRiskPage: React.FC<FutureRiskPageProps> = ({
             <select
               value={selectedRegion || ''}
               onChange={(e) => setSelectedRegion(e.target.value || null)}
-              className="px-3.5 py-2 rounded-xl text-xs font-mono bg-paper-50 dark:bg-slate-800 border border-paper-300 dark:border-slate-700 text-charcoal-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 font-medium"
+              className="px-3.5 py-2 rounded-xl text-xs font-mono bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-900 font-medium"
             >
               <option value="">-- Choose State or UT to Inspect --</option>
               <optgroup label="States (28)">
@@ -253,15 +253,15 @@ export const FutureRiskPage: React.FC<FutureRiskPageProps> = ({
 
           {selectedRegion && (
             <div className="flex items-center gap-1.5 overflow-x-auto text-xs font-mono">
-              <span className="text-charcoal-400 font-semibold shrink-0">Hazard:</span>
+              <span className="text-slate-500 font-semibold shrink-0">Hazard:</span>
               {['FLOOD', 'CYCLONE', 'HEATWAVE', 'SEVERE_WEATHER', 'LANDSLIDE', 'EARTHQUAKE'].map((h) => (
                 <button
                   key={h}
                   onClick={() => setSelectedHazard(h)}
                   className={`px-2.5 py-1 rounded-lg transition-all ${
                     selectedHazard === h
-                      ? 'bg-charcoal-900 text-paper-50 dark:bg-white dark:text-charcoal-950 font-bold shadow-xs'
-                      : 'bg-paper-100 dark:bg-slate-800 text-charcoal-600 dark:text-slate-300 hover:bg-paper-200'
+                      ? 'bg-slate-900 text-white font-bold shadow-xs'
+                      : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
                   }`}
                 >
                   {h.replace('_', ' ')}
@@ -274,7 +274,7 @@ export const FutureRiskPage: React.FC<FutureRiskPageProps> = ({
 
       {/* Earthquake Non-Prediction Disclaimer Banner */}
       {selectedHazard === 'EARTHQUAKE' && (
-        <div className="p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 text-amber-900 dark:text-amber-200 flex items-start gap-3">
+        <div className="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900 flex items-start gap-3">
           <ShieldAlert className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
           <div className="text-xs space-y-1">
             <span className="font-mono font-bold uppercase tracking-wider block">
@@ -290,29 +290,29 @@ export const FutureRiskPage: React.FC<FutureRiskPageProps> = ({
 
       {/* Coverage Tier Clarification Strip */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 text-center text-[10px] font-mono">
-        <div className="p-2.5 rounded-xl bg-white dark:bg-slate-850 border border-paper-200 dark:border-slate-800">
-          <div className="text-charcoal-500 dark:text-slate-400">ADMIN COVERAGE</div>
-          <div className="font-bold text-charcoal-900 dark:text-white mt-0.5">36/36 States & UTs</div>
+        <div className="p-2.5 rounded-xl bg-white border border-slate-200">
+          <div className="text-slate-500">ADMIN COVERAGE</div>
+          <div className="font-bold text-slate-900 mt-0.5">36/36 States & UTs</div>
         </div>
-        <div className="p-2.5 rounded-xl bg-white dark:bg-slate-850 border border-paper-200 dark:border-slate-800">
-          <div className="text-charcoal-500 dark:text-slate-400">REGIONAL BASELINE</div>
-          <div className="font-bold text-charcoal-900 dark:text-white mt-0.5">100% Pan-India</div>
+        <div className="p-2.5 rounded-xl bg-white border border-slate-200">
+          <div className="text-slate-500">REGIONAL BASELINE</div>
+          <div className="font-bold text-slate-900 mt-0.5">100% Pan-India</div>
         </div>
-        <div className="p-2.5 rounded-xl bg-white dark:bg-slate-850 border border-paper-200 dark:border-slate-800">
-          <div className="text-charcoal-500 dark:text-slate-400">LIVE TELEMETRY</div>
-          <div className="font-bold text-charcoal-900 dark:text-white mt-0.5">IMD / CWC Network</div>
+        <div className="p-2.5 rounded-xl bg-white border border-slate-200">
+          <div className="text-slate-500">LIVE TELEMETRY</div>
+          <div className="font-bold text-slate-900 mt-0.5">IMD / CWC Network</div>
         </div>
-        <div className="p-2.5 rounded-xl bg-white dark:bg-slate-850 border border-paper-200 dark:border-slate-800">
-          <div className="text-charcoal-500 dark:text-slate-400">OFFICIAL FORECAST</div>
-          <div className="font-bold text-charcoal-900 dark:text-white mt-0.5">5 Lead Horizons</div>
+        <div className="p-2.5 rounded-xl bg-white border border-slate-200">
+          <div className="text-slate-500">OFFICIAL FORECAST</div>
+          <div className="font-bold text-slate-900 mt-0.5">5 Lead Horizons</div>
         </div>
-        <div className="p-2.5 rounded-xl bg-white dark:bg-slate-850 border border-paper-200 dark:border-slate-800">
-          <div className="text-charcoal-500 dark:text-slate-400">OFFICIAL WARNINGS</div>
-          <div className="font-bold text-charcoal-900 dark:text-white mt-0.5">IMD & NDMA Direct</div>
+        <div className="p-2.5 rounded-xl bg-white border border-slate-200">
+          <div className="text-slate-500">OFFICIAL WARNINGS</div>
+          <div className="font-bold text-slate-900 mt-0.5">IMD & NDMA Direct</div>
         </div>
-        <div className="p-2.5 rounded-xl bg-white dark:bg-slate-850 border border-paper-200 dark:border-slate-800">
-          <div className="text-charcoal-500 dark:text-slate-400">APPROVED ML SCOPE</div>
-          <div className="font-bold text-indigo-600 dark:text-indigo-400 mt-0.5">Assam Flood (Only)</div>
+        <div className="p-2.5 rounded-xl bg-white border border-slate-200">
+          <div className="text-slate-500">APPROVED ML SCOPE</div>
+          <div className="font-bold text-blue-700 mt-0.5">Assam Flood (Only)</div>
         </div>
       </div>
 
@@ -320,12 +320,12 @@ export const FutureRiskPage: React.FC<FutureRiskPageProps> = ({
       {selectedRegion === null && nationalOverview && (
         <div className="space-y-6">
           {/* National Advisory Distribution */}
-          <div className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-paper-300 dark:border-slate-800 shadow-md space-y-4">
+          <div className="p-6 rounded-3xl bg-white border border-slate-200 shadow-xs space-y-4">
             <div className="flex items-center justify-between">
-              <h3 className="font-mono text-xs font-bold uppercase tracking-wider text-charcoal-600 dark:text-slate-300">
+              <h3 className="font-mono text-xs font-bold uppercase tracking-wider text-slate-700">
                 National Advisory Distribution (36 Entities)
               </h3>
-              <span className="text-xs font-mono text-charcoal-500">
+              <span className="text-xs font-mono text-slate-500">
                 Updated: {nationalOverview.evaluated_at}
               </span>
             </div>
@@ -344,8 +344,8 @@ export const FutureRiskPage: React.FC<FutureRiskPageProps> = ({
           </div>
 
           {/* Regional Watchlist Grid */}
-          <div className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-paper-300 dark:border-slate-800 shadow-md space-y-4">
-            <h3 className="font-mono text-xs font-bold uppercase tracking-wider text-charcoal-600 dark:text-slate-300">
+          <div className="p-6 rounded-3xl bg-white border border-slate-200 shadow-xs space-y-4">
+            <h3 className="font-mono text-xs font-bold uppercase tracking-wider text-slate-700">
               All 36 Indian Jurisdictions Predictive Status
             </h3>
 
@@ -357,23 +357,23 @@ export const FutureRiskPage: React.FC<FutureRiskPageProps> = ({
                     setSelectedRegion(reg.region_id);
                     if (reg.hazard) setSelectedHazard(reg.hazard);
                   }}
-                  className="p-4 rounded-2xl bg-paper-50 dark:bg-slate-800 border border-paper-200 dark:border-slate-700 hover:border-indigo-400 cursor-pointer transition-all hover:shadow-md group"
+                  className="p-4 rounded-2xl bg-slate-50 border border-slate-200 hover:border-blue-500 hover:bg-white cursor-pointer transition-all hover:shadow-sm group"
                 >
                   <div className="flex items-center justify-between mb-1">
-                    <span className="font-mono text-xs font-bold text-charcoal-950 dark:text-white group-hover:text-indigo-600">
+                    <span className="font-mono text-xs font-bold text-slate-900 group-hover:text-blue-700">
                       {reg.region_name}
                     </span>
                     <span className={`px-2 py-0.5 rounded-full text-[10px] font-mono font-bold border ${getRiskColor(reg.future_risk_state)}`}>
                       {reg.future_risk_state}
                     </span>
                   </div>
-                  <div className="flex items-center justify-between text-[11px] font-mono text-charcoal-500 dark:text-slate-400">
+                  <div className="flex items-center justify-between text-[11px] font-mono text-slate-600">
                     <span>Hazard: {reg.hazard}</span>
                     <span>Peak: {reg.peak_future_window}</span>
                   </div>
-                  <div className="mt-2 pt-2 border-t border-paper-200 dark:border-slate-700 flex items-center justify-between text-[10px] font-mono">
+                  <div className="mt-2 pt-2 border-t border-slate-200 flex items-center justify-between text-[10px] font-mono text-slate-500">
                     <span>Trend: {reg.trend}</span>
-                    <span className="text-indigo-600 dark:text-indigo-400 font-bold group-hover:underline flex items-center gap-0.5">
+                    <span className="text-blue-700 font-bold group-hover:underline flex items-center gap-0.5">
                       Inspect <ChevronRight className="w-3 h-3" />
                     </span>
                   </div>
@@ -386,14 +386,14 @@ export const FutureRiskPage: React.FC<FutureRiskPageProps> = ({
 
       {/* STATE B: DATA GAP STATE (When telemetry is unavailable) */}
       {selectedRegion && dataGap && (
-        <div className="p-6 sm:p-8 rounded-3xl bg-amber-50/70 dark:bg-amber-950/20 border border-amber-300 dark:border-amber-800 space-y-4">
+        <div className="p-6 sm:p-8 rounded-3xl bg-amber-50/70 border border-amber-300 space-y-4">
           <div className="flex items-start gap-3">
             <AlertTriangle className="w-6 h-6 text-amber-600 shrink-0 mt-0.5" />
             <div>
-              <h3 className="text-base font-bold font-mono text-charcoal-900 dark:text-white uppercase">
+              <h3 className="text-base font-bold font-mono text-slate-900 uppercase">
                 DATA UNAVAILABLE // LIMITED SCIENTIFIC EVIDENCE
               </h3>
-              <p className="text-xs sm:text-sm text-charcoal-700 dark:text-slate-300 mt-1 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-700 mt-1 leading-relaxed">
                 Live sensor telemetry and numerical forecast signals for{' '}
                 <strong>{selectedLocationMeta?.name || selectedRegion}</strong> under{' '}
                 <strong>{selectedHazard}</strong> are not currently transmitting from central observation feeds.
@@ -403,18 +403,18 @@ export const FutureRiskPage: React.FC<FutureRiskPageProps> = ({
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-            <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-amber-200 dark:border-amber-900 text-xs font-mono space-y-2">
-              <span className="font-bold text-emerald-700 dark:text-emerald-400 block">WHAT IS KNOWN:</span>
-              <ul className="list-disc pl-4 text-charcoal-700 dark:text-slate-300 space-y-1 text-[11px]">
+            <div className="p-4 rounded-2xl bg-white border border-amber-200 text-xs font-mono space-y-2">
+              <span className="font-bold text-emerald-700 block">WHAT IS KNOWN:</span>
+              <ul className="list-disc pl-4 text-slate-700 space-y-1 text-[11px]">
                 <li>Administrative Jurisdiction: {selectedLocationMeta?.name} ({selectedLocationMeta?.code})</li>
                 <li>Historical primary hazard: {selectedLocationMeta?.primaryRisk || selectedHazard}</li>
                 <li>Statutory emergency helplines remain active (112, 1078, 1070)</li>
               </ul>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-amber-200 dark:border-amber-900 text-xs font-mono space-y-2">
-              <span className="font-bold text-amber-700 dark:text-amber-400 block">WHAT IS UNKNOWN:</span>
-              <ul className="list-disc pl-4 text-charcoal-700 dark:text-slate-300 space-y-1 text-[11px]">
+            <div className="p-4 rounded-2xl bg-white border border-amber-200 text-xs font-mono space-y-2">
+              <span className="font-bold text-amber-700 block">WHAT IS UNKNOWN:</span>
+              <ul className="list-disc pl-4 text-slate-700 space-y-1 text-[11px]">
                 <li>Micro-basin river discharge readings within last 6 hours</li>
                 <li>Doppler radar nowcasting precipitation accumulation</li>
                 <li>No active official warning issued by IMD for this sector</li>
@@ -424,33 +424,33 @@ export const FutureRiskPage: React.FC<FutureRiskPageProps> = ({
 
           {/* 7 Required Data Availability Audit Points */}
           <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 pt-2 text-[10px] font-mono">
-            <div className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-amber-200 dark:border-amber-900">
-              <span className="text-charcoal-500 uppercase block">Last Available Observation</span>
-              <span className="font-bold text-charcoal-800 dark:text-slate-200 mt-0.5 block">No recent gauge reading</span>
+            <div className="p-2.5 rounded-xl bg-white border border-amber-200">
+              <span className="text-slate-500 uppercase block">Last Available Observation</span>
+              <span className="font-bold text-slate-800 mt-0.5 block">No recent gauge reading</span>
             </div>
-            <div className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-amber-200 dark:border-amber-900">
-              <span className="text-charcoal-500 uppercase block">Source / Provenance</span>
-              <span className="font-bold text-charcoal-800 dark:text-slate-200 mt-0.5 block">CWC / IMD Station Network</span>
+            <div className="p-2.5 rounded-xl bg-white border border-amber-200">
+              <span className="text-slate-500 uppercase block">Source / Provenance</span>
+              <span className="font-bold text-slate-800 mt-0.5 block">CWC / IMD Station Network</span>
             </div>
-            <div className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-amber-200 dark:border-amber-900">
-              <span className="text-charcoal-500 uppercase block">Freshness</span>
-              <span className="font-bold text-amber-600 dark:text-amber-400 mt-0.5 block">DATA UNAVAILABLE</span>
+            <div className="p-2.5 rounded-xl bg-white border border-amber-200">
+              <span className="text-slate-500 uppercase block">Freshness</span>
+              <span className="font-bold text-amber-700 mt-0.5 block">DATA UNAVAILABLE</span>
             </div>
-            <div className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-amber-200 dark:border-amber-900">
-              <span className="text-charcoal-500 uppercase block">Forecast Availability</span>
-              <span className="font-bold text-charcoal-800 dark:text-slate-200 mt-0.5 block">Regional Climatology Only</span>
+            <div className="p-2.5 rounded-xl bg-white border border-amber-200">
+              <span className="text-slate-500 uppercase block">Forecast Availability</span>
+              <span className="font-bold text-slate-800 mt-0.5 block">Regional Climatology Only</span>
             </div>
-            <div className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-amber-200 dark:border-amber-900">
-              <span className="text-charcoal-500 uppercase block">Official Warning Availability</span>
-              <span className="font-bold text-emerald-600 dark:text-emerald-400 mt-0.5 block">No Active Red/Orange Bulletin</span>
+            <div className="p-2.5 rounded-xl bg-white border border-amber-200">
+              <span className="text-slate-500 uppercase block">Official Warning Availability</span>
+              <span className="font-bold text-emerald-700 mt-0.5 block">No Active Red/Orange Bulletin</span>
             </div>
           </div>
 
           <div className="pt-2 flex items-center justify-between text-xs font-mono">
-            <span className="text-charcoal-500">Source: Central observation network check</span>
+            <span className="text-slate-500">Source: Central observation network check</span>
             <button
               onClick={() => setSelectedRegion(null)}
-              className="text-indigo-600 dark:text-indigo-400 font-bold hover:underline"
+              className="text-blue-700 font-bold hover:underline"
             >
               ← Back to National Overview
             </button>
@@ -470,13 +470,13 @@ export const FutureRiskPage: React.FC<FutureRiskPageProps> = ({
           />
 
           {/* 10 Core Dimensions Ribbon */}
-          <div className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-paper-300 dark:border-slate-800 shadow-md space-y-4">
+          <div className="p-6 rounded-3xl bg-white border border-slate-200 shadow-xs space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
-                <span className="text-xs font-mono uppercase text-charcoal-500 font-bold block">
+                <span className="text-xs font-mono uppercase text-slate-500 font-bold block">
                   10-DIMENSION EVIDENCE CONTRACT
                 </span>
-                <h3 className="text-xl sm:text-2xl font-bold text-charcoal-950 dark:text-white mt-0.5">
+                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mt-0.5">
                   {assessment.region_name} • {assessment.hazard}
                 </h3>
               </div>
@@ -487,33 +487,33 @@ export const FutureRiskPage: React.FC<FutureRiskPageProps> = ({
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 pt-2">
-              <div className="p-3 rounded-xl bg-paper-50 dark:bg-slate-800 border border-paper-200 dark:border-slate-700">
-                <div className="text-[10px] font-mono text-charcoal-500 uppercase">A. Current State</div>
+              <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <div className="text-[10px] font-mono text-slate-500 uppercase">A. Current State</div>
                 <div className={`mt-1 font-mono text-xs font-bold inline-block px-2 py-0.5 rounded-lg border ${getRiskColor(assessment.current_risk_state)}`}>
                   {assessment.current_risk_state}
                 </div>
               </div>
-              <div className="p-3 rounded-xl bg-paper-50 dark:bg-slate-800 border border-paper-200 dark:border-slate-700">
-                <div className="text-[10px] font-mono text-charcoal-500 uppercase">B. Future State</div>
+              <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <div className="text-[10px] font-mono text-slate-500 uppercase">B. Future State</div>
                 <div className={`mt-1 font-mono text-xs font-bold inline-block px-2 py-0.5 rounded-lg border ${getRiskColor(assessment.future_risk_state)}`}>
                   {assessment.future_risk_state}
                 </div>
               </div>
-              <div className="p-3 rounded-xl bg-paper-50 dark:bg-slate-800 border border-paper-200 dark:border-slate-700">
-                <div className="text-[10px] font-mono text-charcoal-500 uppercase">C. Trend</div>
-                <div className="mt-1 font-mono text-xs font-bold text-charcoal-900 dark:text-white">
+              <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <div className="text-[10px] font-mono text-slate-500 uppercase">C. Trend</div>
+                <div className="mt-1 font-mono text-xs font-bold text-slate-900">
                   {assessment.trend}
                 </div>
               </div>
-              <div className="p-3 rounded-xl bg-paper-50 dark:bg-slate-800 border border-paper-200 dark:border-slate-700">
-                <div className="text-[10px] font-mono text-charcoal-500 uppercase">D. Peak Horizon</div>
-                <div className="mt-1 font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">
+              <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <div className="text-[10px] font-mono text-slate-500 uppercase">D. Peak Horizon</div>
+                <div className="mt-1 font-mono text-xs font-bold text-blue-700">
                   {assessment.peak_future_window}
                 </div>
               </div>
-              <div className="p-3 rounded-xl bg-paper-50 dark:bg-slate-800 border border-paper-200 dark:border-slate-700">
-                <div className="text-[10px] font-mono text-charcoal-500 uppercase">E. Main Hazard</div>
-                <div className="mt-1 font-mono text-xs font-bold text-charcoal-900 dark:text-white">
+              <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <div className="text-[10px] font-mono text-slate-500 uppercase">E. Main Hazard</div>
+                <div className="mt-1 font-mono text-xs font-bold text-slate-900">
                   {assessment.hazard}
                 </div>
               </div>
@@ -538,9 +538,9 @@ export const FutureRiskPage: React.FC<FutureRiskPageProps> = ({
           {/* Forward Predictive Scenarios (Baseline, Likely, Escalation) */}
           {scenarios && scenarios.length > 0 && (
             <div className="space-y-2">
-              <div className="p-3 rounded-2xl bg-indigo-50/50 dark:bg-indigo-950/20 border border-indigo-200 dark:border-indigo-900 text-xs font-mono flex items-start gap-2">
-                <Info className="w-4 h-4 text-indigo-600 dark:text-indigo-400 shrink-0 mt-0.5" />
-                <span className="text-charcoal-700 dark:text-slate-300">
+              <div className="p-3 rounded-2xl bg-blue-50 border border-blue-200 text-xs font-mono flex items-start gap-2">
+                <Info className="w-4 h-4 text-blue-700 shrink-0 mt-0.5" />
+                <span className="text-slate-700">
                   <strong>Analytical Scenarios Notice:</strong> Baseline, Likely, and Escalation scenarios are forward-looking analytical projections based on multi-model atmospheric and hydrological simulations, NOT guaranteed deterministic outcomes.
                 </span>
               </div>
@@ -551,17 +551,17 @@ export const FutureRiskPage: React.FC<FutureRiskPageProps> = ({
       )}
 
       {/* WHAT COULD HAPPEN NEXT? // SECONDARY & CASCADING RISKS */}
-      <section className="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-amber-500/10 via-rose-500/10 to-indigo-500/10 border-2 border-amber-300 dark:border-amber-700/60 shadow-lg space-y-6">
+      <section className="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-amber-500/10 via-rose-500/10 to-indigo-500/10 border-2 border-amber-300 shadow-sm space-y-6">
         <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6">
           <div className="space-y-2 max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-950/60 border border-amber-300 dark:border-amber-800 text-amber-900 dark:text-amber-300 text-xs font-mono font-bold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 border border-amber-300 text-amber-900 text-xs font-mono font-bold uppercase tracking-wider">
               <Layers className="w-3.5 h-3.5" />
               <span>WHAT COULD HAPPEN NEXT? // SECONDARY &amp; CASCADING RISKS</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-charcoal-950 dark:text-white tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
               A disaster rarely ends with the first hazard.
             </h2>
-            <p className="text-sm text-charcoal-700 dark:text-slate-300 leading-relaxed font-sans">
+            <p className="text-sm text-slate-700 leading-relaxed font-sans">
               Changes caused by the initial event can create additional hazards and wider impacts across terrain, critical lifelines, and communities. Trace the causal consequence chain before secondary hazards strike.
             </p>
           </div>
@@ -576,7 +576,7 @@ export const FutureRiskPage: React.FC<FutureRiskPageProps> = ({
             </button>
             <button
               onClick={() => onNavigate('safety-guide')}
-              className="min-h-[48px] px-5 py-3 rounded-2xl bg-white dark:bg-slate-800 hover:bg-paper-100 text-charcoal-900 dark:text-white border border-paper-300 dark:border-slate-700 font-mono text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2"
+              className="min-h-[48px] px-5 py-3 rounded-2xl bg-white hover:bg-slate-50 text-slate-900 border border-slate-200 font-mono text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2"
             >
               <FileCheck2 className="w-4 h-4 text-emerald-600" />
               <span>SAFETY ACTION GUIDE</span>
@@ -586,50 +586,50 @@ export const FutureRiskPage: React.FC<FutureRiskPageProps> = ({
 
         {/* 4-Stage Visual Causal Progression */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-3 pt-2">
-          <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-amber-200 dark:border-amber-900 shadow-xs space-y-1">
-            <span className="text-[10px] font-mono uppercase font-bold text-amber-600 dark:text-amber-400 block">
+          <div className="p-4 rounded-2xl bg-white border border-amber-200 shadow-2xs space-y-1">
+            <span className="text-[10px] font-mono uppercase font-bold text-amber-700 block">
               1. PRIMARY TRIGGER
             </span>
-            <strong className="text-xs sm:text-sm font-bold text-charcoal-950 dark:text-white block">
+            <strong className="text-xs sm:text-sm font-bold text-slate-900 block">
               {selectedHazard} Inception
             </strong>
-            <p className="text-[11px] text-charcoal-600 dark:text-slate-400">
+            <p className="text-[11px] text-slate-600">
               Direct kinetic or meteorological impact from precipitation, wind, or ground motion.
             </p>
           </div>
 
-          <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-indigo-200 dark:border-indigo-900 shadow-xs space-y-1">
-            <span className="text-[10px] font-mono uppercase font-bold text-indigo-600 dark:text-indigo-400 block">
+          <div className="p-4 rounded-2xl bg-white border border-blue-200 shadow-2xs space-y-1">
+            <span className="text-[10px] font-mono uppercase font-bold text-blue-700 block">
               2. PHYSICAL CHANGE
             </span>
-            <strong className="text-xs sm:text-sm font-bold text-charcoal-950 dark:text-white block">
+            <strong className="text-xs sm:text-sm font-bold text-slate-900 block">
               Environmental Shift
             </strong>
-            <p className="text-[11px] text-charcoal-600 dark:text-slate-400">
+            <p className="text-[11px] text-slate-600">
               Soil pore saturation, structural stress, drainage overload, and coastal water level rise.
             </p>
           </div>
 
-          <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-rose-200 dark:border-rose-900 shadow-xs space-y-1">
-            <span className="text-[10px] font-mono uppercase font-bold text-rose-600 dark:text-rose-400 block">
+          <div className="p-4 rounded-2xl bg-white border border-rose-200 shadow-2xs space-y-1">
+            <span className="text-[10px] font-mono uppercase font-bold text-rose-700 block">
               3. SECONDARY HAZARDS
             </span>
-            <strong className="text-xs sm:text-sm font-bold text-charcoal-950 dark:text-white block">
+            <strong className="text-xs sm:text-sm font-bold text-slate-900 block">
               Consequential Threat
             </strong>
-            <p className="text-[11px] text-charcoal-600 dark:text-slate-400">
+            <p className="text-[11px] text-slate-600">
               Secondary slope instability, embankment breach, contamination, and electrical hazards.
             </p>
           </div>
 
-          <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-purple-200 dark:border-purple-900 shadow-xs space-y-1">
-            <span className="text-[10px] font-mono uppercase font-bold text-purple-600 dark:text-purple-400 block">
+          <div className="p-4 rounded-2xl bg-white border border-purple-200 shadow-2xs space-y-1">
+            <span className="text-[10px] font-mono uppercase font-bold text-purple-700 block">
               4. SYSTEMIC IMPACTS
             </span>
-            <strong className="text-xs sm:text-sm font-bold text-charcoal-950 dark:text-white block">
+            <strong className="text-xs sm:text-sm font-bold text-slate-900 block">
               Civil &amp; Lifeline Stress
             </strong>
-            <p className="text-[11px] text-charcoal-600 dark:text-slate-400">
+            <p className="text-[11px] text-slate-600">
               Road isolation, healthcare overload, potable water interruption, and supply bottlenecks.
             </p>
           </div>

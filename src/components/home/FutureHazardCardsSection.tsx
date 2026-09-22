@@ -147,16 +147,16 @@ export const FutureHazardCardsSection: React.FC<FutureHazardCardsSectionProps> =
   const getRiskColor = (state: RiskState) => {
     switch (state) {
       case 'CRITICAL':
-        return 'text-rose-600 dark:text-rose-400 font-bold';
+        return 'text-rose-700 font-bold';
       case 'HIGH':
-        return 'text-orange-600 dark:text-orange-400 font-bold';
+        return 'text-orange-700 font-bold';
       case 'ELEVATED':
-        return 'text-amber-600 dark:text-amber-400 font-bold';
+        return 'text-amber-700 font-bold';
       case 'WATCH':
-        return 'text-blue-600 dark:text-blue-400 font-bold';
+        return 'text-blue-700 font-bold';
       case 'NORMAL':
       default:
-        return 'text-emerald-600 dark:text-emerald-400 font-bold';
+        return 'text-emerald-700 font-bold';
     }
   };
 
@@ -166,14 +166,14 @@ export const FutureHazardCardsSection: React.FC<FutureHazardCardsSectionProps> =
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
           <div>
-            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-1">
+            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-blue-700 mb-1">
               <Clock className="w-4 h-4" />
               <span>MULTI-HAZARD EARLY WARNING MATRIX</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-charcoal-950 dark:text-white">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
               FUTURE RISK BY DISASTER HAZARD
             </h2>
-            <p className="text-xs sm:text-sm text-charcoal-600 dark:text-slate-400 max-w-2xl mt-0.5 font-normal">
+            <p className="text-xs sm:text-sm text-slate-600 max-w-2xl mt-0.5 font-normal">
               Compare forward projections across all 6 supported disaster types.
               Earthquake reflects tectonic baseline and structural awareness (timing cannot be predicted).
             </p>
@@ -188,7 +188,7 @@ export const FutureHazardCardsSection: React.FC<FutureHazardCardsSectionProps> =
             return (
               <div
                 key={card.hazard}
-                className="p-5 rounded-3xl border border-paper-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between space-y-4"
+                className="p-5 rounded-3xl border border-slate-200/90 bg-white shadow-xs hover:shadow-md transition-all flex flex-col justify-between space-y-4"
               >
                 <div className="space-y-3">
                   {/* Card Header */}
@@ -198,10 +198,10 @@ export const FutureHazardCardsSection: React.FC<FutureHazardCardsSectionProps> =
                         <IconComp className="w-5 h-5" />
                       </div>
                       <div>
-                        <h3 className="text-base font-bold text-charcoal-950 dark:text-white">
+                        <h3 className="text-base font-bold text-slate-900">
                           {card.name}
                         </h3>
-                        <span className="text-[10px] font-mono text-slate-400 uppercase">
+                        <span className="text-[10px] font-mono text-slate-500 uppercase">
                           Horizon: {card.expectedHorizon}
                         </span>
                       </div>
@@ -211,15 +211,15 @@ export const FutureHazardCardsSection: React.FC<FutureHazardCardsSectionProps> =
                   </div>
 
                   {/* Current vs Future Metrics */}
-                  <div className="grid grid-cols-2 gap-2 p-2.5 rounded-xl bg-paper-50 dark:bg-slate-850 border border-paper-200 dark:border-slate-800 text-xs">
+                  <div className="grid grid-cols-2 gap-2 p-3 rounded-2xl bg-slate-50/80 border border-slate-200/70 text-xs">
                     <div>
-                      <span className="text-[10px] font-mono text-charcoal-500 block">Current</span>
+                      <span className="text-[10px] font-mono text-slate-500 block font-semibold">Current</span>
                       <span className={`text-xs font-mono ${getRiskColor(card.currentState)}`}>
                         {card.currentState}
                       </span>
                     </div>
                     <div>
-                      <span className="text-[10px] font-mono text-charcoal-500 block">Future Projected</span>
+                      <span className="text-[10px] font-mono text-slate-500 block font-semibold">Future Projected</span>
                       <span className={`text-xs font-mono ${getRiskColor(card.futureState)}`}>
                         {card.futureState}
                       </span>
@@ -228,17 +228,17 @@ export const FutureHazardCardsSection: React.FC<FutureHazardCardsSectionProps> =
 
                   {/* Why */}
                   <div className="space-y-1 text-xs">
-                    <span className="font-bold text-charcoal-800 dark:text-slate-200 font-mono text-[11px] block uppercase">
+                    <span className="font-bold text-slate-800 font-mono text-[11px] block uppercase">
                       Why Risk May Increase:
                     </span>
-                    <p className="text-charcoal-600 dark:text-slate-400 leading-relaxed text-[11px]">
+                    <p className="text-slate-600 leading-relaxed text-[11px]">
                       {card.why}
                     </p>
                   </div>
 
                   {/* Confidence & Uncertainty */}
-                  <div className="flex items-center justify-between text-[11px] pt-1">
-                    <span className="text-charcoal-500 font-mono">Confidence / Uncertainty:</span>
+                  <div className="flex items-center justify-between text-[11px] pt-1 border-t border-slate-100">
+                    <span className="text-slate-500 font-mono font-medium">Confidence / Uncertainty:</span>
                     <UncertaintyBadge
                       confidence={card.confidence}
                       uncertainty={card.uncertainty}
@@ -248,12 +248,12 @@ export const FutureHazardCardsSection: React.FC<FutureHazardCardsSectionProps> =
                 </div>
 
                 {/* What to do footer */}
-                <div className="pt-3 border-t border-paper-100 dark:border-slate-800 text-xs space-y-1.5">
-                  <span className="font-bold text-charcoal-900 dark:text-slate-100 flex items-center gap-1.5 text-[11px] uppercase font-mono">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
+                <div className="pt-3 border-t border-slate-100 text-xs space-y-1.5">
+                  <span className="font-bold text-slate-900 flex items-center gap-1.5 text-[11px] uppercase font-mono">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
                     What To Do:
                   </span>
-                  <p className="text-charcoal-700 dark:text-slate-300 text-[11px] leading-relaxed">
+                  <p className="text-slate-700 text-[11px] leading-relaxed">
                     {card.whatToDo}
                   </p>
                 </div>

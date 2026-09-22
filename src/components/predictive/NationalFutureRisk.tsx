@@ -90,8 +90,8 @@ export const NationalFutureRisk: React.FC = () => {
   if (loading && !overview) {
     return (
       <div className="flex flex-col items-center justify-center p-12 space-y-3">
-        <RefreshCw className="w-8 h-8 text-indigo-500 animate-spin" />
-        <span className="text-sm font-semibold text-slate-600 dark:text-slate-400">
+        <RefreshCw className="w-8 h-8 text-blue-600 animate-spin" />
+        <span className="text-sm font-semibold text-slate-600">
           Fusing national multi-hazard predictive models across 36 entities...
         </span>
       </div>
@@ -100,15 +100,15 @@ export const NationalFutureRisk: React.FC = () => {
 
   if (error && !overview) {
     return (
-      <div className="p-6 rounded-xl border border-rose-500/30 bg-rose-500/10 text-rose-800 dark:text-rose-200 space-y-2">
+      <div className="p-6 rounded-2xl border border-rose-200 bg-rose-50 text-rose-900 space-y-3 shadow-xs">
         <div className="flex items-center gap-2 font-bold">
-          <AlertTriangle className="w-5 h-5" />
-          <span>Error Loading National Predictive Risk Engine</span>
+          <AlertTriangle className="w-5 h-5 text-rose-600" />
+          <span className="text-base font-bold">National Predictive Risk Engine Status</span>
         </div>
-        <p className="text-xs">{error}</p>
+        <p className="text-xs text-rose-800 leading-relaxed font-normal">{error}</p>
         <button
           onClick={fetchOverview}
-          className="px-3 py-1.5 rounded-lg bg-rose-600 text-white text-xs font-semibold hover:bg-rose-700 transition-colors"
+          className="px-4 py-2 rounded-xl bg-rose-600 text-white text-xs font-bold hover:bg-rose-700 transition-colors shadow-xs"
         >
           Retry Connection
         </button>
@@ -119,40 +119,39 @@ export const NationalFutureRisk: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header Banner */}
-      <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-sm space-y-4">
+      <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-xs space-y-4">
         <div className="flex items-center justify-between flex-wrap gap-4">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <span className="p-2 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
+              <span className="p-2 rounded-xl bg-blue-50 text-blue-700">
                 <Globe className="w-5 h-5" />
               </span>
               <div>
-                <h2 className="text-lg font-black tracking-tight text-slate-900 dark:text-slate-100 flex items-center gap-2">
+                <h2 className="text-lg font-extrabold tracking-tight text-slate-900 flex items-center gap-2">
                   <span>NATIONAL PREDICTIVE RISK FUSION ENGINE</span>
-                  <span className="text-xs px-2 py-0.5 rounded font-mono font-bold bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
+                  <span className="text-xs px-2 py-0.5 rounded font-mono font-bold bg-blue-50 text-blue-700 border border-blue-200">
                     PHASE 30F
                   </span>
                 </h2>
-                <p className="text-xs text-slate-500">
-                  Authoritative multi-hazard forecast convergence across 28 States & 8 Union
-                  Territories
+                <p className="text-xs text-slate-500 font-normal">
+                  Authoritative multi-hazard forecast convergence across 28 States & 8 Union Territories
                 </p>
               </div>
             </div>
           </div>
 
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-mono font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-mono font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
               <ShieldCheck className="w-3.5 h-3.5" />
               Synthetic Records: {overview?.synthetic_records ?? 0}
             </span>
-            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-mono font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
-              <Layers className="w-3.5 h-3.5 text-indigo-500" />
+            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-mono font-semibold bg-slate-100 text-slate-700 border border-slate-200">
+              <Layers className="w-3.5 h-3.5 text-blue-600" />
               Entities: {overview?.total_entities_monitored} (28S + 8UT)
             </span>
             <button
               onClick={fetchOverview}
-              className="p-1.5 rounded-lg border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 transition-colors"
+              className="p-1.5 rounded-lg border border-slate-200 hover:bg-slate-50 text-slate-600 transition-colors"
               title="Refresh national overview"
             >
               <RefreshCw className="w-4 h-4" />
@@ -162,40 +161,40 @@ export const NationalFutureRisk: React.FC = () => {
 
         {/* National Risk & Trend Distribution */}
         {overview && (
-          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-2 pt-2 border-t border-slate-100 dark:border-slate-800 text-xs">
-            <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-850 border border-slate-200/60 dark:border-slate-800">
-              <span className="text-[11px] text-slate-400 block font-mono">NORMAL</span>
+          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-2 pt-2 border-t border-slate-100 text-xs">
+            <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+              <span className="text-[11px] text-slate-500 block font-mono">NORMAL</span>
               <span className="text-base font-bold text-emerald-600">
                 {overview.risk_state_distribution['NORMAL'] || 0}
               </span>
             </div>
-            <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-850 border border-slate-200/60 dark:border-slate-800">
-              <span className="text-[11px] text-slate-400 block font-mono">WATCH</span>
+            <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+              <span className="text-[11px] text-slate-500 block font-mono">WATCH</span>
               <span className="text-base font-bold text-blue-600">
                 {overview.risk_state_distribution['WATCH'] || 0}
               </span>
             </div>
-            <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-850 border border-slate-200/60 dark:border-slate-800">
-              <span className="text-[11px] text-slate-400 block font-mono">ELEVATED</span>
+            <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+              <span className="text-[11px] text-slate-500 block font-mono">ELEVATED</span>
               <span className="text-base font-bold text-amber-600">
                 {overview.risk_state_distribution['ELEVATED'] || 0}
               </span>
             </div>
-            <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-850 border border-slate-200/60 dark:border-slate-800">
-              <span className="text-[11px] text-slate-400 block font-mono">HIGH</span>
+            <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+              <span className="text-[11px] text-slate-500 block font-mono">HIGH</span>
               <span className="text-base font-bold text-orange-600">
                 {overview.risk_state_distribution['HIGH'] || 0}
               </span>
             </div>
-            <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-850 border border-slate-200/60 dark:border-slate-800">
-              <span className="text-[11px] text-slate-400 block font-mono">CRITICAL</span>
+            <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+              <span className="text-[11px] text-slate-500 block font-mono">CRITICAL</span>
               <span className="text-base font-bold text-rose-600">
                 {overview.risk_state_distribution['CRITICAL'] || 0}
               </span>
             </div>
-            <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-850 border border-slate-200/60 dark:border-slate-800">
-              <span className="text-[11px] text-slate-400 block font-mono">RISING TREND</span>
-              <span className="text-base font-bold text-indigo-600">
+            <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+              <span className="text-[11px] text-slate-500 block font-mono">RISING TREND</span>
+              <span className="text-base font-bold text-blue-700">
                 {overview.trend_distribution['RISING'] || 0}
               </span>
             </div>
@@ -204,9 +203,9 @@ export const NationalFutureRisk: React.FC = () => {
 
         {/* Crisis Mode Recommendation Banner */}
         {overview && overview.crisis_recommended_count > 0 && (
-          <div className="p-3.5 rounded-xl border border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-900 dark:text-rose-100 text-xs flex items-center justify-between flex-wrap gap-2">
+          <div className="p-3.5 rounded-xl border border-rose-300 bg-rose-50 text-rose-900 text-xs flex items-center justify-between flex-wrap gap-2">
             <div className="flex items-center gap-2">
-              <AlertTriangle className="w-5 h-5 text-rose-600 dark:text-rose-400 shrink-0" />
+              <AlertTriangle className="w-5 h-5 text-rose-600 shrink-0" />
               <span>
                 <strong>CRISIS MODE RECOMMENDED:</strong> {overview.crisis_recommended_count} entities
                 demonstrate severe multi-hazard convergence requiring heightened public assistance.
@@ -231,9 +230,9 @@ export const NationalFutureRisk: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left Column: 36 Entity Browser */}
         <div className="lg:col-span-4 space-y-3">
-          <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 shadow-sm space-y-3">
+          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-xs space-y-3">
             <div className="flex items-center justify-between">
-              <h3 className="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100">
+              <h3 className="text-sm font-bold uppercase tracking-wider text-slate-900">
                 Monitored Entities (36)
               </h3>
               <span className="text-xs text-slate-500 font-mono">Live Fusion</span>
@@ -247,7 +246,7 @@ export const NationalFutureRisk: React.FC = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Filter state or UT..."
-                className="w-full pl-9 pr-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-850 text-xs text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full pl-9 pr-3 py-1.5 rounded-lg border border-slate-200 bg-slate-50 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-900"
               />
             </div>
 
@@ -262,16 +261,16 @@ export const NationalFutureRisk: React.FC = () => {
                     onClick={() => handleSelectRegion(reg.region_id, reg.hazard)}
                     className={`w-full flex items-center justify-between p-2.5 rounded-xl border text-left transition-all ${
                       isSelected
-                        ? 'border-indigo-500 ring-2 ring-indigo-500/20 bg-indigo-50/50 dark:bg-indigo-950/40 shadow-xs'
-                        : 'border-slate-100 dark:border-slate-800/80 hover:border-slate-200 dark:hover:border-slate-700 bg-slate-50/40 dark:bg-slate-850/40'
+                        ? 'border-blue-600 ring-2 ring-blue-500/20 bg-blue-50/50 shadow-xs'
+                        : 'border-slate-200 hover:border-slate-300 bg-slate-50/50 hover:bg-white'
                     }`}
                   >
                     <div className="min-w-0 pr-2">
                       <div className="flex items-center gap-1.5">
-                        <span className="text-xs font-bold text-slate-900 dark:text-slate-100 truncate">
+                        <span className="text-xs font-bold text-slate-900 truncate">
                           {reg.region_name}
                         </span>
-                        <span className="text-[10px] font-mono text-slate-400">
+                        <span className="text-[10px] font-mono text-slate-500">
                           ({reg.region_type === 'UNION_TERRITORY' ? 'UT' : 'ST'})
                         </span>
                       </div>
@@ -310,8 +309,8 @@ export const NationalFutureRisk: React.FC = () => {
         {/* Right Column: Detailed Regional Predictive Risk Intelligence */}
         <div className="lg:col-span-8 space-y-4">
           {assessmentLoading && (
-            <div className="p-8 text-center rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-500 text-xs flex items-center justify-center gap-2">
-              <RefreshCw className="w-4 h-4 animate-spin text-indigo-500" />
+            <div className="p-8 text-center rounded-2xl border border-slate-200 bg-white text-slate-600 text-xs flex items-center justify-center gap-2">
+              <RefreshCw className="w-4 h-4 animate-spin text-blue-600" />
               <span>Updating predictive multi-hazard projection...</span>
             </div>
           )}

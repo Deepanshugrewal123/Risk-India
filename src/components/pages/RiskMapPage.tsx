@@ -18,7 +18,7 @@ interface RiskMapPageProps {
 }
 
 export const RiskMapPage: React.FC<RiskMapPageProps> = ({ onSelectIncident }) => {
-  const [viewMode, setViewMode] = useState<'current' | 'future'>('future');
+  const [viewMode, setViewMode] = useState<'current' | 'future'>('current');
   const [allRegions, setAllRegions] = useState<RegionRiskData[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -74,43 +74,43 @@ export const RiskMapPage: React.FC<RiskMapPageProps> = ({ onSelectIncident }) =>
         <div className="flex items-center justify-between flex-wrap gap-4">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-xs font-mono uppercase tracking-wider text-charcoal-500 font-semibold">
+              <span className="text-xs font-mono uppercase tracking-wider text-blue-700 font-bold">
                 Geospatial Intelligence Explorer
               </span>
               <DemoBadge label="36 REGIONS MONITORED" />
             </div>
-            <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-charcoal-950">
+            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900">
               {viewMode === 'future' ? 'Predictive Risk & Early Warning' : 'India Disaster Risk Map'}
             </h1>
-            <p className="text-sm sm:text-base text-charcoal-600 mt-2 max-w-2xl">
+            <p className="text-sm sm:text-base text-slate-600 mt-2 max-w-2xl font-normal">
               {viewMode === 'future'
                 ? 'Authoritative national predictive risk fusion, 5-horizon NWP forecasting, qualitative uncertainty, scenarios, and citizen safety action intelligence.'
                 : 'Multi-hazard vulnerability modeling across all 28 States and 8 Union Territories, synthesizing topography, river discharge, and satellite moisture indices.'}
             </p>
           </div>
 
-          <div className="flex items-center p-1 rounded-2xl bg-paper-200 border border-paper-300 font-mono text-xs">
-            <button
-              onClick={() => setViewMode('future')}
-              className={`flex items-center gap-1.5 px-4 py-2 rounded-xl font-bold transition-all ${
-                viewMode === 'future'
-                  ? 'bg-charcoal-900 text-white shadow-sm'
-                  : 'text-charcoal-600 hover:text-charcoal-950'
-              }`}
-            >
-              <Clock className="w-4 h-4 text-indigo-400" />
-              <span>FUTURE RISK & EARLY WARNING</span>
-            </button>
+          <div className="flex items-center p-1 rounded-2xl bg-slate-100 border border-slate-200 font-mono text-xs">
             <button
               onClick={() => setViewMode('current')}
               className={`flex items-center gap-1.5 px-4 py-2 rounded-xl font-bold transition-all ${
                 viewMode === 'current'
-                  ? 'bg-charcoal-900 text-white shadow-sm'
-                  : 'text-charcoal-600 hover:text-charcoal-950'
+                  ? 'bg-slate-900 text-white shadow-xs'
+                  : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               <Globe className="w-4 h-4" />
               <span>CURRENT RISK</span>
+            </button>
+            <button
+              onClick={() => setViewMode('future')}
+              className={`flex items-center gap-1.5 px-4 py-2 rounded-xl font-bold transition-all ${
+                viewMode === 'future'
+                  ? 'bg-slate-900 text-white shadow-xs'
+                  : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              <Clock className="w-4 h-4 text-blue-600" />
+              <span>FUTURE RISK & EARLY WARNING</span>
             </button>
           </div>
         </div>
@@ -121,28 +121,28 @@ export const RiskMapPage: React.FC<RiskMapPageProps> = ({ onSelectIncident }) =>
       ) : (
         <>
           {/* Filter and Search Bar */}
-          <div className="p-4 sm:p-5 rounded-3xl bg-white border border-paper-300 shadow-subtle mb-8 space-y-4">
+          <div className="p-4 sm:p-5 rounded-3xl bg-white border border-slate-200 shadow-xs mb-8 space-y-4">
             <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4">
           {/* Search box */}
           <div className="relative flex-1">
-            <Search className="w-4 h-4 text-charcoal-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               placeholder="Search state, UT, code (e.g. Assam, Delhi, Ladakh, KL), or hazard..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-paper-50 border border-paper-300 text-xs font-mono text-charcoal-900 focus:outline-none focus:ring-2 focus:ring-charcoal-900 transition-shadow"
+              className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs font-mono text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-900 transition-shadow placeholder:text-slate-400"
             />
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
             {/* Location Type Filter */}
             <div className="flex items-center gap-2">
-              <span className="text-xs font-mono text-charcoal-500 shrink-0">Scope:</span>
+              <span className="text-xs font-mono text-slate-500 shrink-0">Scope:</span>
               <select
                 value={selectedLocationType}
                 onChange={(e) => setSelectedLocationType(e.target.value as 'ALL' | AdministrativeType)}
-                className="px-3 py-2 rounded-xl bg-paper-50 border border-paper-300 text-xs font-mono text-charcoal-800 font-medium focus:outline-none focus:ring-2 focus:ring-charcoal-900"
+                className="px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs font-mono text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-slate-900"
               >
                 <option value="ALL">All India (37)</option>
                 <option value="STATE">States Only (28)</option>
@@ -152,11 +152,11 @@ export const RiskMapPage: React.FC<RiskMapPageProps> = ({ onSelectIncident }) =>
 
             {/* Hazard Dropdown */}
             <div className="flex items-center gap-2">
-              <span className="text-xs font-mono text-charcoal-500 shrink-0">Hazard:</span>
+              <span className="text-xs font-mono text-slate-500 shrink-0">Hazard:</span>
               <select
                 value={selectedHazard}
                 onChange={(e) => setSelectedHazard(e.target.value)}
-                className="px-3 py-2 rounded-xl bg-paper-50 border border-paper-300 text-xs font-mono text-charcoal-800 font-medium focus:outline-none focus:ring-2 focus:ring-charcoal-900"
+                className="px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs font-mono text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-slate-900"
               >
                 {hazards.map((h) => (
                   <option key={h} value={h}>
@@ -168,11 +168,11 @@ export const RiskMapPage: React.FC<RiskMapPageProps> = ({ onSelectIncident }) =>
 
             {/* Severity Dropdown */}
             <div className="flex items-center gap-2">
-              <span className="text-xs font-mono text-charcoal-500 shrink-0">Severity:</span>
+              <span className="text-xs font-mono text-slate-500 shrink-0">Severity:</span>
               <select
                 value={selectedSeverity}
                 onChange={(e) => setSelectedSeverity(e.target.value as RiskLevel | 'All')}
-                className="px-3 py-2 rounded-xl bg-paper-50 border border-paper-300 text-xs font-mono text-charcoal-800 font-medium focus:outline-none focus:ring-2 focus:ring-charcoal-900"
+                className="px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs font-mono text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-slate-900"
               >
                 {severities.map((s) => (
                   <option key={s} value={s}>
@@ -216,11 +216,11 @@ export const RiskMapPage: React.FC<RiskMapPageProps> = ({ onSelectIncident }) =>
           {/* Side Inspector Column */}
           <div className="lg:col-span-4 space-y-6">
             {selectedRegion ? (
-              <div className="rounded-3xl bg-white border border-paper-300 p-6 shadow-subtle space-y-6 sticky top-28">
+              <div className="rounded-3xl bg-white border border-slate-200 p-6 shadow-xs space-y-6 sticky top-28">
                 {/* Region Header */}
-                <div className="border-b border-paper-200 pb-4">
+                <div className="border-b border-slate-100 pb-4">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-mono text-charcoal-400">
+                    <span className="text-xs font-mono text-slate-400 font-semibold">
                       {ALL_INDIAN_LOCATIONS.find((l) => l.id === selectedRegion.id)?.type === 'UNION_TERRITORY'
                         ? 'UNION TERRITORY'
                         : 'STATE'}{' '}
@@ -228,49 +228,49 @@ export const RiskMapPage: React.FC<RiskMapPageProps> = ({ onSelectIncident }) =>
                     </span>
                     <RiskBadge level={selectedRegion.riskLevel} size="sm" score={selectedRegion.riskScore} />
                   </div>
-                  <h2 className="text-2xl font-bold text-charcoal-950">{selectedRegion.name}</h2>
-                  <p className="text-xs text-charcoal-500 font-mono mt-0.5">
+                  <h2 className="text-2xl font-extrabold text-slate-900">{selectedRegion.name}</h2>
+                  <p className="text-xs text-slate-500 font-mono mt-0.5">
                     Capital: {selectedRegion.capital} • {selectedRegion.monitoredDistricts} Districts Monitored
                   </p>
                 </div>
 
                 {/* Summary */}
-                <p className="text-xs text-charcoal-600 leading-relaxed">{selectedRegion.summary}</p>
+                <p className="text-xs text-slate-600 leading-relaxed font-normal">{selectedRegion.summary}</p>
 
                 {/* Primary & Secondary Hazards */}
                 <div className="grid grid-cols-2 gap-3">
-                  <div className="p-3.5 rounded-2xl bg-paper-50 border border-paper-200">
-                    <span className="text-[10px] font-mono text-charcoal-400 uppercase tracking-wider block">Primary Hazard</span>
-                    <span className="text-sm font-bold text-charcoal-900 mt-0.5 block">{selectedRegion.primaryRisk}</span>
+                  <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200">
+                    <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Primary Hazard</span>
+                    <span className="text-sm font-bold text-slate-900 mt-0.5 block">{selectedRegion.primaryRisk}</span>
                   </div>
-                  <div className="p-3.5 rounded-2xl bg-paper-50 border border-paper-200">
-                    <span className="text-[10px] font-mono text-charcoal-400 uppercase tracking-wider block">Secondary Hazard</span>
-                    <span className="text-sm font-bold text-charcoal-900 mt-0.5 block">{selectedRegion.secondaryRisk || 'None'}</span>
+                  <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200">
+                    <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Secondary Hazard</span>
+                    <span className="text-sm font-bold text-slate-900 mt-0.5 block">{selectedRegion.secondaryRisk || 'None'}</span>
                   </div>
                 </div>
 
                 {/* Key Risk Factors */}
                 <div className="space-y-2.5">
-                  <span className="text-xs font-mono text-charcoal-400 uppercase tracking-wider block">
+                  <span className="text-xs font-mono text-slate-400 uppercase tracking-wider block font-semibold">
                     Telemetry Factors
                   </span>
                   {selectedRegion.factors.map((f, i) => (
-                    <div key={i} className="p-3 rounded-xl bg-paper-50 border border-paper-200 space-y-1">
+                    <div key={i} className="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
                       <div className="flex items-center justify-between text-xs">
-                        <span className="font-semibold text-charcoal-900">{f.name}</span>
-                        <span className="font-mono text-[10px] text-charcoal-500">{f.weight}%</span>
+                        <span className="font-semibold text-slate-900">{f.name}</span>
+                        <span className="font-mono text-[10px] text-slate-500">{f.weight}%</span>
                       </div>
-                      <p className="text-[11px] text-charcoal-500 leading-snug">{f.description}</p>
+                      <p className="text-[11px] text-slate-600 leading-snug">{f.description}</p>
                     </div>
                   ))}
                 </div>
 
                 {/* SDMA Helpline */}
-                <div className="p-3.5 rounded-2xl bg-paper-100 border border-paper-200 flex items-center gap-3">
-                  <Phone className="w-4 h-4 text-charcoal-600 shrink-0" />
+                <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 flex items-center gap-3">
+                  <Phone className="w-4 h-4 text-slate-600 shrink-0" />
                   <div>
-                    <span className="text-[10px] font-mono uppercase text-charcoal-400 block">Emergency SDMA Contact</span>
-                    <span className="text-xs font-bold text-charcoal-900 font-mono">{selectedRegion.emergencyHelpline}</span>
+                    <span className="text-[10px] font-mono uppercase text-slate-400 block">Emergency SDMA Contact</span>
+                    <span className="text-xs font-bold text-slate-900 font-mono">{selectedRegion.emergencyHelpline}</span>
                   </div>
                 </div>
               </div>
@@ -278,7 +278,7 @@ export const RiskMapPage: React.FC<RiskMapPageProps> = ({ onSelectIncident }) =>
               <EmptyState
                 title="No Region Selected"
                 description="Click on any state, UT, or marker on the map to inspect its multi-hazard telemetry factors."
-                icon={<MapPin className="w-5 h-5 text-charcoal-400" />}
+                icon={<MapPin className="w-5 h-5 text-slate-400" />}
               />
             )}
           </div>

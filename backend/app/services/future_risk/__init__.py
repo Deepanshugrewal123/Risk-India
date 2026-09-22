@@ -13,6 +13,7 @@ from .core_modes import (
     ForecastEvidence,
     FutureRiskAssessmentRecord
 )
+from app.services.national_risk.regional_baseline import SUPPORTED_HAZARDS
 from .forecast_horizons import (
     ForecastHorizon,
     ALL_FORECAST_HORIZONS,
@@ -74,6 +75,23 @@ from .future_risk_service import (
     FutureRiskService,
     future_risk_service
 )
+from .cascading_risk_engine import (
+    CascadingRiskEngine,
+    cascading_risk_engine,
+    EvidencePosture,
+    RelationshipClassification,
+    CascadingStage,
+    CascadingRiskChain,
+    CascadingRiskAssessment
+)
+from .extended_safety_engine import (
+    ExtendedCitizenSafetyEngine,
+    extended_safety_engine,
+    SafetyInstructionItem,
+    SafetyPhase,
+    SafetyPriority,
+    SafetyCategory
+)
 
 __all__ = [
     "RiskMode",
@@ -122,4 +140,18 @@ __all__ = [
     "future_risk_engine",
     "FutureRiskService",
     "future_risk_service",
+    "CascadingRiskEngine",
+    "cascading_risk_engine",
+    "EvidencePosture",
+    "RelationshipClassification",
+    "CascadingStage",
+    "CascadingRiskChain",
+    "CascadingRiskAssessment",
+    "ExtendedCitizenSafetyEngine",
+    "extended_safety_engine",
+    "SafetyInstructionItem",
+    "SafetyPhase",
+    "SafetyPriority",
+    "SafetyCategory",
+    "SUPPORTED_HAZARDS",
 ]

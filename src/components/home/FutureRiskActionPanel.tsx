@@ -13,8 +13,10 @@ import {
   Droplet,
   Package,
   Radio,
-  FileText
+  FileText,
+  BookOpen
 } from 'lucide-react';
+import { CompleteSafetyGuideModal } from '../safety/CompleteSafetyGuideModal';
 
 interface KitItem {
   id: string;
@@ -87,6 +89,7 @@ export const FutureRiskActionPanel: React.FC<FutureRiskActionPanelProps> = ({
 }) => {
   const [activeStage, setActiveStage] = useState<'now' | 'before' | 'during' | 'after' | 'kit'>('now');
   const [checkedKitItems, setCheckedKitItems] = useState<Record<string, boolean>>({});
+  const [showSafetyGuide, setShowSafetyGuide] = useState<boolean>(false);
 
   const toggleKitItem = (id: string) => {
     setCheckedKitItems((prev) => ({ ...prev, [id]: !prev[id] }));
@@ -114,20 +117,28 @@ export const FutureRiskActionPanel: React.FC<FutureRiskActionPanelProps> = ({
             </p>
           </div>
 
-          {/* Direct Helplines */}
+          {/* Action CTAs & Direct Helplines */}
           <div className="flex flex-wrap items-center gap-2 self-start md:self-auto">
+            <button
+              onClick={() => setShowSafetyGuide(true)}
+              className="min-h-[44px] px-3.5 py-2 rounded-xl bg-charcoal-950 dark:bg-white text-white dark:text-charcoal-950 font-mono text-xs font-bold hover:bg-charcoal-800 transition-colors flex items-center gap-1.5 shadow-xs"
+              aria-label="Explore Complete Safety Guide"
+            >
+              <BookOpen className="w-3.5 h-3.5 text-emerald-400 dark:text-emerald-600" />
+              <span>COMPLETE GUIDE</span>
+            </button>
             <a
               href="tel:112"
-              className="px-3 py-1.5 rounded-xl bg-rose-600 text-white font-mono text-xs font-bold hover:bg-rose-700 transition-colors flex items-center gap-1.5 shadow-xs"
+              className="min-h-[44px] px-3 py-1.5 rounded-xl bg-rose-600 text-white font-mono text-xs font-bold hover:bg-rose-700 transition-colors flex items-center gap-1.5 shadow-xs"
             >
               <PhoneCall className="w-3.5 h-3.5" />
-              <span>112 (National Emergency)</span>
+              <span>112</span>
             </a>
             <a
               href="tel:1078"
-              className="px-3 py-1.5 rounded-xl bg-paper-100 dark:bg-slate-800 text-charcoal-800 dark:text-slate-200 font-mono text-xs font-bold border border-paper-300 dark:border-slate-700 hover:bg-paper-200 transition-colors flex items-center gap-1.5"
+              className="min-h-[44px] px-3 py-1.5 rounded-xl bg-paper-100 dark:bg-slate-800 text-charcoal-800 dark:text-slate-200 font-mono text-xs font-bold border border-paper-300 dark:border-slate-700 hover:bg-paper-200 transition-colors flex items-center gap-1.5"
             >
-              <span>1078 (NDMA)</span>
+              <span>1078</span>
             </a>
           </div>
         </div>
@@ -356,6 +367,13 @@ export const FutureRiskActionPanel: React.FC<FutureRiskActionPanelProps> = ({
           </div>
         )}
       </div>
+
+      {/* Complete Citizen Disaster Safety Guide Modal */}
+      <CompleteSafetyGuideModal
+        isOpen={showSafetyGuide}
+        onClose={() => setShowSafetyGuide(false)}
+        initialHazard={hazardName}
+      />
     </section>
   );
 };

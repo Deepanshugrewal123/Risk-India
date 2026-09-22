@@ -24,7 +24,7 @@ from app.services.future_risk import (
     ForecastHorizon,
     ALL_FORECAST_HORIZONS
 )
-from app.services.national_risk.regional_baseline import SUPPORTED_HAZARDS
+from app.services.national_risk.regional_baseline import regional_baseline_engine, SUPPORTED_HAZARDS
 
 router = APIRouter(prefix="/future-risk", tags=["National Future Risk Forecasting"])
 
@@ -69,6 +69,42 @@ def get_ml_expansion_status() -> Dict[str, Any]:
     Returns 14-gate scientific promotion evaluation for Brahmaputra, Ganga, Godavari, Mahanadi, and Krishna.
     """
     return future_risk_service.get_ml_expansion_status()
+
+
+@router.get("/safety-guide", summary="Access extended citizen disaster safety guidance catalog")
+def get_citizen_safety_guide(
+    hazard: Optional[str] = Query(None, description="FLOOD, CYCLONE, HEATWAVE, SEVERE_WEATHER, LANDSLIDE, EARTHQUAKE"),
+    phase: Optional[str] = Query(None, description="BEFORE, DURING, AFTER"),
+    category: Optional[str] = Query(None, description="Filter by safety category"),
+    priority: Optional[str] = Query(None, description="CRITICAL, HIGH, RECOMMENDED")
+) -> Dict[str, Any]:
+    """
+    Returns comprehensive Before/During/After citizen life-safety guidance across all 6 hazards.
+    Eliminates artificial 4-item limits with detailed multi-category NDMA SOP guidance.
+    """
+    if hazard:
+        h_clean = hazard.upper().strip()
+        if h_clean not in SUPPORTED_HAZARDS:
+            raise HTTPException(
+                status_code=400,
+                detail=f"Unsupported hazard '{hazard}'. Supported hazards: {', '.join(SUPPORTED_HAZARDS)}"
+            )
+        return future_risk_service.get_safety_guide(hazard=h_clean)
+
+    if phase or category or priority:
+        instructions = future_risk_service.get_filtered_safety_instructions(
+            hazard=hazard,
+            phase=phase,
+            category=category,
+            priority=priority
+        )
+        return {
+            "total_items": len(instructions),
+            "items": instructions,
+            "synthetic_records": 0
+        }
+
+    return future_risk_service.get_safety_catalog()
 
 
 @router.get("/{region}", summary="Get comprehensive future risk forecast for a specific State or UT")
@@ -169,6 +205,81 @@ def get_hazard_timeline_projection(region: str, hazard: str) -> Dict[str, Any]:
     return timeline_data
 
 
+@router.get("/{region}/cascading", summary="Get cascading and secondary risk intelligence for a region")
+def get_region_cascading_risk(
+    region: str,
+    hazard: Optional[str] = Query(None, description="FLOOD, CYCLONE, HEATWAVE, SEVERE_WEATHER, LANDSLIDE, EARTHQUAKE")
+) -> Dict[str, Any]:
+    """
+    Evaluates multi-stage consequence chains: Primary Hazard -> Physical Change -> Secondary Hazard -> Tertiary Consequences.
+    Enforces honest evidence postures (LIVE_EVIDENCE, RECENT_EVIDENCE, FORECAST_AVAILABLE, BASELINE_ONLY, LIMITED_EVIDENCE, DATA_UNAVAILABLE).
+    """
+    if hazard and hazard.upper().strip() not in SUPPORTED_HAZARDS:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Unsupported hazard '{hazard}'. Supported hazards: {', '.join(SUPPORTED_HAZARDS)}"
+        )
+
+    cascading_data = future_risk_service.get_region_cascading_risk(region, hazard=hazard)
+    if not cascading_data:
+        raise HTTPException(
+            status_code=404,
+            detail=f"Region '{region}' not found in official Indian administrative catalog."
+        )
+    return cascading_data
+
+
+@router.get("/{region}/{hazard}/cascading", summary="Get hazard-specific cascading risk intelligence for a region")
+def get_region_hazard_cascading_risk(region: str, hazard: str) -> Dict[str, Any]:
+    """
+    Returns hazard-specific consequence chain evaluated with real-time regional environmental context.
+    """
+    h_clean = hazard.upper().strip()
+    if h_clean not in SUPPORTED_HAZARDS:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Unsupported hazard '{hazard}'. Supported hazards: {', '.join(SUPPORTED_HAZARDS)}"
+        )
+
+    cascading_data = future_risk_service.get_region_cascading_risk(region, hazard=h_clean)
+    if not cascading_data:
+        raise HTTPException(
+            status_code=404,
+            detail=f"Region '{region}' not found in official Indian administrative catalog."
+        )
+    return cascading_data
+
+
+@router.get("/{region}/safety-guide", summary="Get extended safety guidance contextualized for a region")
+def get_region_contextualized_safety_guide(
+    region: str,
+    hazard: Optional[str] = Query(None, description="Optional hazard override (default: region primary hazard)")
+) -> Dict[str, Any]:
+    """
+    Returns extended Before/During/After citizen life-safety guidance contextualized for the region.
+    """
+    profile = regional_baseline_engine.get_state_profile(region)
+    if not profile:
+        raise HTTPException(
+            status_code=404,
+            detail=f"Region '{region}' not found in official Indian administrative catalog."
+        )
+
+    target_hazard = hazard.upper().strip() if hazard else profile.primary_hazard
+    if target_hazard not in SUPPORTED_HAZARDS:
+        target_hazard = profile.primary_hazard
+
+    guide = future_risk_service.get_safety_guide(hazard=target_hazard)
+    guide["region"] = {
+        "id": profile.id,
+        "name": profile.name,
+        "type": profile.administrative_type,
+        "primary_hazard": profile.primary_hazard,
+        "secondary_hazard": getattr(profile, "secondary_hazard", None)
+    }
+    return guide
+
+
 @router.get("/{region}/{hazard}", summary="Get hazard-specific future risk projection")
 def get_region_hazard_future_risk(region: str, hazard: str) -> Dict[str, Any]:
     """
@@ -188,3 +299,5 @@ def get_region_hazard_future_risk(region: str, hazard: str) -> Dict[str, Any]:
             detail=f"Region '{region}' not found in official Indian administrative catalog."
         )
     return timeline_data
+
+

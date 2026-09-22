@@ -15,6 +15,7 @@ import { FutureRiskTimeline } from '../home/FutureRiskTimeline';
 import { FutureHazardMatrix } from '../home/FutureHazardMatrix';
 import { FutureRiskDrivers } from '../home/FutureRiskDrivers';
 import { FutureRiskActionPanel } from '../home/FutureRiskActionPanel';
+import { CascadingRiskSection } from '../cascading/CascadingRiskSection';
 import { EarlyWarningNoticeSection } from '../home/EarlyWarningNoticeSection';
 import { RiskTrendIndicator } from '../predictive/RiskTrendIndicator';
 import { UncertaintyBadge } from '../predictive/UncertaintyBadge';
@@ -560,7 +561,14 @@ export const FutureRiskPage: React.FC<FutureRiskPageProps> = ({
         onViewAllWarnings={() => onNavigate('disasters')}
       />
 
-      {/* 6. Citizen Action Protocols (What Should I Do, 72h Family Kit) */}
+      {/* 6. Cascading & Secondary Risk Intelligence */}
+      <CascadingRiskSection
+        regionId={selectedRegion || 'assam'}
+        regionName={selectedLocationMeta?.name || 'National Baseline'}
+        hazard={selectedHazard}
+      />
+
+      {/* 7. Citizen Action Protocols (What Should I Do, 72h Family Kit) */}
       <FutureRiskActionPanel
         regionName={selectedLocationMeta?.name || 'National Outlook'}
         hazardName={selectedHazard}

@@ -13,8 +13,10 @@ import {
   Zap, 
   Droplet, 
   Flame, 
-  ExternalLink 
+  ExternalLink,
+  BookOpen
 } from 'lucide-react';
+import { CompleteSafetyGuideModal } from '../safety/CompleteSafetyGuideModal';
 
 interface ChecklistItem {
   id: string;
@@ -79,6 +81,7 @@ type ActionTab = 'now' | 'before' | 'during' | 'after' | 'checklist';
 export const CitizenActionSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState<ActionTab>('now');
   const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({});
+  const [showCompleteGuide, setShowCompleteGuide] = useState<boolean>(false);
 
   const toggleCheck = (id: string) => {
     setCheckedItems((prev) => ({ ...prev, [id]: !prev[id] }));
@@ -90,17 +93,29 @@ export const CitizenActionSection: React.FC = () => {
   return (
     <section id="citizen-actions" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* Header */}
-      <div className="max-w-3xl mb-10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-mono uppercase tracking-wider font-semibold mb-3">
-          <ShieldCheck className="w-3.5 h-3.5" />
-          <span>CITIZEN ACTION PROTOCOLS // LIFE SAFETY</span>
+      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
+        <div className="max-w-3xl">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-mono uppercase tracking-wider font-semibold mb-3">
+            <ShieldCheck className="w-3.5 h-3.5" />
+            <span>CITIZEN ACTION PROTOCOLS // LIFE SAFETY</span>
+          </div>
+          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-charcoal-950">
+            What Should I Do?
+          </h2>
+          <p className="text-base sm:text-lg text-charcoal-600 mt-3 leading-relaxed">
+            Clear, authoritative actions for every stage of disaster response. Preparedness saves lives before disaster strikes; following verified protocols protects your family during and after.
+          </p>
         </div>
-        <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-charcoal-950">
-          What Should I Do?
-        </h2>
-        <p className="text-base sm:text-lg text-charcoal-600 mt-3 leading-relaxed">
-          Clear, authoritative actions for every stage of disaster response. Preparedness saves lives before disaster strikes; following verified protocols protects your family during and after.
-        </p>
+
+        {/* Extended Citizen Safety Guide CTA Button */}
+        <button
+          onClick={() => setShowCompleteGuide(true)}
+          className="min-h-[48px] px-5 py-3 rounded-2xl bg-charcoal-950 hover:bg-charcoal-850 text-white font-mono text-xs sm:text-sm font-bold flex items-center justify-center gap-2.5 transition-all shadow-subtle shrink-0 border border-charcoal-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 self-start lg:self-end"
+          aria-label="Explore Complete Citizen Disaster Safety Guide"
+        >
+          <BookOpen className="w-4.5 h-4.5 text-emerald-400" />
+          <span>EXPLORE COMPLETE SAFETY GUIDE</span>
+        </button>
       </div>
 
       {/* Critical Legal & Operational Distinction Callout */}
@@ -539,6 +554,13 @@ export const CitizenActionSection: React.FC = () => {
           </a>
         </div>
       </div>
+
+      {/* Complete Citizen Disaster Safety Guide Modal */}
+      <CompleteSafetyGuideModal
+        isOpen={showCompleteGuide}
+        onClose={() => setShowCompleteGuide(false)}
+      />
     </section>
   );
 };
+

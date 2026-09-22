@@ -14,6 +14,8 @@ from .ml_expansion_gate import national_ml_expansion_gate
 from .forecast_horizons import ALL_FORECAST_HORIZONS
 from .forecast_contracts import assemble_region_forecast_dataset
 from .explanation_engine import public_safety_explanation_engine
+from .cascading_risk_engine import cascading_risk_engine
+from .extended_safety_engine import extended_safety_engine
 from app.services.national_risk.regional_baseline import regional_baseline_engine, SUPPORTED_HAZARDS
 
 
@@ -192,6 +194,43 @@ class FutureRiskService:
             "priority_basins": evals,
             "synthetic_records": 0
         }
+
+    def get_region_cascading_risk(
+        self,
+        state_identifier: str,
+        hazard: Optional[str] = None
+    ) -> Optional[Dict[str, Any]]:
+        """Evaluates regional cascading consequence chains with honest evidence postures."""
+        assessment = cascading_risk_engine.evaluate_region_cascading_risk(
+            state_identifier=state_identifier,
+            hazard=hazard
+        )
+        if not assessment:
+            return None
+        return assessment.to_dict()
+
+    def get_safety_guide(self, hazard: Optional[str] = None) -> Dict[str, Any]:
+        """Returns comprehensive Before/During/After life-safety protocols for a hazard."""
+        return extended_safety_engine.get_complete_hazard_guide(hazard or "FLOOD")
+
+    def get_safety_catalog(self) -> Dict[str, Any]:
+        """Returns catalog summary of extended citizen safety guidance."""
+        return extended_safety_engine.get_catalog_summary()
+
+    def get_filtered_safety_instructions(
+        self,
+        hazard: Optional[str] = None,
+        phase: Optional[str] = None,
+        category: Optional[str] = None,
+        priority: Optional[str] = None
+    ) -> List[Dict[str, Any]]:
+        """Returns filtered life-safety guidance items."""
+        return extended_safety_engine.get_instructions(
+            hazard=hazard,
+            phase=phase,
+            category=category,
+            priority=priority
+        )
 
 
 future_risk_service = FutureRiskService()

@@ -15,7 +15,6 @@ export interface IndiaLocation {
   primaryRisk?: DisasterType;
   secondaryRisk?: DisasterType;
   riskScore?: number;
-  isDemoData?: boolean;
 }
 
 export interface Location {
@@ -25,7 +24,6 @@ export interface Location {
   city?: string;
   latitude: number;
   longitude: number;
-  isDemoData?: boolean;
 }
 
 export interface StateDistrictMap {

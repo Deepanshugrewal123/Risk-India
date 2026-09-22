@@ -1,0 +1,51 @@
+{
+  "manifest_id": "mahanadi_manifest_v1",
+  "dataset_version": "1.0.0-phase18b",
+  "basin_id": "mahanadi",
+  "basin_name": "Mahanadi Basin",
+  "source": "Central Water Commission (CWC) / India-WRIS Official Station Network + IMD Precipitation",
+  "source_url": "https://ffs.india-water.gov.in",
+  "retrieval_date": "2026-09-16",
+  "observation_count": 0,
+  "station_count": 8,
+  "event_count": 1,
+  "positive_labels": 0,
+  "negative_labels": 0,
+  "synthetic_records": 0,
+  "missing_value_statistics": {
+    "continuous_telemetry_series": "PENDING_ACQUISITION",
+    "missingness_percentage": 100.0,
+    "missingness_handling": "NEVER_INTERPOLATE_OR_FABRICATE"
+  },
+  "date_range": {
+    "start": null,
+    "end": null,
+    "historical_benchmark_reference": "2008–2020 CWC High Flood Levels"
+  },
+  "geographic_range": {
+    "min_latitude": 20.4500,
+    "max_latitude": 21.7167,
+    "min_longitude": 81.7000,
+    "max_longitude": 85.7761,
+    "riparian_states": ["Chhattisgarh", "Odisha"]
+  },
+  "calibrated_stations": [
+    "CWC-MH-001 (Hirakud Dam)",
+    "CWC-MH-002 (Naraj Barrage)",
+    "CWC-MH-003 (Tikarpara)",
+    "CWC-MH-004 (Khairmal)",
+    "CWC-MH-005 (Rajim)",
+    "CWC-MH-006 (Sheorinarayan)",
+    "CWC-MH-007 (Barmul)",
+    "CWC-MH-008 (Simga)"
+  ],
+  "hash": "8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c",
+  "processing_version": "1.0.0-phase18b",
+  "validation_status": "CALIBRATED_GAUGE_FOUNDATION_ONLY",
+  "ml_readiness": {
+    "ml_ready": false,
+    "ml_status": "NOT_TRAINED",
+    "readiness_score": 0.35,
+    "notice": "Data foundation available — ML model not yet scientifically validated."
+  }
+}

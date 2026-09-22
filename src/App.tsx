@@ -1,40 +1,60 @@
 import React, { useState, useEffect } from 'react';
+import { CrisisProvider, useCrisis } from './context/CrisisContext';
 import { Navbar, NavigationPage } from './components/common/Navbar';
 import { Footer } from './components/common/Footer';
+import { OfflineIndicator } from './components/common/OfflineIndicator';
 import { HomePage } from './components/pages/HomePage';
+import { FutureRiskPage } from './components/pages/FutureRiskPage';
 import { RiskMapPage } from './components/pages/RiskMapPage';
 import { DisastersPage } from './components/pages/DisastersPage';
 import { GetHelpPage } from './components/pages/GetHelpPage';
 import { HelpOthersPage } from './components/pages/HelpOthersPage';
 import { HowItWorksPage } from './components/pages/HowItWorksPage';
 import { DisasterDetailModal } from './components/modals/DisasterDetailModal';
+import { EmergencyAccessHub } from './components/emergency/EmergencyAccessHub';
+import { disasterService } from './services/disasterService';
 import { RegionRiskData } from './types/risk';
 import { DisasterEvent } from './types/disaster';
+import { CrisisDashboard, CrisisRecommendedBanner } from './components/crisis';
 import { PhoneCall, ShieldAlert, X } from 'lucide-react';
 
 const getInitialPage = (): NavigationPage => {
   if (typeof window !== 'undefined') {
-    // Check URL query param: ?page=...
+    // Check URL query param: ?page=... or ?view=...
     const params = new URLSearchParams(window.location.search);
-    const pageParam = params.get('page') as NavigationPage;
-    const validPages: NavigationPage[] = ['home', 'risk-map', 'disasters', 'get-help', 'help-others', 'how-it-works'];
-    if (pageParam && validPages.includes(pageParam)) return pageParam;
+    const pageParam = params.get('page') || params.get('view');
+    
+    if (pageParam === 'future-risk' || pageParam === 'future' || pageParam === 'predictive') return 'future-risk';
+    if (pageParam === 'map' || pageParam === 'risk-map') return 'risk-map';
+    if (pageParam === 'disasters' || pageParam === 'incidents') return 'disasters';
+    if (pageParam === 'get-help' || pageParam === 'help') return 'get-help';
+    if (pageParam === 'help-others' || pageParam === 'volunteer') return 'help-others';
+    if (pageParam === 'how-it-works' || pageParam === 'about') return 'how-it-works';
 
     // Check hash: #...
     if (window.location.hash) {
       const hash = window.location.hash.replace('#', '') as NavigationPage;
+      const validPages: NavigationPage[] = ['home', 'future-risk', 'risk-map', 'disasters', 'get-help', 'help-others', 'how-it-works'];
       if (validPages.includes(hash)) return hash;
     }
   }
   return 'home';
 };
 
-export const App: React.FC = () => {
+export const AppContent: React.FC = () => {
+  const { isCrisisMode } = useCrisis();
   const [currentPage, setCurrentPage] = useState<NavigationPage>(getInitialPage);
   const [selectedIncident, setSelectedIncident] = useState<DisasterEvent | null>(null);
+  const [showEmergencyHub, setShowEmergencyHub] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('emergency') === 'true' || params.get('sos') === 'true';
+    }
+    return false;
+  });
   const [showQuickSOS, setShowQuickSOS] = useState<boolean>(false);
 
-  // Sync back/forward browser history and hash changes
+  // Sync back/forward browser history and query parameters
   useEffect(() => {
     const handlePopState = () => {
       setCurrentPage(getInitialPage());
@@ -46,6 +66,22 @@ export const App: React.FC = () => {
       window.removeEventListener('popstate', handlePopState);
       window.removeEventListener('hashchange', handlePopState);
     };
+  }, []);
+
+  // Handle deep-linked incident (?incident=<id>)
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const incidentId = params.get('incident');
+      if (incidentId) {
+        disasterService.getActiveDisasters().then((list) => {
+          const found = list.find((inc) => inc.id === incidentId || inc.id.includes(incidentId));
+          if (found) {
+            setSelectedIncident(found);
+          }
+        }).catch(() => {});
+      }
+    }
   }, []);
 
   const handleNavigate = (page: NavigationPage) => {
@@ -61,10 +97,14 @@ export const App: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-paper-100 text-charcoal-900 font-sans selection:bg-charcoal-900 selection:text-paper-100 overflow-x-hidden">
+      {/* Offline Connectivity Indicator */}
+      <OfflineIndicator onOpenEmergencyHub={() => setShowEmergencyHub(true)} />
+
       {/* Global Minimal Navigation */}
       <Navbar
         currentPage={currentPage}
         onNavigate={handleNavigate}
+        onOpenEmergencyHub={() => setShowEmergencyHub(true)}
         onOpenAnalyzeModal={() => {
           if (currentPage !== 'home') {
             handleNavigate('home');
@@ -75,42 +115,61 @@ export const App: React.FC = () => {
         }}
       />
 
-      {/* Main Routed Page Content */}
+      {/* Crisis Mode Recommended Advisory Banner */}
+      {!isCrisisMode && (
+        <div className="pt-16 sm:pt-20">
+          <CrisisRecommendedBanner />
+        </div>
+      )}
+
+      {/* Main Routed Page Content or Dedicated Crisis Dashboard */}
       <div className="flex-1">
-        {currentPage === 'home' && (
-          <HomePage
-            onNavigate={handleNavigate}
-            onSelectRegion={handleSelectRegionFromHome}
-            onSelectIncident={(incident) => setSelectedIncident(incident)}
-          />
-        )}
+        {isCrisisMode ? (
+          <CrisisDashboard />
+        ) : (
+          <>
+            {currentPage === 'home' && (
+              <HomePage
+                onNavigate={handleNavigate}
+                onSelectRegion={handleSelectRegionFromHome}
+                onSelectIncident={(incident) => setSelectedIncident(incident)}
+              />
+            )}
 
-        {currentPage === 'risk-map' && (
-          <RiskMapPage
-            onSelectIncident={(incident) => setSelectedIncident(incident)}
-          />
-        )}
+            {currentPage === 'future-risk' && (
+              <FutureRiskPage
+                onNavigate={handleNavigate}
+              />
+            )}
 
-        {currentPage === 'disasters' && (
-          <DisastersPage
-            onSelectIncident={(incident) => setSelectedIncident(incident)}
-          />
-        )}
+            {currentPage === 'risk-map' && (
+              <RiskMapPage
+                onSelectIncident={(incident) => setSelectedIncident(incident)}
+              />
+            )}
 
-        {currentPage === 'get-help' && <GetHelpPage />}
+            {currentPage === 'disasters' && (
+              <DisastersPage
+                onSelectIncident={(incident) => setSelectedIncident(incident)}
+              />
+            )}
 
-        {currentPage === 'help-others' && <HelpOthersPage />}
+            {currentPage === 'get-help' && <GetHelpPage />}
 
-        {currentPage === 'how-it-works' && (
-          <HowItWorksPage
-            onAnalyzeArea={() => {
-              handleNavigate('home');
-              setTimeout(() => {
-                document.getElementById('analyze-section')?.scrollIntoView({ behavior: 'smooth' });
-              }, 150);
-            }}
-            onExploreMap={() => handleNavigate('risk-map')}
-          />
+            {currentPage === 'help-others' && <HelpOthersPage />}
+
+            {currentPage === 'how-it-works' && (
+              <HowItWorksPage
+                onAnalyzeArea={() => {
+                  handleNavigate('home');
+                  setTimeout(() => {
+                    document.getElementById('analyze-section')?.scrollIntoView({ behavior: 'smooth' });
+                  }, 150);
+                }}
+                onExploreMap={() => handleNavigate('risk-map')}
+              />
+            )}
+          </>
         )}
       </div>
 
@@ -125,6 +184,12 @@ export const App: React.FC = () => {
           setSelectedIncident(null);
           handleNavigate('help-others');
         }}
+      />
+
+      {/* Emergency Access Hub Modal (Offline-ready speed dial & safety protocols) */}
+      <EmergencyAccessHub
+        isOpen={showEmergencyHub}
+        onClose={() => setShowEmergencyHub(false)}
       />
 
       {/* Floating Quick SOS Emergency Dial Button (Bottom Right) */}
@@ -166,19 +231,40 @@ export const App: React.FC = () => {
                 <strong className="font-bold">1070</strong>
               </a>
             </div>
+
+            <div className="mt-2.5 pt-2 border-t border-paper-200">
+              <button
+                onClick={() => {
+                  setShowQuickSOS(false);
+                  setShowEmergencyHub(true);
+                }}
+                className="w-full py-1.5 px-2.5 rounded-lg bg-charcoal-900 hover:bg-charcoal-800 text-white font-mono text-[11px] font-bold text-center transition-colors"
+              >
+                Open Full Emergency Hub →
+              </button>
+            </div>
           </div>
         ) : null}
 
         <button
-          onClick={() => setShowQuickSOS(!showQuickSOS)}
-          className="flex items-center gap-2 px-4 py-3 rounded-full bg-charcoal-900 text-paper-50 shadow-floating hover:bg-charcoal-800 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-charcoal-900"
-          aria-label="Quick Emergency Helplines"
+          onClick={() => setShowEmergencyHub(true)}
+          className="flex items-center gap-2 px-4 py-3 rounded-full bg-rose-600 text-white shadow-floating hover:bg-rose-700 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 font-bold"
+          aria-label="Quick Emergency Helplines & Protocols"
+          title="Open Emergency Helpline Directory (112, 1078, 1070) & Offline Safety Guides"
         >
-          <PhoneCall className="w-4 h-4 text-rose-400 animate-pulse" />
+          <PhoneCall className="w-4 h-4 text-white animate-pulse" />
           <span className="text-xs font-mono font-bold tracking-tight">SOS Lines</span>
         </button>
       </div>
     </div>
+  );
+};
+
+export const App: React.FC = () => {
+  return (
+    <CrisisProvider>
+      <AppContent />
+    </CrisisProvider>
   );
 };
 

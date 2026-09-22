@@ -1,8 +1,11 @@
+import logging
 from sqlalchemy.orm import Session
 from typing import Optional, List, Dict, Any
 from app.models.disaster_event import DisasterEvent
 from app.models.location import Location
 from app.services.disaster_provider import disaster_feed_manager, NormalizedDisasterEvent
+
+logger = logging.getLogger("disaster-service")
 
 class DisasterService:
     @staticmethod
@@ -70,8 +73,8 @@ class DisasterService:
                             "freshness": "STALE",
                             "risk_score": 70
                         })
-            except Exception:
-                pass
+            except Exception as exc:
+                logger.debug("Database event query fallback: %s", exc)
 
         return output
 
@@ -81,6 +84,32 @@ class DisasterService:
         disaster_type: Optional[str] = None
     ) -> List[Dict[str, Any]]:
         events = disaster_feed_manager.get_live_events(state=state, hazard_type=disaster_type)
+        return [e.to_dict() for e in events]
+
+    @staticmethod
+    def get_disasters_by_hazard(
+        hazard: str,
+        state: Optional[str] = None,
+        live_only: bool = False
+    ) -> List[Dict[str, Any]]:
+        events = disaster_feed_manager.get_events(
+            state=state,
+            hazard_type=hazard,
+            live_only=live_only
+        )
+        return [e.to_dict() for e in events]
+
+    @staticmethod
+    def get_disasters_by_state(
+        state: str,
+        hazard: Optional[str] = None,
+        live_only: bool = False
+    ) -> List[Dict[str, Any]]:
+        events = disaster_feed_manager.get_events(
+            state=state,
+            hazard_type=hazard,
+            live_only=live_only
+        )
         return [e.to_dict() for e in events]
 
     @staticmethod
@@ -119,8 +148,8 @@ class DisasterService:
                         "freshness": "STALE",
                         "risk_score": 70
                     }
-            except Exception:
-                pass
+            except Exception as exc:
+                logger.debug("Database event query by ID fallback: %s", exc)
 
         return None
 

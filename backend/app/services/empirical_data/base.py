@@ -1,0 +1,99 @@
+"""
+RISK // INDIA — Empirical Flood Data Base Types & Enumerations
+=============================================================
+Defines standard enumerations, constants, and statuses for the Phase 26
+national empirical flood data acquisition layer.
+"""
+
+from enum import Enum
+from typing import List, Dict, Any
+
+
+class SourceProvider(str, Enum):
+    CWC = "Central Water Commission"
+    IMD = "India Meteorological Department"
+    GSI = "Geological Survey of India"
+    NDMA = "National Disaster Management Authority"
+    NCS = "National Centre for Seismology"
+    NRSC = "National Remote Sensing Centre (ISRO)"
+    ASDMA = "Assam State Disaster Management Authority"
+    SDMA = "State Disaster Management Authority"
+
+
+class QualityStatus(str, Enum):
+    VALIDATED = "VALIDATED"
+    SUSPECT = "SUSPECT"
+    QUARANTINED = "QUARANTINED"
+
+
+class ProvenanceStatus(str, Enum):
+    VERIFIED_OFFICIAL = "VERIFIED_OFFICIAL"
+    UNVERIFIED = "UNVERIFIED"
+    AUTHENTICATION_REQUIRED = "AUTHENTICATION_REQUIRED"
+    DATA_UNAVAILABLE = "DATA_UNAVAILABLE"
+
+
+class DataFreshness(str, Enum):
+    LIVE = "LIVE"
+    RECENT = "RECENT"
+    CACHED = "CACHED"
+    STALE = "STALE"
+    EMPIRICAL = "EMPIRICAL"
+    BASELINE = "BASELINE"
+    REGIONAL_BASELINE = "REGIONAL_BASELINE"
+    ML_PREDICTION = "ML_PREDICTION"
+    UNAVAILABLE = "UNAVAILABLE"
+
+
+class ScientificState(str, Enum):
+    EMPIRICALLY_VALIDATED_ML = "EMPIRICALLY_VALIDATED_ML"
+    EMPIRICAL_DATA_INSUFFICIENT = "EMPIRICAL_DATA_INSUFFICIENT"
+    DATA_QUALITY_FAILED = "DATA_QUALITY_FAILED"
+    DATA_UNAVAILABLE = "DATA_UNAVAILABLE"
+    MODEL_NOT_APPROVED = "MODEL_NOT_APPROVED"
+    DATA_ACQUISITION_PENDING = "DATA_ACQUISITION_PENDING"
+    DATA_VALIDATION_FAILED = "DATA_VALIDATION_FAILED"
+
+
+class EventCategory(str, Enum):
+    TRAINING_CANDIDATE = "TRAINING_CANDIDATE"
+    VALIDATION_CANDIDATE = "VALIDATION_CANDIDATE"
+    INDEPENDENT_TEST = "INDEPENDENT_TEST"
+
+
+class PromotionStatus(str, Enum):
+    APPROVED = "APPROVED"
+    NOT_APPROVED = "NOT_APPROVED"
+
+
+PRIORITY_BASINS: List[str] = [
+    "brahmaputra",
+    "ganga",
+    "godavari",
+    "mahanadi",
+    "krishna"
+]
+
+CANONICAL_BASIN_NAMES: Dict[str, str] = {
+    "brahmaputra": "Brahmaputra Basin",
+    "ganga": "Ganga Basin",
+    "godavari": "Godavari Basin",
+    "mahanadi": "Mahanadi Basin",
+    "krishna": "Krishna Basin"
+}
+
+# Standard Machine-Readable Rejection Reasons
+REJECTION_REASON_MISSING_CORROBORATION = "MISSING_OFFICIAL_CORROBORATION"
+REJECTION_REASON_OUT_OF_BOUNDS_COORDINATES = "COORDINATES_OUTSIDE_INDIAN_BOUNDING_BOX"
+REJECTION_REASON_FUTURE_TIMESTAMP = "TIMESTAMP_IN_FUTURE"
+REJECTION_REASON_TEMPORAL_LEAKAGE = "TEMPORAL_LEAKAGE_OBSERVATION_AFTER_EVENT"
+REJECTION_REASON_UNVERIFIED_PROVENANCE = "PROVENANCE_NOT_VERIFIED_OFFICIAL"
+REJECTION_REASON_SYNTHETIC_DATA_PROHIBITED = "SYNTHETIC_DATA_PROHIBITED"
+REJECTION_REASON_INVALID_UNITS = "UNITS_NOT_STANDARDIZED"
+REJECTION_REASON_INSUFFICIENT_OBSERVATIONS = "INSUFFICIENT_EMPIRICAL_OBSERVATIONS"
+REJECTION_REASON_DUPLICATE_RECORD = "DUPLICATE_OBSERVATION_DETECTED"
+REJECTION_REASON_MISSING_FEATURES = "INCOMPLETE_FEATURE_VECTOR"
+REJECTION_REASON_SPATIAL_LEAKAGE = "SPATIAL_LEAKAGE_ACROSS_CATCHMENTS"
+REJECTION_REASON_UNAPPROVED_MODEL = "MODEL_VALIDATION_GATES_NOT_MET"
+REJECTION_REASON_NON_ASSAM_ML_PROHIBITED = "NON_ASSAM_ML_STRICTLY_PROHIBITED"
+

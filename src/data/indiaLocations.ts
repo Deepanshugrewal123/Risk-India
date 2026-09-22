@@ -18,7 +18,6 @@ export const ALL_INDIAN_STATES: IndiaLocation[] = [
       'Nellore', 'Srikakulam', 'Vizianagaram', 'Prakasam', 'Kurnool',
       'Anantapur', 'Kadapa', 'Chittoor', 'Tirupati', 'Kakinada'
     ],
-    isDemoData: true
   },
   {
     id: 'arunachal-pradesh',
@@ -37,7 +36,6 @@ export const ALL_INDIAN_STATES: IndiaLocation[] = [
       'Upper Subansiri', 'West Siang', 'East Siang', 'Dibang Valley', 'Lohit',
       'Changlang', 'Tirap', 'Anjaw', 'Kurung Kumey', 'Shi Yomi'
     ],
-    isDemoData: true
   },
   {
     id: 'assam',
@@ -56,7 +54,6 @@ export const ALL_INDIAN_STATES: IndiaLocation[] = [
       'Morigaon', 'Cachar', 'Golaghat', 'Dibrugarh', 'Silchar',
       'Sonitpur', 'Lakhimpur', 'Dhemaji', 'Jorhat', 'Sivasagar'
     ],
-    isDemoData: true
   },
   {
     id: 'bihar',
@@ -75,7 +72,6 @@ export const ALL_INDIAN_STATES: IndiaLocation[] = [
       'Saharsa', 'Khagaria', 'Katihar', 'Purnia', 'Gaya',
       'Madhubani', 'Samastipur', 'Begusarai', 'Vaishali', 'Rohtas'
     ],
-    isDemoData: true
   },
   {
     id: 'chhattisgarh',
@@ -94,7 +90,6 @@ export const ALL_INDIAN_STATES: IndiaLocation[] = [
       'Korba', 'Raigarh', 'Surguja', 'Dhamtari', 'Mahasamund',
       'Janjgir-Champa', 'Kanker', 'Kawardha', 'Sukma', 'Bijapur'
     ],
-    isDemoData: true
   },
   {
     id: 'goa',
@@ -112,7 +107,6 @@ export const ALL_INDIAN_STATES: IndiaLocation[] = [
       'North Goa (Panaji)', 'South Goa (Margao)', 'Bardez (Mapusa)',
       'Salcete', 'Ponda', 'Tiswadi', 'Mormugao', 'Bicholim'
     ],
-    isDemoData: true
   },
   {
     id: 'gujarat',
@@ -131,7 +125,6 @@ export const ALL_INDIAN_STATES: IndiaLocation[] = [
       'Ahmedabad', 'Bhavnagar', 'Morbi', 'Rajkot', 'Vadodara',
       'Amreli', 'Gir Somnath', 'Navsari', 'Valsad', 'Patan'
     ],
-    isDemoData: true
   },
   {
     id: 'haryana',
@@ -150,7 +143,6 @@ export const ALL_INDIAN_STATES: IndiaLocation[] = [
       'Panipat', 'Sonipat', 'Rohtak', 'Hisar', 'Sirsa',
       'Yamunanagar', 'Kurukshetra', 'Rewari', 'Jhajjar', 'Bhiwani'
     ],
-    isDemoData: true
   },
   {
     id: 'himachal-pradesh',
@@ -169,7 +161,6 @@ export const ALL_INDIAN_STATES: IndiaLocation[] = [
       'Lahaul & Spiti', 'Solan', 'Chamba', 'Sirmaur', 'Bilaspur',
       'Hamirpur', 'Una'
     ],
-    isDemoData: true
   },
   {
     id: 'jharkhand',
@@ -188,7 +179,6 @@ export const ALL_INDIAN_STATES: IndiaLocation[] = [
       'Deoghar', 'Giridih', 'Palamu', 'Ramgarh', 'Dumka',
       'Chaibasa', 'Garhwa', 'Koderma', 'Latehar', 'Sahebganj'
     ],
-    isDemoData: true
   },
   {
     id: 'karnataka',
@@ -207,7 +197,6 @@ export const ALL_INDIAN_STATES: IndiaLocation[] = [
       'Udupi', 'Uttara Kannada', 'Belagavi', 'Mysuru', 'Ballari',
       'Shivamogga', 'Chikkamagaluru', 'Kalaburagi', 'Dharwad', 'Tumakuru', 'Vijayapura'
     ],
-    isDemoData: true
   },
   {
     id: 'kerala',
@@ -226,7 +215,6 @@ export const ALL_INDIAN_STATES: IndiaLocation[] = [
       'Kottayam', 'Thrissur', 'Kozhikode', 'Thiruvananthapuram', 'Palakkad',
       'Malappuram', 'Kannur', 'Kasaragod', 'Kollam'
     ],
-    isDemoData: true
   },
   {
     id: 'madhya-pradesh',
@@ -245,7 +233,6 @@ export const ALL_INDIAN_STATES: IndiaLocation[] = [
       'Sagar', 'Rewa', 'Satna', 'Hoshangabad (Narmadapuram)', 'Chhindwara',
       'Ratlam', 'Vidisha', 'Sehore', 'Dewas', 'Shivpuri'
     ],
-    isDemoData: true
   },
   {
     id: 'maharashtra',
@@ -264,7 +251,6 @@ export const ALL_INDIAN_STATES: IndiaLocation[] = [
       'Sindhudurg', 'Pune', 'Kolhapur', 'Sangli', 'Satara',
       'Nashik', 'Nagpur', 'Aurangabad (Chhatrapati Sambhajinagar)', 'Solapur', 'Amravati'
     ],
-    isDemoData: true
   },
   {
     id: 'manipur',
@@ -282,7 +268,6 @@ export const ALL_INDIAN_STATES: IndiaLocation[] = [
       'Imphal West', 'Imphal East', 'Churachandpur', 'Bishnupur', 'Thoubal',
       'Ukhrul', 'Senapati', 'Tamenglong', 'Chandel', 'Kangpokpi'
     ],
-    isDemoData: true
   },
   {
     id: 'meghalaya',
@@ -301,7 +286,6 @@ export const ALL_INDIAN_STATES: IndiaLocation[] = [
       'Ri-Bhoi', 'West Garo Hills (Tura)', 'East Garo Hills', 'South Garo Hills',
       'West Jaintia Hills', 'East Jaintia Hills'
     ],
-    isDemoData: true
   },
   {
     id: 'mizoram',
@@ -319,7 +303,6 @@ export const ALL_INDIAN_STATES: IndiaLocation[] = [
       'Aizawl', 'Lunglei', 'Champhai', 'Kolasib', 'Serchhip',
       'Lawngtlai', 'Mamit', 'Saiha', 'Hnahthial', 'Khawzawl'
     ],
-    isDemoData: true
   },
   {
     id: 'nagaland',
@@ -337,7 +320,6 @@ export const ALL_INDIAN_STATES: IndiaLocation[] = [
       'Kohima', 'Dimapur', 'Mokokchung', 'Wokha', 'Mon',
       'Phek', 'Zunheboto', 'Tuensang', 'Longleng', 'Kiphire', 'Peren', 'Chümoukedima'
     ],
-    isDemoData: true
   },
   {
     id: 'odisha',
@@ -356,7 +338,6 @@ export const ALL_INDIAN_STATES: IndiaLocation[] = [
       'Jagatsinghpur', 'Kendrapara', 'Bhadrak', 'Mayurbhanj', 'Jajpur',
       'Sambalpur', 'Koraput', 'Bargarh', 'Rayagada', 'Sundargarh'
     ],
-    isDemoData: true
   },
   {
     id: 'punjab',
@@ -375,7 +356,6 @@ export const ALL_INDIAN_STATES: IndiaLocation[] = [
       'Hoshiarpur', 'Rupnagar (Ropar)', 'Gurdaspur', 'Firozpur', 'Fazilka',
       'Mohali (SAS Nagar)', 'Sangrur', 'Moga', 'Kapurthala', 'Pathankot'
     ],
-    isDemoData: true
   },
   {
     id: 'rajasthan',
@@ -394,7 +374,6 @@ export const ALL_INDIAN_STATES: IndiaLocation[] = [
       'Jaipur', 'Kota', 'Udaipur', 'Ajmer', 'Alwar',
       'Sikar', 'Nagaur', 'Pali', 'Bhilwara', 'Sri Ganganagar'
     ],
-    isDemoData: true
   },
   {
     id: 'sikkim',
@@ -412,7 +391,6 @@ export const ALL_INDIAN_STATES: IndiaLocation[] = [
       'East Sikkim (Gangtok)', 'West Sikkim (Geyzing)', 'North Sikkim (Mangan)',
       'South Sikkim (Namchi)', 'Pakyong', 'Soreng'
     ],
-    isDemoData: true
   },
   {
     id: 'tamil-nadu',
@@ -431,7 +409,6 @@ export const ALL_INDIAN_STATES: IndiaLocation[] = [
       'Tirunelveli', 'Kanyakumari', 'Coimbatore', 'Madurai', 'Tiruchirappalli',
       'Salem', 'Thanjavur', 'Ramanathapuram', 'Vellore', 'Dindigul'
     ],
-    isDemoData: true
   },
   {
     id: 'telangana',
@@ -450,7 +427,6 @@ export const ALL_INDIAN_STATES: IndiaLocation[] = [
       'Karimnagar', 'Nizamabad', 'Mahbubnagar', 'Nalgonda', 'Adilabad',
       'Bhadradri Kothagudem', 'Siddipet', 'Mancherial', 'Kamareddy'
     ],
-    isDemoData: true
   },
   {
     id: 'tripura',
@@ -468,7 +444,6 @@ export const ALL_INDIAN_STATES: IndiaLocation[] = [
       'West Tripura (Agartala)', 'South Tripura', 'Gomati (Udaipur)', 'Dhalai (Ambassa)',
       'North Tripura (Dharmanagar)', 'Unakoti (Kailashahar)', 'Khowai', 'Sepahijala'
     ],
-    isDemoData: true
   },
   {
     id: 'uttar-pradesh',
@@ -487,7 +462,6 @@ export const ALL_INDIAN_STATES: IndiaLocation[] = [
       'Agra', 'Meerut', 'Ghaziabad', 'Noida (Gautam Buddha Nagar)', 'Bareilly',
       'Aligarh', 'Moradabad', 'Ayodhya', 'Jhansi', 'Banda', 'Lakhimpur Kheri'
     ],
-    isDemoData: true
   },
   {
     id: 'uttarakhand',
@@ -506,7 +480,6 @@ export const ALL_INDIAN_STATES: IndiaLocation[] = [
       'Pithoragarh', 'Nainital', 'Haridwar', 'Pauri Garhwal', 'Almora',
       'Bageshwar', 'Champawat', 'Udham Singh Nagar'
     ],
-    isDemoData: true
   },
   {
     id: 'west-bengal',
@@ -525,7 +498,6 @@ export const ALL_INDIAN_STATES: IndiaLocation[] = [
       'Purba Medinipur', 'Paschim Medinipur', 'Darjeeling', 'Jalpaiguri',
       'Kalimpong', 'Alipurduar', 'Murshidabad', 'Nadia', 'Malda', 'Bankura'
     ],
-    isDemoData: true
   }
 ];
 
@@ -545,7 +517,6 @@ export const ALL_INDIAN_UNION_TERRITORIES: IndiaLocation[] = [
     districts: [
       'South Andaman (Port Blair)', 'North and Middle Andaman (Mayabunder)', 'Nicobar (Car Nicobar)'
     ],
-    isDemoData: true
   },
   {
     id: 'chandigarh',
@@ -562,41 +533,23 @@ export const ALL_INDIAN_UNION_TERRITORIES: IndiaLocation[] = [
     districts: [
       'Chandigarh (Urban)', 'Sector 1-17 (Central)', 'Industrial Area', 'Manimajra', 'Sukhna Lake Basin'
     ],
-    isDemoData: true
   },
   {
-    id: 'dadra-nagar-haveli',
-    name: 'Dadra and Nagar Haveli',
+    id: 'dadra-nagar-haveli-daman-diu',
+    name: 'Dadra & Nagar Haveli and Daman & Diu',
     type: 'UNION_TERRITORY',
-    code: 'DNH',
-    capital: 'Silvassa',
-    region: 'West India',
-    latitude: 20.2763,
-    longitude: 73.0083,
-    primaryRisk: 'Flood',
-    secondaryRisk: 'Cyclone',
-    riskScore: 54,
-    districts: [
-      'Silvassa', 'Amli', 'Khanvel', 'Naroli', 'Dadra Enclave'
-    ],
-    isDemoData: true
-  },
-  {
-    id: 'daman-diu',
-    name: 'Daman and Diu',
-    type: 'UNION_TERRITORY',
-    code: 'DD',
+    code: 'DN',
     capital: 'Daman',
     region: 'West India',
     latitude: 20.4283,
     longitude: 72.8397,
     primaryRisk: 'Cyclone',
     secondaryRisk: 'Flood',
-    riskScore: 63,
+    riskScore: 58,
     districts: [
-      'Daman (Moti Daman & Nani Daman)', 'Diu (Ghoghla & Fort)'
+      'Daman (Moti Daman & Nani Daman)', 'Diu (Ghoghla & Fort)',
+      'Silvassa', 'Amli', 'Khanvel', 'Naroli', 'Dadra Enclave'
     ],
-    isDemoData: true
   },
   {
     id: 'delhi',
@@ -615,7 +568,6 @@ export const ALL_INDIAN_UNION_TERRITORIES: IndiaLocation[] = [
       'Central Delhi', 'New Delhi', 'North Delhi', 'North West Delhi',
       'West Delhi', 'South Delhi', 'South West Delhi', 'Shahdara'
     ],
-    isDemoData: true
   },
   {
     id: 'jammu-kashmir',
@@ -633,7 +585,6 @@ export const ALL_INDIAN_UNION_TERRITORIES: IndiaLocation[] = [
       'Srinagar (Jhelum Basin)', 'Anantnag', 'Baramulla', 'Jammu (Tawi Basin)',
       'Doda', 'Poonch', 'Kupwara', 'Budgam', 'Pulwama', 'Kishtwar', 'Kathua', 'Udhampur'
     ],
-    isDemoData: true
   },
   {
     id: 'ladakh',
@@ -650,7 +601,6 @@ export const ALL_INDIAN_UNION_TERRITORIES: IndiaLocation[] = [
     districts: [
       'Leh (Indus Valley)', 'Kargil (Suru Basin)', 'Nubra Valley', 'Zanskar', 'Changthang'
     ],
-    isDemoData: true
   },
   {
     id: 'lakshadweep',
@@ -668,7 +618,6 @@ export const ALL_INDIAN_UNION_TERRITORIES: IndiaLocation[] = [
       'Kavaratti Island', 'Agatti Island', 'Amini Island', 'Andrott Island',
       'Minicoy Island', 'Kalpeni Island', 'Kadmat Island'
     ],
-    isDemoData: true
   },
   {
     id: 'puducherry',
@@ -685,12 +634,11 @@ export const ALL_INDIAN_UNION_TERRITORIES: IndiaLocation[] = [
     districts: [
       'Puducherry (Coromandel Coast)', 'Karaikal', 'Mahe (Malabar Coast)', 'Yanam (Godavari Delta)'
     ],
-    isDemoData: true
   }
 ];
 
 /**
- * Combined dataset of exactly 28 States and 9 Union Territories (37 total locations)
+ * Combined dataset of exactly 28 States and 8 Union Territories (36 total locations)
  */
 export const ALL_INDIAN_LOCATIONS: IndiaLocation[] = [
   ...ALL_INDIAN_STATES,
@@ -707,7 +655,7 @@ export const findIndiaLocation = (query: string): IndiaLocation | undefined => {
       l.id.toLowerCase() === q ||
       l.name.toLowerCase() === q ||
       l.code.toLowerCase() === q ||
-      (q.includes('dadra') && (l.id === 'dadra-nagar-haveli' || l.id === 'daman-diu')) ||
-      (q.includes('daman') && (l.id === 'daman-diu' || l.id === 'dadra-nagar-haveli'))
+      ((q.includes('dadra') || q.includes('daman') || q.includes('diu') || q === 'dn' || q === 'dnh' || q === 'dd') &&
+        l.id === 'dadra-nagar-haveli-daman-diu')
   );
 };

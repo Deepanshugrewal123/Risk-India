@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
+import { useCrisis } from '../../context/CrisisContext';
 
 interface TiltCardProps {
   children: React.ReactNode;
@@ -14,9 +15,23 @@ export const TiltCard: React.FC<TiltCardProps> = ({
   maxTilt = 1.5,
   onClick,
 }) => {
+  const { isCrisisMode } = useCrisis();
   const cardRef = useRef<HTMLDivElement | null>(null);
   const [rotateX, setRotateX] = useState(0);
   const [rotateY, setRotateY] = useState(0);
+
+  // If in crisis mode, bypass motion physics entirely to save battery and GPU cycles
+  if (isCrisisMode) {
+    return (
+      <div
+        ref={cardRef}
+        onClick={onClick}
+        className={className}
+      >
+        {children}
+      </div>
+    );
+  }
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;

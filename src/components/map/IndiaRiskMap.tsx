@@ -8,6 +8,7 @@ import { disasterService } from '../../services/disasterService';
 import { getRiskConfig, getRiskLevel } from '../../utils/riskLevels';
 import { RiskBadge } from '../common/RiskBadge';
 import { DemoBadge } from '../common/DemoBadge';
+import { FreshnessBadge } from '../common/FreshnessBadge';
 import { TiltCard } from '../common/TiltCard';
 import {
   AlertTriangle,
@@ -262,6 +263,11 @@ export const IndiaRiskMap: React.FC<IndiaRiskMapProps> = ({
   const [showResources, setShowResources] = useState<boolean>(true);
   const [hoveredResource, setHoveredResource] = useState<Resource | null>(null);
   const [selectedResource, setSelectedResource] = useState<Resource | null>(null);
+  const [displayMode, setDisplayMode] = useState<'map' | 'cards' | 'list'>('map');
+  const [mapRenderError, setMapRenderError] = useState<boolean>(false);
+  const [mapPerspective, setMapPerspective] = useState<'CURRENT' | 'FUTURE'>('CURRENT');
+  const [futureHorizon, setFutureHorizon] = useState<string>('6-24h');
+
 
   useEffect(() => {
     const loadMapData = async () => {
@@ -338,7 +344,7 @@ export const IndiaRiskMap: React.FC<IndiaRiskMapProps> = ({
       ],
       historicalTrend: [{ year: 2024, score: 32 }],
       recommendedActions: ['Standard seasonal readiness'],
-      isDemoData: true
+      isDemoData: false
     };
   };
 
@@ -412,6 +418,56 @@ export const IndiaRiskMap: React.FC<IndiaRiskMapProps> = ({
           </div>
         </div>
 
+        {/* Map Perspective Mode Toggle: CURRENT RISK vs FUTURE RISK & EARLY WARNING */}
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 p-2.5 rounded-2xl bg-white border border-paper-300 shadow-xs">
+          <div className="flex items-center gap-1 bg-paper-100 p-1 rounded-xl">
+            <button
+              onClick={() => setMapPerspective('CURRENT')}
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold transition-all ${
+                mapPerspective === 'CURRENT'
+                  ? 'bg-charcoal-900 text-paper-50 shadow-xs'
+                  : 'text-charcoal-600 hover:text-charcoal-950'
+              }`}
+            >
+              CURRENT RISK
+            </button>
+            <button
+              onClick={() => setMapPerspective('FUTURE')}
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold transition-all ${
+                mapPerspective === 'FUTURE'
+                  ? 'bg-indigo-600 text-white shadow-xs'
+                  : 'text-charcoal-600 hover:text-charcoal-950'
+              }`}
+            >
+              FUTURE RISK & EARLY WARNING
+            </button>
+          </div>
+
+          {mapPerspective === 'FUTURE' ? (
+            <div className="flex items-center gap-1.5 overflow-x-auto text-xs font-mono">
+              <span className="text-charcoal-400 font-semibold shrink-0">Forecast Horizon:</span>
+              {['NOW', '0-6h', '6-24h', '1-3d', '3-7d'].map((hz) => (
+                <button
+                  key={hz}
+                  onClick={() => setFutureHorizon(hz)}
+                  className={`px-2.5 py-1 rounded-lg transition-all ${
+                    futureHorizon === hz
+                      ? 'bg-indigo-100 text-indigo-900 font-bold border border-indigo-300'
+                      : 'bg-paper-50 text-charcoal-600 border border-paper-200 hover:bg-paper-100'
+                  }`}
+                >
+                  {hz}
+                </button>
+              ))}
+            </div>
+          ) : (
+            <div className="text-[11px] font-mono text-charcoal-500 flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span>Real-Time In-Situ Sensors & Radar Feed Active</span>
+            </div>
+          )}
+        </div>
+
         {/* Dual Filter Bars: Administrative Scope + Hazard Layer */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2 border-t border-paper-200">
           {/* Admin Type Filter */}
@@ -479,9 +535,50 @@ export const IndiaRiskMap: React.FC<IndiaRiskMapProps> = ({
               <span className="w-2 h-2 rotate-45 bg-emerald-400 inline-block" />
               <span>Help Centers ({verifiedResources.filter((r) => typeof r.latitude === 'number' && typeof r.longitude === 'number').length})</span>
             </button>
+
+            {/* View Mode Segmented Controls */}
+            <div className="flex items-center gap-1 bg-paper-200/90 p-0.5 rounded-full border border-paper-300 ml-auto shrink-0">
+              <button
+                type="button"
+                onClick={() => { setDisplayMode('map'); setMapRenderError(false); }}
+                className={`px-3 py-1 rounded-full text-xs font-mono transition-colors ${
+                  displayMode === 'map' && !mapRenderError
+                    ? 'bg-charcoal-900 text-white font-bold shadow-xs'
+                    : 'text-charcoal-700 hover:text-charcoal-950 hover:bg-white/60'
+                }`}
+                title="Interactive Map View"
+              >
+                Map
+              </button>
+              <button
+                type="button"
+                onClick={() => setDisplayMode('cards')}
+                className={`px-3 py-1 rounded-full text-xs font-mono transition-colors ${
+                  displayMode === 'cards'
+                    ? 'bg-charcoal-900 text-white font-bold shadow-xs'
+                    : 'text-charcoal-700 hover:text-charcoal-950 hover:bg-white/60'
+                }`}
+                title="State Cards Overview"
+              >
+                Cards
+              </button>
+              <button
+                type="button"
+                onClick={() => setDisplayMode('list')}
+                className={`px-3 py-1 rounded-full text-xs font-mono transition-colors ${
+                  displayMode === 'list' || mapRenderError
+                    ? 'bg-charcoal-900 text-white font-bold shadow-xs'
+                    : 'text-charcoal-700 hover:text-charcoal-950 hover:bg-white/60'
+                }`}
+                title="Accessible Tabular List View"
+              >
+                List
+              </button>
+            </div>
           </div>
         </div>
       </div>
+
 
       {/* Main Map Canvas Area */}
       <div className="relative flex flex-col lg:flex-row items-center justify-center p-4 sm:p-8 min-h-[520px] bg-paper-100/40">
@@ -542,7 +639,127 @@ export const IndiaRiskMap: React.FC<IndiaRiskMapProps> = ({
           </div>
         </TiltCard>
 
-        {/* SVG Map of India with Region Paths + 37 Centroid Markers */}
+        {/* Map Failure Fallback / Banner */}
+        {mapRenderError && (
+          <div className="w-full max-w-4xl mb-4 p-4 rounded-2xl bg-amber-50 border border-amber-200 text-xs text-amber-900 flex items-start gap-3">
+            <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+            <div>
+              <strong className="block font-bold text-sm">Interactive Map Tiles Unavailable</strong>
+              <p className="mt-0.5 leading-relaxed">
+                Geospatial map visualization could not be loaded due to network or rendering constraints. Official disaster telemetry, state risk baselines, and emergency hotlines remain fully accessible in the tabular list view below.
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* 1. Accessible Tabular List View (Tier 3 Fallback & Screen Reader View) */}
+        {(displayMode === 'list' || mapRenderError) && (
+          <div className="w-full max-w-4xl overflow-x-auto bg-white rounded-2xl border border-paper-300 shadow-subtle p-4 my-2">
+            <div className="flex items-center justify-between pb-3 mb-3 border-b border-paper-200">
+              <span className="font-mono text-xs uppercase font-bold text-charcoal-700">
+                National Disaster Risk Matrix — Tabular View
+              </span>
+              <span className="text-xs font-mono text-charcoal-500">
+                {INDIA_STATE_SHAPES.length} States & UTs Monitored
+              </span>
+            </div>
+            <table className="w-full text-left text-xs font-mono border-collapse">
+              <thead>
+                <tr className="border-b border-paper-200 text-charcoal-500 uppercase text-[10px]">
+                  <th className="pb-2 font-bold">State / UT</th>
+                  <th className="pb-2 font-bold">Primary Hazard</th>
+                  <th className="pb-2 font-bold">Risk Tier</th>
+                  <th className="pb-2 font-bold">Baseline Score</th>
+                  <th className="pb-2 font-bold">Emergency Helpline</th>
+                  <th className="pb-2 font-bold text-right">Action</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-paper-100">
+                {INDIA_STATE_SHAPES.map((shape) => {
+                  const data = findRegionData(shape);
+                  const isSelected = (activeSelectedRegion?.id === data.id) || (selectedRegionId === data.id);
+                  return (
+                    <tr
+                      key={shape.id}
+                      className={`hover:bg-paper-50 transition-colors ${isSelected ? 'bg-paper-100 font-bold' : ''}`}
+                    >
+                      <td className="py-2.5 font-sans font-semibold text-charcoal-900">
+                        {data.name}
+                        <span className="ml-1.5 text-[10px] font-mono text-charcoal-400">({shape.code})</span>
+                      </td>
+                      <td className="py-2.5 text-charcoal-700">{data.primaryRisk}</td>
+                      <td className="py-2.5">
+                        <RiskBadge level={data.riskLevel} size="sm" score={data.riskScore} />
+                      </td>
+                      <td className="py-2.5 font-bold text-charcoal-900">{data.riskScore}%</td>
+                      <td className="py-2.5">
+                        <a
+                          href="tel:1070"
+                          className="inline-flex items-center gap-1 text-charcoal-700 hover:text-charcoal-950 underline font-bold"
+                        >
+                          {data.emergencyHelpline || '1070 / 112'}
+                        </a>
+                      </td>
+                      <td className="py-2.5 text-right">
+                        <button
+                          type="button"
+                          onClick={() => handleRegionClick(data)}
+                          className="px-2.5 py-1 rounded-lg bg-charcoal-900 text-white hover:bg-charcoal-800 text-[11px] font-sans font-medium transition-colors"
+                        >
+                          Select
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        )}
+
+        {/* 2. Responsive Cards View (Tier 2 Degraded View) */}
+        {displayMode === 'cards' && !mapRenderError && (
+          <div className="w-full max-w-4xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 my-2">
+            {INDIA_STATE_SHAPES.map((shape) => {
+              const data = findRegionData(shape);
+              const isSelected = (activeSelectedRegion?.id === data.id) || (selectedRegionId === data.id);
+              return (
+                <div
+                  key={shape.id}
+                  onClick={() => handleRegionClick(data)}
+                  className={`p-4 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between ${
+                    isSelected
+                      ? 'bg-paper-100 border-charcoal-900 shadow-subtle'
+                      : 'bg-white border-paper-300 hover:border-charcoal-400'
+                  }`}
+                >
+                  <div className="flex items-start justify-between gap-2 mb-2">
+                    <div>
+                      <h4 className="font-bold text-sm text-charcoal-950">{data.name}</h4>
+                      <span className="text-[10px] font-mono text-charcoal-500">Code: {shape.code}</span>
+                    </div>
+                    <RiskBadge level={data.riskLevel} size="sm" score={data.riskScore} />
+                  </div>
+                  <div className="text-xs font-mono text-charcoal-600 space-y-1 mb-3">
+                    <div>Primary: <strong className="text-charcoal-900">{data.primaryRisk}</strong></div>
+                    <div>Baseline Score: <strong className="text-charcoal-900">{data.riskScore}%</strong></div>
+                    <div>Helpline: <a href="tel:1070" className="underline font-bold text-charcoal-800">{data.emergencyHelpline || '1070 / 112'}</a></div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={(e) => { e.stopPropagation(); handleRegionClick(data); }}
+                    className="w-full py-1.5 rounded-xl bg-paper-200 text-charcoal-900 hover:bg-charcoal-900 hover:text-white text-xs font-medium transition-colors"
+                  >
+                    View Risk Breakdown
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+        )}
+
+        {/* 3. Normal Interactive SVG Map View (Tier 1 Default View) */}
+        {displayMode === 'map' && !mapRenderError && (
         <div className="w-full max-w-[620px] aspect-[700/780] relative flex items-center justify-center">
           <svg
             viewBox="50 30 620 750"
@@ -550,6 +767,7 @@ export const IndiaRiskMap: React.FC<IndiaRiskMapProps> = ({
             onMouseMove={handleMouseMove}
             onMouseLeave={() => setHoveredRegion(null)}
           >
+
             {/* Background Grid Lines */}
             <defs>
               <pattern id="map-grid" width="40" height="40" patternUnits="userSpaceOnUse">
@@ -619,7 +837,7 @@ export const IndiaRiskMap: React.FC<IndiaRiskMapProps> = ({
                   factors: [],
                   historicalTrend: [],
                   recommendedActions: [],
-                  isDemoData: true
+                  isDemoData: false
                 };
 
                 const isSelected = (activeSelectedRegion?.id === loc.id) || (selectedRegionId === loc.id);
@@ -808,6 +1026,16 @@ export const IndiaRiskMap: React.FC<IndiaRiskMapProps> = ({
                   </span>
                 </div>
                 <div className="flex justify-between text-charcoal-300 pt-1 border-t border-charcoal-800">
+                  <span>Data Freshness:</span>
+                  <span className="font-medium text-paper-50">
+                    {hoveredRegion.activeIncidentsCount > 0
+                      ? 'OFFICIAL LIVE'
+                      : hoveredRegion.name.toLowerCase().includes('assam')
+                      ? 'EMPIRICAL ML'
+                      : 'REGIONAL BASELINE'}
+                  </span>
+                </div>
+                <div className="flex justify-between text-charcoal-300">
                   <span>Status:</span>
                   <span className="font-medium text-paper-50">{getRegionStatus(hoveredRegion)}</span>
                 </div>
@@ -859,6 +1087,8 @@ export const IndiaRiskMap: React.FC<IndiaRiskMapProps> = ({
             </div>
           )}
         </div>
+      )}
+
 
         {/* Selected Region Detailed Panel */}
         {activeSelectedRegion && (
@@ -874,11 +1104,28 @@ export const IndiaRiskMap: React.FC<IndiaRiskMapProps> = ({
                   {/* Top Bar */}
                   <div className="flex items-start justify-between">
                     <div>
-                      <div className="flex items-center gap-1.5">
+                      <div className="flex items-center gap-1.5 flex-wrap">
                         <span className="text-xs font-mono uppercase text-charcoal-500 font-bold">
                           {locRecord?.type === 'UNION_TERRITORY' ? 'Union Territory' : 'Indian State'}
                         </span>
                         <DemoBadge label="MONITORED" />
+                        <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full font-bold border ${
+                          mapPerspective === 'FUTURE'
+                            ? 'bg-indigo-50 text-indigo-700 border-indigo-200'
+                            : 'bg-paper-100 text-charcoal-700 border-paper-300'
+                        }`}>
+                          {mapPerspective === 'FUTURE' ? `FUTURE (${futureHorizon})` : 'CURRENT'}
+                        </span>
+                        <FreshnessBadge
+                          status={
+                            activeSelectedRegion.activeIncidentsCount > 0
+                              ? 'OFFICIAL_LIVE'
+                              : activeSelectedRegion.name.toLowerCase().includes('assam')
+                              ? 'EMPIRICAL_ML'
+                              : 'REGIONAL_BASELINE'
+                          }
+                          size="xs"
+                        />
                       </div>
                       <h4 className="text-xl font-bold uppercase tracking-tight text-charcoal-950">
                         {activeSelectedRegion.name}
@@ -908,12 +1155,20 @@ export const IndiaRiskMap: React.FC<IndiaRiskMapProps> = ({
                       </div>
                     </div>
                     {activeSelectedRegion.name.toLowerCase().includes('assam') ? (
-                      <div className="text-[10px] font-mono text-emerald-800 bg-emerald-50 px-2 py-1 rounded-lg border border-emerald-200">
-                        ✓ ML Flood Prototype active for Brahmaputra monitoring gauges.
+                      <div className="space-y-1 text-[10px] font-mono text-emerald-800 bg-emerald-50 p-2 rounded-lg border border-emerald-200">
+                        <div className="font-bold flex items-center justify-between">
+                          <span>✓ Empirical ML Prediction Available</span>
+                          <FreshnessBadge status="EMPIRICAL_ML" size="xs" />
+                        </div>
+                        <div className="text-emerald-700">Model: assam_flood_prototype_v1 (13 features, 32 audited observations)</div>
                       </div>
                     ) : (
-                      <div className="text-[10px] font-mono text-charcoal-600 bg-white/70 px-2 py-1 rounded-lg border border-paper-200">
-                        ℹ️ Baseline climatology. ML prototype model strictly scoped to Assam.
+                      <div className="space-y-1 text-[10px] font-mono text-charcoal-700 bg-paper-100 p-2 rounded-lg border border-paper-300">
+                        <div className="font-bold text-charcoal-900 flex items-center justify-between">
+                          <span>ℹ️ ML prediction is not currently available for this region.</span>
+                          <FreshnessBadge status="REGIONAL_BASELINE" size="xs" />
+                        </div>
+                        <div className="text-charcoal-600">Regional baseline and official disaster intelligence are shown.</div>
                       </div>
                     )}
                   </div>

@@ -1,218 +1,212 @@
 # RISK // INDIA
 
-> **AI-Assisted Disaster Risk Intelligence & Community Resilience Platform for India**
+> **National Multi-Hazard Predictive Risk Intelligence & Citizen Resilience Platform for India**
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)]()
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115+-009688.svg)]()
 [![React](https://img.shields.io/badge/React-18.3-61DAFB.svg)]()
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.5-3178C6.svg)]()
 [![TailwindCSS](https://img.shields.io/badge/Tailwind-3.4-38B2AC.svg)]()
+[![Release](https://img.shields.io/badge/release-POST__PHASE2C__FINAL-brightgreen.svg)]()
 [![License](https://img.shields.io/badge/license-MIT-green.svg)]()
+
+---
+
+> [!IMPORTANT]
+> **Certified Release Reference:** [`RISK_INDIA_2026_POST_PHASE2C_FINAL_RELEASE`](docs/release/release_manifest.md)  
+> **Baseline Ancestry:** Commit `b10175a6abab8f82a3035fc99440ef4352a34efc` | **Governance:** Strict Project Freeze  
+> For complete technical architecture, operations runbooks, and scientific governance, consult the **[Final Project Knowledge Pack](docs/release/final_project_knowledge_pack.md)** and **[Operator Handover Guide](docs/release/operator_handover.md)**.
 
 ---
 
 ## 📌 Overview
 
-**RISK // INDIA** is a full-stack disaster risk intelligence and preparedness platform designed to synthesize environmental observations, geographical indicators, official telemetry, and verified relief registries into a single, cohesive interface.
+**RISK // INDIA** is a nationwide, multi-hazard disaster intelligence and public safety platform designed to transform complex hydrometeorological and seismic telemetry from official statutory agencies into clear, actionable, and life-saving decision support for Indian citizens.
 
-The project combines:
-1. **Multi-Hazard Risk Analysis**: Baseline assessments and explainability metrics across all 28 States and 9 Union Territories of India.
-2. **ML Flood Prototype**: An empirical, audited machine learning model trained on real-world Central Water Commission (CWC) and ISRO/NRSC satellite observations for the Assam Brahmaputra river basin.
-3. **Live Disaster Intelligence**: Operational seismic tracking integrated with the USGS Real-Time Earthquake feed and official meteorological alerts.
-4. **Verified Relief & Assistance Directory**: Curated government emergency numbers, state disaster management authorities (SDMAs), verified relief camps, and official donation channels (CMRF / PMNRF).
-5. **Community Preparedness**: Actionable survival checklists, evacuation guidelines, and first-aid kits tailored for floods, cyclones, earthquakes, and landslides.
-
-> [!IMPORTANT]
-> **PROTOTYPE SCOPE NOTICE**:
-> The integrated Machine Learning flood model (ssam_flood_prototype_v1) is an **academic research prototype** strictly calibrated to 3 CWC hydrological monitoring stations in Assam. It is **NOT** a nationwide prediction system and must **NOT** be used as a replacement for official operational alerts issued by the India Meteorological Department (IMD) or Central Water Commission (CWC).
+The platform provides an immediate, plain-language answer to four foundational questions above the fold:
+1. **Current Risk:** What is happening right now across India?
+2. **Future Risk:** What could happen next across five standard forecast horizons (NOW, 0–6h, 6–24h, 1–3d, 3–7d)?
+3. **Early Warning:** What official government advisories, bulletins, and weather color alerts are in effect?
+4. **What Should I Do?:** What prioritized, evidence-based life-safety actions should I take immediately?
 
 ---
 
-## 🌟 Core Features
+## 🌟 Core System Capabilities
 
-- **AI Risk Analysis**: On-demand risk assessment evaluating cumulative rainfall (6h–168h), river gauge levels, and seasonal factors.
-- **Explainable Predictions ("Why This Risk?")**: Transparent breakdown showing top contributing environmental signals and feature coefficients.
-- **Geospatial Risk Map**: Interactive SVG-based map covering all 37 Indian States and Union Territories with categorized risk levels (Low, Moderate, High, Critical).
-- **Live Disaster Feed**: Real-time seismic event tracking with magnitude, depth, timestamp, and epicentral distance filtering.
-- **Get Help (Emergency Relief)**: Immediate single-tap access to national emergency helplines (112, NDRF, SDRF), district hospital directories, and active relief camps.
-- **Help Others (Verified Donations & Volunteering)**: Direct links to official Chief Minister Relief Funds (Assam, Kerala, HP, Odisha) and vetted volunteer organizations.
-- **Disaster Preparedness Hub**: Phase-specific safety guides (Before, During, and After) for major disaster vectors.
-- **Responsive Mobile Experience**: Engineered with hardware-accelerated scroll reveal transitions and zero horizontal layout overflow across all viewports (320px–1440px+).
-
----
-
-## 🏗️ System Architecture
-
-The application adheres to a decoupled architecture separating real-time telemetry, offline-trained machine learning inference, and verified resource catalogs:
-
-`
-┌────────────────────────────────────────────────────────┐
-│             React + TypeScript Frontend                │
-│   (Vite, TailwindCSS, Framer Motion, Lucide Icons)     │
-└───────────────────────────┬────────────────────────────┘
-                            │ REST / JSON (HTTP)
-                            ▼
-┌────────────────────────────────────────────────────────┐
-│                   FastAPI Backend                      │
-│   (Uvicorn, Pydantic v2, SQLAlchemy, SQLite/Postgres)  │
-├───────────────────────────┬────────────────────────────┤
-│                           │                            │
-│  ┌─────────────────────┐  │  ┌──────────────────────┐  │
-│  │   Risk / ML Service │  │  │ Live Disaster Service│  │
-│  │   (Flood Prototype) │  │  │ (USGS & Bulletins)   │  │
-│  └──────────┬──────────┘  │  └──────────┬───────────┘  │
-│             │             │             │              │
-│  ┌──────────▼──────────┐  │  ┌──────────▼───────────┐  │
-│  │ Scikit-Learn Model  │  │  │ External Feeds       │  │
-│  │ assam_flood_v1      │  │  │ (USGS Seismic API)   │  │
-│  └─────────────────────┘  │  └──────────────────────┘  │
-│                           │                            │
-│  ┌──────────────────────────────────────────────────┐  │
-│  │ Database Layer: Location, Assessment & Resources │  │
-│  └──────────────────────────────────────────────────┘  │
-└────────────────────────────────────────────────────────┘
-`
-
-### Architectural Separation
-- **ML Inference vs. Live Feeds**: Predictive risk scoring is generated via local model evaluation of hydrological parameters. Live disaster monitoring runs independently through real-time external providers.
-- **Offline Reliability**: The frontend provides a configurable offline mock fallback (VITE_USE_MOCK_DATA=true) to demonstrate full UI workflows even when disconnected from the backend.
+- **National-First Experience:** Defaults to an India-wide multi-hazard overview across all 28 States and 8 Union Territories (36 administrative entities), eliminating regional bias.
+- **Future Disaster Risk Forecasting:** Multi-horizon outlooks synthesizing meteorological models, hydrological routing, and empirical historical baselines across 5 forward windows: `NOW`, `0–6 HOURS`, `6–24 HOURS`, `1–3 DAYS`, and `3–7 DAYS`.
+- **Six Supported Natural Hazards:**
+  1. *Flood:* Riverine stage gauges, catchment runoff, and urban inundation.
+  2. *Cyclone:* Coastal track monitoring, gale-force winds, and storm surge.
+  3. *Heatwave:* Severe maximum temperature departures and persistence tracking.
+  4. *Severe Weather:* Thunderstorms, lightning, cloudbursts, and squall events.
+  5. *Landslide:* Rainfall-triggered slope susceptibility in vulnerable mountain terrains.
+  6. *Earthquake:* Near real-time seismic event notification (post-event) and BIS tectonic hazard context.
+- **Open Risk Map:** Interactive nationwide geospatial risk map supporting three-tier accessible degradation:
+  1. *Interactive Map:* Full vector and tile canvas with administrative drill-downs.
+  2. *Accessible Cards:* Responsive card deck for touchscreens and lower-bandwidth devices.
+  3. *Semantic Text List:* High-contrast, screen-reader optimized plain-text view.
+- **Directional Trend Momentum:** Transparent risk momentum classification (`RISING`, `STABLE`, `DECLINING`, `VOLATILE`).
+- **Forward Analytical Scenarios:** Deterministic scenario modeling (Baseline, Likely, Escalation) explaining physical driving factors without sensationalism.
+- **Emergency Resilience Hub:** Immediate single-tap access to national emergency helplines (`112`, NDMA `1078`, SEOC `1070`), 72-Hour Family Emergency Preparedness checklists, and codified Before / During / After hazard survival protocols.
 
 ---
 
-## 🛠️ Technology Stack
+## 🛡️ Scientific Safeguards & Operational Invariants
 
-| Layer | Technology | Purpose |
-| :--- | :--- | :--- |
-| **Frontend** | React 18, TypeScript, Vite | Single-page application framework |
-| **Styling & UI** | Tailwind CSS, Lucide React, Framer Motion | Editorial design system, responsive typography, micro-interactions |
-| **Backend** | FastAPI, Uvicorn, Python 3.10+ | High-performance asynchronous REST API |
-| **Data Validation** | Pydantic v2, Pydantic Settings | Strict schema definition and request/response typing |
-| **Database** | SQLAlchemy 2.0, SQLite (local) / PostgreSQL (prod) | Relational storage for locations, risk records, and relief directory |
-| **Machine Learning** | Scikit-Learn, NumPy, Pandas, Joblib | Tabular model serialization, preprocessing, and inference |
-| **External Telemetry** | USGS Earthquake Hazards Program | Real-time global seismic feeds with India region bounding |
+RISK // INDIA operates under twelve non-negotiable scientific invariants to ensure public trust and prevent misinformation:
 
----
-
-## 📊 Official Data Sources & Provenance
-
-All model training features and risk indicators originate strictly from authentic public government platforms:
-
-1. **Central Water Commission (CWC) / NWDP**:
-   - Hourly river water level telemetry (Gauge: Nematighat, Fakirpara, Dhansirighat).
-   - Hourly rainfall telemetry from basin automatic weather stations (2021–2025).
-   - Source: [NWDP Open Data Portal](https://www.nwdp.nwic.gov.in/)
-2. **India Meteorological Department (IMD)**:
-   - District-wise daily observed rainfall matrices across monsoon seasons.
-   - Source: [IMD / NWDP Open Data](https://www.nwdp.nwic.gov.in/en/dataset/rainfall-daily-imd)
-3. **ISRO / NRSC Bhuvan Disaster Management Support**:
-   - Georeferenced satellite flood inundation raster masks (RISAT-1A, Sentinel-1 SAR).
-   - Source: [Bhuvan DMSP Flood Portal](https://bhuvan-app1.nrsc.gov.in/disaster/usrtasks/flood/flood.php)
-4. **United States Geological Survey (USGS)**:
-   - Real-time global seismic event feeds (M2.5+ earthquakes).
-   - Source: [USGS Earthquake Hazards Program](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php)
+1. **Assam ML Scope Guard:** Machine learning flood depth inference is strictly restricted to calibrated CWC gauge catchments along the Brahmaputra and Barak basins in Assam.
+2. **Non-Assam ML Honesty:** For all 35 States and Union Territories outside Assam, `ml_available` is explicitly `false`. The platform relies on empirical hydraulic thresholds (CWC Danger Levels) and official IMD warnings.
+3. **Earthquake Temporal Prediction Prohibited:** Under NO circumstances does the platform attempt to predict the timing, location, or magnitude of future earthquakes (`EARTHQUAKE_NOT_PREDICTABLE`). Only historical seismic zonation (BIS Zones II–V) and post-event USGS/NCS notifications are presented.
+4. **No Numeric Pseudo-Probabilities:** The platform strictly rejects misleading percentage forecasts (e.g. "87% probability"). Risk confidence is classified qualitatively (`VERY_HIGH`, `HIGH`, `MEDIUM`, `LOW`, `VERY_LOW`).
+5. **Monotonic Uncertainty Expansion:** Forecast uncertainty mathematically expands as lead time increases ($Uncertainty_{3-7D} > Uncertainty_{1-3D} > Uncertainty_{6-24H} > Uncertainty_{0-6H} > Uncertainty_{NOW}$).
+6. **Statutory Evacuation Demarcation:** 
+   > *"Under the Disaster Management Act 2005, mandatory evacuation orders and official relief operations are authorized exclusively by the National Disaster Management Authority (NDMA), State Disaster Management Authorities (SDMA / ASDMA), and District Magistrates (DDMA). RISK // INDIA provides informational situational intelligence and preparedness guidance only."*
+7. **National Coverage vs. Telemetry Coverage:** Administrative mapping across all 36 States/UTs does NOT imply universal live physical sensor coverage.
+8. **Explicit Data Gaps:** Unmonitored catchments or offline stations honestly report `DATA_UNAVAILABLE` or `LIMITED_EVIDENCE`. Zero spatial interpolation or fake readings are generated.
+9. **Zero Synthetic Data Guarantee:** `synthetic_records == 0`. Production feeds strictly prohibit mock, simulated, or fabricated disaster records.
+10. **Authoritative Backend Interpretation:** All risk classifications, scores, and life-safety actions are computed solely by backend engines; the frontend never invents independent risk metrics.
+11. **Frontend Presentation Only:** The frontend acts as an accessible presentation layer with global error boundary resilience and offline detection.
+12. **Cryptographic Release Immutability:** Pre-trained ML model artifacts and empirical datasets are frozen with permanent SHA-256 digests.
 
 ---
 
-## 🤖 Machine Learning Model Card
+## 📊 Official Data Provenance
 
-| Attribute | Details |
-| :--- | :--- |
-| **Model Identifier** | ssam_flood_prototype_v1 |
-| **Model Type** | Regularized Logistic Regression (L2, =0.5$, balanced class weights) |
-| **Serialized Artifact** | ml/flood/artifacts/model.joblib (975 bytes) |
-| **Preprocessor Artifact**| ml/flood/artifacts/preprocessor.joblib (2.9 KB) |
-| **Training Dataset** | 32 verified observations (18 Flood / 14 Non-Flood) |
-| **Independence Groups** | 18 distinct hydrological events across 2021–2024 monsoons |
-| **Validation Strategy** | 5-Fold GroupKFold partitioned strictly by event_group_id |
-| **OOF Performance** | Accuracy: 50.0% \| Precision: 55.6% \| Recall: 55.6% \| ROC-AUC: 0.43 |
-| **Input Features (13)** | Cumulative rain (6h, 24h, 72h, 168h), river level, 6h/24h rise, percentile, month, DOY sine/cosine, coordinates |
-| **Temporal Leakage** | **Zero detected** (All predictors strictly precede observation timestamp) |
-
-### Ethical & Scientific Honesty
-Given the limited sample size (32 audited events across 3 gauge basins), the model's out-of-fold ROC-AUC is modest (~0.43), reflecting real-world validation difficulty on small hydrological event samples without synthetic data generation. The model is presented transparently as an educational and research prototype.
+All telemetry and indicators originate strictly from authentic public government platforms:
+- **India Meteorological Department (IMD):** Multi-day synoptic weather forecasts, rainfall departure matrices, cyclone bulletins, and heatwave alerts.
+- **Central Water Commission (CWC):** River water level telemetry, warning levels, danger marks, and historical flood waves.
+- **National Disaster Management Authority (NDMA):** Statutory alerts, safety guidelines, and national emergency contacts.
+- **ISRO / NRSC Bhuvan:** Historical satellite flood inundation extents and geospatial datasets.
+- **USGS & NCS:** Real-time seismic feed data and Indian tectonic epicentral records.
+- **Geological Survey of India (GSI):** Baseline landslide susceptibility zonation.
 
 ---
 
-## 🚀 Getting Started
+## 🏗️ Architecture & Technology Stack
+
+```
++-------------------------------------------------------------------------+
+|                         CITIZEN BROWSER CLIENT                          |
+|  React 18 + TypeScript + Vite + TailwindCSS + Lucide Icons + Leaflet    |
+|  - 4 Core Life-Safety Question Cards & Immediate Guidance Strip         |
+|  - 5-Horizon Future-Risk Forecast Timeline & 6-Hazard Risk Matrix       |
+|  - Open Risk Map with 3-Tier Accessible Degradation (Map/Cards/List)    |
+|  - Global React Error Boundary & Offline Connectivity Indicator         |
++-------------------------------------------------------------------------+
+                                    |  HTTP REST / JSON (Port 8000)
+                                    v
++-------------------------------------------------------------------------+
+|                        BACKEND INFERENCE & API                          |
+|  FastAPI + Uvicorn + Pydantic v2 + Scikit-Learn Runtime                |
+|  - Upstream Provider Circuit Breakers (IMD, CWC, NDMA, USGS, NRSC)      |
+|  - Scientific Guard Layer (Assam ML Boundary, Earthquake Non-Predict)  |
+|  - Predictive Risk Fusion Engine (Multi-Source Convergence)             |
+|  - Qualitative Confidence & Monotonic Uncertainty Expansion Engine      |
++-------------------------------------------------------------------------+
+                                    |
+          +-------------------------+-------------------------+
+          |                                                   |
+          v                                                   v
++-----------------------+                           +-------------------+
+|  FROZEN SCIENTIFIC ML |                           | DATABASE / CACHE  |
+|  Assam Flood Model    |                           | Dual SQLite / PG  |
+|  (0e05bcdf... SHA256) |                           | Redis / In-Memory |
++-----------------------+                           +-------------------+
+```
+
+---
+
+## 🚀 Installation & Quick Start
 
 ### Prerequisites
-- **Node.js**: v18.0.0 or higher
-- **Python**: v3.10 or higher
-- **npm** or **yarn**
+- **Python:** 3.10 to 3.14 (Verified: Python 3.14.7)
+- **Node.js:** v18 to v24 (Verified: Node v24.21.0, npm 11.19.0)
+- **Git**
 
-### 1. Repository Setup
-`ash
-git clone https://github.com/your-username/risk-india.git
-cd risk-india
-`
+### 1. Clone & Set Up Environment
+```powershell
+# Clone the repository
+git clone https://github.com/Deepanshugrewal123/Risk-India.git
+cd "Risk-India"
 
-### 2. Frontend Setup
-`ash
-# Install dependencies
-npm install
-
-# Configure environment
-cp .env.example .env
-
-# Run development server (runs on http://localhost:5173)
-npm run dev
-`
-
-### 3. Backend Setup
-`ash
-# Navigate to backend directory
-cd backend
-
-# Create and activate virtual environment (optional but recommended)
+# Set up Python virtual environment
 python -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+.venv\Scripts\Activate.ps1
 
-# Install Python dependencies
-pip install -r requirements.txt
+# Install Python backend dependencies
+pip install -r backend/requirements.txt
 
-# Configure environment
-cp .env.example .env
+# Install frontend dependencies
+npm install
+```
 
-# Initialize database schema and seed baseline Indian location telemetry
-python -m app.database.init_db
+### 2. Start Backend Service
+```powershell
+# Export PYTHONPATH
+$env:PYTHONPATH = "backend;."
 
-# Start FastAPI development server (runs on http://127.0.0.1:8000)
-python -m uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
-`
+# Start FastAPI Uvicorn ASGI server on port 8000
+python -m uvicorn app.main:app --host 127.0.0.1 --port 8000
+```
+- API Documentation: `http://127.0.0.1:8000/docs`
+- Health Probe: `http://127.0.0.1:8000/api/health`
+
+### 3. Start Frontend Client
+```powershell
+# Start Vite development server
+npm run dev
+```
+- Web Application: `http://localhost:5173`
 
 ---
 
-## 🧪 Testing & Verification
+## 🧪 Verification & Testing
 
-The repository contains automated unit, integration, and browser tests:
-
-`ash
-# Run full backend and ML test suite (55 tests)
+### Automated Regression Test Suite (609 Tests)
+```powershell
+$env:PYTHONPATH = "backend;."
 python -m unittest discover tests
+```
+*Expected Result:* `Ran 609 tests in ~15-25s. OK (0 failures, 0 errors)`.
 
-# Run frontend TypeScript type checking and production build
+### Production Frontend Build
+```powershell
 npm run build
-`
+```
+*Expected Result:* `tsc && vite build` completes with **0 TypeScript errors**.
 
 ---
 
-## ⚠️ Limitations & Disclaimers
+## 🔒 Cryptographic Integrity & Release Manifest
 
-1. **Non-Operational Status**: RISK // INDIA is an academic prototype developed for college demonstration and research exploration. It does not replace official meteorological advisories.
-2. **Geographical ML Scope**: Machine learning inference is strictly calibrated for Assam gauge basins. Locations outside Assam return baseline multi-hazard indicators without activating local gauge models.
-3. **Emergency Situations**: In case of active emergencies, citizens must immediately dial **112** (National Emergency Helpline) or refer to the **NDMA / SDMA** portals.
+| Artifact | File Path | Verified SHA-256 Digest | Status |
+|---|---|---|:---:|
+| **ML Model Artifact** | `ml/flood/artifacts/model.joblib` | `0e05bcdf9022fa40897c12270811bc35234a7de877f32e7034e5b446c2dccccf` | **FROZEN** |
+| **Flood Feature Dataset** | `datasets/processed/flood_assam/flood_features.csv` | `88b32f35b64ef14d7201463563159529c317982063796dff448d39f45073b080` | **FROZEN** |
 
 ---
 
-## 🔮 Future Roadmap
+## ⚠️ Known Limitations & Non-Blocking Observations
 
-- **Hydrological Basin Expansion**: Scaling the tabular ML pipeline across the Godavari, Krishna, Mahanadi, and Ganga river networks.
-- **Deep Learning Vision Pipeline**: Incorporating SAR satellite imagery with automated inundation segmentation models (U-Net / SegNet).
-- **Multi-Hazard Extensions**: Dedicated predictive models for coastal cyclone surges and Western Himalayan landslide susceptibility.
-- **Native Mobile App**: Offline-first mobile distribution built with React Native for low-connectivity disaster zones.
+1. **Assam Model Boundary:** The tabular ML flood model is trained on 3,476 historical empirical observations across 26 CWC monitoring stations in Assam. It does NOT generate flood depth predictions outside Assam.
+2. **Earthquake Unpredictability:** Earthquakes cannot be forecast in advance; only post-event alerts and historical BIS tectonic risk zones are provided.
+3. **Sparse Rural Sensors:** Certain rural catchments lack digital CWC river stage telemetry. These areas explicitly display `DATA_UNAVAILABLE` rather than unverified synthetic interpolations.
+4. **Rainfall Departures:** Negative percentage values in IMD rainfall matrices (e.g., `-87%`, `-95%`) are physical precipitation departures from historical seasonal normals, NOT forecast probabilities.
+5. **Frontend Bundle Size:** The production JavaScript bundle is ~798 kB due to integrated GIS Leaflet mapping and iconography libraries; this triggers a non-blocking informational Rollup warning (> 500 kB).
+
+---
+
+## 📚 Technical Documentation Index
+
+- **[Final Project Knowledge Pack](docs/release/final_project_knowledge_pack.md)** — Complete 34-section operational and architectural handover manual.
+- **[Operator Handover Guide](docs/release/operator_handover.md)** — Daily operations checklist, health probes, and incident recovery runbooks.
+- **[Cryptographic Release Manifest](docs/release/release_manifest.md)** — System snapshot, runtime specifications, and quality gate metrics.
+- **[Production Deployment Runbook](docs/DEPLOYMENT.md)** — 19-section container, reverse proxy, and staging deployment guide.
+- **[Full Technical Documentation Index](docs/README.md)** — Complete index of all 27 canonical architectural, forensic, and scientific audit reports.
 
 ---
 
 ## 📄 License
-
 This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.

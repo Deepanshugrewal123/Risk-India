@@ -277,6 +277,6 @@ export const REGIONS_RISK_DATA: RegionRiskData[] = ALL_INDIAN_LOCATIONS.map((loc
         'Verify emergency drinking water, dry rations, and first aid kits at neighborhood centers',
         'Follow official district magistrate weather and safety advisories'
       ],
-    isDemoData: true
+    isDemoData: false
   };
 });

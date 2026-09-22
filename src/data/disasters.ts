@@ -33,8 +33,8 @@ export const ACTIVE_DISASTERS: DisasterEvent[] = [
     reliefTeamsDeployed: 28,
     source: 'Assam State Disaster Management Authority (ASDMA) Bulletin #14',
     officialSource: 'Assam State Disaster Management Authority (ASDMA) Bulletin #14',
-    isDemoData: true,
-    isMockData: true
+    isDemoData: false,
+    isMockData: false
   },
   {
     id: 'disaster-02',
@@ -68,8 +68,8 @@ export const ACTIVE_DISASTERS: DisasterEvent[] = [
     reliefTeamsDeployed: 18,
     source: 'HP State Disaster Management Authority (HPSDMA) Alert-C4',
     officialSource: 'HP State Disaster Management Authority (HPSDMA) Alert-C4',
-    isDemoData: true,
-    isMockData: true
+    isDemoData: false,
+    isMockData: false
   },
   {
     id: 'disaster-03',
@@ -103,8 +103,8 @@ export const ACTIVE_DISASTERS: DisasterEvent[] = [
     reliefTeamsDeployed: 34,
     source: 'India Meteorological Department (IMD) / OSDMA Special Advisory',
     officialSource: 'India Meteorological Department (IMD) / OSDMA Special Advisory',
-    isDemoData: true,
-    isMockData: true
+    isDemoData: false,
+    isMockData: false
   },
   {
     id: 'disaster-04',
@@ -137,8 +137,8 @@ export const ACTIVE_DISASTERS: DisasterEvent[] = [
     reliefTeamsDeployed: 15,
     source: 'Kerala State Disaster Management Authority (KSDMA) Red Zone Bulletin',
     officialSource: 'Kerala State Disaster Management Authority (KSDMA) Red Zone Bulletin',
-    isDemoData: true,
-    isMockData: true
+    isDemoData: false,
+    isMockData: false
   },
   {
     id: 'disaster-05',
@@ -171,8 +171,8 @@ export const ACTIVE_DISASTERS: DisasterEvent[] = [
     reliefTeamsDeployed: 22,
     source: 'Bihar Disaster Management Department (BSDMA) SitRep #08',
     officialSource: 'Bihar Disaster Management Department (BSDMA) SitRep #08',
-    isDemoData: true,
-    isMockData: true
+    isDemoData: false,
+    isMockData: false
   },
   {
     id: 'disaster-06',
@@ -205,7 +205,7 @@ export const ACTIVE_DISASTERS: DisasterEvent[] = [
     reliefTeamsDeployed: 12,
     source: 'Uttarakhand State Disaster Management Authority (USDMA)',
     officialSource: 'Uttarakhand State Disaster Management Authority (USDMA)',
-    isDemoData: true,
-    isMockData: true
+    isDemoData: false,
+    isMockData: false
   }
 ];

@@ -2,6 +2,7 @@ import { DisasterEvent, DisasterStatus } from '../types/disaster';
 import { DisasterType, RiskLevel } from '../types/risk';
 import { ACTIVE_DISASTERS } from '../data/disasters';
 import { API_ENDPOINTS } from '../config/api';
+import { apiClient } from './api';
 
 function normalizeDisaster(item: any): DisasterEvent {
   const hazardType = item.hazard_type || item.disaster_type || 'Flood';
@@ -20,6 +21,8 @@ function normalizeDisaster(item: any): DisasterEvent {
     coordinates: [lat, lng],
     type: hazardType as DisasterType,
     disasterType: hazardType as DisasterType,
+    hazard_type: hazardType,
+    basin: item.basin,
     severity: (item.severity || 'MODERATE') as RiskLevel,
     status: (item.status || 'Active') as DisasterStatus,
     riskScore: item.risk_score || 60,
@@ -47,8 +50,67 @@ function normalizeDisaster(item: any): DisasterEvent {
     safetyAdvisories: item.safetyAdvisories || [
       'Heed regional alerts broadcast by district administration and state disaster management authority.',
       'Check official portal for localized evacuation instructions and relief camp allotments.'
-    ]
+    ],
+    // Phase 19 Multi-Hazard & Rationale Additions
+    data_category: item.data_category || (item.verified ? 'LIVE_OFFICIAL_INTELLIGENCE' : 'REGIONAL_BASELINE'),
+    why_this_risk: item.why_this_risk || (
+      (item.hazard_type || item.disaster_type || '').toUpperCase().includes('EARTHQUAKE')
+        ? 'Live seismological telemetry detected by USGS Earthquake Hazards Program sensor network.'
+        : (item.hazard_type || item.disaster_type || '').toUpperCase().includes('FLOOD')
+        ? 'Official river stage bulletin issued by Central Water Commission (CWC).'
+        : (item.hazard_type || item.disaster_type || '').toUpperCase().includes('CYCLONE')
+        ? 'Official tropical weather advisory issued by IMD/RSMC New Delhi.'
+        : (item.hazard_type || item.disaster_type || '').toUpperCase().includes('HEATWAVE')
+        ? 'Official high-temperature advisory issued by NDMA & IMD.'
+        : (item.hazard_type || item.disaster_type || '').toUpperCase().includes('LANDSLIDE')
+        ? 'Official hill stability advisory issued by GSI & SDMA.'
+        : 'Official disaster advisory from authorized public source.'
+    ),
+    event_subtype: item.event_subtype,
+    official_alert: item.official_alert
   };
+}
+
+const LOCAL_CACHE_KEY = 'risk_india_disasters_cache';
+
+function cacheDisasterSnapshot(items: any[]): void {
+  if (typeof window === 'undefined') return;
+  try {
+    localStorage.setItem(LOCAL_CACHE_KEY, JSON.stringify({
+      timestamp: Date.now(),
+      items
+    }));
+  } catch {
+    // Ignore storage quota or cross-origin restrictions
+  }
+}
+
+function getCachedDisasterSnapshot(): DisasterEvent[] | null {
+  if (typeof window === 'undefined') return null;
+  try {
+    const raw = localStorage.getItem(LOCAL_CACHE_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (!parsed || !Array.isArray(parsed.items) || parsed.items.length === 0) return null;
+
+    const elapsedMins = Math.max(1, Math.round((Date.now() - (parsed.timestamp || Date.now())) / 60000));
+    const label = elapsedMins < 60
+      ? `Cached snapshot from ${elapsedMins}m ago • Live verification unavailable`
+      : `Cached snapshot from ${Math.round(elapsedMins / 60)}h ago • Live verification unavailable`;
+
+    return parsed.items.map((item: any) => {
+      const normalized = normalizeDisaster(item);
+      return {
+        ...normalized,
+        freshness: 'CACHED',
+        is_cached: true,
+        timestamp: label,
+        lastUpdated: `Cached ${elapsedMins}m ago`,
+      };
+    });
+  } catch {
+    return null;
+  }
 }
 
 export const disasterService = {
@@ -57,17 +119,28 @@ export const disasterService = {
    */
   getActiveDisasters: async (): Promise<DisasterEvent[]> => {
     try {
-      const res = await fetch(API_ENDPOINTS.disasters.list);
-      if (res.ok) {
-        const data = await res.json();
-        if (Array.isArray(data) && data.length > 0) {
-          return data.map(normalizeDisaster);
-        }
+      const data = await apiClient.get<any[]>(API_ENDPOINTS.disasters.list, { timeoutMs: 6000 });
+      if (Array.isArray(data) && data.length > 0) {
+        cacheDisasterSnapshot(data);
+        return data.map(normalizeDisaster);
       }
     } catch (err) {
-      console.warn('Disasters API fetch failed, falling back to reference dataset:', err);
+      console.warn('Disasters API fetch failed, attempting cached recovery:', err);
     }
-    return ACTIVE_DISASTERS;
+
+    // Offline / Network Failure Resilience
+    const cached = getCachedDisasterSnapshot();
+    if (cached && cached.length > 0) {
+      return cached;
+    }
+
+    // Historical Reference Fallback (strictly marked as STALE, never LIVE)
+    return ACTIVE_DISASTERS.map((d) => ({
+      ...d,
+      freshness: 'STALE',
+      timestamp: 'Reference Archive • Live telemetry unavailable',
+      lastUpdated: 'Historical Reference'
+    }));
   },
 
   /**
@@ -75,18 +148,22 @@ export const disasterService = {
    */
   getLiveDisasters: async (): Promise<DisasterEvent[]> => {
     try {
-      const res = await fetch(API_ENDPOINTS.disasters.live);
-      if (res.ok) {
-        const data = await res.json();
-        if (Array.isArray(data)) {
-          return data.map(normalizeDisaster);
-        }
+      const data = await apiClient.get<any[]>(API_ENDPOINTS.disasters.live, { timeoutMs: 6000 });
+      if (Array.isArray(data)) {
+        return data.map(normalizeDisaster);
       }
     } catch (err) {
       console.warn('Live disasters API fetch failed:', err);
     }
+
+    // In offline mode, return verified cached items strictly marked as CACHED
+    const cached = getCachedDisasterSnapshot();
+    if (cached) {
+      return cached.filter((c) => c.verified);
+    }
     return [];
   },
+
 
   /**
    * Fetch all recorded disaster incidents including resolved
@@ -111,16 +188,13 @@ export const disasterService = {
       if (state) params.set('state', state);
 
       const url = `${API_ENDPOINTS.disasters.list}?${params.toString()}`;
-      const res = await fetch(url);
-      if (res.ok) {
-        const data = await res.json();
-        if (Array.isArray(data) && data.length > 0) {
-          let list = data.map(normalizeDisaster);
-          if (severity && severity !== 'All') {
-            list = list.filter((i) => i.severity.toLowerCase() === severity.toLowerCase());
-          }
-          return list;
+      const data = await apiClient.get<any[]>(url, { timeoutMs: 6000 });
+      if (Array.isArray(data) && data.length > 0) {
+        let list = data.map(normalizeDisaster);
+        if (severity && severity !== 'All') {
+          list = list.filter((i) => i.severity.toLowerCase() === severity.toLowerCase());
         }
+        return list;
       }
     } catch (err) {
       console.warn('Filtered disasters API fetch failed, falling back to local filter:', err);
@@ -156,8 +230,8 @@ export const disasterService = {
    */
   refreshDisasters: async (): Promise<boolean> => {
     try {
-      const res = await fetch(API_ENDPOINTS.disasters.refresh);
-      return res.ok;
+      await apiClient.get(API_ENDPOINTS.disasters.refresh, { timeoutMs: 12000, retries: 0 });
+      return true;
     } catch (err) {
       console.error('Error refreshing disasters:', err);
       return false;
@@ -169,9 +243,8 @@ export const disasterService = {
    */
   getDisasterById: async (id: string): Promise<DisasterEvent | undefined> => {
     try {
-      const res = await fetch(API_ENDPOINTS.disasters.byId(id));
-      if (res.ok) {
-        const item = await res.json();
+      const item = await apiClient.get(API_ENDPOINTS.disasters.byId(id), { timeoutMs: 6000 });
+      if (item) {
         return normalizeDisaster(item);
       }
     } catch (err) {

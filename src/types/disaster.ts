@@ -19,6 +19,8 @@ export interface DisasterEvent {
   coordinates: [number, number]; // [lat, lng]
   type: DisasterType;
   disasterType?: DisasterType;
+  hazard_type?: string;
+  basin?: string;
   severity: RiskLevel;
   status: DisasterStatus;
   riskScore?: number;
@@ -31,7 +33,9 @@ export interface DisasterEvent {
   lastUpdated?: string;
   observed_at?: string;
   retrieved_at?: string;
-  freshness?: 'LIVE' | 'RECENT' | 'STALE' | 'UNAVAILABLE';
+  freshness?: 'LIVE' | 'RECENT' | 'STALE' | 'UNAVAILABLE' | 'CACHED';
+  is_cached?: boolean;
+  cached_at?: string;
   verified?: boolean;
   affectedPopulationEstimate?: string;
   reportedEvacuations?: string;
@@ -41,6 +45,11 @@ export interface DisasterEvent {
   safetyAdvisories?: string[];
   isDemoData?: boolean;
   isMockData?: boolean;
+  // Phase 19 Multi-Hazard & Rationale Additions
+  data_category?: 'LIVE_OFFICIAL_INTELLIGENCE' | 'REGIONAL_BASELINE' | 'ML_PREDICTION' | 'VERIFIED_RESOURCES';
+  why_this_risk?: string;
+  event_subtype?: string;
+  official_alert?: boolean;
 }
 
 // Backward-compatible alias

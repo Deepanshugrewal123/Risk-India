@@ -47,6 +47,14 @@ export const VerifiedHelpSection: React.FC = () => {
         </p>
       </div>
 
+      {/* Official Evacuation vs Scientific Estimation Protocol Notice */}
+      <div className="mb-8 p-4 rounded-2xl bg-paper-100 border border-paper-300 flex items-start gap-3 text-xs">
+        <AlertCircle className="w-4 h-4 text-charcoal-700 shrink-0 mt-0.5" />
+        <div className="text-charcoal-700 leading-relaxed">
+          <strong className="text-charcoal-950 font-bold">Official Safety Directive:</strong> In an active emergency, always prioritize official evacuation instructions and bulletins issued by your District Disaster Management Authority (DDMA), State Disaster Management Authority (SDMA), or the National Disaster Response Force (NDRF). Predictive risk scores and hydrological models are scientific intelligence tools and do not substitute for official administrative orders.
+        </div>
+      </div>
+
       {isLoading ? (
         <LoadingState
           message="Loading Verified Directory..."
@@ -146,16 +154,23 @@ export const VerifiedHelpSection: React.FC = () => {
                 </div>
               </div>
 
-              {/* Bottom Contact & Link */}
+              {/* Bottom Contact & Link with Tap-Friendly tel: URL */}
               <div className="pt-4 border-t border-paper-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs font-mono">
                 <span className="text-charcoal-500">
-                  Helpline: <strong className="text-charcoal-900">{agency.contactNumber}</strong>
+                  Helpline:{" "}
+                  <a
+                    href={`tel:${agency.contactNumber.replace(/[^0-9+]/g, '')}`}
+                    className="text-charcoal-900 font-bold hover:underline inline-flex items-center gap-1"
+                    title="Tap to call emergency helpline"
+                  >
+                    <span>{agency.contactNumber}</span>
+                  </a>
                 </span>
 
                 <a
                   href={agency.officialPortalUrl}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 text-charcoal-900 font-semibold hover:underline"
                 >
                   <span>Official Portal</span>

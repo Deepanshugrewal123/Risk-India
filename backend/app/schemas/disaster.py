@@ -15,6 +15,7 @@ class DisasterEventBase(BaseModel):
     verified: bool = False
     state: Optional[str] = None
     district: Optional[str] = None
+    basin: Optional[str] = None
     location: Optional[str] = None
     latitude: Optional[float] = None
     longitude: Optional[float] = None
@@ -22,6 +23,13 @@ class DisasterEventBase(BaseModel):
     freshness: str = "RECENT"
     risk_score: Optional[int] = None
     location_id: Optional[str] = None
+    # Phase 18A Normalized Multi-Hazard Fields
+    event_id: Optional[str] = None
+    event_subtype: Optional[str] = None
+    source_event_id: Optional[str] = None
+    confidence: Optional[str] = "HIGH"
+    official_alert: Optional[bool] = True
+    geometry: Optional[dict] = None
 
 class DisasterEventCreate(DisasterEventBase):
     location_id: str
@@ -35,6 +43,7 @@ class DisasterEventOut(DisasterEventBase):
     started_at: Optional[datetime] = None
     ended_at: Optional[datetime] = None
     created_at: Optional[datetime] = None
+    updated_at: Optional[datetime] = None
 
     class Config:
         from_attributes = True

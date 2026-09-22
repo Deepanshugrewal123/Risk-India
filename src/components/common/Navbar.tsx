@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Shield, ArrowUpRight } from 'lucide-react';
+import { Menu, X, Shield, ArrowUpRight, PhoneCall, Zap, ZapOff, ShieldAlert } from 'lucide-react';
 import { MagneticButton } from './MagneticButton';
+import { useCrisis } from '../../context/CrisisContext';
 
 export type NavigationPage = 
   | 'home'
+  | 'future-risk'
   | 'risk-map'
   | 'disasters'
   | 'get-help'
@@ -14,13 +16,16 @@ interface NavbarProps {
   currentPage: NavigationPage;
   onNavigate: (page: NavigationPage) => void;
   onOpenAnalyzeModal?: () => void;
+  onOpenEmergencyHub?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   currentPage,
   onNavigate,
   onOpenAnalyzeModal,
+  onOpenEmergencyHub,
 }) => {
+  const { isCrisisMode, toggleCrisisMode } = useCrisis();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -32,19 +37,37 @@ export const Navbar: React.FC<NavbarProps> = ({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks: { id: NavigationPage; label: string }[] = [
+  interface NavLinkItem {
+    id: NavigationPage;
+    label: string;
+    sectionId?: string;
+  }
+
+  const navLinks: NavLinkItem[] = [
     { id: 'home', label: 'Home' },
-    { id: 'risk-map', label: 'Risk Map' },
+    { id: 'future-risk', label: 'Future Risk' },
+    { id: 'home', label: 'Early Warnings', sectionId: 'early-warnings' },
+    { id: 'risk-map', label: 'Open Risk Map' },
     { id: 'disasters', label: 'Live Disasters' },
-    { id: 'get-help', label: 'Get Help' },
-    { id: 'help-others', label: 'Help Others' },
+    { id: 'get-help', label: 'Get Help / SOS' },
     { id: 'how-it-works', label: 'How It Works' },
   ];
 
-  const handleLinkClick = (id: NavigationPage) => {
-    onNavigate(id);
+  const handleLinkClick = (id: NavigationPage, sectionId?: string) => {
+    if (sectionId) {
+      if (currentPage !== 'home') {
+        onNavigate('home');
+        setTimeout(() => {
+          document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+        }, 150);
+      } else {
+        document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      onNavigate(id);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
     setMobileMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -78,11 +101,11 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Desktop Navigation Links */}
           <nav className="hidden md:flex items-center gap-1 bg-paper-200/60 p-1 rounded-full border border-paper-300/70 backdrop-blur-sm">
             {navLinks.map((link) => {
-              const isActive = currentPage === link.id;
+              const isActive = currentPage === link.id && !link.sectionId;
               return (
                 <button
-                  key={link.id}
-                  onClick={() => handleLinkClick(link.id)}
+                  key={`${link.id}-${link.label}`}
+                  onClick={() => handleLinkClick(link.id, link.sectionId)}
                   className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
                     isActive
                       ? 'bg-white text-charcoal-950 shadow-subtle border border-paper-300/80'
@@ -96,7 +119,34 @@ export const Navbar: React.FC<NavbarProps> = ({
           </nav>
 
           {/* Right Action */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-2.5">
+            {/* Crisis Mode Toggle Button */}
+            <button
+              onClick={toggleCrisisMode}
+              aria-pressed={isCrisisMode}
+              className={`px-3 py-1.5 rounded-full text-xs font-mono font-semibold transition-colors flex items-center gap-1.5 border ${
+                isCrisisMode
+                  ? 'bg-rose-50 border-rose-300 text-rose-800 shadow-xs'
+                  : 'bg-paper-100 hover:bg-paper-200 border-paper-300 text-charcoal-700'
+              }`}
+              title="Toggle Crisis Mode: high contrast, zero animations, reduced bandwidth"
+            >
+              <span className={`w-2 h-2 rounded-full ${isCrisisMode ? 'bg-rose-600' : 'bg-charcoal-400'}`} />
+              <span>{isCrisisMode ? 'Crisis Mode: ON' : 'Crisis Mode'}</span>
+            </button>
+
+            {/* Emergency Access Hub Direct SOS Trigger */}
+            {onOpenEmergencyHub && (
+              <button
+                onClick={onOpenEmergencyHub}
+                className="px-3 py-1.5 rounded-full bg-rose-600 hover:bg-rose-700 text-white text-xs font-mono font-bold transition-all shadow-xs flex items-center gap-1.5"
+                title="Open Emergency Helpline Directory & Offline Life Safety Protocols"
+              >
+                <PhoneCall className="w-3.5 h-3.5" />
+                <span>SOS Lines</span>
+              </button>
+            )}
+
             <MagneticButton
               size="sm"
               variant="primary"
@@ -113,7 +163,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               }}
               className="gap-1.5"
             >
-              <span>Analyze Area</span>
+              <span>Check Risk</span>
               <ArrowUpRight className="w-3.5 h-3.5 opacity-70" />
             </MagneticButton>
           </div>
@@ -132,14 +182,14 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-paper-50/98 backdrop-blur-lg border-b border-paper-300 px-4 pt-3 pb-6 space-y-2 shadow-elevated animate-in fade-in slide-in-from-top-2 duration-200">
+        <div className="md:hidden bg-paper-50/98 backdrop-blur-lg border-b border-paper-300 px-4 pt-3 pb-6 space-y-3 shadow-elevated animate-in fade-in slide-in-from-top-2 duration-200">
           <div className="flex flex-col space-y-1">
             {navLinks.map((link) => {
-              const isActive = currentPage === link.id;
+              const isActive = currentPage === link.id && !link.sectionId;
               return (
                 <button
-                  key={link.id}
-                  onClick={() => handleLinkClick(link.id)}
+                  key={`${link.id}-${link.label}`}
+                  onClick={() => handleLinkClick(link.id, link.sectionId)}
                   className={`w-full min-h-[44px] text-left px-4 py-2.5 rounded-xl text-sm font-medium flex items-center transition-colors ${
                     isActive
                       ? 'bg-paper-200 text-charcoal-950 font-bold border border-paper-300/80 shadow-subtle'
@@ -151,22 +201,48 @@ export const Navbar: React.FC<NavbarProps> = ({
               );
             })}
           </div>
-          <div className="pt-3 border-t border-paper-200/80">
+
+          {/* Mobile Quick Action Buttons: Crisis Mode & SOS Hub */}
+          <div className="pt-2 border-t border-paper-200/80 space-y-2">
+            <div className="grid grid-cols-2 gap-2">
+              <button
+                onClick={toggleCrisisMode}
+                className={`min-h-[44px] px-3 py-2 rounded-xl text-xs font-mono font-bold flex items-center justify-center gap-1.5 border transition-colors ${
+                  isCrisisMode
+                    ? 'bg-rose-50 border-rose-300 text-rose-800'
+                    : 'bg-paper-100 border-paper-300 text-charcoal-700'
+                }`}
+              >
+                <span className={`w-2 h-2 rounded-full ${isCrisisMode ? 'bg-rose-600' : 'bg-charcoal-400'}`} />
+                <span>{isCrisisMode ? 'Crisis Mode: ON' : 'Crisis Mode'}</span>
+              </button>
+
+              {onOpenEmergencyHub && (
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onOpenEmergencyHub();
+                  }}
+                  className="min-h-[44px] px-3 py-2 rounded-xl bg-rose-600 text-white text-xs font-mono font-bold flex items-center justify-center gap-1.5 shadow-xs"
+                >
+                  <PhoneCall className="w-3.5 h-3.5" />
+                  <span>SOS Hub</span>
+                </button>
+              )}
+            </div>
+
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 if (onOpenAnalyzeModal) {
                   onOpenAnalyzeModal();
                 } else {
-                  handleLinkClick('home');
-                  setTimeout(() => {
-                    document.getElementById('analyze-section')?.scrollIntoView({ behavior: 'smooth' });
-                  }, 100);
+                  handleLinkClick('home', 'location-checker');
                 }
               }}
               className="w-full min-h-[44px] py-2.5 px-4 rounded-xl bg-charcoal-900 text-paper-50 text-sm font-semibold flex items-center justify-center gap-2 shadow-sm hover:bg-charcoal-800 transition-colors"
             >
-              <span>Analyze Area Risk</span>
+              <span>Check Location Risk</span>
               <ArrowUpRight className="w-4 h-4 opacity-80" />
             </button>
           </div>

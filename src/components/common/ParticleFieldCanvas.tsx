@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { useCrisis } from '../../context/CrisisContext';
 
 interface Particle {
   x: number;
@@ -26,8 +27,12 @@ export const ParticleFieldCanvas: React.FC<ParticleFieldCanvasProps> = ({
   isHero = false,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const { isCrisisMode } = useCrisis();
 
   useEffect(() => {
+    // If in crisis mode, completely suppress canvas rendering & animation frame loops
+    if (isCrisisMode) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
@@ -459,7 +464,11 @@ export const ParticleFieldCanvas: React.FC<ParticleFieldCanvasProps> = ({
         resizeObserver.disconnect();
       }
     };
-  }, [particleCount, isHero]);
+  }, [particleCount, isHero, isCrisisMode]);
+
+  if (isCrisisMode) {
+    return null;
+  }
 
   return (
     <canvas

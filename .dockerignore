@@ -1,0 +1,66 @@
+# =============================================================================
+# RISK // INDIA — Docker Build Ignore Rules
+# =============================================================================
+# Exclude sensitive environment secrets, local database state, development
+# build caches, and test harnesses from container image layers.
+# =============================================================================
+
+# Version control
+.git
+.gitignore
+.github
+
+# Environment & Secrets (NEVER bake secrets into images)
+.env
+.env.*
+!.env.example
+
+# Local SQLite databases & temporary data
+*.db
+*.sqlite
+*.sqlite3
+risk_india.db
+test_temp.db
+
+# Node / Frontend development dependencies & output
+node_modules
+dist
+dist-ssr
+*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python caches & virtual environments
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Test suites & coverage reports
+tests/
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Scratch & Brain artifacts
+scratch/
+.system_generated/
+
+# Documentation & IDE configurations
+docs/
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS metadata
+.DS_Store
+Thumbs.db

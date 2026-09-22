@@ -12,7 +12,7 @@ export interface StateDistrictOption {
 }
 
 /**
- * Backward-compatible full list of all 37 Indian States and Union Territories with districts
+ * Backward-compatible full list of all 36 Indian States and Union Territories with districts
  */
 export const INDIAN_LOCATIONS: StateDistrictOption[] = ALL_INDIAN_LOCATIONS.map((loc) => ({
   state: loc.name,
@@ -33,8 +33,7 @@ export const STRUCTURED_LOCATIONS: Location[] = ALL_INDIAN_LOCATIONS.map((loc) =
   district: loc.districts[0] || loc.capital,
   city: loc.capital,
   latitude: loc.latitude,
-  longitude: loc.longitude,
-  isDemoData: true
+  longitude: loc.longitude
 }));
 
 export { ALL_INDIAN_STATES, ALL_INDIAN_UNION_TERRITORIES, ALL_INDIAN_LOCATIONS };

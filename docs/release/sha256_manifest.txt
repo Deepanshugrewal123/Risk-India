@@ -1,0 +1,12 @@
+# RISK // INDIA — Cryptographic Release SHA-256 Manifest
+# Generated: 2026-09-21
+# Authoritative Workspace: C:\Users\HP\Desktop\Risk Analyser
+
+# Frozen Scientific Invariants
+0e05bcdf9022fa40897c12270811bc35234a7de877f32e7034e5b446c2dccccf  ml/flood/artifacts/model.joblib
+88b32f35b64ef14d7201463563159529c317982063796dff448d39f45073b080  datasets/processed/flood_assam/flood_features.csv
+
+# Certified Production Frontend Distribution Assets
+e324e64c7b7b4515ed08772516766b6b5e1e1016f7e63d69b7bbfa44285da508  dist/index.html
+895170448a167a9fcee9a8af8df662a128facbb0be0c93b7fb155f5c7f5db213  dist/assets/index-DaL2ijZv.css
+8895325464abe1e5cea827fd8453945643b398dbef333116f65c822c5f7cdbe0  dist/assets/index-DvNHvJSg.js

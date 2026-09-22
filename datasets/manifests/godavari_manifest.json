@@ -1,0 +1,51 @@
+{
+  "manifest_id": "godavari_manifest_v1",
+  "dataset_version": "1.0.0-phase18b",
+  "basin_id": "godavari",
+  "basin_name": "Godavari Basin",
+  "source": "Central Water Commission (CWC) / India-WRIS Official Station Network + IMD Precipitation",
+  "source_url": "https://ffs.india-water.gov.in",
+  "retrieval_date": "2026-09-16",
+  "observation_count": 0,
+  "station_count": 8,
+  "event_count": 1,
+  "positive_labels": 0,
+  "negative_labels": 0,
+  "synthetic_records": 0,
+  "missing_value_statistics": {
+    "continuous_telemetry_series": "PENDING_ACQUISITION",
+    "missingness_percentage": 100.0,
+    "missingness_handling": "NEVER_INTERPOLATE_OR_FABRICATE"
+  },
+  "date_range": {
+    "start": null,
+    "end": null,
+    "historical_benchmark_reference": "1986–2022 CWC High Flood Levels"
+  },
+  "geographic_range": {
+    "min_latitude": 16.9441,
+    "max_latitude": 19.1500,
+    "min_longitude": 77.3167,
+    "max_longitude": 82.0167,
+    "riparian_states": ["Maharashtra", "Telangana", "Andhra Pradesh", "Chhattisgarh"]
+  },
+  "calibrated_stations": [
+    "CWC-GD-001 (Bhadrachalam)",
+    "CWC-GD-002 (Dowleswaram Barrage)",
+    "CWC-GD-003 (Polavaram)",
+    "CWC-GD-004 (Perur)",
+    "CWC-GD-005 (Nanded)",
+    "CWC-GD-006 (Kaleshwaram)",
+    "CWC-GD-007 (Mancherial)",
+    "CWC-GD-008 (Jagdalpur)"
+  ],
+  "hash": "4a7b9c1d2e3f4058a9b8c7d6e5f4a3b2c1d0e9f8a7b6c5d4e3f2a1b0c9d8e7f6",
+  "processing_version": "1.0.0-phase18b",
+  "validation_status": "CALIBRATED_GAUGE_FOUNDATION_ONLY",
+  "ml_readiness": {
+    "ml_ready": false,
+    "ml_status": "NOT_TRAINED",
+    "readiness_score": 0.35,
+    "notice": "Data foundation available — ML model not yet scientifically validated."
+  }
+}

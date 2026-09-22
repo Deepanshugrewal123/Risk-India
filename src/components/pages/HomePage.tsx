@@ -1,14 +1,18 @@
 import React from 'react';
-import { HeroSection } from '../home/HeroSection';
-import { LiveRiskSnapshot } from '../home/LiveRiskSnapshot';
-import { AnalyzeAreaSection } from '../home/AnalyzeAreaSection';
-import { CurrentDisastersSection } from '../home/CurrentDisastersSection';
-import { PreparednessSection } from '../home/PreparednessSection';
-import { AIAssistantSection } from '../home/AIAssistantSection';
-import { ReliefHubSection } from '../home/ReliefHubSection';
-import { VerifiedHelpSection } from '../home/VerifiedHelpSection';
-import { HowItWorksSection } from '../home/HowItWorksSection';
-import { FinalCTASection } from '../home/FinalCTASection';
+import { 
+  HeroSection, 
+  FutureRiskHeroSection, 
+  LocationRiskCheckerSection, 
+  EarlyWarningNoticeSection, 
+  FutureHazardCardsSection, 
+  CitizenActionSection, 
+  LiveRiskSnapshot, 
+  CurrentDisastersSection, 
+  ReliefHubSection, 
+  VerifiedHelpSection, 
+  HowItWorksSection, 
+  FinalCTASection 
+} from '../home';
 import { ScrollReveal } from '../common/ScrollReveal';
 import { RegionRiskData } from '../../types/risk';
 import { DisasterEvent } from '../../types/disaster';
@@ -25,8 +29,22 @@ export const HomePage: React.FC<HomePageProps> = ({
   onSelectRegion,
   onSelectIncident,
 }) => {
-  const scrollToAnalyze = () => {
-    const el = document.getElementById('analyze-section');
+  const scrollToChecker = () => {
+    const el = document.getElementById('location-checker') || document.getElementById('analyze-section') || document.getElementById('check-location');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const scrollToFutureRisk = () => {
+    const el = document.getElementById('future-risk');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const scrollToEarlyWarnings = () => {
+    const el = document.getElementById('early-warnings');
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
     }
@@ -40,15 +58,57 @@ export const HomePage: React.FC<HomePageProps> = ({
   };
 
   return (
-    <main className="space-y-4">
-      {/* 1. Hero Section (Immediate display, zero delay) */}
+    <main className="space-y-6">
+      {/* 1. Hero Section: CURRENT RISK + FUTURE RISK + EARLY WARNING + ACTION */}
       <HeroSection
         onExploreMap={() => onNavigate('risk-map')}
-        onAnalyzeArea={scrollToAnalyze}
+        onAnalyzeArea={scrollToChecker}
+        onCheckFutureRisk={scrollToFutureRisk}
+        onSeeEarlyWarnings={scrollToEarlyWarnings}
         onHowItWorks={scrollToHowItWorks}
       />
 
-      {/* 2. Section A: Live India Risk Snapshot */}
+      {/* 2. Future Risk Hero: WHAT COULD HAPPEN NEXT? (5 Horizons: NOW to 7 Days, Defaults to National Overview) */}
+      <ScrollReveal>
+        <FutureRiskHeroSection 
+          onOpenFullMap={() => onNavigate('risk-map')}
+          onSelectLocation={scrollToChecker}
+          onViewDetailedPage={() => onNavigate('future-risk')}
+          onViewEarlyWarnings={scrollToEarlyWarnings}
+        />
+      </ScrollReveal>
+
+      {/* 3. Location Risk Checker: Live State -> District -> City Analysis (Zero Demo Mocks) */}
+      <ScrollReveal>
+        <LocationRiskCheckerSection 
+          onOpenMap={() => onNavigate('risk-map')}
+          onViewFullAnalysis={() => onNavigate('future-risk')}
+        />
+      </ScrollReveal>
+
+      {/* 4. Early Warning Notices: Official Bulletins & Strict Preparation vs Evacuation Demarcation */}
+      <ScrollReveal>
+        <EarlyWarningNoticeSection 
+          onViewAllWarnings={() => onNavigate('disasters')}
+        />
+      </ScrollReveal>
+
+      {/* 5. 6-Hazard Predictive Risk Cards (Flood, Cyclone, Heatwave, Weather, Landslide, Earthquake) */}
+      <ScrollReveal>
+        <FutureHazardCardsSection 
+          onSelectHazard={() => {
+            const el = document.getElementById('future-risk');
+            el?.scrollIntoView({ behavior: 'smooth' });
+          }}
+        />
+      </ScrollReveal>
+
+      {/* 6. Citizen Action Protocols: WHAT SHOULD I DO? (Do Now, Before, During, After, 72h Family Kit) */}
+      <ScrollReveal>
+        <CitizenActionSection />
+      </ScrollReveal>
+
+      {/* 7. Live Geospatial Risk Matrix: Open Risk Map */}
       <ScrollReveal>
         <LiveRiskSnapshot
           onOpenFullMap={() => onNavigate('risk-map')}
@@ -57,12 +117,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         />
       </ScrollReveal>
 
-      {/* 3. Section B: Analyze Your Area */}
-      <ScrollReveal>
-        <AnalyzeAreaSection />
-      </ScrollReveal>
-
-      {/* 4. Section C: Current Disasters */}
+      {/* 8. Active Disasters Feed */}
       <ScrollReveal>
         <CurrentDisastersSection
           onSelectIncident={onSelectIncident}
@@ -70,17 +125,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         />
       </ScrollReveal>
 
-      {/* 5. Section D: Prepare Before It Happens */}
-      <ScrollReveal>
-        <PreparednessSection />
-      </ScrollReveal>
-
-      {/* 6. Section E: AI Disaster Assistant */}
-      <ScrollReveal>
-        <AIAssistantSection />
-      </ScrollReveal>
-
-      {/* 7. Section F: Disaster Relief Hub */}
+      {/* 9. Disaster Relief Hub */}
       <ScrollReveal>
         <ReliefHubSection
           onNeedHelpClick={() => onNavigate('get-help')}
@@ -88,20 +133,20 @@ export const HomePage: React.FC<HomePageProps> = ({
         />
       </ScrollReveal>
 
-      {/* 8. Section G: Verified Help Sources */}
+      {/* 10. Verified Help Sources */}
       <ScrollReveal>
         <VerifiedHelpSection />
       </ScrollReveal>
 
-      {/* 9. Section H: How It Works */}
+      {/* 11. How It Works */}
       <ScrollReveal>
         <HowItWorksSection />
       </ScrollReveal>
 
-      {/* 10. Section I: Final Editorial CTA */}
+      {/* 12. Final Editorial CTA */}
       <ScrollReveal>
         <FinalCTASection
-          onAnalyzeArea={scrollToAnalyze}
+          onAnalyzeArea={scrollToChecker}
           onExploreMap={() => onNavigate('risk-map')}
         />
       </ScrollReveal>

@@ -136,24 +136,37 @@ export const PreparednessSection: React.FC = () => {
             <h4 className="text-xs font-mono uppercase tracking-wider text-charcoal-500 font-semibold mb-4">
               Action Steps ({activePhase.toUpperCase()})
             </h4>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {currentPhaseData.instructions.map((step, index) => (
-                <div
-                  key={index}
-                  className="p-4 rounded-2xl bg-paper-50/70 border border-paper-200 flex items-start gap-3"
-                >
-                  <div className="w-6 h-6 rounded-full bg-white border border-paper-300 flex items-center justify-center font-mono text-xs font-bold text-charcoal-700 shrink-0 mt-0.5">
-                    0{index + 1}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {currentPhaseData.instructions.map((step, index) => (
+                  <div
+                    key={index}
+                    className="p-4 rounded-2xl bg-paper-50/70 border border-paper-200 flex items-start gap-3"
+                  >
+                    <div className="w-6 h-6 rounded-full bg-white border border-paper-300 flex items-center justify-center font-mono text-xs font-bold text-charcoal-700 shrink-0 mt-0.5">
+                      0{index + 1}
+                    </div>
+                    <p className="text-xs sm:text-sm text-charcoal-800 leading-relaxed">
+                      {step}
+                    </p>
                   </div>
-                  <p className="text-xs sm:text-sm text-charcoal-800 leading-relaxed">
-                    {step}
-                  </p>
-                </div>
-              ))}
+                ))}
+              </div>
+            </div>
+
+            {/* Statutory Authority & Verified Local Resource Disclaimer */}
+            <div className="mt-8 pt-6 border-t border-paper-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-mono text-charcoal-500">
+              <div className="flex items-center gap-2">
+                <ShieldAlert className="w-4 h-4 text-amber-600 shrink-0" />
+                <span>
+                  <strong>Statutory Notice:</strong> Consult verified local authorities (DDMA / Block Development Officer) for confirmed emergency supply points.
+                </span>
+              </div>
+              <div className="shrink-0 text-charcoal-700">
+                National Disaster Helpline: <strong>1078</strong> • All Emergencies: <strong>112</strong>
+              </div>
             </div>
           </div>
         </div>
-      </div>
     </section>
   );
 };

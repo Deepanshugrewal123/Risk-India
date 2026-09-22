@@ -1,0 +1,40 @@
+{
+  "dataset_id": "assam_flood_features_v1",
+  "version": "1.0.0",
+  "source": "ISRO Bhuvan Inundation Rasters + CWC Gauge Telemetry + IMD Gridded Precipitation",
+  "retrieval_date": "2026-09-12",
+  "row_count": 32,
+  "station_count": 3,
+  "event_count": 18,
+  "time_range": {
+    "start": "2022-05-23 18:00",
+    "end": "2025-07-08 06:00"
+  },
+  "geographic_scope": "Assam (Brahmaputra Valley: Dhansiri, Tangni, Boko gauge corridors)",
+  "hazard_scope": "FLOOD",
+  "validation_status": "EMPIRICALLY_AUDITED",
+  "sha256": "88b32f35b64ef14d7201463563159529c317982063796dff448d39f45073b080",
+  "synthetic_records": 0,
+  "features": [
+    "flood_occurrence",
+    "flood_pixel_count",
+    "flooded_km2",
+    "rainfall_6h",
+    "rainfall_24h",
+    "rainfall_72h",
+    "rainfall_168h",
+    "river_level_relative",
+    "river_rise_6h",
+    "river_rise_24h",
+    "river_percentile_level",
+    "month",
+    "day_of_year_sin",
+    "day_of_year_cos",
+    "latitude",
+    "longitude",
+    "elevation",
+    "slope",
+    "distance_to_river"
+  ],
+  "is_audited": true
+}

@@ -1,0 +1,54 @@
+# =============================================================================
+# RISK // INDIA — Frontend Production Dockerfile (Multi-Stage)
+# =============================================================================
+# Stage 1: Build static distribution using Node.js
+# Stage 2: Serve compiled static bundle using lightweight Alpine Nginx
+# Guarantees:
+# - Zero development dependencies or node_modules in production image
+# - Single-Page-App (SPA) client-side routing support
+# - Reverse proxy integration to backend API
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Stage 1: Build Static Bundle
+# -----------------------------------------------------------------------------
+FROM node:20-alpine AS builder
+
+WORKDIR /app
+
+# Cache dependencies
+COPY package.json package-lock.json ./
+RUN npm ci
+
+# Copy project source and build configurations
+COPY tsconfig.json tsconfig.node.json vite.config.ts tailwind.config.js postcss.config.js index.html ./
+COPY public ./public
+COPY src ./src
+
+# Compile TypeScript and Vite production bundle
+RUN npm run build
+
+# -----------------------------------------------------------------------------
+# Stage 2: Production Nginx Server
+# -----------------------------------------------------------------------------
+FROM nginx:1.27-alpine AS production
+
+# Remove default Nginx welcome page
+RUN rm -rf /usr/share/nginx/html/*
+
+# Copy compiled static assets from builder stage
+COPY --from=builder /app/dist /usr/share/nginx/html
+
+# Copy optimized production Nginx configuration
+COPY nginx/default.conf /etc/nginx/conf.d/default.conf
+
+# Expose HTTP port
+EXPOSE 80
+
+# Container healthcheck
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+    CMD wget -q --spider http://127.0.0.1:80/healthz || exit 1
+
+
+# Launch Nginx in foreground
+CMD ["nginx", "-g", "daemon off;"]

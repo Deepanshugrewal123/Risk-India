@@ -17,6 +17,7 @@ import {
   OFFICIAL_DISASTER_PORTALS
 } from '../data/resources';
 import { API_ENDPOINTS } from '../config/api';
+import { apiClient } from './api';
 
 function normalizeResource(item: any): Resource {
   return {
@@ -91,12 +92,9 @@ export const resourceService = {
       if (params?.verificationStatus && params.verificationStatus !== 'ALL') query.set('verification_status', params.verificationStatus);
 
       const url = `${API_ENDPOINTS.resources.list()}?${query.toString()}`;
-      const res = await fetch(url);
-      if (res.ok) {
-        const data = await res.json();
-        if (Array.isArray(data)) {
-          return data.map(normalizeResource);
-        }
+      const data = await apiClient.get<any[]>(url, { timeoutMs: 6000 });
+      if (Array.isArray(data)) {
+        return data.map(normalizeResource);
       }
     } catch (err) {
       console.warn('Backend resources API unavailable, falling back to verified static catalog:', err);

@@ -149,7 +149,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 <a
                   href="https://ndma.gov.in"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 hover:text-charcoal-950 transition-colors"
                 >
                   NDMA India <ExternalLink className="w-3 h-3 opacity-60" />
@@ -159,7 +159,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 <a
                   href="https://mausam.imd.gov.in"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 hover:text-charcoal-950 transition-colors"
                 >
                   IMD Weather <ExternalLink className="w-3 h-3 opacity-60" />
@@ -169,7 +169,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 <a
                   href="https://ndrf.gov.in"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 hover:text-charcoal-950 transition-colors"
                 >
                   NDRF Force <ExternalLink className="w-3 h-3 opacity-60" />

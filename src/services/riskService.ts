@@ -5,6 +5,7 @@ import { ALL_INDIAN_LOCATIONS, ALL_INDIAN_STATES, ALL_INDIAN_UNION_TERRITORIES, 
 import { IndiaLocation, AdministrativeType } from '../types/location';
 import { getRiskLevel } from '../utils/riskLevels';
 import { API_ENDPOINTS } from '../config/api';
+import { apiClient } from './api';
 
 export interface ModelFactorItem {
   feature: string;
@@ -26,6 +27,12 @@ export interface AreaAnalysisResult extends RiskAssessment {
   emergencyWarning?: boolean;
   topFactors?: ModelFactorItem[];
   disclaimer?: string;
+  // Phase 25 National Empirical Data Foundation Additions
+  riskSource?: string;
+  scientificState?: string;
+  modelScope?: string;
+  datasetVersion?: string;
+  limitations?: string;
 }
 
 async function callRiskAnalyzeAPI(payload: {
@@ -36,15 +43,7 @@ async function callRiskAnalyzeAPI(payload: {
   features?: Record<string, any> | null;
 }) {
   const endpoint = API_ENDPOINTS.risk.analyze || '/api/risk/analyze';
-  const res = await fetch(endpoint, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
-  });
-  if (!res.ok) {
-    throw new Error(`API returned HTTP ${res.status}`);
-  }
-  return await res.json();
+  return await apiClient.post(endpoint, payload, { timeoutMs: 10000, retries: 0 });
 }
 
 export const riskService = {
@@ -160,13 +159,13 @@ export const riskService = {
     disasterType: DisasterType
   ): Promise<AreaAnalysisResult> => {
     const matchedLocation = findIndiaLocation(state);
+    const isAssam =
+      state.toLowerCase().includes('assam') ||
+      state.toLowerCase() === 'as' ||
+      ['udalguri', 'darrang', 'kamrup', 'boko'].some((d) => district.toLowerCase().includes(d));
 
     // For Flood hazard, query the real FastAPI ML prototype inference service
     if (disasterType.toLowerCase() === 'flood') {
-      const isAssam =
-        state.toLowerCase().includes('assam') ||
-        ['udalguri', 'darrang', 'kamrup', 'boko'].some((d) => district.toLowerCase().includes(d));
-
       let features: Record<string, any> | null = null;
       if (isAssam) {
         const distKey = district.toLowerCase();
@@ -316,7 +315,12 @@ export const riskService = {
             isPrototype: true,
             emergencyWarning: false,
             topFactors,
-            disclaimer: apiData.disclaimer || 'Experimental Assam flood-risk prototype based on a limited event dataset. Results are for research and awareness only and should not replace official emergency warnings.'
+            disclaimer: apiData.disclaimer || 'Experimental Assam flood-risk prototype based on a limited event dataset. Results are for research and awareness only and should not replace official emergency warnings.',
+            riskSource: apiData.risk_source || 'EMPIRICAL_ML',
+            scientificState: apiData.scientific_state || 'EMPIRICALLY_VALIDATED_ML',
+            modelScope: apiData.model_scope || 'Assam Brahmaputra & Barak Basins (Prototype)',
+            datasetVersion: apiData.dataset_version || '1.0.0',
+            limitations: apiData.limitations || 'Assam regional prototype trained strictly on 32 empirical observations. Not valid outside Assam.'
           };
         }
       } catch (err) {
@@ -442,10 +446,17 @@ export const riskService = {
       recommendedImmediateAction: recommendedActions[0],
       historicalIncidentFrequency: `${Math.floor(calculatedScore / 15)} major occurrences in past 10 years`,
       predictedPeakTimeWindow: 'Next 24 to 48 Hours',
-      modelVersion: 'v1.4.0-demo',
+      modelVersion: 'v1.4.0-baseline',
       timestamp: new Date().toISOString(),
-      isDemoData: true,
-      isSimulated: true
+      isDemoData: false,
+      isSimulated: false,
+      riskSource: 'REGIONAL_BASELINE',
+      scientificState: isAssam ? 'EMPIRICALLY_VALIDATED_ML' : 'BASELINE_ONLY',
+      modelScope: isAssam ? 'Assam Brahmaputra & Barak Basins' : 'National Regional Baseline (Non-ML)',
+      datasetVersion: '1.0.0-baseline',
+      limitations: isAssam
+        ? 'Assam regional baseline calibrated with empirical flood prototype.'
+        : 'Regional baseline derived from published NDMA vulnerability matrices and IMD/CWC normals. Empirical ML not available for this region.'
     };
   }
 };

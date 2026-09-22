@@ -1,0 +1,60 @@
+{
+  "manifest_version": "2.0.0",
+  "phase": "PHASE_26_NATIONAL_EMPIRICAL_FLOOD_FOUNDATION",
+  "generation_timestamp": "2026-09-22T03:10:57.198804+00:00",
+  "source_providers": [
+    "Central Water Commission (CWC)",
+    "India Meteorological Department (IMD)",
+    "ISRO / NRSC Bhuvan Disaster Services",
+    "Assam State Disaster Management Authority (ASDMA)"
+  ],
+  "source_identifiers": [
+    "CWC-FFS",
+    "IMD-MAUSAM",
+    "BHUVAN-FLOOD-RASTER",
+    "ASDMA-DAILY-SITREP"
+  ],
+  "priority_basins": [
+    "brahmaputra",
+    "ganga",
+    "godavari",
+    "mahanadi",
+    "krishna"
+  ],
+  "observation_count_by_basin": {
+    "brahmaputra": 32,
+    "ganga": 0,
+    "godavari": 0,
+    "mahanadi": 0,
+    "krishna": 0
+  },
+  "event_count_by_basin": {
+    "brahmaputra": 12,
+    "ganga": 0,
+    "godavari": 0,
+    "mahanadi": 0,
+    "krishna": 0
+  },
+  "gauge_count_by_basin": {
+    "brahmaputra": 3,
+    "ganga": 5,
+    "godavari": 5,
+    "mahanadi": 8,
+    "krishna": 5
+  },
+  "feature_completeness": {
+    "brahmaputra": 1.0,
+    "ganga": 0.0,
+    "godavari": 0.0,
+    "mahanadi": 0.0,
+    "krishna": 0.0
+  },
+  "validation_status": "AUDITED_AND_VERIFIED",
+  "provenance_status": "VERIFIED_OFFICIAL",
+  "synthetic_record_count": 0,
+  "duplicate_count": 0,
+  "rejected_record_count": 0,
+  "geographic_crs": "EPSG:4326 (WGS84)",
+  "hash_algorithm": "SHA-256",
+  "checksum_sha256": "9b2412bb290cdf6a11a93cbaef00a282d513c551fdc8a1e60f42472771aa9f5c"
+}

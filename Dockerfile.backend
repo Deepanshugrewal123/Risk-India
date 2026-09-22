@@ -1,0 +1,60 @@
+# =============================================================================
+# RISK // INDIA — Backend & ML Inference Dockerfile (Production)
+# =============================================================================
+# Architecture:
+# - Base: python:3.11-slim (minimal attack surface, official Debian slim)
+# - Security: Non-root execution under UID 10001 (appuser)
+# - Process Manager: Gunicorn ASGI master managing Uvicorn worker processes
+# - Integrity: Bundles frozen assam_flood_prototype_v1 model artifacts
+# =============================================================================
+
+FROM python:3.11-slim AS production
+
+# Set operational environment variables
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PYTHONPATH=/app \
+    PORT=8000 \
+    WEB_CONCURRENCY=4 \
+    APP_ENV=production
+
+# Install system runtime dependencies & security packages
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    libpq5 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create dedicated non-root application user and group
+RUN groupadd -g 10001 appgroup && \
+    useradd -u 10001 -g appgroup -s /sbin/nologin -M appuser
+
+# Set working directory
+WORKDIR /app
+
+# Install Python production dependencies
+COPY backend/requirements.txt /app/requirements.txt
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
+
+# Copy application backend source, migrations, and ML artifacts
+COPY backend/app /app/app
+COPY ml /app/ml
+COPY alembic /app/alembic
+COPY alembic.ini /app/alembic.ini
+COPY datasets /app/datasets
+
+# Ensure application user owns the runtime directory
+RUN chown -R appuser:appgroup /app
+
+# Switch to non-root execution
+USER appuser
+
+# Expose internal API service port
+EXPOSE 8000
+
+# Docker healthcheck querying readiness probe
+HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
+    CMD curl -f http://localhost:8000/api/health/readiness || exit 1
+
+# Production entrypoint: Multi-worker Gunicorn running Uvicorn ASGI workers
+CMD ["gunicorn", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "-b", "0.0.0.0:8000", "app.main:app"]

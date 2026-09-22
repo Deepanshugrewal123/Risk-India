@@ -10,13 +10,15 @@ import { DemoBadge } from '../common/DemoBadge';
 import { LoadingState } from '../common/LoadingState';
 import { ErrorState } from '../common/ErrorState';
 import { EmptyState } from '../common/EmptyState';
-import { Search, ShieldCheck, MapPin, Phone, AlertCircle } from 'lucide-react';
+import { Search, ShieldCheck, MapPin, Phone, AlertCircle, Clock, Globe } from 'lucide-react';
+import { NationalFutureRisk } from '../predictive/NationalFutureRisk';
 
 interface RiskMapPageProps {
   onSelectIncident?: (incident: DisasterEvent) => void;
 }
 
 export const RiskMapPage: React.FC<RiskMapPageProps> = ({ onSelectIncident }) => {
+  const [viewMode, setViewMode] = useState<'current' | 'future'>('future');
   const [allRegions, setAllRegions] = useState<RegionRiskData[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -69,23 +71,58 @@ export const RiskMapPage: React.FC<RiskMapPageProps> = ({ onSelectIncident }) =>
     <div className="pt-28 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-screen">
       {/* Page Header */}
       <div className="mb-8">
-        <div className="flex items-center gap-2 mb-2">
-          <span className="text-xs font-mono uppercase tracking-wider text-charcoal-500 font-semibold">
-            Geospatial Intelligence Explorer
-          </span>
-          <DemoBadge label="37 REGIONS MONITORED" />
+        <div className="flex items-center justify-between flex-wrap gap-4">
+          <div>
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-xs font-mono uppercase tracking-wider text-charcoal-500 font-semibold">
+                Geospatial Intelligence Explorer
+              </span>
+              <DemoBadge label="36 REGIONS MONITORED" />
+            </div>
+            <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-charcoal-950">
+              {viewMode === 'future' ? 'Predictive Risk & Early Warning' : 'India Disaster Risk Map'}
+            </h1>
+            <p className="text-sm sm:text-base text-charcoal-600 mt-2 max-w-2xl">
+              {viewMode === 'future'
+                ? 'Authoritative national predictive risk fusion, 5-horizon NWP forecasting, qualitative uncertainty, scenarios, and citizen safety action intelligence.'
+                : 'Multi-hazard vulnerability modeling across all 28 States and 8 Union Territories, synthesizing topography, river discharge, and satellite moisture indices.'}
+            </p>
+          </div>
+
+          <div className="flex items-center p-1 rounded-2xl bg-paper-200 border border-paper-300 font-mono text-xs">
+            <button
+              onClick={() => setViewMode('future')}
+              className={`flex items-center gap-1.5 px-4 py-2 rounded-xl font-bold transition-all ${
+                viewMode === 'future'
+                  ? 'bg-charcoal-900 text-white shadow-sm'
+                  : 'text-charcoal-600 hover:text-charcoal-950'
+              }`}
+            >
+              <Clock className="w-4 h-4 text-indigo-400" />
+              <span>FUTURE RISK & EARLY WARNING</span>
+            </button>
+            <button
+              onClick={() => setViewMode('current')}
+              className={`flex items-center gap-1.5 px-4 py-2 rounded-xl font-bold transition-all ${
+                viewMode === 'current'
+                  ? 'bg-charcoal-900 text-white shadow-sm'
+                  : 'text-charcoal-600 hover:text-charcoal-950'
+              }`}
+            >
+              <Globe className="w-4 h-4" />
+              <span>CURRENT RISK</span>
+            </button>
+          </div>
         </div>
-        <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-charcoal-950">
-          India Disaster Risk Map
-        </h1>
-        <p className="text-sm sm:text-base text-charcoal-600 mt-2 max-w-2xl">
-          Multi-hazard vulnerability modeling across all 28 States and 9 Union Territories, synthesizing topography, river discharge, satellite moisture indices, and recurrence frequency.
-        </p>
       </div>
 
-      {/* Filter and Search Bar */}
-      <div className="p-4 sm:p-5 rounded-3xl bg-white border border-paper-300 shadow-subtle mb-8 space-y-4">
-        <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4">
+      {viewMode === 'future' ? (
+        <NationalFutureRisk />
+      ) : (
+        <>
+          {/* Filter and Search Bar */}
+          <div className="p-4 sm:p-5 rounded-3xl bg-white border border-paper-300 shadow-subtle mb-8 space-y-4">
+            <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4">
           {/* Search box */}
           <div className="relative flex-1">
             <Search className="w-4 h-4 text-charcoal-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
@@ -246,6 +283,8 @@ export const RiskMapPage: React.FC<RiskMapPageProps> = ({ onSelectIncident }) =>
             )}
           </div>
         </div>
+      )}
+        </>
       )}
     </div>
   );

@@ -1,0 +1,129 @@
+# =============================================================================
+# RISK // INDIA — Production Multi-Service Docker Compose Specification
+# =============================================================================
+# Services:
+# 1. frontend: Static React SPA served via Alpine Nginx (port 80)
+# 2. backend: FastAPI + Gunicorn ASGI cluster + ML Inference (port 8000)
+# 3. postgres: PostgreSQL 16 relational database with persistent storage
+# 4. redis: In-memory distributed caching engine (Redis 7)
+# =============================================================================
+
+services:
+  # ---------------------------------------------------------------------------
+  # 1. PostgreSQL Relational Database (Internal Storage Tier)
+  # ---------------------------------------------------------------------------
+  postgres:
+    image: postgres:16-alpine
+    container_name: risk-india-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-risk_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-risk_password_change_me}
+      POSTGRES_DB: ${POSTGRES_DB:-risk_india}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - risk-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER:-risk_user} -d $${POSTGRES_DB:-risk_india}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  # ---------------------------------------------------------------------------
+  # 2. Redis Distributed Cache (Internal Cache Tier)
+  # ---------------------------------------------------------------------------
+  redis:
+    image: redis:7-alpine
+    container_name: risk-india-redis
+    restart: unless-stopped
+    command: ["redis-server", "--save", "60", "1", "--loglevel", "warning"]
+    volumes:
+      - redis_data:/data
+    networks:
+      - risk-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 5s
+
+  # ---------------------------------------------------------------------------
+  # 3. FastAPI Backend & ML Model Service (Application Tier)
+  # ---------------------------------------------------------------------------
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: risk-india-backend
+    restart: unless-stopped
+    environment:
+      APP_NAME: "risk-india-api"
+      APP_ENV: "production"
+      DEBUG: "false"
+      PORT: 8000
+      WEB_CONCURRENCY: ${WEB_CONCURRENCY:-4}
+      LOG_LEVEL: "INFO"
+      DATABASE_URL: "postgresql+psycopg2://${POSTGRES_USER:-risk_user}:${POSTGRES_PASSWORD:-risk_password_change_me}@postgres:5432/${POSTGRES_DB:-risk_india}"
+      DB_POOL_SIZE: 10
+      DB_MAX_OVERFLOW: 20
+      REDIS_URL: "redis://redis:6379/0"
+      CACHE_BACKEND: "redis"
+      CACHE_TTL_SECONDS: 300
+      CORS_ORIGINS: "${CORS_ORIGINS:-http://localhost,http://localhost:80,http://127.0.0.1}"
+      ENABLE_HSTS: "${ENABLE_HSTS:-false}"
+      RATE_LIMIT_GENERAL: 60
+      RATE_LIMIT_COMPUTE: 10
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - risk-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/health/readiness"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+  # ---------------------------------------------------------------------------
+  # 4. Frontend & Reverse Proxy Web Server (Ingress Tier)
+  # ---------------------------------------------------------------------------
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: risk-india-frontend
+    restart: unless-stopped
+    ports:
+      - "${FRONTEND_PORT:-80}:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - risk-network
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1:80/healthz"]
+      interval: 15s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+
+# -----------------------------------------------------------------------------
+# Isolated Inter-Container Network & Persistent Storage Volumes
+# -----------------------------------------------------------------------------
+networks:
+  risk-network:
+    name: risk-india-network
+    driver: bridge
+
+volumes:
+  postgres_data:
+    name: risk-india-postgres-data
+  redis_data:
+    name: risk-india-redis-data

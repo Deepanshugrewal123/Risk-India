@@ -40,8 +40,10 @@ export const DisastersPage: React.FC<DisastersPageProps> = ({ onSelectIncident }
     fetchIncidents();
   }, []);
 
-  const types = ['All', 'Flood', 'Landslide', 'Cyclone'];
+  const types = ['All', 'Flood', 'Earthquake', 'Cyclone', 'Heatwave', 'Landslide', 'Severe Weather'];
   const severities: (RiskLevel | 'All')[] = ['All', 'LOW', 'MODERATE', 'HIGH', 'CRITICAL'];
+  const freshnessOptions = ['All', 'LIVE', 'RECENT', 'CACHED'];
+  const [selectedFreshness, setSelectedFreshness] = useState<string>('All');
 
   const filtered = incidents.filter((incident) => {
     const matchesSearch =
@@ -50,7 +52,12 @@ export const DisastersPage: React.FC<DisastersPageProps> = ({ onSelectIncident }
       incident.state.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesType = selectedType === 'All' || incident.type.toLowerCase() === selectedType.toLowerCase();
     const matchesSeverity = selectedSeverity === 'All' || incident.severity === selectedSeverity;
-    return matchesSearch && matchesType && matchesSeverity;
+    const matchesFreshness =
+      selectedFreshness === 'All' ||
+      (selectedFreshness === 'LIVE' && incident.freshness === 'LIVE') ||
+      (selectedFreshness === 'RECENT' && incident.freshness === 'RECENT') ||
+      (selectedFreshness === 'CACHED' && incident.freshness === 'CACHED');
+    return matchesSearch && matchesType && matchesSeverity && matchesFreshness;
   });
 
   return (
@@ -125,6 +132,22 @@ export const DisastersPage: React.FC<DisastersPageProps> = ({ onSelectIncident }
                 ))}
               </select>
             </div>
+
+            {/* Freshness Filter */}
+            <div className="flex items-center gap-1.5">
+              <span className="text-xs font-mono text-charcoal-500">Recency:</span>
+              <select
+                value={selectedFreshness}
+                onChange={(e) => setSelectedFreshness(e.target.value)}
+                className="px-3 py-2 rounded-xl bg-paper-50 border border-paper-200 text-xs font-mono text-charcoal-800 font-medium focus:outline-none focus:ring-2 focus:ring-charcoal-900"
+              >
+                {freshnessOptions.map((f) => (
+                  <option key={f} value={f}>
+                    {f === 'All' ? 'All Data' : f}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
         </div>
       </div>
@@ -152,6 +175,7 @@ export const DisastersPage: React.FC<DisastersPageProps> = ({ onSelectIncident }
             onClick: () => {
               setSelectedType('All');
               setSelectedSeverity('All');
+              setSelectedFreshness('All');
               setSearchQuery('');
             }
           }}
@@ -159,47 +183,91 @@ export const DisastersPage: React.FC<DisastersPageProps> = ({ onSelectIncident }
       ) : (
         /* Incidents Grid */
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map((incident) => (
-            <div
-              key={incident.id}
-              onClick={() => onSelectIncident(incident)}
-              className="group cursor-pointer rounded-3xl bg-white border border-paper-300 p-6 shadow-subtle hover:shadow-elevated transition-all duration-300 hover:border-charcoal-400 flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-center justify-between gap-2 mb-4">
-                  <RiskBadge level={incident.severity} size="sm" score={incident.riskScore} />
-                  <span className="inline-flex items-center gap-1 text-[11px] font-mono text-charcoal-500 bg-paper-100 px-2 py-0.5 rounded-full border border-paper-200">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                    {incident.status}
-                  </span>
+          {filtered.map((incident) => {
+            const isFresh = incident.freshness === 'LIVE';
+            const isRecent = incident.freshness === 'RECENT';
+
+            return (
+              <div
+                key={incident.id}
+                onClick={() => onSelectIncident(incident)}
+                className="group cursor-pointer rounded-3xl bg-white border border-paper-300 p-6 shadow-subtle hover:shadow-elevated transition-all duration-300 hover:border-charcoal-400 flex flex-col justify-between"
+              >
+                <div>
+                  {/* Top Meta: Severity + Four Pillars + Freshness */}
+                  <div className="flex flex-wrap items-center justify-between gap-2 mb-3 pb-2 border-b border-paper-100">
+                    <RiskBadge level={incident.severity} size="sm" score={incident.riskScore} />
+
+                    <div className="flex flex-wrap items-center gap-1.5">
+                      {/* Four Pillars Classification Tag */}
+                      <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-full border ${
+                        incident.verified && !incident.isDemoData && isFresh
+                          ? 'bg-emerald-50 text-emerald-800 border-emerald-200'
+                          : incident.title.toLowerCase().includes('prototype') || (incident.data_category || '').includes('ML')
+                          ? 'bg-purple-50 text-purple-800 border-purple-200'
+                          : incident.verified
+                          ? 'bg-blue-50 text-blue-800 border-blue-200'
+                          : 'bg-paper-100 text-charcoal-700 border-paper-200'
+                      }`}>
+                        {incident.verified && !incident.isDemoData && isFresh
+                          ? 'LIVE OFFICIAL DATA'
+                          : incident.title.toLowerCase().includes('prototype') || (incident.data_category || '').includes('ML')
+                          ? 'ML PROTOTYPE ESTIMATE'
+                          : incident.verified
+                          ? 'OFFICIAL BULLETIN'
+                          : 'REGIONAL BASELINE'}
+                      </span>
+
+                      {/* Freshness Tag with Strict Honesty */}
+                      {incident.freshness === 'CACHED' ? (
+                        <span className="inline-flex items-center gap-1 text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200 font-bold" title="Cached snapshot — live feed currently unverified">
+                          <span>CACHED</span>
+                        </span>
+                      ) : isFresh ? (
+                        <span className="inline-flex items-center gap-1 text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-bold">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
+                          <span>LIVE</span>
+                        </span>
+                      ) : isRecent ? (
+                        <span className="inline-flex items-center gap-1 text-[10px] font-mono px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200 font-medium">
+                          <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                          <span>RECENT</span>
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center gap-1 text-[10px] font-mono text-charcoal-500 bg-paper-100 px-2 py-0.5 rounded-full border border-paper-200">
+                          <span>STALE / ARCHIVE</span>
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  <h3 className="text-xl font-bold text-charcoal-950 group-hover:text-charcoal-800 transition-colors leading-snug mb-2">
+                    {incident.title}
+                  </h3>
+
+                  <div className="flex items-center gap-1.5 text-xs text-charcoal-500 font-mono mb-4">
+                    <MapPin className="w-3.5 h-3.5 text-charcoal-400 shrink-0" />
+                    <span>{incident.location}, {incident.state}</span>
+                  </div>
+
+                  <p className="text-xs text-charcoal-600 line-clamp-3 leading-relaxed mb-6">
+                    {incident.description}
+                  </p>
                 </div>
 
-                <h3 className="text-xl font-bold text-charcoal-950 group-hover:text-charcoal-800 transition-colors leading-snug mb-2">
-                  {incident.title}
-                </h3>
-
-                <div className="flex items-center gap-1.5 text-xs text-charcoal-500 font-mono mb-4">
-                  <MapPin className="w-3.5 h-3.5 text-charcoal-400 shrink-0" />
-                  <span>{incident.location}, {incident.state}</span>
+                <div className="pt-4 border-t border-paper-200 flex items-center justify-between text-xs font-mono text-charcoal-500">
+                  <div className="flex items-center gap-1">
+                    <Clock className="w-3 h-3 text-charcoal-400" />
+                    <span>{incident.lastUpdated || 'Recently updated'}</span>
+                  </div>
+                  <div className="inline-flex items-center gap-1 text-charcoal-900 font-medium group-hover:translate-x-0.5 transition-transform">
+                    <span>Full SitRep</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </div>
                 </div>
-
-                <p className="text-xs text-charcoal-600 line-clamp-3 leading-relaxed mb-6">
-                  {incident.description}
-                </p>
               </div>
-
-              <div className="pt-4 border-t border-paper-200 flex items-center justify-between text-xs font-mono text-charcoal-500">
-                <div className="flex items-center gap-1">
-                  <Clock className="w-3 h-3 text-charcoal-400" />
-                  <span>{incident.lastUpdated || 'Recently updated'}</span>
-                </div>
-                <div className="inline-flex items-center gap-1 text-charcoal-900 font-medium group-hover:translate-x-0.5 transition-transform">
-                  <span>Full SitRep</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
-                </div>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       )}
     </div>

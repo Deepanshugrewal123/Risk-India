@@ -70,6 +70,46 @@ export const HelpOthersPage: React.FC = () => {
     loadData();
   }, [selectedState, selectedCategory]);
 
+  const getVerificationTag = (resource: Resource) => {
+    const text = `${resource.category} ${resource.source} ${resource.name}`.toLowerCase();
+    if (
+      resource.category === 'Government Relief' ||
+      resource.category === 'Disaster Management' ||
+      resource.category === 'Emergency Services' ||
+      text.includes('government') ||
+      text.includes('ndma') ||
+      text.includes('sdma') ||
+      text.includes('ddma') ||
+      text.includes('police') ||
+      text.includes('cwc') ||
+      text.includes('relief fund') ||
+      text.includes('ministry') ||
+      text.includes('statutory')
+    ) {
+      return {
+        label: 'OFFICIAL GOVERNMENT',
+        style: 'bg-emerald-50 text-emerald-800 border-emerald-300',
+      };
+    }
+    if (
+      resource.category === 'NGO / Relief Organization' ||
+      resource.category === 'Donations / Volunteering' ||
+      text.includes('red cross') ||
+      text.includes('unicef') ||
+      text.includes('ngo') ||
+      text.includes('foundation')
+    ) {
+      return {
+        label: 'VERIFIED NGO / AGENCY',
+        style: 'bg-blue-50 text-blue-800 border-blue-300',
+      };
+    }
+    return {
+      label: 'COMMUNITY AID',
+      style: 'bg-paper-100 text-charcoal-700 border-paper-300',
+    };
+  };
+
   const getActionLabel = (r: Resource): string => {
     if (r.name.includes('Fund') || r.category === 'Donations / Volunteering') {
       return 'Donate via official organization';
@@ -320,96 +360,110 @@ export const HelpOthersPage: React.FC = () => {
         />
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {resources.map((res) => {
-            const isFund = res.name.includes('Fund') || res.category === 'Donations / Volunteering';
-            const isVolunteer = res.name.includes('Aapda Mitra') || res.name.includes('Volunteer');
-            const portalUrl = res.website_url || res.website || res.source_url || 'https://ndma.gov.in';
+            {resources.map((res) => {
+              const isFund = res.name.includes('Fund') || res.category === 'Donations / Volunteering';
+              const isVolunteer = res.name.includes('Aapda Mitra') || res.name.includes('Volunteer');
+              const portalUrl = res.website_url || res.website || res.source_url || 'https://ndma.gov.in';
+              const vTag = getVerificationTag(res);
 
-            return (
-              <div
-                key={res.id}
-                className="rounded-3xl bg-white border border-paper-300 p-6 shadow-subtle hover:shadow-elevated transition-shadow flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between gap-2 mb-3">
-                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                      <span>SOURCE VERIFIED</span>
-                    </span>
-                    <span className="text-[10px] font-mono text-charcoal-400 uppercase">
-                      {res.type}
-                    </span>
-                  </div>
-
-                  <h3 className="text-lg font-bold text-charcoal-950 mb-1">
-                    {res.name}
-                  </h3>
-
-                  <div className="flex items-center gap-1.5 text-xs text-charcoal-500 font-mono mb-3">
-                    <MapPin className="w-3.5 h-3.5 text-charcoal-400 shrink-0" />
-                    <span>{res.district ? `${res.district}, ${res.state || 'India'}` : res.location}</span>
-                  </div>
-
-                  <p className="text-xs text-charcoal-600 leading-relaxed mb-4">
-                    {res.description}
-                  </p>
-
-                  {res.services && res.services.length > 0 && (
-                    <div className="mb-4">
-                      <span className="text-[10px] font-mono uppercase text-charcoal-400 block mb-1.5">
-                        Authorized Operations:
+              return (
+                <div
+                  key={res.id}
+                  className="rounded-3xl bg-white border border-paper-300 p-6 shadow-subtle hover:shadow-elevated transition-shadow flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                      <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-mono font-bold border ${vTag.style}`}>
+                        <CheckCircle2 className="w-3.5 h-3.5" />
+                        <span>{vTag.label}</span>
                       </span>
-                      <div className="flex flex-wrap gap-1">
-                        {res.services.map((svc, idx) => (
-                          <span
-                            key={idx}
-                            className="px-2 py-0.5 rounded-lg bg-paper-100 text-charcoal-700 text-[10px] font-mono"
-                          >
-                            {svc}
-                          </span>
-                        ))}
-                      </div>
+                      <span className="text-[10px] font-mono text-charcoal-400 uppercase">
+                        {res.type}
+                      </span>
                     </div>
-                  )}
-                </div>
 
-                <div className="pt-4 border-t border-paper-200 space-y-3">
-                  <div className="flex items-center justify-between text-[11px] font-mono text-charcoal-500">
-                    <span>Source: <strong>{res.source || 'Official Registry'}</strong></span>
-                    <span className="text-[10px] text-charcoal-400">
-                      {res.freshness || 'CURRENT'}
-                    </span>
+                    <h3 className="text-lg font-bold text-charcoal-950 mb-1">
+                      {res.name}
+                    </h3>
+
+                    <div className="flex items-center gap-1.5 text-xs text-charcoal-500 font-mono mb-3">
+                      <MapPin className="w-3.5 h-3.5 text-charcoal-400 shrink-0" />
+                      <span>{res.district ? `${res.district}, ${res.state || 'India'}` : res.location}</span>
+                    </div>
+
+                    <p className="text-xs text-charcoal-600 leading-relaxed mb-4">
+                      {res.description}
+                    </p>
+
+                    {/* Direct Tap-to-Call if phone is available */}
+                    {res.phone && (
+                      <div className="mb-4">
+                        <a
+                          href={`tel:${res.phone}`}
+                          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-paper-100 hover:bg-paper-200 text-charcoal-800 font-mono text-xs font-bold border border-paper-200 transition-colors w-full justify-center"
+                        >
+                          <Phone className="w-3.5 h-3.5 text-emerald-600" />
+                          <span>Helpline: {res.phone}</span>
+                        </a>
+                      </div>
+                    )}
+
+                    {res.services && res.services.length > 0 && (
+                      <div className="mb-4">
+                        <span className="text-[10px] font-mono uppercase text-charcoal-400 block mb-1.5">
+                          Authorized Operations:
+                        </span>
+                        <div className="flex flex-wrap gap-1">
+                          {res.services.map((svc, idx) => (
+                            <span
+                              key={idx}
+                              className="px-2 py-0.5 rounded-lg bg-paper-100 text-charcoal-700 text-[10px] font-mono"
+                            >
+                              {svc}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
 
-                  <div className="flex items-center gap-2">
-                    <a
-                      href={portalUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl text-xs font-mono font-bold transition-colors ${
-                        isFund
-                          ? 'bg-amber-600 hover:bg-amber-700 text-white'
-                          : isVolunteer
-                          ? 'bg-blue-600 hover:bg-blue-700 text-white'
-                          : 'bg-charcoal-900 hover:bg-charcoal-800 text-paper-50'
-                      }`}
-                    >
-                      <span>{getActionLabel(res)}</span>
-                      <ArrowUpRight className="w-3.5 h-3.5" />
-                    </a>
+                  <div className="pt-4 border-t border-paper-200 space-y-3">
+                    <div className="flex items-center justify-between text-[11px] font-mono text-charcoal-500">
+                      <span>Source: <strong>{res.source || 'Official Registry'}</strong></span>
+                      <span className="text-[10px] text-charcoal-400">
+                        {res.freshness || 'CURRENT'}
+                      </span>
+                    </div>
 
-                    <button
-                      onClick={() => setSelectedResource(res)}
-                      className="px-3 py-2.5 rounded-xl border border-paper-300 text-charcoal-700 hover:bg-paper-100 text-xs font-mono transition-colors"
-                      title="View full details"
-                    >
-                      Details
-                    </button>
+                    <div className="flex items-center gap-2">
+                      <a
+                        href={portalUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl text-xs font-mono font-bold transition-colors ${
+                          isFund
+                            ? 'bg-amber-600 hover:bg-amber-700 text-white'
+                            : isVolunteer
+                            ? 'bg-blue-600 hover:bg-blue-700 text-white'
+                            : 'bg-charcoal-900 hover:bg-charcoal-800 text-paper-50'
+                        }`}
+                      >
+                        <span>{getActionLabel(res)}</span>
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </a>
+
+                      <button
+                        onClick={() => setSelectedResource(res)}
+                        className="px-3 py-2.5 rounded-xl border border-paper-300 text-charcoal-700 hover:bg-paper-100 text-xs font-mono transition-colors"
+                        title="View full details"
+                      >
+                        Details
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
         </div>
       )}
 

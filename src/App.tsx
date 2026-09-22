@@ -167,6 +167,7 @@ export const AppContent: React.FC = () => {
             {currentPage === 'disasters' && (
               <DisastersPage
                 onSelectIncident={(incident) => setSelectedIncident(incident)}
+                onNavigate={handleNavigate}
               />
             )}
 

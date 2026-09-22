@@ -34,6 +34,20 @@ const HAZARD_OPTIONS = [
   { id: 'SEVERE_WEATHER', label: 'Severe Weather', icon: '⛈️' }
 ];
 
+const PRIORITY_ORDER: Record<string, number> = {
+  CRITICAL: 1,
+  HIGH: 2,
+  IMPORTANT: 2,
+  RECOMMENDED: 3,
+  HELPFUL: 3
+};
+
+const PHASE_ORDER: Record<string, number> = {
+  BEFORE: 1,
+  DURING: 2,
+  AFTER: 3
+};
+
 export const SafetyGuidePage: React.FC<SafetyGuidePageProps> = ({
   onNavigate,
   initialHazard = 'FLOOD'
@@ -61,9 +75,9 @@ export const SafetyGuidePage: React.FC<SafetyGuidePageProps> = ({
     return Array.from(new Set(hazardItems.map((i) => i.category)));
   }, [hazardItems]);
 
-  // Filtered items without ANY artificial slicing
+  // Filtered items without ANY artificial slicing — strictly sorted by Phase & Priority
   const filteredItems = useMemo(() => {
-    return hazardItems.filter((item) => {
+    const list = hazardItems.filter((item) => {
       const matchPhase = selectedPhase === 'ALL' || item.phase === selectedPhase;
       const matchCategory = selectedCategory === 'ALL' || item.category === selectedCategory;
       const q = searchQuery.toLowerCase().trim();
@@ -76,6 +90,17 @@ export const SafetyGuidePage: React.FC<SafetyGuidePageProps> = ({
         (item.warning && item.warning.toLowerCase().includes(q));
 
       return matchPhase && matchCategory && matchSearch;
+    });
+
+    return list.sort((a, b) => {
+      if (selectedPhase === 'ALL') {
+        const pA = PHASE_ORDER[a.phase] || 99;
+        const pB = PHASE_ORDER[b.phase] || 99;
+        if (pA !== pB) return pA - pB;
+      }
+      const prioA = PRIORITY_ORDER[a.priority] || 99;
+      const prioB = PRIORITY_ORDER[b.priority] || 99;
+      return prioA - prioB;
     });
   }, [hazardItems, selectedPhase, selectedCategory, searchQuery]);
 

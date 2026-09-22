@@ -8,12 +8,15 @@ import { LoadingState } from '../common/LoadingState';
 import { ErrorState } from '../common/ErrorState';
 import { EmptyState } from '../common/EmptyState';
 import { Search, MapPin, Clock, ArrowUpRight, AlertTriangle, X } from 'lucide-react';
+import { NavigationPage } from '../common/Navbar';
+import { WhatCanHappenNextPanel } from '../cascading/WhatCanHappenNextPanel';
 
 interface DisastersPageProps {
   onSelectIncident: (incident: DisasterEvent) => void;
+  onNavigate?: (page: NavigationPage) => void;
 }
 
-export const DisastersPage: React.FC<DisastersPageProps> = ({ onSelectIncident }) => {
+export const DisastersPage: React.FC<DisastersPageProps> = ({ onSelectIncident, onNavigate }) => {
   const [incidents, setIncidents] = useState<DisasterEvent[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -150,6 +153,28 @@ export const DisastersPage: React.FC<DisastersPageProps> = ({ onSelectIncident }
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Cascading Consequence Intelligence Panel */}
+      <div className="mb-10">
+        <WhatCanHappenNextPanel
+          initialHazard={
+            selectedType === 'Flood'
+              ? 'FLOOD'
+              : selectedType === 'Cyclone'
+              ? 'CYCLONE'
+              : selectedType === 'Earthquake'
+              ? 'EARTHQUAKE'
+              : selectedType === 'Heatwave'
+              ? 'HEATWAVE'
+              : selectedType === 'Landslide'
+              ? 'LANDSLIDE'
+              : selectedType === 'Severe Weather'
+              ? 'SEVERE_WEATHER'
+              : 'FLOOD'
+          }
+          onNavigate={onNavigate}
+        />
       </div>
 
       {isLoading ? (

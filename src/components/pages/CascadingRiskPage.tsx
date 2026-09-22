@@ -7,10 +7,16 @@ import {
   BookOpen,
   Compass,
   Layers,
-  ChevronRight
+  ChevronRight,
+  ShieldAlert,
+  Info,
+  CheckCircle2,
+  HelpCircle
 } from 'lucide-react';
 import { CascadingRiskSection } from '../cascading/CascadingRiskSection';
+import { WhatCanHappenNextPanel } from '../cascading/WhatCanHappenNextPanel';
 import { NavigationPage } from '../common/Navbar';
+import { ALL_INDIAN_STATES, ALL_INDIAN_UNION_TERRITORIES } from '../../data/indiaLocations';
 
 interface CascadingRiskPageProps {
   onNavigate?: (page: NavigationPage) => void;
@@ -19,22 +25,36 @@ interface CascadingRiskPageProps {
   initialHazard?: string;
 }
 
-const ALL_REGIONS = [
-  { id: 'assam', name: 'Assam', defaultHazard: 'FLOOD' },
-  { id: 'kerala', name: 'Kerala', defaultHazard: 'LANDSLIDE' },
-  { id: 'odisha', name: 'Odisha', defaultHazard: 'CYCLONE' },
-  { id: 'punjab', name: 'Punjab', defaultHazard: 'FLOOD' },
-  { id: 'bihar', name: 'Bihar', defaultHazard: 'FLOOD' },
-  { id: 'uttarakhand', name: 'Uttarakhand', defaultHazard: 'LANDSLIDE' },
-  { id: 'himachal-pradesh', name: 'Himachal Pradesh', defaultHazard: 'LANDSLIDE' },
-  { id: 'rajasthan', name: 'Rajasthan', defaultHazard: 'HEATWAVE' },
-  { id: 'gujarat', name: 'Gujarat', defaultHazard: 'CYCLONE' },
-  { id: 'delhi', name: 'Delhi (NCT)', defaultHazard: 'HEATWAVE' },
-  { id: 'maharashtra', name: 'Maharashtra', defaultHazard: 'FLOOD' },
-  { id: 'west-bengal', name: 'West Bengal', defaultHazard: 'CYCLONE' },
-  { id: 'jammu-and-kashmir', name: 'Jammu & Kashmir', defaultHazard: 'EARTHQUAKE' },
-  { id: 'tamil-nadu', name: 'Tamil Nadu', defaultHazard: 'CYCLONE' }
-];
+export interface JurisdictionOption {
+  id: string;
+  name: string;
+  type: 'STATE' | 'UNION_TERRITORY';
+  defaultHazard: string;
+}
+
+const mapHazard = (risk?: string): string => {
+  if (!risk) return 'FLOOD';
+  const clean = risk.toUpperCase().replace(/\s+/g, '_');
+  if (['FLOOD', 'CYCLONE', 'EARTHQUAKE', 'HEATWAVE', 'LANDSLIDE', 'SEVERE_WEATHER'].includes(clean)) {
+    return clean;
+  }
+  return 'FLOOD';
+};
+
+const ALL_JURISDICTIONS: JurisdictionOption[] = [
+  ...ALL_INDIAN_STATES.map((s) => ({
+    id: s.id,
+    name: s.name,
+    type: 'STATE' as const,
+    defaultHazard: mapHazard(s.primaryRisk)
+  })),
+  ...ALL_INDIAN_UNION_TERRITORIES.map((ut) => ({
+    id: ut.id,
+    name: ut.name,
+    type: 'UNION_TERRITORY' as const,
+    defaultHazard: mapHazard(ut.primaryRisk)
+  }))
+].sort((a, b) => a.name.localeCompare(b.name));
 
 const HAZARDS = [
   { id: 'FLOOD', label: 'Flood', icon: '🌊' },
@@ -54,9 +74,10 @@ export const CascadingRiskPage: React.FC<CascadingRiskPageProps> = ({
   const [selectedRegionId, setSelectedRegionId] = useState<string>(initialRegionId);
   const [selectedHazard, setSelectedHazard] = useState<string>(initialHazard);
 
-  const currentRegion = ALL_REGIONS.find((r) => r.id === selectedRegionId) || {
+  const currentRegion = ALL_JURISDICTIONS.find((r) => r.id === selectedRegionId) || {
     id: selectedRegionId,
     name: initialRegionName,
+    type: 'STATE' as const,
     defaultHazard: 'FLOOD'
   };
 
@@ -86,7 +107,7 @@ export const CascadingRiskPage: React.FC<CascadingRiskPageProps> = ({
         <div className="max-w-3xl space-y-2">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 text-indigo-800 dark:text-indigo-300 text-xs font-mono uppercase tracking-wider font-bold">
             <GitBranch className="w-3.5 h-3.5" />
-            <span>CAUSAL DISASTER SEQUENCE // MULTI-STAGE SYSTEMIC IMPACT</span>
+            <span>CAUSAL DISASTER SEQUENCE // ALL 36 STATES &amp; UNION TERRITORIES</span>
           </div>
           <h1 className="text-3xl sm:text-5xl font-black text-charcoal-950 dark:text-white tracking-tight">
             Cascading Risk Intelligence
@@ -107,30 +128,68 @@ export const CascadingRiskPage: React.FC<CascadingRiskPageProps> = ({
         </button>
       </div>
 
-      {/* Region & Hazard Selector Bar */}
+      {/* Statutory & Scientific Guardrail Disclaimers */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="p-4 rounded-2xl bg-indigo-50/70 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-900 text-xs text-indigo-950 dark:text-indigo-200 flex items-start gap-3">
+          <Info className="w-4.5 h-4.5 text-indigo-600 dark:text-indigo-400 shrink-0 mt-0.5" />
+          <div className="space-y-1">
+            <strong className="font-mono uppercase font-bold block">
+              Physically Established Consequence Pathways
+            </strong>
+            <p className="leading-relaxed">
+              Cascading risk relationships reflect physically established and empirical vulnerability pathways.
+              They do <strong>NOT</strong> represent predictive forecasts or synthetic probability models.
+            </p>
+          </div>
+        </div>
+
+        <div className="p-4 rounded-2xl bg-amber-50/70 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900 text-xs text-amber-950 dark:text-amber-200 flex items-start gap-3">
+          <ShieldAlert className="w-4.5 h-4.5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+          <div className="space-y-1">
+            <strong className="font-mono uppercase font-bold block">
+              Seismic Non-Prediction Guarantee
+            </strong>
+            <p className="leading-relaxed">
+              Earthquakes are fundamentally non-predictable: ground shaking triggers structural and geotechnical failures,
+              not scheduled calendar events. Temporal earthquake prediction is scientifically prohibited.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Region & Hazard Selector Bar (All 36 Jurisdictions) */}
       <div className="p-5 sm:p-6 rounded-3xl bg-white dark:bg-slate-900 border border-paper-300 dark:border-slate-800 space-y-4 shadow-sm">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          {/* Region Dropdown */}
+          {/* Region Dropdown with Optgroups */}
           <div className="flex items-center gap-3">
             <MapPin className="w-4 h-4 text-indigo-600 dark:text-indigo-400 shrink-0" />
             <div className="space-y-0.5">
               <span className="text-[10px] font-mono uppercase font-bold text-charcoal-500 dark:text-slate-400 block">
-                Target State / Union Territory:
+                Target State / Union Territory (36 Total):
               </span>
               <select
                 value={selectedRegionId}
                 onChange={(e) => {
                   setSelectedRegionId(e.target.value);
-                  const found = ALL_REGIONS.find((r) => r.id === e.target.value);
+                  const found = ALL_JURISDICTIONS.find((r) => r.id === e.target.value);
                   if (found) setSelectedHazard(found.defaultHazard);
                 }}
                 className="min-h-[44px] px-3.5 py-1.5 rounded-xl bg-paper-100 dark:bg-slate-800 border border-paper-300 dark:border-slate-700 text-sm font-bold text-charcoal-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-600"
               >
-                {ALL_REGIONS.map((r) => (
-                  <option key={r.id} value={r.id}>
-                    {r.name}
-                  </option>
-                ))}
+                <optgroup label="States (28)">
+                  {ALL_JURISDICTIONS.filter((j) => j.type === 'STATE').map((r) => (
+                    <option key={r.id} value={r.id}>
+                      {r.name}
+                    </option>
+                  ))}
+                </optgroup>
+                <optgroup label="Union Territories (8)">
+                  {ALL_JURISDICTIONS.filter((j) => j.type === 'UNION_TERRITORY').map((r) => (
+                    <option key={r.id} value={r.id}>
+                      {r.name}
+                    </option>
+                  ))}
+                </optgroup>
               </select>
             </div>
           </div>
@@ -168,7 +227,7 @@ export const CascadingRiskPage: React.FC<CascadingRiskPageProps> = ({
         </div>
       </div>
 
-      {/* Main Cascading Risk Section Component */}
+      {/* Main 4-Stage Cascading Risk Section Component */}
       <CascadingRiskSection
         regionId={selectedRegionId}
         regionName={currentRegion.name}
@@ -180,6 +239,14 @@ export const CascadingRiskPage: React.FC<CascadingRiskPageProps> = ({
           }
         }}
       />
+
+      {/* What Can Happen Next? Multi-Stage Consequence & Observable Signs Panel */}
+      <div className="pt-6 border-t border-paper-200 dark:border-slate-800">
+        <WhatCanHappenNextPanel
+          initialHazard={selectedHazard}
+          onNavigate={onNavigate}
+        />
+      </div>
     </main>
   );
 };

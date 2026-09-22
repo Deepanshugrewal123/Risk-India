@@ -110,14 +110,14 @@ export const CascadingRiskSection: React.FC<CascadingRiskSectionProps> = ({
   const getStageTitle = (order: number, type: string) => {
     switch (order) {
       case 1:
-        return { subtitle: 'STAGE 1 // PRIMARY HAZARD', question: 'What is happening?' };
+        return { subtitle: 'STEP 1 OF 4 // PRIMARY HAZARD', question: 'What is happening?' };
       case 2:
-        return { subtitle: 'STAGE 2 // PHYSICAL CHANGE', question: 'What changes because of it?' };
+        return { subtitle: 'STEP 2 OF 4 // PHYSICAL CHANGE', question: 'What changes because of it?' };
       case 3:
-        return { subtitle: 'STAGE 3 // SECONDARY HAZARD', question: 'What additional hazard could emerge?' };
+        return { subtitle: 'STEP 3 OF 4 // SECONDARY HAZARD', question: 'What additional hazard could emerge?' };
       case 4:
       default:
-        return { subtitle: 'STAGE 4 // SYSTEMIC CONSEQUENCE', question: 'What does this mean for people & services?' };
+        return { subtitle: 'STEP 4 OF 4 // SYSTEMIC IMPACT', question: 'What does this mean for people & services?' };
     }
   };
 
@@ -247,6 +247,17 @@ export const CascadingRiskSection: React.FC<CascadingRiskSectionProps> = ({
           </span>
         </div>
 
+        {/* Step Progression Bar with Directional Connectors */}
+        <div className="hidden md:flex items-center justify-between px-4 py-2 rounded-xl bg-paper-50 dark:bg-slate-850 text-[10px] font-mono font-bold text-charcoal-600 dark:text-slate-400 border border-paper-200 dark:border-slate-800">
+          <span className="text-indigo-700 dark:text-indigo-300">STEP 1: PRIMARY TRIGGER</span>
+          <ArrowRight className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
+          <span className="text-indigo-700 dark:text-indigo-300">STEP 2: PHYSICAL CHANGE</span>
+          <ArrowRight className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
+          <span className="text-indigo-700 dark:text-indigo-300">STEP 3: SECONDARY HAZARD</span>
+          <ArrowRight className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
+          <span className="text-indigo-700 dark:text-indigo-300">STEP 4: SYSTEMIC IMPACT</span>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
           {activeChain.stages.map((stage) => {
             const isExpanded = expandedStage === stage.stage_order;
@@ -259,7 +270,7 @@ export const CascadingRiskSection: React.FC<CascadingRiskSectionProps> = ({
                 onClick={() => toggleStage(stage.stage_order)}
                 className={`text-left p-4 rounded-2xl border transition-all relative flex flex-col justify-between min-h-[140px] focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 ${
                   isExpanded
-                    ? 'bg-paper-50 dark:bg-slate-800 border-charcoal-900 dark:border-white shadow-md'
+                    ? 'bg-paper-50 dark:bg-slate-850 border-charcoal-900 dark:border-white shadow-md'
                     : 'bg-white dark:bg-slate-900 border-paper-200 dark:border-slate-800 hover:border-paper-400 dark:hover:border-slate-700'
                 }`}
                 aria-expanded={isExpanded}
@@ -286,7 +297,7 @@ export const CascadingRiskSection: React.FC<CascadingRiskSectionProps> = ({
                 </div>
 
                 <div className="mt-3 flex items-center justify-between text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-bold pt-2 border-t border-paper-200 dark:border-slate-800">
-                  <span>{isExpanded ? 'Hide Details' : 'Inspect Evidence'}</span>
+                  <span>{isExpanded ? '[ HIDE PATHWAY DETAILS ▴ ]' : '[ EXAMINE THIS RISK PATHWAY ▾ ]'}</span>
                   {isExpanded ? (
                     <ChevronUp className="w-3.5 h-3.5" />
                   ) : (

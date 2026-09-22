@@ -6,7 +6,7 @@
 
 export type SafetyPhase = 'BEFORE' | 'DURING' | 'AFTER';
 
-export type SafetyPriority = 'CRITICAL' | 'HIGH' | 'RECOMMENDED';
+export type SafetyPriority = 'CRITICAL' | 'HIGH' | 'RECOMMENDED' | 'IMPORTANT' | 'HELPFUL';
 
 export type SafetyCategory =
   | 'EMERGENCY_CONTACTS'
@@ -47,6 +47,13 @@ export interface SafetyInstructionItem {
   what_not_to_do?: string[];
   vulnerable_groups?: string;
   checklist?: string[];
+  // Direct semantic aliases matching Requirement B4:
+  action?: string;
+  why_it_matters?: string;
+  how_to_do_it?: string[];
+  what_to_avoid?: string[];
+  when_urgent?: string;
+  related_risk?: string;
 }
 
 export interface PhaseGroup {

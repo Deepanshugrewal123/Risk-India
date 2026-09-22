@@ -44,19 +44,21 @@ export const SafetyActionItemCard: React.FC<SafetyActionItemCardProps> = ({
     switch (priority) {
       case 'CRITICAL':
         return {
-          label: 'CRITICAL PRIORITY',
-          badge: 'bg-rose-100 dark:bg-rose-950/70 text-rose-800 dark:text-rose-300 border-rose-300 dark:border-rose-800'
+          label: '🚨 CRITICAL LIFE SAFETY',
+          badge: 'bg-rose-100 dark:bg-rose-950/70 text-rose-800 dark:text-rose-300 border-rose-300 dark:border-rose-800 font-bold'
         };
       case 'HIGH':
+      case 'IMPORTANT':
         return {
-          label: 'HIGH PRIORITY',
-          badge: 'bg-amber-100 dark:bg-amber-950/70 text-amber-800 dark:text-amber-300 border-amber-300 dark:border-amber-800'
+          label: '⚠️ IMPORTANT ACTION',
+          badge: 'bg-amber-100 dark:bg-amber-950/70 text-amber-800 dark:text-amber-300 border-amber-300 dark:border-amber-800 font-bold'
         };
       case 'RECOMMENDED':
+      case 'HELPFUL':
       default:
         return {
-          label: 'RECOMMENDED',
-          badge: 'bg-blue-100 dark:bg-blue-950/70 text-blue-800 dark:text-blue-300 border-blue-300 dark:border-blue-800'
+          label: 'ℹ️ HELPFUL PREPARATION',
+          badge: 'bg-blue-100 dark:bg-blue-950/70 text-blue-800 dark:text-blue-300 border-blue-300 dark:border-blue-800 font-medium'
         };
     }
   };
@@ -162,7 +164,7 @@ export const SafetyActionItemCard: React.FC<SafetyActionItemCardProps> = ({
             aria-controls={panelId}
             className="min-h-[44px] px-3.5 py-1.5 rounded-xl bg-paper-100 hover:bg-paper-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-charcoal-900 dark:text-white font-mono text-xs font-bold transition-all flex items-center gap-2 border border-paper-300 dark:border-slate-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600"
           >
-            <span>{isExpanded ? 'HIDE DETAILS' : 'EXAMINE MORE'}</span>
+            <span>{isExpanded ? 'HIDE ACTION DETAILS' : 'EXAMINE ACTION DETAILS'}</span>
             {isExpanded ? (
               <ChevronUp className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
             ) : (

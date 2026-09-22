@@ -72,6 +72,9 @@ class SafetyInstructionItem:
     what_not_to_do: Optional[List[str]] = None
     vulnerable_groups: Optional[str] = None
     checklist: Optional[List[str]] = None
+    when_to_do: Optional[str] = None
+    common_mistake: Optional[str] = None
+    related_emergency_action: Optional[str] = None
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -90,7 +93,10 @@ class SafetyInstructionItem:
             "warning_signs": self.warning_signs or [],
             "what_not_to_do": self.what_not_to_do or [],
             "vulnerable_groups": self.vulnerable_groups or "",
-            "checklist": self.checklist or []
+            "checklist": self.checklist or [],
+            "when_to_do": self.when_to_do,
+            "common_mistake": self.common_mistake,
+            "related_emergency_action": self.related_emergency_action
         }
 
 

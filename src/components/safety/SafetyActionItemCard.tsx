@@ -13,7 +13,8 @@ import {
   CheckCircle2,
   Info,
   GitBranch,
-  BookOpen
+  BookOpen,
+  Clock
 } from 'lucide-react';
 import { SafetyInstructionItem, SafetyPhase, SafetyPriority } from '../../types/safetyGuide';
 
@@ -164,7 +165,7 @@ export const SafetyActionItemCard: React.FC<SafetyActionItemCardProps> = ({
             aria-controls={panelId}
             className="min-h-[44px] px-3.5 py-1.5 rounded-xl bg-paper-100 hover:bg-paper-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-charcoal-900 dark:text-white font-mono text-xs font-bold transition-all flex items-center gap-2 border border-paper-300 dark:border-slate-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600"
           >
-            <span>{isExpanded ? 'HIDE ACTION DETAILS' : 'EXAMINE ACTION DETAILS'}</span>
+            <span>{isExpanded ? '[ HIDE DETAILS ▴ ]' : '[ EXAMINE MORE ▾ ]'}</span>
             {isExpanded ? (
               <ChevronUp className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
             ) : (
@@ -208,7 +209,20 @@ export const SafetyActionItemCard: React.FC<SafetyActionItemCardProps> = ({
             </div>
           )}
 
-          {/* 3. WARNING SIGNS / WHEN TO ACT */}
+          {/* 3. WHEN SHOULD I DO THIS */}
+          {(item.when_to_do || item.when_urgent) && (
+            <div className="p-3 rounded-xl bg-blue-50/70 dark:bg-blue-950/30 border border-blue-200/80 dark:border-blue-900 text-xs text-charcoal-800 dark:text-slate-200 flex items-start gap-2.5">
+              <Clock className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
+              <div>
+                <strong className="font-mono text-[11px] uppercase tracking-wider text-blue-900 dark:text-blue-300 block mb-0.5">
+                  When Should I Do This:
+                </strong>
+                <span>{item.when_to_do || item.when_urgent}</span>
+              </div>
+            </div>
+          )}
+
+          {/* 4. WARNING SIGNS / WHEN TO ACT */}
           {item.warning_signs && item.warning_signs.length > 0 && (
             <div className="space-y-2">
               <div className="text-[11px] font-mono font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400 flex items-center gap-1.5">
@@ -225,17 +239,23 @@ export const SafetyActionItemCard: React.FC<SafetyActionItemCardProps> = ({
             </div>
           )}
 
-          {/* 4. WHAT NOT TO DO (Critical Prohibitions) */}
-          {((item.what_not_to_do && item.what_not_to_do.length > 0) || item.warning) && (
-            <div className="p-3.5 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900 text-rose-950 dark:text-rose-200 space-y-1.5">
+          {/* 5. WHAT NOT TO DO & COMMON MISTAKES */}
+          {((item.what_not_to_do && item.what_not_to_do.length > 0) || item.warning || item.common_mistake) && (
+            <div className="p-3.5 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900 text-rose-950 dark:text-rose-200 space-y-2">
               <div className="text-[11px] font-mono font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 flex items-center gap-1.5">
                 <AlertOctagon className="w-4 h-4 text-rose-600 dark:text-rose-400 shrink-0" />
-                <span>WHAT NOT TO DO // DANGEROUS ACTIONS</span>
+                <span>WHAT NOT TO DO // DANGEROUS MISTAKES &amp; AVOIDANCE</span>
               </div>
               {item.warning && (
                 <p className="text-xs sm:text-sm font-semibold pl-5 leading-relaxed">
                   {item.warning}
                 </p>
+              )}
+              {item.common_mistake && (
+                <div className="pl-5 text-xs text-rose-900 dark:text-rose-200">
+                  <strong>Common Mistake: </strong>
+                  <span>{item.common_mistake}</span>
+                </div>
               )}
               {item.what_not_to_do && item.what_not_to_do.length > 0 && (
                 <ul className="space-y-1 pl-5 list-disc text-xs leading-relaxed text-rose-900 dark:text-rose-300">
@@ -247,7 +267,7 @@ export const SafetyActionItemCard: React.FC<SafetyActionItemCardProps> = ({
             </div>
           )}
 
-          {/* 5. WHO NEEDS EXTRA ATTENTION (Vulnerable Household Members) */}
+          {/* 6. WHO NEEDS EXTRA ATTENTION (Vulnerable Household Members) */}
           {item.vulnerable_groups && (
             <div className="p-3 rounded-xl bg-indigo-50/70 dark:bg-indigo-950/30 border border-indigo-200/80 dark:border-indigo-900 text-xs text-charcoal-800 dark:text-slate-200 flex items-start gap-2.5">
               <Users className="w-4 h-4 text-indigo-600 dark:text-indigo-400 shrink-0 mt-0.5" />
@@ -295,6 +315,19 @@ export const SafetyActionItemCard: React.FC<SafetyActionItemCardProps> = ({
                     </label>
                   );
                 })}
+              </div>
+            </div>
+          )}
+
+          {/* 8. RELATED EMERGENCY ACTION */}
+          {item.related_emergency_action && (
+            <div className="p-3 rounded-xl bg-emerald-50/70 dark:bg-emerald-950/30 border border-emerald-200/80 dark:border-emerald-900 text-xs text-charcoal-800 dark:text-slate-200 flex items-start gap-2.5">
+              <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+              <div>
+                <strong className="font-mono text-[11px] uppercase tracking-wider text-emerald-900 dark:text-emerald-300 block mb-0.5">
+                  Related Emergency Action:
+                </strong>
+                <span>{item.related_emergency_action}</span>
               </div>
             </div>
           )}

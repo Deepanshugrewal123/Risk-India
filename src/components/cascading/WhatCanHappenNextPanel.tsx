@@ -603,9 +603,26 @@ export const WhatCanHappenNextPanel: React.FC<WhatCanHappenNextPanelProps> = ({
                   <p className="text-[11px] text-charcoal-600 dark:text-slate-400 leading-relaxed">
                     {down.impact}
                   </p>
-                  <div className="text-[11px] text-emerald-800 dark:text-emerald-300 font-medium flex items-start gap-1 pt-0.5">
-                    <ShieldCheck className="w-3.5 h-3.5 shrink-0 text-emerald-600 mt-0.5" />
-                    <span>{down.defensiveAction}</span>
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 pt-1.5 border-t border-indigo-50 dark:border-slate-800">
+                    <div className="text-[11px] text-emerald-800 dark:text-emerald-300 font-medium flex items-start gap-1">
+                      <ShieldCheck className="w-3.5 h-3.5 shrink-0 text-emerald-600 mt-0.5" />
+                      <span>{down.defensiveAction}</span>
+                    </div>
+                    <button
+                      onClick={() => onNavigate && onNavigate('safety-guide')}
+                      className="min-h-[32px] px-2.5 py-1 rounded-lg bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-950/60 dark:hover:bg-emerald-900/80 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 text-[10px] font-mono font-bold flex items-center gap-1 self-start sm:self-auto shrink-0 transition-colors"
+                    >
+                      <span>
+                        {down.name.toLowerCase().includes('water')
+                          ? '💧 WATER SAFETY'
+                          : down.name.toLowerCase().includes('power')
+                          ? '⚡ POWER SAFETY'
+                          : down.name.toLowerCase().includes('landslide')
+                          ? '⛰️ LANDSLIDE SAFETY'
+                          : '🛡️ DEFENSIVE ACTION'}
+                      </span>
+                      <ArrowRight className="w-3 h-3" />
+                    </button>
                   </div>
                 </div>
               ))}

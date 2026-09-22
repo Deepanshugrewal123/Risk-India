@@ -550,40 +550,91 @@ export const FutureRiskPage: React.FC<FutureRiskPageProps> = ({
         </div>
       )}
 
-      {/* CASCADING RISK INTELLIGENCE SPOTLIGHT BANNER */}
-      <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-amber-500/10 via-rose-500/10 to-indigo-500/10 border-2 border-amber-300 dark:border-amber-700/60 shadow-lg space-y-4">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-          <div className="space-y-2 max-w-2xl">
+      {/* WHAT COULD HAPPEN NEXT? // SECONDARY & CASCADING RISKS */}
+      <section className="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-amber-500/10 via-rose-500/10 to-indigo-500/10 border-2 border-amber-300 dark:border-amber-700/60 shadow-lg space-y-6">
+        <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6">
+          <div className="space-y-2 max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-950/60 border border-amber-300 dark:border-amber-800 text-amber-900 dark:text-amber-300 text-xs font-mono font-bold uppercase tracking-wider">
               <Layers className="w-3.5 h-3.5" />
-              <span>SYSTEMIC & CASCADING RISK INTELLIGENCE</span>
+              <span>WHAT COULD HAPPEN NEXT? // SECONDARY &amp; CASCADING RISKS</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-charcoal-950 dark:text-white tracking-tight">
-              If this disaster happens, what could happen next?
+              A disaster rarely ends with the first hazard.
             </h2>
             <p className="text-sm text-charcoal-700 dark:text-slate-300 leading-relaxed font-sans">
-              Disasters rarely strike in isolation. A primary hazard triggers slope instability, water grid contamination, power outages, and public health threats. Understand the 4-stage chain of consequences and explore defensive citizen measures before secondary hazards strike.
+              Changes caused by the initial event can create additional hazards and wider impacts across terrain, critical lifelines, and communities. Trace the causal consequence chain before secondary hazards strike.
             </p>
           </div>
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
             <button
               onClick={() => onNavigate('cascading-risk')}
-              className="min-h-[48px] px-5 py-3 rounded-2xl bg-amber-600 hover:bg-amber-700 text-white font-mono text-xs font-bold transition-all shadow-md flex items-center justify-center gap-2 group"
+              className="min-h-[48px] px-5 py-3 rounded-2xl bg-amber-600 hover:bg-amber-700 text-white font-mono text-xs sm:text-sm font-bold transition-all shadow-md flex items-center justify-center gap-2 group"
             >
-              <span>EXPLORE WHAT COULD HAPPEN NEXT</span>
+              <span>EXAMINE CASCADING RISKS</span>
               <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
             <button
               onClick={() => onNavigate('safety-guide')}
-              className="min-h-[48px] px-5 py-3 rounded-2xl bg-white dark:bg-slate-800 hover:bg-paper-100 text-charcoal-900 dark:text-white border border-paper-300 dark:border-slate-700 font-mono text-xs font-bold transition-all flex items-center justify-center gap-2"
+              className="min-h-[48px] px-5 py-3 rounded-2xl bg-white dark:bg-slate-800 hover:bg-paper-100 text-charcoal-900 dark:text-white border border-paper-300 dark:border-slate-700 font-mono text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2"
             >
               <FileCheck2 className="w-4 h-4 text-emerald-600" />
               <span>SAFETY ACTION GUIDE</span>
             </button>
           </div>
         </div>
-      </div>
+
+        {/* 4-Stage Visual Causal Progression */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-3 pt-2">
+          <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-amber-200 dark:border-amber-900 shadow-xs space-y-1">
+            <span className="text-[10px] font-mono uppercase font-bold text-amber-600 dark:text-amber-400 block">
+              1. PRIMARY TRIGGER
+            </span>
+            <strong className="text-xs sm:text-sm font-bold text-charcoal-950 dark:text-white block">
+              {selectedHazard} Inception
+            </strong>
+            <p className="text-[11px] text-charcoal-600 dark:text-slate-400">
+              Direct kinetic or meteorological impact from precipitation, wind, or ground motion.
+            </p>
+          </div>
+
+          <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-indigo-200 dark:border-indigo-900 shadow-xs space-y-1">
+            <span className="text-[10px] font-mono uppercase font-bold text-indigo-600 dark:text-indigo-400 block">
+              2. PHYSICAL CHANGE
+            </span>
+            <strong className="text-xs sm:text-sm font-bold text-charcoal-950 dark:text-white block">
+              Environmental Shift
+            </strong>
+            <p className="text-[11px] text-charcoal-600 dark:text-slate-400">
+              Soil pore saturation, structural stress, drainage overload, and coastal water level rise.
+            </p>
+          </div>
+
+          <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-rose-200 dark:border-rose-900 shadow-xs space-y-1">
+            <span className="text-[10px] font-mono uppercase font-bold text-rose-600 dark:text-rose-400 block">
+              3. SECONDARY HAZARDS
+            </span>
+            <strong className="text-xs sm:text-sm font-bold text-charcoal-950 dark:text-white block">
+              Consequential Threat
+            </strong>
+            <p className="text-[11px] text-charcoal-600 dark:text-slate-400">
+              Secondary slope instability, embankment breach, contamination, and electrical hazards.
+            </p>
+          </div>
+
+          <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-purple-200 dark:border-purple-900 shadow-xs space-y-1">
+            <span className="text-[10px] font-mono uppercase font-bold text-purple-600 dark:text-purple-400 block">
+              4. SYSTEMIC IMPACTS
+            </span>
+            <strong className="text-xs sm:text-sm font-bold text-charcoal-950 dark:text-white block">
+              Civil &amp; Lifeline Stress
+            </strong>
+            <p className="text-[11px] text-charcoal-600 dark:text-slate-400">
+              Road isolation, healthcare overload, potable water interruption, and supply bottlenecks.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* 4. Multi-Hazard Matrix across all 6 Hazards */}
       <FutureHazardMatrix

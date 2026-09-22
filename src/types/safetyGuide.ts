@@ -54,6 +54,9 @@ export interface SafetyInstructionItem {
   what_to_avoid?: string[];
   when_urgent?: string;
   related_risk?: string;
+  when_to_do?: string;
+  common_mistake?: string;
+  related_emergency_action?: string;
 }
 
 export interface PhaseGroup {

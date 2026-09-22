@@ -448,11 +448,25 @@ export const CascadingRiskSection: React.FC<CascadingRiskSectionProps> = ({
                   {currentStage.defensive_actions.length > 0 ? (
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-emerald-950 dark:text-emerald-200">
                       {currentStage.defensive_actions.map((act, i) => (
-                        <div key={i} className="flex items-start gap-2 p-2 rounded-lg bg-white/70 dark:bg-slate-900/60 border border-emerald-100 dark:border-emerald-900/60">
-                          <span className="font-mono font-bold text-emerald-700 dark:text-emerald-400 shrink-0">
-                            ✓
-                          </span>
-                          <span className="leading-relaxed">{act}</span>
+                        <div key={i} className="flex items-start justify-between gap-2 p-2.5 rounded-lg bg-white/80 dark:bg-slate-900/70 border border-emerald-100 dark:border-emerald-900/60">
+                          <div className="flex items-start gap-2">
+                            <span className="font-mono font-bold text-emerald-700 dark:text-emerald-400 shrink-0">
+                              ✓
+                            </span>
+                            <span className="leading-relaxed">{act}</span>
+                          </div>
+                          <button
+                            onClick={() => {
+                              if (onExploreSafetyGuide) {
+                                onExploreSafetyGuide(hazard);
+                              } else if (onNavigate) {
+                                onNavigate('safety-guide');
+                              }
+                            }}
+                            className="min-h-[28px] px-2 py-0.5 rounded-md bg-emerald-100 hover:bg-emerald-200 dark:bg-emerald-900/60 dark:hover:bg-emerald-850 text-emerald-900 dark:text-emerald-200 text-[10px] font-mono font-bold shrink-0 self-start transition-colors"
+                          >
+                            <span>GUIDE</span>
+                          </button>
                         </div>
                       ))}
                     </div>

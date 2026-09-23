@@ -318,7 +318,27 @@ class RiskService:
 
         primary_driver = top_factors[0].display_label if top_factors else "Catchment Precipitation Influx"
 
-        if is_assam:
+        if not is_ml_success:
+            data_cat = "REGIONAL_BASELINE"
+            risk_source_val = RiskSourceType.REGIONAL_BASELINE
+            sci_state_val = ScientificRiskState.BASELINE_ONLY
+            m_scope_val = "National Regional Baseline (Non-ML)"
+            ds_ver_val = "1.0.0-baseline"
+            why_risk = pred.get("message") or "ML prediction is currently unavailable. Regional baseline and official disaster intelligence are shown."
+            methodology_str = "Regional baseline risk assessment; national ML model unavailable."
+            limitations_val = "Automated flood model inference was not completed. Regional baseline risk and official disaster intelligence are shown."
+            model_ver_val = "regional_baseline"
+            conf_prov_val = {
+                "source": "Published NDMA Vulnerability Matrices + CWC/IMD Climatological Baselines",
+                "observations_count": 0,
+                "features_count": 0
+            }
+        elif is_assam:
+            data_cat = "ML_PREDICTION"
+            risk_source_val = RiskSourceType.EMPIRICAL_ML
+            sci_state_val = ScientificRiskState.EMPIRICALLY_VALIDATED_ML
+            model_ver_val = pred.get("model_version", "risk_india_flood_v1")
+            ds_ver_val = "1.0.0"
             m_scope_val = "Assam Brahmaputra & Barak Basins (Satellite Calibrated)"
             why_risk = "Empirical ML prediction calibrated against 32 verified ISRO Bhuvan satellite flood rasters and CWC telemetry."
             methodology_str = "GradientBoostingClassifier on 15 hydro-meteorological features with empirical satellite ground truth."
@@ -330,6 +350,11 @@ class RiskService:
                 "validation_strategy": "5-Fold Grouped Spatial & Temporal Holdout"
             }
         else:
+            data_cat = "ML_PREDICTION"
+            risk_source_val = RiskSourceType.EMPIRICAL_ML
+            sci_state_val = ScientificRiskState.METEOROLOGICAL_SURCHARGE_PROXY
+            model_ver_val = pred.get("model_version", "risk_india_flood_v1")
+            ds_ver_val = "1.0.0"
             m_scope_val = "Pan-India River Basins & Districts (Precipitation Surcharge)"
             why_risk = "Empirical flood surcharge inference based on acute rainfall surge, antecedent moisture, and basin morphometry."
             methodology_str = "GradientBoostingClassifier trained on 18,184 IMD observations with compound flood formulation."
@@ -349,7 +374,7 @@ class RiskService:
             state=pred.get("state", location.name if location else None),
             hazard="flood",
             disaster_type="flood",
-            model_version=pred.get("model_version", "risk_india_flood_v1"),
+            model_version=model_ver_val,
             flood_probability=pred.get("flood_probability"),
             probability=pred.get("flood_probability"),
             risk_score=int(round(pred.get("risk_score", 0))),
@@ -361,15 +386,15 @@ class RiskService:
             primary_driver=primary_driver,
             recommended_action=pred.get("recommended_action") or "Monitor official CWC bulletins and IMD district alerts.",
             recommended_immediate_action=pred.get("recommended_action") or "Continuous flood monitoring active via RISK // INDIA Flood Model v1.",
-            disclaimer=pred.get("disclaimer"),
+            disclaimer=pred.get("disclaimer") or "RISK // INDIA Flood Model v1 inference based on empirical IMD and CWC observations. Official advisories from NDMA/SDMA supersede automated estimates.",
             timestamp=datetime.now(timezone.utc),
-            data_category="ML_PREDICTION",
+            data_category=data_cat,
             why_this_risk=why_risk,
             methodology=methodology_str,
-            risk_source=RiskSourceType.EMPIRICAL_ML,
-            scientific_state=pred.get("scientific_state", ScientificRiskState.EMPIRICALLY_VALIDATED_ML),
+            risk_source=risk_source_val,
+            scientific_state=sci_state_val,
             model_scope=m_scope_val,
-            dataset_version="1.0.0",
+            dataset_version=ds_ver_val,
             data_freshness="LIVE",
             confidence_provenance=conf_prov_val,
             limitations=limitations_val

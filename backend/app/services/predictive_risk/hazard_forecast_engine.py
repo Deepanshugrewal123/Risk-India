@@ -124,7 +124,7 @@ class MultiHazardForecastEngine:
                     "model_status": "LOADED_AND_VERIFIED",
                     "training_scope": "Assam State Brahmaputra Basin (1998-2024)",
                     "synthetic_records": 0,
-                    "algorithm": "RandomForestClassifier",
+                    "algorithm": "LogisticRegression",
                     "guard_status": "PASS_ASSAM_IN_DISTRIBUTION"
                 }
                 corroborating_factors.append("Empirical ML inference validated for Assam Brahmaputra Basin")

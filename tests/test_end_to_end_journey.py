@@ -97,7 +97,8 @@ class TestEndToEndJourney(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         result = response.json()
         self.assertEqual(result.get("status"), "success")
-        self.assertEqual(result.get("model_version"), "assam_flood_prototype_v1")
+        self.assertEqual(result.get("model_version"), "risk_india_flood_v1")
+        self.assertFalse(result.get("is_prototype", True))
         self.assertIsInstance(result.get("risk_score"), int)
         self.assertGreaterEqual(result.get("risk_score"), 0)
         self.assertLessEqual(result.get("risk_score"), 100)
@@ -131,14 +132,15 @@ class TestEndToEndJourney(unittest.TestCase):
         """Stage 8: Geographic and Hazard Scope Guard Protection"""
         payload = {
             "location_id": "delhi",
-            "hazard": "flood",
+            "hazard": "earthquake",
             "features": {"rainfall_24h": 40.0}
         }
         response = self.client.post("/api/risk/analyze", json=payload)
         self.assertEqual(response.status_code, 200)
         result = response.json()
-        self.assertEqual(result.get("status"), "model_scope_limited")
-        self.assertIn("Assam flood prototype", result.get("message", ""))
+        self.assertEqual(result.get("status"), "hazard_unsupported_by_flood_model")
+        self.assertEqual(result.get("data_category"), "REGIONAL_BASELINE")
+        self.assertIn("NWP feeds, not flood ML", result.get("message", ""))
 
 
 if __name__ == "__main__":

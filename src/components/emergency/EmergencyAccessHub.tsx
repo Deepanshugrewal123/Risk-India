@@ -409,7 +409,7 @@ export const EmergencyAccessHub: React.FC<EmergencyAccessHubProps> = ({
                   <strong>3. Upstream Telemetry Latency:</strong> Live sensor feeds (USGS seismographs, CWC river level gauges, IMD radar stations) are subject to network transmission delays and physical gauge disruption during extreme catastrophic events.
                 </p>
                 <p>
-                  <strong>4. Machine Learning Model Boundaries:</strong> The empirical flood prediction prototype (<code>assam_flood_prototype_v1</code>) was calibrated exclusively on historical flood observations in the Brahmaputra and Barak river basins of Assam. It is not calibrated for nationwide flood prediction, cyclones, or seismic events. Outside Assam, only regional baseline susceptibility and verified live alerts are displayed.
+                  <strong>4. Machine Learning Model Boundaries:</strong> Automated empirical flood intelligence is powered by <strong>RISK // INDIA Flood Model v1</strong> (<code>risk_india_flood_v1</code>), trained on 18,184 empirical IMD observations across 38 States/UTs. Non-flood hazards (earthquakes, cyclones, heatwaves) strictly use authoritative statutory baselines and NWP feeds without automated prediction claims. The certified Assam prototype (<code>assam_flood_prototype_v1</code>) is preserved solely as an immutable historical research baseline.
                 </p>
                 <p>
                   <strong>5. Immediate Threat to Life:</strong> Do not rely on mobile web applications when immediate physical evacuation or rescue is required. Contact first responders immediately at <strong>112</strong> or your local district control room at <strong>1077</strong>.

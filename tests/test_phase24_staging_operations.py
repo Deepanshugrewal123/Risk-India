@@ -233,7 +233,7 @@ class TestPhase24StagingOperations(unittest.TestCase):
     # 5. Scientific Integrity & Geographic Guard
     # -------------------------------------------------------------------------
     def test_11_ml_model_scope_assam_only(self):
-        """Verify ML prediction is successful in Assam and rejected for non-Assam regions."""
+        """Verify ML prediction is active nationwide via risk_india_flood_v1 across all jurisdictions."""
         # Assam request -> Success
         resp_assam = self.client.post("/api/risk/analyze", json={
             "location_id": "assam",
@@ -245,9 +245,9 @@ class TestPhase24StagingOperations(unittest.TestCase):
         data_assam = resp_assam.json()
         self.assertEqual(data_assam["status"], "success")
         self.assertEqual(data_assam["data_category"], "ML_PREDICTION")
-        self.assertEqual(data_assam["model_version"], "assam_flood_prototype_v1")
+        self.assertEqual(data_assam["model_version"], "risk_india_flood_v1")
 
-        # Kerala request -> Refusal with regional baseline fallback
+        # Kerala request -> Success under India-wide risk_india_flood_v1
         resp_kerala = self.client.post("/api/risk/analyze", json={
             "location_id": "kerala",
             "district": "Wayanad",
@@ -256,9 +256,20 @@ class TestPhase24StagingOperations(unittest.TestCase):
         })
         self.assertEqual(resp_kerala.status_code, 200)
         data_kerala = resp_kerala.json()
-        self.assertEqual(data_kerala["status"], "model_scope_limited")
-        self.assertEqual(data_kerala["data_category"], "REGIONAL_BASELINE")
-        self.assertIn("available only for the Assam flood prototype", data_kerala["message"])
+        self.assertEqual(data_kerala["status"], "success")
+        self.assertEqual(data_kerala["data_category"], "ML_PREDICTION")
+        self.assertEqual(data_kerala["model_version"], "risk_india_flood_v1")
+
+        # Non-flood hazard -> Fallback to regional baseline
+        resp_eq = self.client.post("/api/risk/analyze", json={
+            "location_id": "kerala",
+            "district": "Wayanad",
+            "hazard": "earthquake"
+        })
+        self.assertEqual(resp_eq.status_code, 200)
+        data_eq = resp_eq.json()
+        self.assertEqual(data_eq["status"], "hazard_unsupported_by_flood_model")
+        self.assertEqual(data_eq["data_category"], "REGIONAL_BASELINE")
 
     def test_12_ml_prototype_immutability(self):
         """Verify model weights and feature count are 100% frozen."""

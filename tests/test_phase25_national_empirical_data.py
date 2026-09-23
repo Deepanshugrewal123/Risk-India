@@ -312,17 +312,31 @@ class TestPhase25NationalEmpiricalData(unittest.TestCase):
         self.assertEqual(data_assam["scientific_state"], ScientificRiskState.EMPIRICALLY_VALIDATED_ML)
         self.assertIn("Assam Brahmaputra", data_assam["model_scope"])
 
-        # 2. Non-Assam Query (e.g. Maharashtra) -> Spatial Guard Active
+        # 2. Non-Assam Query (e.g. Maharashtra) -> Supported under Pan-India Flood ML
         resp_mh = self.client.post("/api/risk/analyze", json={
             "location_id": "maharashtra",
             "district": "Pune",
-            "hazard": "flood"
+            "hazard": "flood",
+            "features": {"actual_rainfall_24h_mm": 35.0}
         })
         self.assertEqual(resp_mh.status_code, 200)
         data_mh = resp_mh.json()
-        self.assertEqual(data_mh["status"], "model_scope_limited")
-        self.assertEqual(data_mh["risk_source"], RiskSourceType.REGIONAL_BASELINE)
-        self.assertEqual(data_mh["scientific_state"], ScientificRiskState.EMPIRICAL_DATA_INSUFFICIENT)
+        self.assertEqual(data_mh["status"], "success")
+        self.assertEqual(data_mh["risk_source"], RiskSourceType.EMPIRICAL_ML)
+        self.assertEqual(data_mh["model_version"], "risk_india_flood_v1")
+        self.assertIn("Pan-India", data_mh["model_scope"])
+
+        # 3. Non-flood Query (e.g. Earthquake) -> Fallback to regional baseline
+        resp_eq = self.client.post("/api/risk/analyze", json={
+            "location_id": "maharashtra",
+            "district": "Pune",
+            "hazard": "earthquake"
+        })
+        self.assertEqual(resp_eq.status_code, 200)
+        data_eq = resp_eq.json()
+        self.assertEqual(data_eq["status"], "hazard_unsupported_by_flood_model")
+        self.assertEqual(data_eq["risk_source"], RiskSourceType.REGIONAL_BASELINE)
+        self.assertEqual(data_eq["scientific_state"], ScientificRiskState.BASELINE_ONLY)
 
     def test_13_api_empirical_catalog_and_schema_endpoints(self):
         """Verify /api/data/empirical/catalog and schema endpoints."""

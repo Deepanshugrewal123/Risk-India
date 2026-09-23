@@ -1101,7 +1101,7 @@ export const IndiaRiskMap: React.FC<IndiaRiskMapProps> = ({
                 <div className="flex justify-between text-charcoal-300">
                   <span>AI Risk Model:</span>
                   <span className="font-medium text-paper-50">
-                    {hoveredRegion.name.toLowerCase().includes('assam') ? 'Assam Prototype Active' : 'Baseline Profile Only'}
+                    {hoveredRegion.primaryRisk?.toLowerCase() === 'flood' ? 'RISK // INDIA Flood Model v1 Active' : 'Baseline Profile Only'}
                   </span>
                 </div>
                 <div className="flex justify-between text-charcoal-300 pt-1 border-t border-charcoal-800">
@@ -1109,7 +1109,7 @@ export const IndiaRiskMap: React.FC<IndiaRiskMapProps> = ({
                   <span className="font-medium text-paper-50">
                     {hoveredRegion.activeIncidentsCount > 0
                       ? 'OFFICIAL LIVE'
-                      : hoveredRegion.name.toLowerCase().includes('assam')
+                      : hoveredRegion.primaryRisk?.toLowerCase() === 'flood'
                       ? 'EMPIRICAL ML'
                       : 'REGIONAL BASELINE'}
                   </span>
@@ -1199,7 +1199,7 @@ export const IndiaRiskMap: React.FC<IndiaRiskMapProps> = ({
                           status={
                             activeSelectedRegion.activeIncidentsCount > 0
                               ? 'OFFICIAL_LIVE'
-                              : activeSelectedRegion.name.toLowerCase().includes('assam')
+                              : activeSelectedRegion.primaryRisk?.toLowerCase() === 'flood'
                               ? 'EMPIRICAL_ML'
                               : 'REGIONAL_BASELINE'
                           }
@@ -1233,21 +1233,23 @@ export const IndiaRiskMap: React.FC<IndiaRiskMapProps> = ({
                         </span>
                       </div>
                     </div>
-                    {activeSelectedRegion.name.toLowerCase().includes('assam') ? (
+                    {activeSelectedRegion.primaryRisk?.toLowerCase() === 'flood' ? (
                       <div className="space-y-1 text-[10px] font-mono text-emerald-800 bg-emerald-50 p-2 rounded-lg border border-emerald-200">
                         <div className="font-bold flex items-center justify-between">
-                          <span>✓ Empirical ML Prediction Available</span>
+                          <span>✓ RISK // INDIA Flood Model v1 Active</span>
                           <FreshnessBadge status="EMPIRICAL_ML" size="xs" />
                         </div>
-                        <div className="text-emerald-700">Model: assam_flood_prototype_v1 (13 features, 32 audited observations)</div>
+                        <div className="text-emerald-700">Model: risk_india_flood_v1 (India-Wide Empirical Flood Intelligence, 18,184 IMD observations across 38 States/UTs)</div>
                       </div>
                     ) : (
                       <div className="space-y-1 text-[10px] font-mono text-charcoal-700 bg-paper-100 p-2 rounded-lg border border-paper-300">
                         <div className="font-bold text-charcoal-900 flex items-center justify-between">
-                          <span>ℹ️ ML prediction is not currently available for this region.</span>
+                          <span>ℹ️ Multi-Source Regional Baseline (Non-ML)</span>
                           <FreshnessBadge status="REGIONAL_BASELINE" size="xs" />
                         </div>
-                        <div className="text-charcoal-600">Regional baseline and official disaster intelligence are shown.</div>
+                        <div className="text-charcoal-600">
+                          Regional baseline derived from NDMA vulnerability matrices, IMD/CWC operational feeds, and BIS seismic standards. Empirical ML active for flood hazards.
+                        </div>
                       </div>
                     )}
                   </div>

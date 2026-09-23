@@ -72,6 +72,7 @@ class RiskAnalyzeRequest(BaseModel):
     district: Optional[str] = None
     disaster_type: Optional[str] = Field(default="flood", description="Primary hazard category")
     hazard: Optional[str] = Field(default="flood", description="Hazard name")
+    model_version: Optional[str] = Field(default=None, description="Optional model version override (e.g. historical prototype)")
     features: Optional[Dict[str, Any]] = Field(
         default=None,
         description="Antecedent CWC rainfall, river stage, and spatial telemetry features"
@@ -130,21 +131,21 @@ class RiskAnalyzeResponse(BaseModel):
     state: Optional[str] = "Assam"
     hazard: str = "flood"
     disaster_type: str = "flood"
-    model_version: str = "assam_flood_prototype_v1"
+    model_version: str = "risk_india_flood_v1"
     flood_probability: Optional[float] = None
     probability: Optional[float] = None
     risk_score: Optional[int] = None
     risk_level: Optional[str] = None
     top_factors: List[ModelFactorContribution] = Field(default_factory=list)
     risk_factors: List[RiskFactorSchema] = Field(default_factory=list)
-    is_prototype: bool = True
+    is_prototype: bool = False
     emergency_warning: bool = False
     primary_driver: Optional[str] = "Antecedent Precipitation Influx"
     recommended_action: Optional[str] = None
     recommended_immediate_action: Optional[str] = None
     disclaimer: str = (
-        "Experimental Assam flood-risk prototype based on a limited event dataset. "
-        "Results are for research and awareness only and should not replace official emergency warnings."
+        "RISK // INDIA Flood Model v1 inference based on empirical IMD and CWC observations. "
+        "Official statutory bulletins from NDMA, CWC, and State SDMAs take absolute legal precedence."
     )
     timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     # Phase 19 Multi-Hazard & Rationale Additions
@@ -154,7 +155,7 @@ class RiskAnalyzeResponse(BaseModel):
     # Phase 25 National Risk API & Scientific Honesty Additions
     risk_source: str = RiskSourceType.EMPIRICAL_ML
     scientific_state: str = ScientificRiskState.EMPIRICALLY_VALIDATED_ML
-    model_scope: Optional[str] = "Assam Brahmaputra & Barak Basins (Prototype)"
+    model_scope: Optional[str] = "Pan-India River Basins & Districts"
     dataset_version: Optional[str] = "1.0.0"
     data_freshness: str = "LIVE"
     confidence_provenance: Optional[Dict[str, Any]] = None

@@ -47,31 +47,28 @@ export const PredictionScopeNotice: React.FC<PredictionScopeNoticeProps> = ({
         </div>
       )}
 
-      {isFlood && isAssam && (
+      {isFlood && (
         <div className="flex items-start gap-2 text-blue-900 bg-blue-50 border border-blue-200 rounded-xl p-3">
           <ShieldCheck className="w-4 h-4 shrink-0 mt-0.5 text-blue-700" />
           <div className="space-y-0.5">
-            <span className="font-bold block">Assam Empirical ML Model Active</span>
+            <span className="font-bold block">RISK // INDIA Flood Model v1 — India-Wide Empirical Flood Intelligence</span>
             <p className="text-[11px] leading-relaxed text-blue-800">
-              Model: <code className="font-mono font-bold bg-white px-1 py-0.5 rounded border border-blue-200">assam_flood_prototype_v1</code> (RandomForest
-              Classifier). Trained exclusively on empirical historical Brahmaputra gauge and
-              precipitation records.
+              Model: <code className="font-mono font-bold bg-white px-1 py-0.5 rounded border border-blue-200">risk_india_flood_v1</code> (GradientBoostingClassifier).
+              Trained on 18,184 empirical IMD district observations across 38 States/UTs. Evaluates compound hydrological flood inundation across all 12 major Indian river basins with zero synthetic data.
             </p>
           </div>
         </div>
       )}
 
-      {!isEarthquake && !(isFlood && isAssam) && (
+      {!isEarthquake && !isFlood && (
         <div className="flex items-start gap-2 text-slate-700 bg-slate-50 border border-slate-200 rounded-xl p-3">
           <Info className="w-4 h-4 shrink-0 mt-0.5 text-blue-700" />
           <div className="space-y-0.5">
             <span className="font-bold text-slate-900 block">
-              Deterministic Multi-Signal Early Warning Fusion
+              Multi-Source Evidence Early Warning Fusion (Authoritative Non-ML)
             </span>
             <p className="text-[11px] leading-relaxed text-slate-600">
-              Assessment is derived from real-time IMD numerical weather predictions, CWC river
-              telemetry, and statutory vulnerability baselines. Assam ML is strictly scoped to Assam
-              jurisdiction (ml_available = false).
+              Assessment is derived from authoritative meteorological forecasts (IMD NWFC), hydrological telemetry (CWC), and statutory geospatial baselines (NDMA, GSI, BIS IS 1893). Empirical ML is active for flood hazards; non-flood perils follow statutory operational models.
             </p>
           </div>
         </div>

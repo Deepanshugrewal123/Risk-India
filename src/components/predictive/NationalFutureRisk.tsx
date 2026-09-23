@@ -317,7 +317,7 @@ export const NationalFutureRisk: React.FC = () => {
 
           {assessment && !assessmentLoading && (
             <>
-              {/* Scope Notice (Assam ML & Earthquake Guards) */}
+              {/* Scope Notice (India-Wide Flood ML & Earthquake Guards) */}
               <PredictionScopeNotice
                 isAssam={assessment.region_id === 'assam'}
                 hazard={assessment.hazard}

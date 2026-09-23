@@ -311,18 +311,29 @@ class TestPhase19MultiHazardIntelligence(unittest.TestCase):
         resp_assam = risk_service.analyze_risk(db, req_assam)
         self.assertEqual(resp_assam.status, "success")
         self.assertEqual(resp_assam.data_category, "ML_PREDICTION")
-        self.assertIn("ML prototype estimate", resp_assam.why_this_risk)
+        self.assertEqual(resp_assam.model_version, "risk_india_flood_v1")
+        self.assertIn("Empirical ML prediction", resp_assam.why_this_risk)
 
-        # Out-of-scope Bihar prediction
+        # Nationwide Bihar flood prediction (supported under risk_india_flood_v1)
         req_bihar = RiskAnalyzeRequest(
             location_id="bihar",
             district="patna",
+            hazard="flood",
             features={"rainfall_24h": 50.0}
         )
         resp_bihar = risk_service.analyze_risk(db, req_bihar)
-        self.assertEqual(resp_bihar.status, "model_scope_limited")
-        self.assertEqual(resp_bihar.data_category, "REGIONAL_BASELINE")
-        self.assertIn("ML prediction is not currently available", resp_bihar.why_this_risk)
+        self.assertEqual(resp_bihar.status, "success")
+        self.assertEqual(resp_bihar.data_category, "ML_PREDICTION")
+        self.assertEqual(resp_bihar.model_version, "risk_india_flood_v1")
+
+        # Out-of-scope hazard (Earthquake cannot use flood ML)
+        req_eq = RiskAnalyzeRequest(
+            location_id="bihar",
+            hazard="earthquake"
+        )
+        resp_eq = risk_service.analyze_risk(db, req_eq)
+        self.assertEqual(resp_eq.status, "hazard_unsupported_by_flood_model")
+        self.assertEqual(resp_eq.data_category, "REGIONAL_BASELINE")
 
     # =========================================================================
     # 6. ML Model Integrity & Zero Synthetic Data

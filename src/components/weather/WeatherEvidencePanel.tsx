@@ -30,7 +30,7 @@ export const WeatherEvidencePanel: React.FC<WeatherEvidencePanelProps> = ({
         <div className="flex items-center gap-2">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 font-mono">
             <Cpu className="w-3.5 h-3.5" />
-            ASSAM ML MODEL PROTECTED
+            INDIA-WIDE FLOOD ML ACTIVE
           </span>
         </div>
       </div>

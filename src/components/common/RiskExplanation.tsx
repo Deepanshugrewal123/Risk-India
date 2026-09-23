@@ -67,18 +67,22 @@ export const RiskExplanation: React.FC<RiskExplanationProps> = ({
   const [showGlossary, setShowGlossary] = useState<boolean>(false);
   const [showWhyModal, setShowWhyModal] = useState<boolean>(false);
 
-  // Detect whether this is Assam prototype scope
-  const isAssam = isAssamPrototype || locationName.toLowerCase().includes('assam') || locationName.toLowerCase().includes('udalguri') || locationName.toLowerCase().includes('kamrup');
+  // Detect whether this is Assam prototype scope (strictly Assam + FLOOD)
+  const isAssamFlood = (isAssamPrototype || locationName.toLowerCase().includes('assam') || locationName.toLowerCase().includes('udalguri') || locationName.toLowerCase().includes('kamrup')) && disasterType.toLowerCase() === 'flood';
   // Sort factors by weight descending to highlight top drivers
   const sortedFactors = [...factors].sort((a, b) => b.weight - a.weight);
 
   const defaultExplanation =
     explanationNarrative ||
-    `Model prototype attributes the ${riskScore}% estimated ${disasterType.toLowerCase()} risk in ${locationName} primarily to ${
-      sortedFactors[0]?.name.toLowerCase() || 'elevated environmental thresholds'
-    } compounded by ${
-      sortedFactors[1]?.name.toLowerCase() || 'regional vulnerability factors'
-    }. Historical recurrence and local contour drainage inertia further elevate baseline exposure.`;
+    (isAssamFlood
+      ? `Model prototype attributes the estimated flood risk in ${locationName} primarily to ${
+          sortedFactors[0]?.name.toLowerCase() || 'elevated catchment rainfall'
+        } compounded by ${
+          sortedFactors[1]?.name.toLowerCase() || 'river stage dynamics'
+        }. Calibrated with CWC gauge telemetry and ISRO Bhuvan historical flood rasters.`
+      : disasterType.toLowerCase() === 'earthquake'
+      ? `Seismic risk reflects tectonic baseline zoning under BIS IS 1893:2016 and real-time USGS/NCS seismic network recordings. Earthquakes cannot be temporally predicted.`
+      : `Regional hazard baseline in ${locationName} is evaluated using authoritative Indian environmental and meteorological indicators (IMD/CWC/NDMA). Static baseline susceptibility is not a short-term forecast.`);
 
   return (
     <div
@@ -94,11 +98,11 @@ export const RiskExplanation: React.FC<RiskExplanationProps> = ({
             </span>
             <span className="text-charcoal-300">•</span>
             <span className="text-[10px] font-mono text-charcoal-400">
-              FACTOR CONTRIBUTION BREAKDOWN
+              EVIDENCE PROVENANCE &amp; FACTOR ATTRIBUTION
             </span>
           </div>
           <p className="text-xs text-charcoal-600">
-            Explainable AI breakdown of contributing environmental and terrain signals
+            Explainable breakdown of contributing environmental, meteorological, and geospatial evidence
           </p>
         </div>
         
@@ -111,12 +115,12 @@ export const RiskExplanation: React.FC<RiskExplanationProps> = ({
             <HelpCircle className="w-3.5 h-3.5 text-charcoal-600" />
             <span>Why am I seeing this?</span>
           </button>
-          <DemoBadge label="FACTOR ATTRIBUTION" />
+          <DemoBadge label="EVIDENCE PROVENANCE" />
         </div>
       </div>
 
       {/* Scope Honesty Banner */}
-      {isAssam ? (
+      {isAssamPrototype ? (
         <div className="mb-5 p-3.5 rounded-2xl bg-amber-50/90 border border-amber-200 text-xs text-amber-950 flex items-start gap-2.5">
           <Sparkles className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
           <div className="space-y-0.5">
@@ -126,13 +130,23 @@ export const RiskExplanation: React.FC<RiskExplanationProps> = ({
             </p>
           </div>
         </div>
+      ) : disasterType.toLowerCase() === 'flood' ? (
+        <div className="mb-5 p-3.5 rounded-2xl bg-emerald-50/90 border border-emerald-200 text-xs text-emerald-950 flex items-start gap-2.5">
+          <Sparkles className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+          <div className="space-y-0.5">
+            <strong className="font-bold block">RISK // INDIA Flood Model v1 — India-Wide Empirical Flood Intelligence</strong>
+            <p className="text-[11px] leading-relaxed">
+              Empirically Validated ML Model (<code className="font-mono font-bold bg-white px-1 py-0.5 rounded border border-emerald-200">risk_india_flood_v1</code>) — Trained on 18,184 audited IMD district observations across 38 States/UTs. Distinguishes rain-only events from compound hydrological flood inundation across India's river basins with zero synthetic data.
+            </p>
+          </div>
+        </div>
       ) : (
         <div className="mb-5 p-3.5 rounded-2xl bg-blue-50/90 border border-blue-200 text-xs text-blue-950 flex items-start gap-2.5">
           <Info className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
           <div className="space-y-0.5">
             <strong className="font-bold block">Regional Baseline — ML unavailable for this region</strong>
             <p className="text-[11px] leading-relaxed">
-              ML prediction unavailable for this region. Regional baseline risk and official disaster intelligence are shown. Empirical data is insufficient for machine learning in this region.
+              ML prediction unavailable for this region. Regional baseline risk and official disaster intelligence are shown. {disasterType.toLowerCase() === 'earthquake' ? 'Earthquakes cannot be temporally predicted.' : 'Empirical ML is dedicated to flood hazards.'}
             </p>
           </div>
         </div>
@@ -154,12 +168,16 @@ export const RiskExplanation: React.FC<RiskExplanationProps> = ({
             </button>
           </div>
           <p className="text-[11px] text-paper-200 leading-relaxed">
-            RISK // INDIA strictly adheres to the principle of scientific honesty. The mathematical predictions displayed here are bounded by verified observation data:
+            RISK // INDIA strictly adheres to scientific governance. Assessments are built from authentic Indian statutory agencies and transparent evidence postures:
           </p>
           <ul className="space-y-1.5 text-[11px] text-paper-300 list-disc list-inside">
-            <li><strong>Assam Basin:</strong> Derived from 13 empirical features across 32 audited historical flood events (Udalguri, Darrang, Kamrup) using official CWC gauge telemetry.</li>
-            <li><strong>Non-Assam States & UTs:</strong> Evaluated using multi-hazard baseline indices (seismic microzonation, IMD monsoon normal, terrain slope) without fabricated machine-learning weights.</li>
-            <li><strong>Life-Safety Precaution:</strong> This automated breakdown does not supersede active evacuation orders or warnings from NDMA, SDMA, or district collectors.</li>
+            <li><strong>Live Observation:</strong> Real-time IMD synoptic weather &amp; CWC river gauge stations.</li>
+            <li><strong>Recent Observation:</strong> Official state disaster bulletins (ASDMA, HPSDMA, OSDMA, KSDMA).</li>
+            <li><strong>Meteorological Forecast:</strong> IMD Numerical Weather Prediction (NWP) 5-horizon models.</li>
+            <li><strong>Geospatial Baseline:</strong> BIS IS 1893 seismic zoning, GSI LEWS landslide susceptibility, and ISRO Bhuvan historical flood rasters (Assam).</li>
+            <li><strong>Historical / Scientific Relationship:</strong> Validated physical consequence pathways and catchment geomorphology.</li>
+            <li><strong>India-Wide Empirical ML:</strong> RISK // INDIA Flood Model v1 (<code>risk_india_flood_v1</code>) operates across all 36 Indian States/UTs and 12 river basins. Historical Assam prototype preserved as immutable baseline. Never applied to non-flood hazards.</li>
+            <li><strong>Data Unavailable:</strong> Transparently reported when upstream monitoring telemetry is offline or uninstrumented.</li>
           </ul>
         </div>
       )}

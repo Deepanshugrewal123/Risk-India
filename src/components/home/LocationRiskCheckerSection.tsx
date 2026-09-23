@@ -545,8 +545,8 @@ export const LocationRiskCheckerSection: React.FC<LocationRiskCheckerSectionProp
                 </div>
                 <div className="p-2 rounded-xl bg-white dark:bg-slate-800 border border-paper-200 dark:border-slate-700">
                   <div className="text-charcoal-500 dark:text-slate-400 uppercase">Approved ML</div>
-                  <div className={`font-bold mt-0.5 ${selectedLocation.id === 'assam' ? 'text-purple-600 dark:text-purple-400' : 'text-charcoal-400'}`}>
-                    {selectedLocation.id === 'assam' ? 'Active (Assam ML)' : 'Not Available'}
+                  <div className={`font-bold mt-0.5 ${assessment.hazard?.toUpperCase() === 'FLOOD' ? 'text-purple-600 dark:text-purple-400' : 'text-charcoal-400'}`}>
+                    {assessment.hazard?.toUpperCase() === 'FLOOD' ? 'Active (risk_india_flood_v1)' : 'Baseline Only'}
                   </div>
                 </div>
               </div>

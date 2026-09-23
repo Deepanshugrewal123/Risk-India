@@ -1,0 +1,217 @@
+{
+  "model_name": "risk_india_flood_v1",
+  "display_name": "RISK // INDIA Flood Model v1",
+  "public_description": "India-Wide Empirical Flood Intelligence",
+  "version": "1.0.0",
+  "algorithm": "GradientBoostingClassifier",
+  "library": "scikit-learn",
+  "created_at": "2026-09-23T08:10:23.543131Z",
+  "model_sha256": "8ec5f4e0c4ec54a3ed5b97bfa10aba9e0717de5215ff0c10ebc525e26a5a1fd4",
+  "preprocessor_sha256": "0d10b227df6c5d9596f8c615b8ac150abb2594397446118407fa1ad692affc9e",
+  "training_data": {
+    "source": "IMD Districtwise Daily Rainfall Network & ISRO/NRSC Bhuvan Flood Inundation Delineation",
+    "observation_count": 18216,
+    "imd_observations": 18184,
+    "bhuvan_satellite_observations": 32,
+    "positive_events": 181,
+    "negative_controls": 18035,
+    "isolated_heavy_rain_controls": 9,
+    "states_covered": 38,
+    "districts_covered": 728,
+    "date_range": [
+      "2022-05-23",
+      "2026-09-12"
+    ],
+    "synthetic_records": 0
+  },
+  "target_definition": {
+    "name": "flood_risk_event",
+    "description": "Compound hydrological flood inundation trigger combining acute precipitation surge (IMD >= 64.5mm or >= 50mm sustained), antecedent catchment saturation (weekly actual >= 75mm or departure >= 40% or monthly >= 220mm), and river basin flood vulnerability, anchored by empirical ISRO Bhuvan satellite inundation rasters."
+  },
+  "features": [
+    "actual_rainfall_24h_mm",
+    "normal_rainfall_24h_mm",
+    "rainfall_departure_pct",
+    "weekly_rainfall_actual_mm",
+    "weekly_rainfall_normal_mm",
+    "weekly_departure_pct",
+    "cumulative_monsoon_rainfall_mm",
+    "monthly_rainfall_actual_mm",
+    "monthly_departure_pct",
+    "antecedent_saturation_index",
+    "basin_flood_vulnerability",
+    "latitude",
+    "longitude",
+    "day_of_year_sin",
+    "day_of_year_cos"
+  ],
+  "feature_descriptions": {
+    "actual_rainfall_24h_mm": "Observed 24-hour daily precipitation (mm) from IMD district network",
+    "normal_rainfall_24h_mm": "Climatological normal daily rainfall (mm) for the district",
+    "rainfall_departure_pct": "Daily precipitation departure from normal percentage",
+    "weekly_rainfall_actual_mm": "7-day antecedent cumulative precipitation (mm)",
+    "weekly_rainfall_normal_mm": "Climatological 7-day normal precipitation (mm)",
+    "weekly_departure_pct": "7-day precipitation departure from normal percentage",
+    "cumulative_monsoon_rainfall_mm": "Season-to-date cumulative monsoon precipitation (mm)",
+    "monthly_rainfall_actual_mm": "Month-to-date cumulative precipitation (mm)",
+    "monthly_departure_pct": "Month-to-date precipitation departure from normal percentage",
+    "antecedent_saturation_index": "Compound soil saturation & catchment moisture index [0.0 - 1.0]",
+    "basin_flood_vulnerability": "River basin morphometric & chronic flood susceptibility index [0.0 - 1.0]",
+    "latitude": "District centroid latitude (WGS84 EPSG:4326)",
+    "longitude": "District centroid longitude (WGS84 EPSG:4326)",
+    "day_of_year_sin": "Cyclical seasonal monsoon phase (sine transform)",
+    "day_of_year_cos": "Cyclical seasonal monsoon phase (cosine transform)"
+  },
+  "feature_importances": {
+    "actual_rainfall_24h_mm": 0.7014,
+    "weekly_rainfall_actual_mm": 0.1315,
+    "day_of_year_sin": 0.0571,
+    "day_of_year_cos": 0.0421,
+    "antecedent_saturation_index": 0.0204,
+    "rainfall_departure_pct": 0.0148,
+    "weekly_departure_pct": 0.0085,
+    "longitude": 0.0074,
+    "cumulative_monsoon_rainfall_mm": 0.0064,
+    "basin_flood_vulnerability": 0.0054,
+    "monthly_rainfall_actual_mm": 0.0039,
+    "latitude": 0.0011,
+    "normal_rainfall_24h_mm": 0.0001,
+    "monthly_departure_pct": 0.0,
+    "weekly_rainfall_normal_mm": 0.0
+  },
+  "cross_validation_5fold_grouped": {
+    "roc_auc": 0.9245,
+    "pr_auc": 0.7247,
+    "f1_score": 0.8858,
+    "precision": 0.8933,
+    "recall": 0.8785,
+    "brier_score": 0.0022,
+    "confusion_matrix": {
+      "true_negatives": 18016,
+      "false_positives": 19,
+      "false_negatives": 22,
+      "true_positives": 159
+    }
+  },
+  "all_candidate_cv_scores": {
+    "LogisticRegression": {
+      "roc_auc": 0.927,
+      "pr_auc": 0.752,
+      "f1_score": 0.4858,
+      "precision": 0.3333,
+      "recall": 0.895,
+      "brier_score": 0.0154,
+      "confusion_matrix": {
+        "true_negatives": 17711,
+        "false_positives": 324,
+        "false_negatives": 19,
+        "true_positives": 162
+      }
+    },
+    "RandomForest": {
+      "roc_auc": 0.9809,
+      "pr_auc": 0.8497,
+      "f1_score": 0.7588,
+      "precision": 0.6585,
+      "recall": 0.895,
+      "brier_score": 0.0054,
+      "confusion_matrix": {
+        "true_negatives": 17951,
+        "false_positives": 84,
+        "false_negatives": 19,
+        "true_positives": 162
+      }
+    },
+    "GradientBoosting": {
+      "roc_auc": 0.9245,
+      "pr_auc": 0.7247,
+      "f1_score": 0.8858,
+      "precision": 0.8933,
+      "recall": 0.8785,
+      "brier_score": 0.0022,
+      "confusion_matrix": {
+        "true_negatives": 18016,
+        "false_positives": 19,
+        "false_negatives": 22,
+        "true_positives": 159
+      }
+    }
+  },
+  "temporal_holdout_evaluation": {
+    "roc_auc": 0.999,
+    "pr_auc": 0.8605,
+    "f1_score": 0.9333,
+    "precision": 0.913,
+    "recall": 0.9545,
+    "brier_score": 0.001,
+    "confusion_matrix": {
+      "true_negatives": 8657,
+      "false_positives": 6,
+      "false_negatives": 3,
+      "true_positives": 63
+    }
+  },
+  "regional_holdout_evaluation": {
+    "North": {
+      "records": 4425,
+      "positive_events": 58,
+      "roc_auc": 0.9797,
+      "pr_auc": 0.2764,
+      "f1_score": 0.5604,
+      "recall": 1.0,
+      "brier_score": 0.0206
+    },
+    "Central": {
+      "records": 1325,
+      "positive_events": 28,
+      "roc_auc": 0.9996,
+      "pr_auc": 0.9688,
+      "f1_score": 0.9825,
+      "recall": 1.0,
+      "brier_score": 0.0007
+    },
+    "East": {
+      "records": 2800,
+      "positive_events": 31,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "f1_score": 0.931,
+      "recall": 0.871,
+      "brier_score": 0.0014
+    },
+    "Northeast": {
+      "records": 2482,
+      "positive_events": 43,
+      "roc_auc": 0.8035,
+      "pr_auc": 0.5715,
+      "f1_score": 0.7397,
+      "recall": 0.6279,
+      "brier_score": 0.0076
+    },
+    "West": {
+      "records": 2675,
+      "positive_events": 1,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "f1_score": 0.6667,
+      "recall": 1.0,
+      "brier_score": 0.0001
+    },
+    "South": {
+      "records": 3709,
+      "positive_events": 8,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "f1_score": 1.0,
+      "recall": 1.0,
+      "brier_score": 0.0
+    }
+  },
+  "operational_scope": {
+    "geography": "All 28 States and 8 Union Territories of India",
+    "river_basins": "All 12 Major Indian River Basins (Ganga, Brahmaputra, Mahanadi, Godavari, Krishna, Narmada, Indus, Cauvery, etc.)",
+    "hazard": "FLOOD"
+  },
+  "model_selection_rationale": "GradientBoostingClassifier selected over LogisticRegression and RandomForest due to superior calibration (Brier score 0.0022), highest precision (0.8933), and highest F1-score (0.8858) under 5-Fold GroupKFold cross-validation grouped by State.",
+  "limitations": "Model trained on empirical observations across 38 States/UTs. Probability outputs represent tree ensemble surcharge likelihood index, not frequentist probabilities. Statutory advisories from NDMA/SDMA supersede automated estimates."
+}

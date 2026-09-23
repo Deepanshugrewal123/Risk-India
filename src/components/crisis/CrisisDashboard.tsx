@@ -709,7 +709,7 @@ export const CrisisDashboard: React.FC = () => {
                 <span className="text-paper-100 font-bold">ML GUARD AUDIT:</span>{' '}
                 {assessment.ml_audit.ml_available ? (
                   <span className="text-emerald-400">
-                    Model: {assessment.ml_audit.model_name} (Verified Assam Prototype)
+                    Model: {assessment.ml_audit.model_name}
                   </span>
                 ) : (
                   <span className="text-amber-400">

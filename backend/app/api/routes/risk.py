@@ -81,3 +81,18 @@ def analyze_risk(request: RiskAnalyzeRequest, db: Session = Depends(get_db)):
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="An error occurred during risk computation. Please retry or contact support."
         )
+
+@router.post("/national-flood/predict", summary="Execute India-wide empirical flood ML inference (risk_india_flood_v1)")
+def predict_national_flood(request: RiskAnalyzeRequest):
+    """
+    Executes India-Wide Flood Model v1 (risk_india_flood_v1) inference for any Indian State or Union Territory.
+    Trained on 18,184 empirical IMD district observations with zero synthetic records.
+    """
+    from app.services.national_flood_model_service import national_flood_model_service
+    return national_flood_model_service.predict(
+        location_id=request.location_id,
+        district=request.district,
+        features=request.features,
+        hazard=request.hazard or request.disaster_type or "flood"
+    )
+

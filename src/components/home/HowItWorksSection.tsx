@@ -13,11 +13,11 @@ export const HowItWorksSection: React.FC = () => {
     },
     {
       num: '02',
-      title: 'AI ANALYSIS',
-      subtitle: 'Predictive Risk Estimation',
-      description: 'Machine learning heuristics process compound risk factors to forecast probability, impact footprint, and vulnerable district clusters 24 to 72 hours in advance.',
+      title: 'ANALYSIS & ML',
+      subtitle: 'Empirical ML & Multi-Source Fusion',
+      description: 'Authoritative data streams (IMD NWP, CWC gauges, NDMA/GSI baselines) are fused with RISK // INDIA Flood Model v1 (risk_india_flood_v1), providing nationwide empirical flood intelligence across all 36 States and UTs.',
       icon: Cpu,
-      highlight: 'Spatial ML Risk Engine'
+      highlight: 'Pan-India Empirical ML & Fusion'
     },
     {
       num: '03',
@@ -68,7 +68,7 @@ export const HowItWorksSection: React.FC = () => {
     },
     {
       q: '5. What do we not know?',
-      a: 'Scientific uncertainty boundaries: Hyper-local drainage blockages, micro-topography shifts, and earthquake occurrences cannot be predicted. ML predictions are strictly bounded to empirical Assam basins.',
+      a: 'Scientific uncertainty boundaries: Hyper-local drainage blockages, micro-topography shifts, and earthquake occurrences cannot be predicted. Empirical ML is bounded to flood hazards across Indian river basins; non-flood perils follow statutory operational models.',
       icon: HelpCircle,
       color: 'text-purple-600 dark:text-purple-400',
       bg: 'bg-purple-50/60 dark:bg-purple-950/20'

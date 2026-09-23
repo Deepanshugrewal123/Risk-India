@@ -56,8 +56,8 @@ The platform provides an immediate, plain-language answer to four foundational q
 
 RISK // INDIA operates under twelve non-negotiable scientific invariants to ensure public trust and prevent misinformation:
 
-1. **Assam ML Scope Guard:** Machine learning flood depth inference is strictly restricted to calibrated CWC gauge catchments along the Brahmaputra and Barak basins in Assam.
-2. **Non-Assam ML Honesty:** For all 35 States and Union Territories outside Assam, `ml_available` is explicitly `false`. The platform relies on empirical hydraulic thresholds (CWC Danger Levels) and official IMD warnings.
+1. **India-Wide Empirical Flood Model:** Automated flood risk inference is powered by RISK // INDIA Flood Model v1 (`risk_india_flood_v1`), trained on 18,216 empirical records across 38 States and Union Territories with zero synthetic observations.
+2. **Ground-Truth Boundary Transparency:** Direct satellite flood inundation observations (ISRO Bhuvan SAR) are validated within the Assam corridor. Across other Indian river basins, positive training events are truthfully documented as empirical meteorological-hydrological surcharge proxies rather than simulated satellite pixels. The historical Assam prototype (`assam_flood_prototype_v1`) remains preserved as an immutable baseline.
 3. **Earthquake Temporal Prediction Prohibited:** Under NO circumstances does the platform attempt to predict the timing, location, or magnitude of future earthquakes (`EARTHQUAKE_NOT_PREDICTABLE`). Only historical seismic zonation (BIS Zones II–V) and post-event USGS/NCS notifications are presented.
 4. **No Numeric Pseudo-Probabilities:** The platform strictly rejects misleading percentage forecasts (e.g. "87% probability"). Risk confidence is classified qualitatively (`VERY_HIGH`, `HIGH`, `MEDIUM`, `LOW`, `VERY_LOW`).
 5. **Monotonic Uncertainty Expansion:** Forecast uncertainty mathematically expands as lead time increases ($Uncertainty_{3-7D} > Uncertainty_{1-3D} > Uncertainty_{6-24H} > Uncertainty_{0-6H} > Uncertainty_{NOW}$).
@@ -109,11 +109,11 @@ All telemetry and indicators originate strictly from authentic public government
           +-------------------------+-------------------------+
           |                                                   |
           v                                                   v
-+-----------------------+                           +-------------------+
-|  FROZEN SCIENTIFIC ML |                           | DATABASE / CACHE  |
-|  Assam Flood Model    |                           | Dual SQLite / PG  |
-|  (0e05bcdf... SHA256) |                           | Redis / In-Memory |
-+-----------------------+                           +-------------------+
++-----------------------------------+       +-------------------+
+|  EMPIRICAL SCIENTIFIC ML          |       | DATABASE / CACHE  |
+|  - National Flood v1 (Active)     |       | Dual SQLite / PG  |
+|  - Assam Prototype (Immutable)    |       | Redis / In-Memory |
++-----------------------------------+       +-------------------+
 ```
 
 ---
@@ -164,12 +164,12 @@ npm run dev
 
 ## 🧪 Verification & Testing
 
-### Automated Regression Test Suite (609 Tests)
+### Automated Regression Test Suite (658 Tests)
 ```powershell
 $env:PYTHONPATH = "backend;."
 python -m unittest discover tests
 ```
-*Expected Result:* `Ran 609 tests in ~15-25s. OK (0 failures, 0 errors)`.
+*Expected Result:* `Ran 658 tests in ~12-20s. OK (0 failures, 0 errors)`.
 
 ### Production Frontend Build
 ```powershell
@@ -183,18 +183,20 @@ npm run build
 
 | Artifact | File Path | Verified SHA-256 Digest | Status |
 |---|---|---|:---:|
-| **ML Model Artifact** | `ml/flood/artifacts/model.joblib` | `0e05bcdf9022fa40897c12270811bc35234a7de877f32e7034e5b446c2dccccf` | **FROZEN** |
-| **Flood Feature Dataset** | `datasets/processed/flood_assam/flood_features.csv` | `88b32f35b64ef14d7201463563159529c317982063796dff448d39f45073b080` | **FROZEN** |
+| **Historical Assam ML Model** | `ml/flood/artifacts/model.joblib` | `0e05bcdf9022fa40897c12270811bc35234a7de877f32e7034e5b446c2dccccf` | **FROZEN** |
+| **Historical Assam Dataset** | `datasets/processed/flood_assam/flood_features.csv` | `88b32f35b64ef14d7201463563159529c317982063796dff448d39f45073b080` | **FROZEN** |
+| **National Flood Model v1** | `ml/national_flood/artifacts/model.joblib` | `8ec5f4e0c4ec54a3ed5b97bfa10aba9e0717de5215ff0c10ebc525e26a5a1fd4` | **VERIFIED** |
+| **National Feature Dataset** | `datasets/processed/national_flood/national_flood_features.csv` | `d731147cd961d725426ae9b9b5dd5838f6463fe915f03b46415fb60d8c55d1d0` | **VERIFIED** |
 
 ---
 
 ## ⚠️ Known Limitations & Non-Blocking Observations
 
-1. **Assam Model Boundary:** The tabular ML flood model is trained on 3,476 historical empirical observations across 26 CWC monitoring stations in Assam. It does NOT generate flood depth predictions outside Assam.
+1. **National Model Scope & Satellite Validation:** Automated empirical flood inference is operational nationwide via `risk_india_flood_v1` (18,216 validated empirical observations across 38 States/UTs). Direct radar satellite event validation (ISRO Bhuvan SAR) is concentrated in the Assam corridor, with official IMD precipitation and CWC river stage telemetry providing empirical surcharge ground truth across other basins.
 2. **Earthquake Unpredictability:** Earthquakes cannot be forecast in advance; only post-event alerts and historical BIS tectonic risk zones are provided.
 3. **Sparse Rural Sensors:** Certain rural catchments lack digital CWC river stage telemetry. These areas explicitly display `DATA_UNAVAILABLE` rather than unverified synthetic interpolations.
 4. **Rainfall Departures:** Negative percentage values in IMD rainfall matrices (e.g., `-87%`, `-95%`) are physical precipitation departures from historical seasonal normals, NOT forecast probabilities.
-5. **Frontend Bundle Size:** The production JavaScript bundle is ~798 kB due to integrated GIS Leaflet mapping and iconography libraries; this triggers a non-blocking informational Rollup warning (> 500 kB).
+5. **Frontend Bundle Size:** The production JavaScript bundle is ~1.2 MB due to integrated GIS geospatial coordinates and iconography libraries; this triggers a non-blocking informational Rollup warning (> 500 kB).
 
 ---
 

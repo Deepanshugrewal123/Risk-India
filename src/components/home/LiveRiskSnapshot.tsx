@@ -31,7 +31,7 @@ export const LiveRiskSnapshot: React.FC<LiveRiskSnapshotProps> = ({
             India, Seen Through Risk.
           </h2>
           <p className="text-sm sm:text-base text-charcoal-600 max-w-2xl mt-3 leading-relaxed">
-            An authoritative view of multi-hazard vulnerability across India, combining official public incident markers with multi-year regional hazard baselines and multi-horizon predictive risk projections (NOW to 7 Days). The machine learning flood model is strictly scoped as a research prototype for Assam Brahmaputra monitoring gauges.
+            An authoritative view of multi-hazard vulnerability across India, combining official public incident markers with multi-year regional hazard baselines and multi-horizon predictive risk projections (NOW to 7 Days). Automated flood risk is evaluated nationwide by RISK // INDIA Flood Model v1 (risk_india_flood_v1), calibrated with satellite observations in the Assam corridor and empirical hydrometeorological proxies nationwide.
           </p>
           <div className="mt-3 flex flex-wrap items-center gap-2">
             <div className="inline-flex items-center gap-2 text-xs text-charcoal-600 bg-paper-200/60 px-3 py-1.5 rounded-xl border border-paper-300/80">

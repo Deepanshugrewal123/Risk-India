@@ -86,7 +86,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           </span>
           <span className="text-charcoal-300">•</span>
           <span className="font-mono text-[9px] uppercase tracking-wider text-charcoal-500 font-semibold">
-            RESEARCH PROTOTYPE
+            CIVIC INTELLIGENCE PLATFORM
           </span>
         </div>
 

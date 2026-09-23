@@ -20,3 +20,6 @@ export const DemoBadge: React.FC<DemoBadgeProps> = ({
     </span>
   );
 };
+
+export const CivicBadge = DemoBadge;
+

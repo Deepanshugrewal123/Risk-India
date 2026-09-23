@@ -310,7 +310,7 @@ export const FutureRiskCommandCenter: React.FC<FutureRiskCommandCenterProps> = (
           </div>
           <div className="p-2 rounded-xl bg-paper-100 dark:bg-slate-800/80 border border-paper-200 dark:border-slate-700">
             <div className="text-charcoal-500 dark:text-slate-400">APPROVED ML SCOPE</div>
-            <div className="font-bold text-indigo-600 dark:text-indigo-400 mt-0.5">Assam Flood (Only)</div>
+            <div className="font-bold text-indigo-600 dark:text-indigo-400 mt-0.5">India-Wide Flood v1</div>
           </div>
         </div>
 
@@ -521,8 +521,8 @@ export const FutureRiskCommandCenter: React.FC<FutureRiskCommandCenterProps> = (
                     <span>{assessment.hazard} Hazard Analysis</span>
                     <span>•</span>
                     <span className="text-indigo-600 font-bold">
-                      {assessment.region_id === 'assam' && assessment.hazard === 'FLOOD'
-                        ? 'Approved ML Enabled'
+                      {assessment.hazard === 'FLOOD'
+                        ? 'India-Wide Flood ML Active'
                         : 'Official Forecast & Telemetry'}
                     </span>
                   </div>

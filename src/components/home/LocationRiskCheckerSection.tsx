@@ -409,7 +409,7 @@ export const LocationRiskCheckerSection: React.FC<LocationRiskCheckerSectionProp
               </div>
               <div className="p-2.5 rounded-xl bg-paper-50 dark:bg-slate-800 border border-paper-200 dark:border-slate-700">
                 <div className="text-charcoal-500 dark:text-slate-400">APPROVED ML SCOPE</div>
-                <div className="font-bold text-indigo-600 dark:text-indigo-400 mt-0.5">Assam Flood (Only)</div>
+                <div className="font-bold text-indigo-600 dark:text-indigo-400 mt-0.5">India-Wide Flood v1</div>
               </div>
             </div>
 

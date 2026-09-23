@@ -81,7 +81,7 @@ class ConfidenceEngine:
         else:  # 3_7_DAYS
             score += 0.0
 
-        # 6. ML Prototype Bonus (Assam only)
+        # 6. Approved ML Inference Bonus (risk_india_flood_v1 / calibrated corridor)
         if is_approved_ml:
             score += 5.0
 

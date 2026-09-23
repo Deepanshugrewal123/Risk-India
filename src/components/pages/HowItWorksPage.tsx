@@ -136,7 +136,7 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({
               </span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold text-charcoal-950">
-              Contextual Citizen Advisory & Natural AI Copilot
+              Contextual Citizen Advisory &amp; Preparedness Intelligence
             </h2>
             <p className="text-sm text-charcoal-600 leading-relaxed">
               Converts complex probabilistic predictions into immediate, non-alarmist human action plans. The conversational assistant provides answers in local contexts—such as preparing livestock in floodplains or securing roofs during cyclonic depressions.
@@ -155,16 +155,16 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({
           </div>
 
           <div className="lg:col-span-6 bg-paper-50 rounded-2xl p-6 border border-paper-200 font-mono text-xs space-y-3">
-            <div className="text-charcoal-400 text-[11px] uppercase tracking-wider border-b border-paper-200 pb-2">
-              Service Layer Clean Contract
+            <div className="text-charcoal-400 text-[11px] uppercase tracking-wider border-b border-paper-200 pb-2 flex justify-between">
+              <span>Production API &amp; Client Architecture</span>
+              <span className="text-emerald-700 font-bold">FastAPI / REST / TLS</span>
             </div>
-            <div className="text-charcoal-800 space-y-1">
-              <div className="text-charcoal-500">// Easily swap with real backend API in next phase:</div>
-              <div>interface RiskService {'{'}</div>
-              <div className="pl-4 text-charcoal-600">getNationalSnapshot(): Promise&lt;Snapshot&gt;;</div>
-              <div className="pl-4 text-charcoal-600">analyzeArea(state, dist, hazard): Promise&lt;RiskResult&gt;;</div>
-              <div className="pl-4 text-charcoal-600">getSheltersByState(state): Promise&lt;Shelter[]&gt;;</div>
-              <div>{'}'}</div>
+            <div className="text-charcoal-800 space-y-1.5">
+              <div><span className="text-charcoal-400">Flood ML Inference:</span> POST /api/risk/analyze &bull; risk_india_flood_v1</div>
+              <div><span className="text-charcoal-400">Future Risk Horizons:</span> GET /api/future-risk/{'{state}'} (5 Lead Windows)</div>
+              <div><span className="text-charcoal-400">Cascading Perils DAG:</span> GET /api/cascading/evaluate (5-Stage Propagation)</div>
+              <div><span className="text-charcoal-400">Offline Resilience:</span> IndexedDB caching with graceful regional baseline fallback</div>
+              <div><span className="text-charcoal-400">Statutory Grounding:</span> NDMA, IMD, CWC, GSI, and BIS IS 1893:2016</div>
             </div>
           </div>
         </div>

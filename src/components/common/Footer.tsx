@@ -22,10 +22,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 <span className="text-xs font-semibold uppercase tracking-wider text-charcoal-900">
                   Disaster Risk Intelligence System
                 </span>
-                <DemoBadge label="ACADEMIC RESEARCH PROTOTYPE" />
+                <DemoBadge label="CIVIC DISASTER INTELLIGENCE" />
               </div>
               <p className="text-xs text-charcoal-600 mt-0.5">
-                RISK // INDIA integrates real-world disaster telemetry from USGS and official disaster bulletins, alongside an audited machine learning flood prototype for Assam river gauges. In an actual emergency, always follow official directives from NDMA and district authorities.
+                RISK // INDIA integrates official disaster bulletins, multi-source hydrometeorological telemetry, and the India-wide empirical flood model (RISK // INDIA Flood Model v1). In an actual emergency, always follow official directives from NDMA and district authorities.
               </p>
             </div>
           </div>
@@ -49,7 +49,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </span>
             </div>
             <p className="text-xs text-charcoal-600 leading-relaxed max-w-sm">
-              An AI-powered disaster intelligence and public safety platform prototype. Fostering proactive hazard forecasting, rapid citizen preparedness, and transparent relief coordination across India.
+              A nationwide civic disaster intelligence and public safety platform. Fostering proactive hazard forecasting, rapid citizen preparedness, and transparent relief coordination across India.
             </p>
             <div className="pt-2">
               <div className="text-[11px] font-mono uppercase tracking-wider text-charcoal-400 mb-1">
@@ -102,7 +102,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   onClick={() => { onNavigate('how-it-works'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
                   className="hover:text-charcoal-950 transition-colors"
                 >
-                  System Architecture & AI
+                  How It Works & Methodology
                 </button>
               </li>
             </ul>
@@ -187,7 +187,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <span className="font-mono">RISK//INDIA 2026</span>
           </div>
           <div className="flex items-center gap-1">
-            <span>Built with calm, human-centered motion & physics</span>
+            <span>Dedicated to Indian public safety, disaster preparedness, and community resilience</span>
             <Heart className="w-3.5 h-3.5 text-charcoal-400 fill-charcoal-400 ml-1" />
           </div>
         </div>

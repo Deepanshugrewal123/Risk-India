@@ -313,7 +313,7 @@ export const FutureRiskPage: React.FC<FutureRiskPageProps> = ({
         </div>
         <div className="p-2.5 rounded-xl bg-white border border-slate-200">
           <div className="text-slate-500">APPROVED ML SCOPE</div>
-          <div className="font-bold text-blue-700 mt-0.5">Assam Flood (Only)</div>
+          <div className="font-bold text-blue-700 mt-0.5">India-Wide Flood v1</div>
         </div>
       </div>
 

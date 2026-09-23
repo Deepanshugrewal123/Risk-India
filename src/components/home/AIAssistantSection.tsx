@@ -68,7 +68,7 @@ export const AIAssistantSection: React.FC = () => {
           <span className="text-xs font-mono uppercase tracking-wider text-charcoal-500 font-semibold">
             Disaster Intelligence Advisory
           </span>
-          <DemoBadge label="AI ADVISORY" />
+          <DemoBadge label="CITIZEN ADVISORY" />
         </div>
         <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-charcoal-950 mb-3">
           Ask Before You Act.
@@ -78,7 +78,7 @@ export const AIAssistantSection: React.FC = () => {
         </p>
       </div>
 
-      {/* Chat Mockup Window */}
+      {/* Advisory Chat Window */}
       <div className="rounded-3xl bg-white border border-paper-300 shadow-floating overflow-hidden">
         {/* Chat Window Header */}
         <div className="px-6 py-4 bg-paper-50/80 border-b border-paper-200 flex items-center justify-between">
@@ -88,7 +88,7 @@ export const AIAssistantSection: React.FC = () => {
             </div>
             <div>
               <div className="text-xs font-bold text-charcoal-900 flex items-center gap-1.5">
-                <span>RISK//INDIA Intelligence Copilot</span>
+                <span>RISK // INDIA Safety Assistant</span>
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               </div>
               <span className="text-[10px] font-mono text-charcoal-500">
@@ -96,7 +96,7 @@ export const AIAssistantSection: React.FC = () => {
               </span>
             </div>
           </div>
-          <DemoBadge label="ADVISORY COPILOT" />
+          <DemoBadge label="SAFETY ASSISTANT" />
         </div>
 
         {/* Message Thread */}

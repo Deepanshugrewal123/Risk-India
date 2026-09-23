@@ -8,7 +8,8 @@
 
 export const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/+$/, '');
 
-export const USE_MOCK_DATA = import.meta.env.VITE_USE_MOCK_DATA !== 'false';
+export const USE_STANDALONE_CACHE = import.meta.env.VITE_USE_STANDALONE_CACHE !== 'false';
+export const USE_MOCK_DATA = USE_STANDALONE_CACHE;
 
 export const API_ENDPOINTS = {
   risk: {

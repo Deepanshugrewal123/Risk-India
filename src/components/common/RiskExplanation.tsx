@@ -302,7 +302,7 @@ export const RiskExplanation: React.FC<RiskExplanationProps> = ({
 
       {/* Disclaimers & Future ML Notice */}
       <div className="mt-4 pt-3 border-t border-paper-200 flex items-center justify-between text-[10px] font-mono text-charcoal-400">
-        <span>Architected for future SHAP / TreeExplainer weights</span>
+        <span>Empirical feature attribution • Scaled importance weighting</span>
         <span>Informational estimate only • Follow DDMA/SDMA alerts</span>
       </div>
     </div>

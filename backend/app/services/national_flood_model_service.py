@@ -372,9 +372,9 @@ class NationalFloodModelService:
             })
 
             # Distinct scientific classification based on genuine empirical ground-truth availability
+            # Satellite ground truth rasters in repository are strictly confined to Assam state
             is_assam = (context["entity"].get("id", "").lower() == "assam" or 
-                        context["entity"].get("name", "").lower() == "assam" or 
-                        context["basin"] in ["brahmaputra", "barak_others"])
+                        context["entity"].get("name", "").lower() == "assam")
 
             if is_assam:
                 evidence_posture = "EMPIRICAL_SATELLITE_OBSERVATION"

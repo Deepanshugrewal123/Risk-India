@@ -126,15 +126,15 @@ class CrisisExplanationEngine:
                 "by any scientific institution globally. Micro-fault slippage and building-specific resonant vulnerabilities "
                 "require specialized on-site civil structural audits."
             )
-        elif is_assam:
+        elif norm_hazard == "FLOOD":
             data_limitations = (
-                "Assam flood risk utilizes validated machine learning (assam_flood_prototype_v1) combined with CWC river sensors. "
-                "However, localized urban storm drain blockages, unmapped breach locations along rural earthen bunds, and "
-                "micro-topographical depressions are not resolvable in real time."
+                f"India-wide flood risk utilizes the empirical machine learning model (risk_india_flood_v1) calibrated across "
+                f"18,184 IMD historical observations combined with CWC river sensors. However, localized urban storm drain blockages, "
+                f"unmapped breach locations along rural earthen bunds, and micro-topographical depressions are not resolvable in real time."
             )
         else:
             data_limitations = (
-                f"Machine learning inference is strictly restricted to Assam; {region_name} assessments are derived from "
+                f"Machine learning inference is strictly restricted to flood hazard (risk_india_flood_v1); {region_name} assessments are derived from "
                 "empirical sensor telemetry, NWP numerical weather prediction, and statutory IMD/CWC bulletins. "
                 "Micro-scale hyper-local cloudbursts and village-level drainage choke points cannot be monitored in real time."
             )

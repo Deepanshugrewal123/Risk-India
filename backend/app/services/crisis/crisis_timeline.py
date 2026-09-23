@@ -31,6 +31,7 @@ class CrisisTimelineEngine:
         future_windows: Dict[str, Dict[str, Any]],
         official_warnings: List[Dict[str, Any]],
         telemetry_summary: Dict[str, Any],
+        is_flood_ml: bool = False,
         is_assam_flood: bool = False
     ) -> List[CrisisTimelinePoint]:
         """
@@ -53,8 +54,15 @@ class CrisisTimelineEngine:
         if not now_factors:
             now_factors.append("Baseline environmental monitoring active")
 
-        now_signal = TimelineSignalType.EMPIRICAL_ML if is_assam_flood else TimelineSignalType.OBSERVED
-        now_prov = "Assam ML Random Forest (Validated) + Live CWC Telemetry" if is_assam_flood else "Empirical Hydromet Sensor Telemetry + Official Warning Bulletin"
+        if is_assam_flood:
+            now_signal = TimelineSignalType.EMPIRICAL_ML
+            now_prov = "Assam ML Prototype (Validated) + Live CWC Telemetry"
+        elif is_flood_ml:
+            now_signal = TimelineSignalType.EMPIRICAL_ML
+            now_prov = "India-Wide Flood ML Model v1 (risk_india_flood_v1) + Live Telemetry"
+        else:
+            now_signal = TimelineSignalType.OBSERVED
+            now_prov = "Empirical Hydromet Sensor Telemetry + Official Warning Bulletin"
 
         timeline.append(
             CrisisTimelinePoint(
@@ -62,7 +70,7 @@ class CrisisTimelineEngine:
                 window_label="Current Situation (Live)",
                 expected_risk_level=current_level,
                 expected_risk_score=current_score,
-                confidence=0.92 if is_assam_flood else 0.85,
+                confidence=0.92 if (is_flood_ml or is_assam_flood) else 0.85,
                 primary_hazard=norm_hazard,
                 signal_type=now_signal,
                 key_factors=now_factors,

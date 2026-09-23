@@ -278,15 +278,25 @@ export const CrisisDashboard: React.FC = () => {
           </div>
         )}
 
-        {error && (
-          <div className="bg-red-50 border border-red-200 rounded-2xl p-6 text-red-800 text-xs font-mono mb-6">
-            <p className="font-bold">Error loading crisis intelligence:</p>
-            <p>{error}</p>
+        {error && !assessment && (
+          <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6 text-amber-900 text-xs font-mono mb-6">
+            <p className="font-bold mb-1">Live crisis feed unavailable:</p>
+            <p className="text-amber-800">{error}</p>
           </div>
         )}
 
         {assessment && !loading && (
           <div className="space-y-6">
+            {assessment.telemetry_summary?.telemetry_fresh === false && (
+              <div className="bg-amber-50 border border-amber-200 rounded-xl p-3.5 text-amber-900 text-xs font-mono flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0" />
+                  <span>Live sensor telemetry currently offline or unavailable. Showing statutory regional baseline and emergency protocols.</span>
+                </div>
+                <span className="text-[10px] font-bold uppercase tracking-wider bg-amber-200/60 px-2 py-0.5 rounded">STATUTORY BASELINE</span>
+              </div>
+            )}
+
             {/* Operational State Banner */}
             <div className="bg-white rounded-2xl p-5 border border-paper-300 shadow-sm">
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-paper-200">

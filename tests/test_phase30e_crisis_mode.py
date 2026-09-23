@@ -89,11 +89,16 @@ class TestPhase30ECrisisMode(unittest.TestCase):
         self.assertEqual(res_kerala.ml_audit["status"], "NOT_AVAILABLE")
 
     def test_04_assam_ml_model_preserved(self):
-        """Assam flood crisis assessment must reference assam_flood_prototype_v1."""
+        """Assam flood crisis assessment references active national model v1 and preserves assam_flood_prototype_v1."""
         res_assam = national_crisis_service.assess_crisis("assam", hazard="FLOOD")
         self.assertTrue(res_assam.ml_audit["ml_available"])
-        self.assertEqual(res_assam.ml_audit["model_name"], "assam_flood_prototype_v1")
+        self.assertEqual(res_assam.ml_audit["model_name"], "risk_india_flood_v1")
         self.assertEqual(res_assam.ml_audit["synthetic_records"], 0)
+
+        # Legacy backward compatibility check
+        res_legacy = national_crisis_service.assess_crisis("assam", hazard="FLOOD", model_version="assam_flood_prototype_v1")
+        self.assertTrue(res_legacy.ml_audit["ml_available"])
+        self.assertEqual(res_legacy.ml_audit["model_name"], "assam_flood_prototype_v1")
 
     def test_05_earthquake_non_prediction_guard(self):
         """Earthquake assessments must never predict future occurrences."""
@@ -309,7 +314,7 @@ class TestPhase30ECrisisMode(unittest.TestCase):
         self.assertTrue(len(expl.what_changed) > 0)
         self.assertTrue(len(expl.supporting_evidence) > 0)
         self.assertTrue(len(expl.what_could_change) > 0)
-        self.assertIn("Machine learning inference is strictly restricted to Assam", expl.data_limitations)
+        self.assertIn("Machine learning inference is strictly restricted to flood hazard", expl.data_limitations)
 
     # =========================================================================
     # 6. NATIONWIDE COVERAGE ACROSS ALL 36 ENTITIES

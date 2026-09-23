@@ -131,12 +131,22 @@ class NationalFloodModelService:
         if state_clean in self._entity_lookup:
             return self._entity_lookup[state_clean]
 
-        # Substring search
+        # Normalized state alias lookup
+        norm_loc = normalize_state_name(loc_clean).lower()
+        if norm_loc in self._entity_lookup:
+            return self._entity_lookup[norm_loc]
+        if state_clean:
+            norm_state = normalize_state_name(state_clean).lower()
+            if norm_state in self._entity_lookup:
+                return self._entity_lookup[norm_state]
+
+        # Substring search (only for keys with len >= 4 to prevent 2-letter codes like 'as' matching inside words)
         for key, entity in self._entity_lookup.items():
-            if key in loc_clean or loc_clean in key:
-                return entity
-            if state_clean and (key in state_clean or state_clean in key):
-                return entity
+            if len(key) >= 4:
+                if key in loc_clean or loc_clean in key:
+                    return entity
+                if state_clean and (key in state_clean or state_clean in key):
+                    return entity
 
         # Default fallback: India national center
         return {

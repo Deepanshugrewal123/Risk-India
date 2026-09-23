@@ -20,7 +20,7 @@ def get_risk_basins(state: Optional[str] = None):
         basins = [b for b in basins if any(s_clean in st.lower() for st in b.get("riparian_states", []))]
     return {
         "count": len(basins),
-        "disclaimer": "Hydrological normalization only. Does not imply trained ML coverage outside Assam prototype.",
+        "disclaimer": "Hydrological normalization only. RISK // INDIA Flood Model v1 evaluates empirical flood surcharge across basins; direct satellite ground truth is validated in the Assam corridor.",
         "basins": basins
     }
 
